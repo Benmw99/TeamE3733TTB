@@ -1,5 +1,6 @@
 class Main {
     public static void main(String[] args) {
-        //Do something here
+        TableBuilder init = new TableBuilder("./ttb.db");
+        init.buildAddress();
     }
 }
