@@ -8,6 +8,6 @@
    <children>
       <Text layoutX="649.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" />
       <Button layoutX="646.0" layoutY="163.0" mnemonicParsing="false" text="Civilian" />
-      <Button fx:id="manButt" layoutX="628.0" layoutY="224.0" mnemonicParsing="false" onAction="#manufactureLogin" text="Manufacture" />
+      <Button fx:id="manButt" layoutX="628.0" layoutY="224.0" mnemonicParsing="false" onAction="#manufactureLogin" text="Manufacturer" />
    </children>
 </AnchorPane>
