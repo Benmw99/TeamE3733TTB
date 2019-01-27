@@ -65,6 +65,9 @@ public class ManufactureController {
     Button goToFAQ;
 
     @FXML
+    Button searchButt;
+
+    @FXML
     public void manufactureLogin(ActionEvent event) throws IOException {
         pageSwitch(event, "ManLogin.fxml", manButt);
     }
@@ -77,6 +80,11 @@ public class ManufactureController {
     @FXML
     public void manufactureFAQ(ActionEvent event) throws IOException {
         pageSwitch(event, "ManFAQ.fxml", goToFAQ);
+    }
+
+    @FXML
+    public void manSearch(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManSearch.fxml", searchButt);
     }
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{

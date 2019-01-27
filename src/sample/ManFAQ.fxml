@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManufactureController">
@@ -29,7 +30,7 @@
           <MenuItem mnemonicParsing="false" text="Random Cat 2" />
         </items>
       </MenuButton>
-      <Button fx:id='manButt' layoutX="58.0" layoutY="52.0" mnemonicParsing="false" onAction="#manufactureLogin" text="Return to Menu" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" />
+      <Button fx:id="manButt" layoutX="58.0" layoutY="52.0" mnemonicParsing="false" onAction="#manufactureLogin" text="Return to Menu" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" />
       <TextField alignment="CENTER" layoutX="349.0" layoutY="151.0" prefHeight="26.0" prefWidth="708.0" promptText="Search Applications" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="316.0" />
    </children>
 </AnchorPane>
