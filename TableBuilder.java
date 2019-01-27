@@ -23,7 +23,7 @@ public class TableBuilder {
                 " 'City' VARCHAR(32)," +
                 " 'TTB_ID' INT(16)," + //TODO FOREIGNKEY
                 " 'State' VARCHAR(2)," +
-                " 'Street_Name' VARCHAR(32))"
+                " 'Street_Name' VARCHAR(32))";
         try {
             PreparedStatement ps =  connection.prepareStatement(buildString);
             ps.execute();
@@ -35,7 +35,7 @@ public class TableBuilder {
     void buildOtherInfo(){
         String buildString = "CREATE TABLE OTHER_INFO (" +
                 "'TTB_ID' INT(16)," + //TODO FOREIGNKEY
-                "'Text' VARCHAR(256))"
+                "'Text' VARCHAR(256))";
         try {
             PreparedStatement ps = connection.prepareStatement(buildString);
             ps.execute();
