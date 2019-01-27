@@ -81,6 +81,7 @@ public class TableBuilder {
             System.out.println(e.getErrorCode());
         }
     }
+
     void buildApproval(){
         String buildString = "CREATE TABLE APPROVAL (" +
                 "'Approving_Agent' VARCHAR(32)," +
@@ -107,6 +108,7 @@ public class TableBuilder {
             System.out.println(e.getErrorCode());
         }
     }
+
     void buildLabel(){
         //TODO MAKE 1M A CONSTANT
         String buildString = "create table labels (id int, image blob(1M), imageName varchar(64), Constraint labels_PK Primary Key (id))";
@@ -117,6 +119,7 @@ public class TableBuilder {
             System.out.println(e.getErrorCode());
         }
     }
+
     void buildForm(){
         String buildString = "CREATE TABLE FORM (" +
                 "TTB_ID INT(16) PRIMARY KEY," +
