@@ -107,5 +107,36 @@ public class TableBuilder {
             System.out.println(e.getErrorCode());
         }
     }
-
+    void buildLabel(){
+        //TODO MAKE 1M A CONSTANT
+        String buildString = "create table labels (id int, image blob(1M), imageName varchar(64), Constraint labels_PK Primary Key (id))";
+        try {
+            PreparedStatement ps = connection.prepareStatement(buildString);
+            ps.execute();
+        } catch (SQLException e){
+            System.out.println(e.getErrorCode());
+        }
+    }
+    void buildForm(){
+        String buildString = "CREATE TABLE FORM (" +
+                "TTB_ID INT(16) PRIMARY KEY," +
+                "Serial_Number VARCHAR(8)," +
+                "Fanciful_Name VARCHAR(256)," +
+                "Brand_Name VARCHAR(256)," +
+                "Source INT(1)," +
+                "APPROVE INT(1)," +
+                "Rep_ID VARCHAR(16)," +
+                "Email VARCHAR(256)," +
+                "Company_ID INT(16)," + //TODO MAKE A FOREIGN KEY
+                "Date_Submitted TIMESTAMP," +
+                "Applicant_Name VARCHAR(32)," +
+                "Phone VARCHAR(12)," +
+                "Alcohol_Type INT(2))";
+        try {
+            PreparedStatement ps = connection.prepareStatement(buildString);
+            ps.execute();
+        } catch (SQLException e){
+            System.out.println(e.getErrorCode());
+        }
+    }
 }
