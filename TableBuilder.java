@@ -1,13 +1,11 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 //This class may very well not exist on the final project, I'm really just using this as a place to sore all the SQL
 //strings as I write them. We definitely need to write those, lol.
 public class TableBuilder {
     private Connection connection;
+    private static final String IMAGESIZE = "1M";
 
     TableBuilder(String path){
         try {
@@ -15,6 +13,23 @@ public class TableBuilder {
         } catch (SQLException e){
             System.out.println(e.getErrorCode());
         }
+    }
+
+    void resetDB() {
+        String dropString = "DROP TABLE ADDRESS, USER, AGENTS, REP, COMPANY, FORM, BREWERSPERMIT, ADDRESS, OTHERINFO, LABEL, APPROVAL, WINE";
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) { }
+        buildBrewersPermit();
+        buildApproval();
+        buildAddress();
+        buildCompany();
+        buildOtherInfo();
+        buildUser();
+        buildWine();
+        buildForm();
+        buildLabel();
     }
 
     void buildAddress(){
@@ -108,8 +123,7 @@ public class TableBuilder {
         }
     }
     void buildLabel(){
-        //TODO MAKE 1M A CONSTANT
-        String buildString = "create table labels (id int, image blob(1M), imageName varchar(64), Constraint labels_PK Primary Key (id))";
+        String buildString = "create table labels (id int, image blob(" + IMAGESIZE + "), imageName varchar(64), Constraint labels_PK Primary Key (id))";
         try {
             PreparedStatement ps = connection.prepareStatement(buildString);
             ps.execute();
