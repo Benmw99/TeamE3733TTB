@@ -1,8 +1,9 @@
 import java.sql.*;
 
 
-//This class may very well not exist on the final project, I'm really just using this as a place to sore all the SQL
+//This class may very well not exist on the final project, I'm really just using this as a place to store all the SQL
 //strings as I write them. We definitely need to write those, lol.
+//Even if this class doesn't exist in the final all these methods and strings will be used
 public class TableBuilder {
     private Connection connection;
     private static final String IMAGESIZE = "1M";
@@ -16,20 +17,24 @@ public class TableBuilder {
     }
 
     void resetDB() {
-        String dropString = "DROP TABLE ADDRESS, USER, AGENTS, REP, COMPANY, FORM, BREWERSPERMIT, ADDRESS, OTHERINFO, LABEL, APPROVAL, WINE";
+        //This might not be in the correct order and that cascade constraints might not actually work, also this might have to be seperated into individual drops
+        String dropString = "DROP TABLE ADDRESS, WINE, AGENTS, REPS, COMPANY, APPROVAL, BREWERSPERMIT, ADDRESS, OTHERINFO, LABEL, FORM, USER CASCADE CONSTRAINTS";
         try {
             Statement stmt = connection.createStatement();
             stmt.execute(dropString);
         } catch (SQLException e) { }
+        //These might not be in the right order for foreign keys
+        buildForm();
+        buildUser();
         buildBrewersPermit();
         buildApproval();
         buildAddress();
         buildCompany();
         buildOtherInfo();
-        buildUser();
         buildWine();
-        buildForm();
         buildLabel();
+        buildAgents();
+        buildReps();
     }
 
     void buildAddress(){
@@ -76,7 +81,7 @@ public class TableBuilder {
 
     void buildCompany(){
         String buildString = "CREATE TABLE COMPANY (" +
-                "'Company_ID' INT(16)," + //TODO Primary Key and Foreign Key
+                "'Company_ID' INT(16)," + //TODO Foreign Key/Inheritance
                 "'Company_Name' VARCHAR(256))";
         try {
             PreparedStatement ps = connection.prepareStatement(buildString);
@@ -127,7 +132,7 @@ public class TableBuilder {
         }
     }
     void buildLabel(){
-        String buildString = "CREATE TABEL LABEL (" +
+        String buildString = "CREATE TABLE LABEL (" +
                 "id int, "+
                 "image blob(" + IMAGESIZE + "), " +
                 "imageName varchar(64), " +
@@ -156,6 +161,29 @@ public class TableBuilder {
                 "Phone VARCHAR(12)," +
                 "Alcohol_Type INT(2)" +
                 "Constraint form_PK Primary Key (TTB_ID))";
+        try {
+            PreparedStatement ps = connection.prepareStatement(buildString);
+            ps.execute();
+        } catch (SQLException e){
+            System.out.println(e.getErrorCode());
+        }
+    }
+
+    void buildAgents() {
+        String buildString = "CREATE TABLE AGENTS (" +
+                "Agent_Name VARCHAR(32), " +
+                "Agent_ID INT(16))"; //TODO Foreign key/inheritance
+        try {
+            PreparedStatement ps = connection.prepareStatement(buildString);
+            ps.execute();
+        } catch (SQLException e){
+            System.out.println(e.getErrorCode());
+        }
+    }
+
+    void buildReps() {
+        String buildString = "CREATE TABLE REPS (" +
+                "RepID VARCHAR(16))"; //TODO Foreign key/inheritance
         try {
             PreparedStatement ps = connection.prepareStatement(buildString);
             ps.execute();
