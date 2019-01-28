@@ -1,168 +1,266 @@
+import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.List;
 
-
-//This class may very well not exist on the final project, I'm really just using this as a place to sore all the SQL
+//This class may very well not exist on the final project, I'm really just using this as a place to store all the SQL
 //strings as I write them. We definitely need to write those, lol.
+//Even if this class doesn't exist in the final all these create tables will be
 public class TableBuilder {
     private Connection connection;
     private static final String IMAGESIZE = "1M";
 
     TableBuilder(String path){
         try {
-            connection = DriverManager.getConnection("jdbc:derby:" + path + ";create=true");
+            connection = DriverManager.getConnection("jdbc:derby:/Users/mjclements/IdeaProjects/TeamE3733TTB/DB/ttb.db;create=true");
         } catch (SQLException e){
-            System.out.println(e.getErrorCode());
+            System.out.println(e.toString());
         }
     }
 
     void resetDB() {
-        String dropString = "DROP TABLE ADDRESS, USER, AGENTS, REP, COMPANY, FORM, BREWERSPERMIT, ADDRESS, OTHERINFO, LABEL, APPROVAL, WINE";
         try {
+            String dropString = "Drop table Address";
             Statement stmt = connection.createStatement();
             stmt.execute(dropString);
-        } catch (SQLException e) { }
-        buildBrewersPermit();
-        buildApproval();
-        buildAddress();
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Wine";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Agents";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Reps";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Company";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Approval";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table BrewersPermit";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table OtherInfo";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Label";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Users";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Form";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        System.out.println("Build Users");
+        buildUsers();
+        System.out.println("Build Agents");
+        buildAgents();
+        System.out.println("Build Reps");
+        buildReps();
+        System.out.println("Build Company");
         buildCompany();
-        buildOtherInfo();
-        buildUser();
-        buildWine();
+        System.out.println("Build Form");
         buildForm();
+        System.out.println("Build Permit");
+        buildBrewersPermit();
+        System.out.println("Build Approval");
+        buildApproval();
+        System.out.println("Build Address");
+        buildAddress();
+        System.out.println("Build Other Info");
+        buildOtherInfo();
+        System.out.println("Build Wine");
+        buildWine();
+        System.out.println("Build Label");
         buildLabel();
     }
 
-    void buildAddress(){
-        String buildString = "CREATE TABLE ADDRESS ('Zip_Code' VARCHAR(8)," +
-                " 'isMailing' BOOL," +
-                " 'City' VARCHAR(32)," +
-                " 'TTB_ID' INT(16)," + //TODO FOREIGNKEY, Primary Key
-                " 'State' VARCHAR(2)," +
-                " 'Street_Name' VARCHAR(32))";
+    void sendStatement(String buildString) {
         try {
             PreparedStatement ps =  connection.prepareStatement(buildString);
             ps.execute();
         } catch (SQLException e){
-            System.out.println(e.getErrorCode());
+            System.out.println("SQL State: " + e.getErrorCode());
+            System.out.println("Error Code: " + e.getSQLState());
+            System.out.println("Message: " + e.getMessage());
         }
+    }
+
+    ResultSet sendQuery(String queryString){
+        ResultSet rs = null;
+        try{
+            PreparedStatement ps = connection.prepareStatement(queryString);
+            rs = ps.executeQuery();
+        } catch (SQLException e){
+            System.out.println("SQL State: " + e.getErrorCode());
+            System.out.println("Error Code: " + e.getSQLState());
+            System.out.println("Message: " + e.getMessage());
+        }
+        return rs;
+    }
+
+    void buildAddress(){
+        String buildString = "CREATE TABLE ADDRESS (" +
+                "Zip_Code VARCHAR(8), " +
+                "isMailing BOOLEAN, " +
+                "City VARCHAR(32), " +
+                "TTB_ID BIGINT, " +
+                "State VARCHAR(2), " +
+                "Street_Name VARCHAR(32), " +
+                "ID BIGINT," +
+                "Constraint Address_PK Primary Key (ID), " +
+                "Constraint Address_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
+        sendStatement(buildString);
     }
 
     void buildOtherInfo(){
-        String buildString = "CREATE TABLE OTHER_INFO (" +
-                "'TTB_ID' INT(16)," + //TODO FOREIGNKEY
-                "'Text' VARCHAR(256), " +
-                "Constraint otherInfoPK Primary Key (TTB_ID))";
-        try {
-            PreparedStatement ps = connection.prepareStatement(buildString);
-            ps.execute();
-        } catch(SQLException e){
-            System.out.println(e.getErrorCode());
-        }
+        String buildString = "CREATE TABLE OTHERINFO (" +
+                "TTB_ID BIGINT," +
+                "Text VARCHAR(256), " +
+                "Constraint OtherInfoPK Primary Key (TTB_ID), " +
+                "Constraint OtherInfoFK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
+        sendStatement(buildString);
     }
 
     void buildWine(){
-        String buildString = "CREATE TABLE WINE ('pH' DOUBLE(2)," +
-                "'TTB_ID' INT(16)," + //TODO FOREIGN KEY
-                "'Grape_Varietals' VARCHAR(256)," +
-                "'Wine_Appellation' VARCHAR(32), " +
-                "Constraint Wine_PK Primary Key (TTB_ID))";
-        try {
-            PreparedStatement ps = connection.prepareStatement(buildString);
-            ps.execute();
-        } catch (SQLException e){
-            System.out.println(e.getErrorCode());
-        }
-    }
-
-    void buildCompany(){
-        String buildString = "CREATE TABLE COMPANY (" +
-                "'Company_ID' INT(16)," + //TODO Primary Key and Foreign Key
-                "'Company_Name' VARCHAR(256))";
-        try {
-            PreparedStatement ps = connection.prepareStatement(buildString);
-            ps.execute();
-        } catch (SQLException e){
-            System.out.println(e.getErrorCode());
-        }
+        String buildString = "CREATE TABLE WINE (" +
+                "pH REAL," + //Might need to make that bigger to store more precision
+                "TTB_ID BIGINT," +
+                "Grape_Varietals VARCHAR(256)," +
+                "Wine_Appellation VARCHAR(32), " +
+                "Constraint Wine_PK Primary Key (TTB_ID), " +
+                "Constraint Wine_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
+        sendStatement(buildString);
     }
 
     void buildBrewersPermit(){
-        String buildString = "CREATE TABLE BREWERS_PERMIT (" +
-                "'Brewers_No' INT(16)," +
-                "'TTB_ID' INT(16)," + //TODO FOREIGNKEY
-                "'isPrimary' BOOL, " +
-                "Constraint Brewers_Permit_PK Primary Key (TTB_ID, Brewers_No))";
-        try {
-            PreparedStatement ps = connection.prepareStatement(buildString);
-            ps.execute();
-        } catch (SQLException e){
-            System.out.println(e.getErrorCode());
-        }
+        String buildString = "CREATE TABLE BREWERSPERMIT (" +
+                "Brewers_No BIGINT," +
+                "TTB_ID BIGINT," +
+                "isPrimary BOOLEAN, " +
+                "Constraint BrewersPermit_PK Primary Key (TTB_ID, Brewers_No), " +
+                "Constraint BrewersPermit_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
+        sendStatement(buildString);
     }
 
     void buildApproval(){
         String buildString = "CREATE TABLE APPROVAL (" +
-                "'Approving_Agent' VARCHAR(32)," +
-                "'TTB_ID' INT(16)" + //TODO FOREIGNKEY
-                "'Date' TIMESTAMP," +
-                "'Expiration' TIMESTAMP," +
-                "'Qualification' VARCHAR(256), " +
-                "Constraint Approval_PK Primary Key (TTB_ID))";
-        try {
-            PreparedStatement ps = connection.prepareStatement(buildString);
-            ps.execute();
-        } catch (SQLException e){
-            System.out.println(e.getErrorCode());
-        }
-    }
-
-    void buildUser(){
-        String buildString = "CREATE TABLE USER (" +
-                "'Login_Name' VARCHAR(32)," + //TODO Primary Key
-                "'Password' VARCHAR(256))";
-        try {
-            PreparedStatement ps = connection.prepareStatement(buildString);
-            ps.execute();
-        } catch (SQLException e){
-            System.out.println(e.getErrorCode());
-        }
+                "Approving_Agent VARCHAR(32)," +
+                "TTB_ID BIGINT," +
+                "Date TIMESTAMP," +
+                "Expiration TIMESTAMP," +
+                "Qualification VARCHAR(256), " +
+                "Constraint Approval_PK Primary Key (TTB_ID), " +
+                "Constraint Approval_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
+        sendStatement(buildString);
     }
 
     void buildLabel(){
-        String buildString = "CREATE TABEL LABEL (" +
-                "id int, "+
-                "image blob(" + IMAGESIZE + "), " +
-                "imageName varchar(64), " +
-                "Constraint labels_PK Primary Key (id))";
-        try {
-            PreparedStatement ps = connection.prepareStatement(buildString);
-            ps.execute();
-        } catch (SQLException e){
-            System.out.println(e.getErrorCode());
-        }
+        String buildString = "CREATE TABLE LABEL (" +
+                "ID BIGINT, " +
+                "Image blob(" + IMAGESIZE + "), " +
+                "ImageName varchar(64), " +
+                "TTB_ID BIGINT, " +
+                "Constraint Label_PK Primary Key (id), " +
+                "Constraint Label_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
+        sendStatement(buildString);
     }
 
     void buildForm(){
         String buildString = "CREATE TABLE FORM (" +
-                "TTB_ID INT(16)," +
+                "TTB_ID BIGINT," +
                 "Serial_Number VARCHAR(8)," +
                 "Fanciful_Name VARCHAR(256)," +
                 "Brand_Name VARCHAR(256)," +
-                "Source INT(1)," +
-                "APPROVE INT(1)," +
-                "Rep_ID VARCHAR(16)," + //TODO Foreign Key
+                "Source SMALLINT," +
+                "APPROVE SMALLINT," +
+                "Rep_ID VARCHAR(16)," +
                 "Email VARCHAR(256)," +
-                "Company_ID INT(16)," + //TODO MAKE A FOREIGN KEY
+                "Company_ID BIGINT," +
                 "Date_Submitted TIMESTAMP," +
                 "Applicant_Name VARCHAR(32)," +
                 "Phone VARCHAR(12)," +
-                "Alcohol_Type INT(2)" +
-                "Constraint form_PK Primary Key (TTB_ID))";
-        try {
-            PreparedStatement ps = connection.prepareStatement(buildString);
-            ps.execute();
-        } catch (SQLException e){
-            System.out.println(e.getErrorCode());
-        }
+                "Alcohol_Type SMALLINT," +
+                "Constraint Form_PK Primary Key (TTB_ID), " +
+                "Constraint Form_FK_Rep Foreign Key (Rep_ID) References Reps(Rep_ID) On Delete Cascade, " +
+                "Constraint Form_FK_Company Foreign Key (Company_ID) References Company(Company_ID) On Delete Cascade)";
+        sendStatement(buildString);
     }
+
+    void buildUsers(){
+        String buildString = "CREATE TABLE USERS (" +
+                "Login_Name VARCHAR(32), " +
+                "Password VARCHAR(256), " +
+                "Constraint Users_PK Primary Key (Login_Name))";
+        sendStatement(buildString);
+    }
+
+    void buildAgents() {
+        String buildString = "CREATE TABLE AGENTS (" +
+                "Agent_Name VARCHAR(32), " +
+                "Agent_ID BIGINT, " + //TODO Inheritance
+                "Constraint Agents_UQ Unique (Agent_ID))";
+        sendStatement(buildString);
+    }
+
+    void buildReps() {
+        String buildString = "CREATE TABLE REPS (" +
+                "Rep_ID VARCHAR(16), " +//TODO Inheritance
+                "Constraint Reps_UQ Unique (Rep_ID))";
+        sendStatement(buildString);
+    }
+
+    void buildCompany(){
+        String buildString = "CREATE TABLE COMPANY (" +
+                "Company_ID BIGINT," + //TODO Inheritance
+                "Company_Name VARCHAR(256), " +
+                "Constraint Company_UQ Unique (Company_ID))";
+        sendStatement(buildString);
+    }
+    void insertReps(String Rep_ID){
+        String insertString = "INSERT INTO REPS (Rep_ID) VALUES ('";
+        insertString += Rep_ID;
+        insertString += "')";
+        sendStatement(insertString);
+    }
+    //TODO communicate w/ rest of team about REP Data Type
+    ResultSet selectAllReps(){
+        String selectString = "SELECT * FROM REPS";
+        return sendQuery(selectString);
+    }
+    ResultSet selectAllCompany(){
+        String selectString = "SELECT * FROM COMPANY";
+        return sendQuery(selectString);
+    }
+    ResultSet selectAllAgents(){
+        String selectString = "SELECT * FROM AGENTS";
+        return sendQuery(selectString);
+    }
+    ResultSet selectAllUsers() {
+        String selectString = "SELECT * FROM USERS";
+        return sendQuery(selectString); //TODO UPDATE WHEN INHERITANCE IS PROPERLY IMPLEMENTED
+    }
+
 }
