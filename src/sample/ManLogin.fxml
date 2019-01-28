@@ -8,5 +8,6 @@
       <Button fx:id="BacktoWelcome" mnemonicParsing="false" onAction="#welcomePage" text="&lt;Back" />
       <Button fx:id="goToFAQ" layoutX="6.0" layoutY="37.0" mnemonicParsing="false" onAction="#manufactureFAQ" text="FAQ" />
       <Button fx:id="searchButt" layoutX="6.0" layoutY="78.0" mnemonicParsing="false" onAction="#manSearch" text="Search" />
+      <Button fx:id="profileButt" layoutX="7.0" layoutY="120.0" mnemonicParsing="false" onAction="#manProfile" text="Profile" />
    </children>
 </AnchorPane>
