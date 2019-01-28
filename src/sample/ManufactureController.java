@@ -1,6 +1,5 @@
 package sample;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,11 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
-
-
 
 
 /*
@@ -34,7 +29,6 @@ To add new scene switch:
 
 */
 
-
 /*
 ###########################
 List of fxml pages:
@@ -47,8 +41,6 @@ ManTTBForm2
 ManTTBForm3
 ManProfile
 ManLabelCompare
-
-
 
 
  */
@@ -68,6 +60,9 @@ public class ManufactureController {
     Button searchButt;
 
     @FXML
+    Button profileButt;
+
+    @FXML
     public void manufactureLogin(ActionEvent event) throws IOException {
         pageSwitch(event, "ManLogin.fxml", manButt);
     }
@@ -85,6 +80,11 @@ public class ManufactureController {
     @FXML
     public void manSearch(ActionEvent event) throws IOException {
         pageSwitch(event, "ManSearch.fxml", searchButt);
+    }
+
+    @FXML
+    public void manProfile(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManProfile.fxml", profileButt);
     }
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
