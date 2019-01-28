@@ -28,21 +28,6 @@ public class TableBuilder {
             stmt.execute(dropString);
         } catch (SQLException e) {}
         try {
-            String dropString = "Drop table Agents";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
-        } catch (SQLException e) {}
-        try {
-            String dropString = "Drop table Reps";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
-        } catch (SQLException e) {}
-        try {
-            String dropString = "Drop table Company";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
-        } catch (SQLException e) {}
-        try {
             String dropString = "Drop table Approval";
             Statement stmt = connection.createStatement();
             stmt.execute(dropString);
@@ -63,17 +48,25 @@ public class TableBuilder {
             stmt.execute(dropString);
         } catch (SQLException e) {}
         try {
-            String dropString = "Drop table Users";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
-        } catch (SQLException e) {}
-        try {
             String dropString = "Drop table Form";
             Statement stmt = connection.createStatement();
             stmt.execute(dropString);
         } catch (SQLException e) {}
-        System.out.println("Build Users");
-        buildUsers();
+        try {
+            String dropString = "Drop table Agents";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Reps";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop table Company";
+            Statement stmt = connection.createStatement();
+            stmt.execute(dropString);
+        } catch (SQLException e) {}
         System.out.println("Build Agents");
         buildAgents();
         System.out.println("Build Reps");
@@ -132,7 +125,6 @@ public class TableBuilder {
 
     void buildWine(){
         String buildString = "CREATE TABLE WINE (" +
-                "pH REAL," + //Might need to make that bigger to store more precision
                 "TTB_ID BIGINT," +
                 "Grape_Varietals VARCHAR(256)," +
                 "Wine_Appellation VARCHAR(32), " +
@@ -190,38 +182,39 @@ public class TableBuilder {
                 "Phone VARCHAR(12)," +
                 "Alcohol_Type SMALLINT," +
                 "Constraint Form_PK Primary Key (TTB_ID), " +
-                "Constraint Form_FK_Rep Foreign Key (Rep_ID) References Reps(Rep_ID) On Delete Cascade, " +
-                "Constraint Form_FK_Company Foreign Key (Company_ID) References Company(Company_ID) On Delete Cascade)";
-        sendStatement(buildString);
-    }
-
-    void buildUsers(){
-        String buildString = "CREATE TABLE USERS (" +
-                "Login_Name VARCHAR(32), " +
-                "Password VARCHAR(256), " +
-                "Constraint Users_PK Primary Key (Login_Name))";
+                "Constraint Form_FK_Rep Foreign Key (Rep_ID) References Reps(Rep_ID), " +
+                "Constraint Form_FK_Company Foreign Key (Company_ID) References Company(Company_ID))";
         sendStatement(buildString);
     }
 
     void buildAgents() {
         String buildString = "CREATE TABLE AGENTS (" +
                 "Agent_Name VARCHAR(32), " +
-                "Agent_ID BIGINT, " + //TODO Inheritance
+                "Agent_ID BIGINT, " +
+                "Login_Name VARCHAR(32), " +
+                "Password VARCHAR(256), " +
+                "Constraint Agents_PK Primary Key (Login_Name), " +
                 "Constraint Agents_UQ Unique (Agent_ID))";
         sendStatement(buildString);
     }
 
     void buildReps() {
         String buildString = "CREATE TABLE REPS (" +
-                "Rep_ID VARCHAR(16), " +//TODO Inheritance
+                "Rep_ID VARCHAR(16), " +
+                "Login_Name VARCHAR(32), " +
+                "Password VARCHAR(256), " +
+                "Constraint Reps_PK Primary Key (Login_Name), " +
                 "Constraint Reps_UQ Unique (Rep_ID))";
         sendStatement(buildString);
     }
 
     void buildCompany(){
         String buildString = "CREATE TABLE COMPANY (" +
-                "Company_ID BIGINT," + //TODO Inheritance
+                "Company_ID BIGINT," +
                 "Company_Name VARCHAR(256), " +
+                "Login_Name VARCHAR(32), " +
+                "Password VARCHAR(256), " +
+                "Constraint Company_PK Primary Key (Login_Name), " +
                 "Constraint Company_UQ Unique (Company_ID))";
         sendStatement(buildString);
     }
