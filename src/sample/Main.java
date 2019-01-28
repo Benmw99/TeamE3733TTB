@@ -8,13 +8,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    Scene scene1, scene2;
-    Stage thestage;
-
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-        thestage=primaryStage;
+        Scene scene1;
 
         Parent root = FXMLLoader.load(getClass().getResource("WelcomePage.fxml"));
         primaryStage.setTitle("TTB Application");
