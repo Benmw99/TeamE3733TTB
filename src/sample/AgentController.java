@@ -15,12 +15,18 @@ import java.io.IOException;
 
 public class AgentController {
 
+    ManufactureController agentControl;
+
     @FXML
     Button agentProfileButt;
 
     @FXML
     Button agentButt;
 
+    @FXML
+    public void agentProfile(ActionEvent event) throws IOException{
+        agentControl.pageSwitch(event, "AgentProfile", agentProfileButt);
+    }
     /*
     @FXML
    public void samplesceneswitch(ActionEvent event) throws IOException {
