@@ -2,8 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62c72a07-2ed1-431c-b27f-dd1ef08d6dae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentApp1.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentApp2.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentApp3.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentApp4.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentFeedback.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentHome.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentLogin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentProfile.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentSearch.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/AgentSendToAgent.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/CivilAdvSearch.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/CivilSearch.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/ManApp1.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/ManApp2.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/ManApp3.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/ManApp4.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/ManFAQ.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/ManHome.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/ManLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uwhy/sample/ManLogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/ManProfile.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/ManSearch.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Uwhy/sample/WelcomePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uwhy/sample/WelcomePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentApp1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentApp1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentApp2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentApp2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentApp3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentApp3.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentApp4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentApp4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentFeedback.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentFeedback.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentHome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentHome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentLogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentSearch.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentSearch.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AgentSendToAgent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AgentSendToAgent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/CivilController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CivilController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/CivilSearch.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CivilSearch.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManApp1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManApp1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManApp2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManApp2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManApp3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManApp3.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManApp4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManApp4.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManFAQ.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManFAQ.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManHome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManHome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManLogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManSearch.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManSearch.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/WelcomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/WelcomePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/WelcomePage.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,15 +56,43 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/AgentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="86">
+              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#606#607#0" expanded="true" />
+                <element signature="e#634#635#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -28,46 +101,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/ManufactureController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/ManLogin.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+        <entry file="file://$PROJECT_DIR$/src/sample/AgentLogin.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="119">
+              <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/ManLogin.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="12" column="180" selection-start-line="12" selection-start-column="136" selection-end-line="12" selection-end-column="180" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/AgentProfile.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/CivilController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="68">
               <caret line="14" selection-start-line="14" selection-end-line="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/CivilSearch.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/WelcomePage.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
             </state>
           </provider>
         </entry>
@@ -75,10 +149,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/WelcomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="67" column="66" selection-start-line="67" selection-start-column="66" selection-end-line="67" selection-end-column="66" />
+            <state relative-caret-position="121">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/WelcomePage.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -100,12 +184,12 @@
         <option value="$PROJECT_DIR$/src/sample/ManApp.fxml" />
         <option value="$PROJECT_DIR$/src/sample/AgentSearch.fxml" />
         <option value="$PROJECT_DIR$/src/sample/AgentApp1.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/WelcomePage.fxml" />
         <option value="$PROJECT_DIR$/src/sample/ManufactureController.java" />
-        <option value="$PROJECT_DIR$/src/sample/AgentController.java" />
         <option value="$PROJECT_DIR$/src/sample/CivilController.java" />
         <option value="$PROJECT_DIR$/src/sample/WelcomeController.java" />
+        <option value="$PROJECT_DIR$/src/sample/AgentController.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/WelcomePage.fxml" />
       </list>
     </option>
   </component>
@@ -129,6 +213,16 @@
             <path>
               <item name="TeamE3733TTB" type="b2602c69:ProjectViewProjectNode" />
               <item name="TeamE3733TTB" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TeamE3733TTB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeamE3733TTB" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TeamE3733TTB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeamE3733TTB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -141,14 +235,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548790603959" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548799981741" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -173,7 +267,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="Uwhy" />
       <extension name="coverage">
@@ -186,11 +280,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -218,12 +307,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16680000" />
+    <option name="totallyTimeSpent" value="17384000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -231,11 +321,11 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Learn" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.3289689" />
+      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.49924356" weight="0.3289689" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.3265306" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49848714" visible="true" weight="0.32569557" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49924356" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -243,7 +333,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3286119" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5015129" side_tool="true" visible="true" weight="0.32569557" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -258,134 +348,165 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="removed unused vars" />
     <option name="LAST_COMMIT_MESSAGE" value="removed unused vars" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/ManApp1.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ManApp2.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AgentFeedback.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AgentSendToAgent.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/AgentProfile.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AgentSearch.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CivilAdvSearch.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AgentApp1.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AgentLogin.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="92" selection-start-line="16" selection-start-column="81" selection-end-line="16" selection-end-column="92" />
+        <state relative-caret-position="119">
+          <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ManLogin.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="180" selection-start-line="12" selection-start-column="136" selection-end-line="12" selection-end-column="180" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CivilSearch.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ManufactureController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/AgentProfile.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CivilController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AgentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="86">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ManufactureController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ManLogin.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CivilController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CivilSearch.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/WelcomePage.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/src/sample/AgentHome.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-        </state>
+        <state relative-caret-position="-714" />
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/WelcomeController.java">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/javafx-src.zip!/javafx/application/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="67" column="66" selection-start-line="67" selection-start-column="66" selection-end-line="67" selection-end-column="66" />
+        <state relative-caret-position="114">
+          <caret line="222" column="23" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="211">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/WelcomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/WelcomePage.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
   </component>
   <component name="masterDetails">

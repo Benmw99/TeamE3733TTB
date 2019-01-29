@@ -10,50 +10,50 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" style="-fx-background-color: BF0A30BF0A30;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AgentController">
-    <children>
-        <Pane prefHeight="762.0" prefWidth="1361.0" style="-fx-background-color: #1F2020#1F2020;">
-            <children>
-                <Button fx:id="BacktoWelcome" mnemonicParsing="false" onAction="#welcomePage" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #1F2020#1F2020;" text="&lt;" textFill="WHITE">
-                    <font>
-                        <Font name="Palatino" size="18.0" />
-                    </font>
-                </Button>
-                <Pane layoutX="736.0" layoutY="71.0" prefHeight="622.0" prefWidth="494.0" style="-fx-background-color: #007bb0; -fx-background-radius: 20;">
-                    <children>
-                        <TextField layoutX="57.0" layoutY="180.0" prefHeight="49.0" prefWidth="377.0" promptText="Username" style="-fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #007BB0#007BB0;">
-                            <font>
-                                <Font name="Palatino" size="24.0" />
-                            </font>
-                        </TextField>
-                        <PasswordField layoutX="56.0" layoutY="259.0" prefHeight="49.0" prefWidth="375.0" promptText="Password" style="-fx-border-radius: 5; -fx-border-color: white; -fx-background-color: #007BB0#007BB0;">
-                            <font>
-                                <Font name="Palatino" size="24.0" />
-                            </font>
-                        </PasswordField>
-                        <PasswordField layoutX="54.0" layoutY="339.0" prefHeight="49.0" prefWidth="381.0" promptText="ID Number" style="-fx-background-color: #007BB0#007BB0; -fx-border-color: white; -fx-border-radius: 5;">
-                            <font>
-                                <Font name="Palatino" size="24.0" />
-                            </font>
-                        </PasswordField>
-                        <Button layoutX="57.0" layoutY="481.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #012B3D#012B3D; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
-                            <font>
-                                <Font name="Palatino" size="24.0" />
-                            </font>
-                        </Button>
-                        <Text fill="WHITE" layoutX="170.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
-                            <font>
-                                <Font name="Palatino" size="48.0" />
-                            </font>
-                        </Text>
-                    </children>
-                </Pane>
-            <ImageView fitHeight="604.0" fitWidth="458.0" layoutX="148.0" layoutY="70.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" style="-fx-background-color: BF0A30BF0A30;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManufactureController">
+   <children>
+      <Pane prefHeight="762.0" prefWidth="1361.0" style="-fx-background-color: #1F2020#1F2020;">
+         <children>
+            <Button fx:id="BacktoWelcome" mnemonicParsing="false" onAction="#welcomePage" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #1F2020;" text="&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Palatino" size="18.0" />
+               </font>
+            </Button>
+            <Pane layoutX="736.0" layoutY="71.0" prefHeight="622.0" prefWidth="494.0" style="-fx-background-color: #007bb0; -fx-background-radius: 20;">
+               <children>
+                  <TextField fx:id="nameField" layoutX="57.0" layoutY="180.0" prefHeight="49.0" prefWidth="377.0" promptText="Username" style="-fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #007bb0;">
+                     <font>
+                        <Font name="Palatino" size="24.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="passField" layoutX="56.0" layoutY="259.0" prefHeight="49.0" prefWidth="375.0" promptText="Password" style="-fx-border-radius: 5; -fx-border-color: white; -fx-background-color: #007bb0;">
+                     <font>
+                        <Font name="Palatino" size="24.0" />
+                     </font>
+                  </PasswordField>
+                  <PasswordField fx:id="idLoginField" layoutX="54.0" layoutY="339.0" prefHeight="49.0" prefWidth="381.0" promptText="ID Number" style="-fx-background-color: #007bb0; -fx-border-color: white; -fx-border-radius: 5;">
+                     <font>
+                        <Font name="Palatino" size="24.0" />
+                     </font>
+                  </PasswordField>
+                  <Button fx:id="loginButton" layoutX="57.0" layoutY="481.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #012B3D#012B3D; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
+                     <font>
+                        <Font name="Palatino" size="24.0" />
+                     </font>
+                  </Button>
+                  <Text fill="WHITE" layoutX="170.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
+                     <font>
+                        <Font name="Palatino" size="48.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <ImageView fitHeight="607.0" fitWidth="456.0" layoutX="150.0" layoutY="69.0">
                <image>
-                  <Image url="@../../../../Desktop/Screen%20Shot%202019-01-27%20at%2011.58.30%20PM.png" />
+                  <Image url="@../../../../Desktop/Screen%20Shot%202019-01-27%20at%2011.43.57%20PM.png" />
                </image>
             </ImageView>
-            </children>
-        </Pane>
-    </children>
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>

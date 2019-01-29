@@ -76,7 +76,7 @@
                         <Insets left="30.0" right="15.0" />
                      </HBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
+                  <Button fx:id="section1MA3Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -84,7 +84,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
+                  <Button fx:id="section2MA3Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -92,7 +92,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="3" textFill="WHITE">
+                  <Button fx:id="section3MA3Button" mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="3" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -100,7 +100,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
+                  <Button fx:id="section4MA3Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -150,7 +150,7 @@
             </VBox>
          </children>
       </VBox>
-      <MenuButton mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
+      <MenuButton fx:id="menuMA3MenuButton" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -214,7 +214,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="phoneNumField">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -242,7 +242,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="emailField">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -283,7 +283,7 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <CheckBox mnemonicParsing="false" text="Certificate of Label Approval" textFill="WHITE">
+                              <CheckBox fx:id="certCheckbox" mnemonicParsing="false" text="Certificate of Label Approval" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets left="123.0" />
                                  </HBox.margin>
@@ -291,7 +291,7 @@
                                     <Font size="18.0" />
                                  </font>
                               </CheckBox>
-                              <TextField promptText="Fill in State Abbreviation">
+                              <TextField fx:id="state15Field" promptText="Fill in State Abbreviation">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -304,9 +304,9 @@
                               <Insets top="3.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="80.0">
+                        <HBox fx:id="translationField" alignment="CENTER_LEFT" prefHeight="80.0">
                            <children>
-                              <CheckBox mnemonicParsing="false" text="Distinctive Liquor Bottle Approval" textFill="WHITE">
+                              <CheckBox fx:id="liquorCheckbox" mnemonicParsing="false" text="Distinctive Liquor Bottle Approval" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -314,7 +314,7 @@
                                     <Insets left="15.0" />
                                  </HBox.margin>
                               </CheckBox>
-                              <TextField prefHeight="35.0" prefWidth="130.0" promptText="Amount">
+                              <TextField fx:id="amountField" prefHeight="35.0" prefWidth="130.0" promptText="Amount">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -327,7 +327,7 @@
                                     <Insets left="20.0" />
                                  </HBox.margin>
                               </Separator>
-                              <CheckBox mnemonicParsing="false" text="Resubmition After Rejection" textFill="WHITE">
+                              <CheckBox fx:id="resubmitCheckbox" mnemonicParsing="false" text="Resubmition After Rejection" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -335,7 +335,7 @@
                                     <Insets left="20.0" />
                                  </HBox.margin>
                               </CheckBox>
-                              <TextField promptText="TTB ID">
+                              <TextField fx:id="TTBIDField" promptText="TTB ID">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -368,7 +368,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="additionalInfoField">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -404,7 +404,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <DatePicker prefHeight="41.0" prefWidth="270.0">
+                        <DatePicker fx:id="appDate" prefHeight="41.0" prefWidth="270.0">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -428,7 +428,7 @@
       </HBox>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
+            <Button fx:id="prevSectionMA3Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -436,7 +436,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
+            <Button fx:id="nextSectionMA3Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>

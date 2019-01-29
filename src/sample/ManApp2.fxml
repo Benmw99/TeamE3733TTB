@@ -80,7 +80,7 @@
                         <Insets left="30.0" right="15.0" />
                      </HBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
+                  <Button fx:id="section1MA2Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -88,7 +88,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="2" textFill="WHITE">
+                  <Button fx:id="section2MA2Button" mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="2" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -96,7 +96,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
+                  <Button fx:id="section3MA2Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -104,7 +104,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
+                  <Button fx:id="section4MA2Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -234,7 +234,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="fancifulField">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -262,7 +262,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField prefWidth="200.0" promptText="Name">
+                        <TextField fx:id="name8Field" prefWidth="200.0" promptText="Name">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -270,12 +270,12 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </TextField>
-                        <ChoiceBox prefHeight="41.0" prefWidth="150.0">
+                        <ChoiceBox fx:id="state8Dropdown" prefHeight="41.0" prefWidth="150.0">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                         </ChoiceBox>
-                        <TextField prefWidth="200.0" promptText="Address">
+                        <TextField fx:id="address8Field" prefWidth="200.0" promptText="Address">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -283,7 +283,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField prefHeight="41.0" prefWidth="122.0" promptText="City">
+                        <TextField fx:id="city8Field" prefHeight="41.0" prefWidth="122.0" promptText="City">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -291,7 +291,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField prefHeight="41.0" prefWidth="122.0" promptText="Zip Code">
+                        <TextField fx:id="zip8Field" prefHeight="41.0" prefWidth="122.0" promptText="Zip Code">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -322,7 +322,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <RadioButton mnemonicParsing="false" text="Same as question 8" textFill="WHITE">
+                        <RadioButton fx:id="sameAddressRadioButton" mnemonicParsing="false" text="Same as question 8" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -330,7 +330,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Different from question 8" textFill="WHITE">
+                        <RadioButton fx:id="difAddressRadioButton" mnemonicParsing="false" text="Different from question 8" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -361,7 +361,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField prefHeight="41.0" prefWidth="299.0">
+                        <TextField fx:id="formulaField" prefHeight="41.0" prefWidth="299.0">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -392,7 +392,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField prefHeight="41.0" prefWidth="385.0" promptText="Wine/Distilled Sprits/Malt Beverage">
+                        <TextField fx:id="grapeVarField" prefHeight="41.0" prefWidth="385.0" promptText="Wine/Distilled Sprits/Malt Beverage">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -423,7 +423,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="wineAppField">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -450,7 +450,7 @@
       </HBox>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
+            <Button fx:id="prevSectionMA2Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -458,7 +458,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
+            <Button fx:id="nextSectionMA2Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>

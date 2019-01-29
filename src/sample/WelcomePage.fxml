@@ -60,7 +60,7 @@
             </Text>
             <HBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="civilButt" mnemonicParsing="false" onAction="#civilSearch" prefWidth="270.0" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Civilian" textFill="WHITE" underline="true">
+                  <Button fx:id="civilButton" mnemonicParsing="false" onAction="#civilSearch" prefWidth="270.0" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Civilian" textFill="WHITE" underline="true">
                      <font>
                         <Font name="Palatino" size="36.0" />
                      </font>
@@ -68,7 +68,7 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="manButt" mnemonicParsing="false" onAction="#manufactureLogin" prefWidth="270.0" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Manufacturer" textFill="WHITE" underline="true">
+                  <Button fx:id="manButton" mnemonicParsing="false" onAction="#manufactureLogin" prefWidth="270.0" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Manufacturer" textFill="WHITE" underline="true">
                      <font>
                         <Font name="Palatino" size="36.0" />
                      </font>
@@ -76,7 +76,7 @@
                         <Insets left="15.0" right="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="agentButt" mnemonicParsing="false" onAction="#agentLogin" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Bureau Agent" textFill="WHITE" underline="true">
+                  <Button fx:id="agentButton" mnemonicParsing="false" onAction="#agentLogin" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Bureau Agent" textFill="WHITE" underline="true">
                      <font>
                         <Font name="Palatino" size="36.0" />
                      </font>

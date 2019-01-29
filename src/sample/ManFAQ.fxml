@@ -33,13 +33,13 @@
          <font>
             <Font name="Georgia" size="10.0" />
          </font></Text>
-      <MenuButton layoutX="81.0" layoutY="150.0" mnemonicParsing="false" text="Categories" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1100.0">
+      <MenuButton fx:id="catDropdown" layoutX="81.0" layoutY="150.0" mnemonicParsing="false" text="Categories" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1100.0">
         <items>
           <MenuItem mnemonicParsing="false" text="Random Cat 1" />
           <MenuItem mnemonicParsing="false" text="Random Cat 2" />
         </items>
       </MenuButton>
-      <Button fx:id="manButt" layoutX="58.0" layoutY="52.0" mnemonicParsing="false" onAction="#manufactureLogin" text="Return to Menu" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" />
-      <TextField alignment="CENTER" layoutX="349.0" layoutY="151.0" prefHeight="26.0" prefWidth="708.0" promptText="Search Applications" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="316.0" />
+      <Button fx:id="menuFAQButton" layoutX="58.0" layoutY="52.0" mnemonicParsing="false" onAction="#manufactureLogin" text="Return to Menu" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" />
+      <TextField fx:id="searchFAQField" alignment="CENTER" layoutX="349.0" layoutY="151.0" prefHeight="26.0" prefWidth="708.0" promptText="Search Applications" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="316.0" />
    </children>
 </AnchorPane>

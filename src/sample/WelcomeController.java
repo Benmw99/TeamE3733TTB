@@ -49,30 +49,30 @@ ManLabelCompare
 public class WelcomeController {
 
     @FXML
-    Button manButt;
+    Button manButton;
 
     @FXML
-    Button civilButt;
+    Button civilButton;
 
     @FXML
-    Button agentButt;
+    Button agentButton;
 
 
     @FXML
     public void agentLogin(ActionEvent event) throws IOException{
-        pageSwitch(event, "AgentLogin.fxml", agentButt);
+        pageSwitch(event, "AgentLogin.fxml", agentButton);
     }
 
 
     @FXML
     public void civilSearch(ActionEvent event) throws IOException{
-        pageSwitch(event, "CivilSearch.fxml", civilButt);
+        pageSwitch(event, "CivilSearch.fxml", civilButton);
     }
 
 
     @FXML
     public void manufactureLogin(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManLogin.fxml", manButt);
+        pageSwitch(event, "ManLogin.fxml", manButton);
     }
 
 

@@ -58,7 +58,7 @@
                         <Insets left="30.0" right="15.0" />
                      </HBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
+                  <Button fx:id="section1MA4Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -66,7 +66,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
+                  <Button fx:id="section2MA4Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -74,7 +74,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
+                  <Button fx:id="section3MA4Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -82,7 +82,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="4" textFill="WHITE">
+                  <Button fx:id="section4MA4Button" mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="4" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -120,7 +120,7 @@
             </VBox>
          </children>
       </VBox>
-      <MenuButton mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
+      <MenuButton fx:id="menuMA4MenuButton" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -160,7 +160,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="signatureField">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -188,7 +188,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="150.0" style="-fx-border-color: #bf0a30;" text="Upload Label">
+                        <Button fx:id="uploadLabelButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="150.0" style="-fx-border-color: #bf0a30;" text="Upload Label">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -215,7 +215,7 @@
       </HBox>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
+            <Button fx:id="prevSectionMA4Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -227,7 +227,7 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #71071D;" text="Submit" textFill="WHITE">
+            <Button fx:id="submitButton" mnemonicParsing="false" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #71071D;" text="Submit" textFill="WHITE">
                <HBox.margin>
                   <Insets right="80.0" />
                </HBox.margin>
