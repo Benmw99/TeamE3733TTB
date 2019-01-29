@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="760.0" maxWidth="1360.0" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AgentController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Rectangle fill="#007bb0" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1360.0" />
+            <Rectangle fill="#c4c4c4" height="75.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1360.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Rectangle fill="#1f2020" height="585.0" stroke="TRANSPARENT" strokeType="INSIDE" width="50.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle fill="#e7e7e7" height="585.0" stroke="TRANSPARENT" strokeType="INSIDE" width="700.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle fill="#e7e7e7" height="585.0" stroke="TRANSPARENT" strokeType="INSIDE" width="588.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="700.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="175.0">
+         <children>
+            <Label text="Submitted Form">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.leftAnchor="770.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="175.0">
+         <children>
+            <Label text="Rules &amp; Regulations">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="View Form" textFill="WHITE">
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Button mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Approve" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Reject" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Send To Agent" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Send Feedback" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <MenuButton mnemonicParsing="false" prefHeight="70.0" text="Menu">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+         <font>
+            <Font size="26.0" />
+         </font>
+      </MenuButton>
+      <Label layoutX="39.0" layoutY="110.0" text="Make Comments">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="145.0" text="Section">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="commentsToggle" layoutX="155.0" layoutY="110.0" mnemonicParsing="false" />
+      <Button layoutX="100.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="1" textAlignment="CENTER">
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="138.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="2" textAlignment="CENTER">
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="177.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="3" textAlignment="CENTER">
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="1213.0" layoutY="122.0" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Print" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
