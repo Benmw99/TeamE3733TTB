@@ -101,18 +101,6 @@ public class TableBuilder {
         }
     }
 
-    ResultSet sendQuery(String queryString){
-        ResultSet rs = null;
-        try{
-            PreparedStatement ps = connection.prepareStatement(queryString);
-            rs = ps.executeQuery();
-        } catch (SQLException e){
-            System.out.println("SQL State: " + e.getErrorCode());
-            System.out.println("Error Code: " + e.getSQLState());
-            System.out.println("Message: " + e.getMessage());
-        }
-        return rs;
-    }
 
     void buildAddress(){
         String buildString = "CREATE TABLE ADDRESS (" +
@@ -233,27 +221,6 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    //TODO communicate w/ rest of team about REP Data Type
-    ResultSet selectAllReps(){
-        String selectString = "SELECT * FROM REPS";
-        return sendQuery(selectString);
-    }
-    ResultSet selectRepByID(String Rep_ID){
-        String selectString = "SELECT * FROM REPS WHERE Rep_ID='";
-        selectString += Rep_ID += "'";
-        return sendQuery(selectString);
-    }
-    ResultSet selectAllCompany(){
-        String selectString = "SELECT * FROM COMPANY";
-        return sendQuery(selectString);
-    }
-    ResultSet selectAllAgents(){
-        String selectString = "SELECT * FROM AGENTS";
-        return sendQuery(selectString);
-    }
-    ResultSet selectAllUsers() {
-        String selectString = "SELECT * FROM USERS";
-        return sendQuery(selectString); //TODO UPDATE WHEN INHERITANCE IS PROPERLY IMPLEMENTED
-    }
+
 
 }

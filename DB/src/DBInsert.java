@@ -1,3 +1,4 @@
+
 import java.sql.*;
 
 public class DBInsert {
@@ -15,10 +16,12 @@ public class DBInsert {
      * @param Rep_ID The Rep_ID for the new representative
      * @throws SQLException
      */
-    void insertReps(String Rep_ID) throws SQLException{
-        String insertString = "INSERT INTO REPS (Rep_ID) VALUES (?)";
+    void insertReps(String Rep_ID, String login, String password) throws SQLException{
+        String insertString = "INSERT INTO REPS (Rep_ID, Login_Name, Password) VALUES (?, ?, ?)";
         PreparedStatement statement =  connection.prepareStatement(insertString);
         statement.setString(1, Rep_ID);
+        statement.setString(2, login);
+        statement.setString(3, password);
         statement.execute();
     }
 
@@ -137,6 +140,47 @@ public class DBInsert {
         statement.setString(2, Company_Name);
         statement.setString(3, Login_Name);
         statement.setString(4, Password);
+        statement.execute();
+    }
+
+    /**
+     *
+     * @param TTB_ID
+     * @param Serial_Number
+     * @param Fanciful_Name
+     * @param Brand_Name
+     * @param Source
+     * @param Approve
+     * @param Rep_ID
+     * @param email
+     * @param Company_ID
+     * @param submitted
+     * @param name
+     * @param phone
+     * @param Alcohol_Type
+     * @throws SQLException
+     */
+    void insertForm(int TTB_ID, String Serial_Number, String Fanciful_Name, String Brand_Name, Boolean Source,
+                    Boolean Approve, String Rep_ID, String email, int Company_ID, Timestamp submitted, String name,
+                    String phone, int Alcohol_Type) throws SQLException {
+        String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
+                " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(insertString);
+        statement.setInt(1, TTB_ID);
+        statement.setString(2, Serial_Number);
+        statement.setString(3, Fanciful_Name);
+        statement.setString(4, Brand_Name);
+        statement.setBoolean(5, Source);
+        statement.setBoolean(6, Approve);
+        statement.setString(7, Rep_ID);
+        statement.setString(8, email);
+        statement.setInt(9, Company_ID);
+        statement.setTimestamp(10, submitted);
+        statement.setString(11, name);
+        statement.setString(12, phone);
+        statement.setInt(13, Alcohol_Type);
+        statement.execute();
     }
 
 }
