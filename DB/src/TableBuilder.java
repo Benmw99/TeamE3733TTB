@@ -232,15 +232,15 @@ public class TableBuilder {
                 "Constraint Company_UQ Unique (Company_ID))";
         sendStatement(buildString);
     }
-    void insertReps(String Rep_ID){
-        String insertString = "INSERT INTO REPS (Rep_ID) VALUES ('";
-        insertString += Rep_ID;
-        insertString += "')";
-        sendStatement(insertString);
-    }
+
     //TODO communicate w/ rest of team about REP Data Type
     ResultSet selectAllReps(){
         String selectString = "SELECT * FROM REPS";
+        return sendQuery(selectString);
+    }
+    ResultSet selectRepByID(String Rep_ID){
+        String selectString = "SELECT * FROM REPS WHERE Rep_ID='";
+        selectString += Rep_ID += "'";
         return sendQuery(selectString);
     }
     ResultSet selectAllCompany(){
