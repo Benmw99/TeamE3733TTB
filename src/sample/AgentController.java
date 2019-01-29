@@ -24,14 +24,26 @@ public class AgentController {
     Button agentButt;
 
     @FXML
-    public void agentProfile(ActionEvent event) throws IOException{
-        agentControl.pageSwitch(event, "AgentProfile", agentProfileButt);
-    }
-    /*
+    Button BacktoWelcome;
+
     @FXML
-   public void samplesceneswitch(ActionEvent event) throws IOException {
-        pageSwitch(event, "filename", buttonName);
+    public void welcomePage(ActionEvent event) throws IOException{
+        pageSwitch(event, "WelcomePage.fxml", BacktoWelcome);
     }
 
-    */
+    @FXML
+    public void agentProfile(ActionEvent event) throws IOException{
+        pageSwitch(event, "AgentProfile.fxml", agentProfileButt);
+    }
+
+
+    public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
+        Parent root;
+        Stage stage;
+        stage=(Stage) b.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource(filename));
+        Scene scene = new Scene(root, 1360, 760);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

@@ -7,13 +7,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" style="-fx-background-color: #002F6C#002F6C;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManufactureController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.WelcomeController">
    <children>
       <Text fill="WHITE" layoutX="535.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!">
          <font>
             <Font name="Palatino" size="64.0" />
          </font></Text>
-      <Button fx:id="civilButt" layoutX="1140.0" layoutY="229.0" mnemonicParsing="false" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Civilian" textFill="WHITE" underline="true">
+      <Button fx:id="civilButt" onAction="#civilSearch" layoutX="1140.0" layoutY="229.0" mnemonicParsing="false" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Civilian" textFill="WHITE" underline="true">
          <font>
             <Font name="Palatino" size="36.0" />
          </font></Button>
@@ -46,7 +46,7 @@
             <Font name="Palatino" size="64.0" />
          </font>
       </Text>
-      <Button fx:id="agentButt" layoutX="1049.0" layoutY="305.0" mnemonicParsing="false" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Bureau Agent" textFill="WHITE" underline="true">
+      <Button fx:id="agentButt" onAction="#agentLogin" layoutX="1049.0" layoutY="305.0" mnemonicParsing="false" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Bureau Agent" textFill="WHITE" underline="true">
          <font>
             <Font name="Palatino" size="36.0" />
          </font>

@@ -12,15 +12,26 @@ import java.io.IOException;
 
 public class CivilController {
 
-    ManufactureController civilControl;
+
+    //not added because no button to go back from civilsearch to welcome screen
+    /*
+    @FXML
+    Button BacktoWelcome;
 
     @FXML
-    Button civilButt;
-
-    @FXML
-    public void civilSearch(ActionEvent event) throws IOException{
-        civilControl.pageSwitch(event, "CivilSearch.fmxl", civilButt);
+    public void welcomePage(ActionEvent event) throws IOException {
+        pageSwitch(event, "WelcomePage.fxml", BacktoWelcome);
     }
+    */
 
+    public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
+        Parent root;
+        Stage stage;
+        stage=(Stage) b.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource(filename));
+        Scene scene = new Scene(root, 1360, 760);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }
