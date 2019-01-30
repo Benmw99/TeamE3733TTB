@@ -64,12 +64,12 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Approve" textFill="WHITE">
+            <Button fx:id="approveAVFButton" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Approve" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Reject" textFill="WHITE">
+            <Button fx:id="rejectAVFButton" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Reject" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
@@ -77,7 +77,7 @@
                   <Insets left="15.0" right="15.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Send To Agent" textFill="WHITE">
+            <Button fx:id="sendToAgentAVFButton" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Send To Agent" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
@@ -85,14 +85,14 @@
                   <Insets right="15.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Send Feedback" textFill="WHITE">
+            <Button fx:id="feedbackAVFButton" mnemonicParsing="false" style="-fx-background-color: black;" text="Send Feedback" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
             </Button>
          </children>
       </HBox>
-      <MenuButton mnemonicParsing="false" prefHeight="70.0" text="Menu">
+      <MenuButton fx:id="menuAVFMenuButton" mnemonicParsing="false" prefHeight="70.0" text="Menu">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -111,23 +111,23 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <CheckBox fx:id="commentsToggle" layoutX="155.0" layoutY="110.0" mnemonicParsing="false" />
-      <Button layoutX="100.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="1" textAlignment="CENTER">
+      <CheckBox fx:id="commentAVFCheckBox" layoutX="155.0" layoutY="110.0" mnemonicParsing="false" />
+      <Button fx:id="section1AVFButton" layoutX="100.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="1" textAlignment="CENTER">
          <font>
             <Font name="Georgia" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="138.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="2" textAlignment="CENTER">
+      <Button fx:id="section2AVFButton" layoutX="138.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="2" textAlignment="CENTER">
          <font>
             <Font name="Georgia" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="177.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="3" textAlignment="CENTER">
+      <Button fx:id="section3AVFButton" layoutX="177.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="3" textAlignment="CENTER">
          <font>
             <Font name="Georgia" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="1213.0" layoutY="122.0" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Print" textFill="WHITE">
+      <Button fx:id="printAVFButton" layoutX="1213.0" layoutY="122.0" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Print" textFill="WHITE">
          <font>
             <Font name="Georgia" size="18.0" />
          </font>

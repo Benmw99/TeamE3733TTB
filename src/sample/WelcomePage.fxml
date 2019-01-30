@@ -25,12 +25,12 @@
             <HBox alignment="CENTER">
                <children>
                   <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/TTB_logo.png" />
-                     </image>
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>
+                     <image>
+                        <Image url="@../../assets/TTB_logo.png" />
+                     </image>
                   </ImageView>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB">
                      <font>

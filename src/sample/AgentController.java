@@ -360,6 +360,69 @@ public class AgentController {
     @FXML
     Button printAHButton;
 
+    //AgentViewForm
+    @FXML
+    MenuButton menuAVFMenuButton;
+
+    @FXML
+    CheckBox commentAVFCheckBox;
+
+    @FXML
+    Button section1AVFButton;
+
+    @FXML
+    Button section2AVFButton;
+
+    @FXML
+    Button section3AVFButton;
+
+    @FXML
+    Button approveAVFButton;
+
+    @FXML
+    Button rejectAVFButton;
+
+    @FXML
+    Button sendToAgentAVFButton;
+
+    @FXML
+    Button feedbackAVFButton;
+
+    @FXML
+    Button printAVFButton;
+
+    //AgentViewLabel
+    @FXML
+    MenuButton menuAVLMenuButton;
+
+    @FXML
+    Checkbox commentAVLCheckbox;
+
+    @FXML
+    Button section1AVLButton;
+
+    @FXML
+    Button section2AVLButton;
+
+    @FXML
+    Button section3AVLButton;
+
+    @FXML
+    Button approveAVLButton;
+
+    @FXML
+    Button rejectAVLButton;
+
+    @FXML
+    Button sendToAgentAVLButton;
+
+    @FXML
+    Button feedbackAVLButton;
+
+    @FXML
+    Button printAVLButton;
+
+
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", BackToWelcome);
