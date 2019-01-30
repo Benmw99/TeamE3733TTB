@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -25,11 +26,41 @@ public class CivilController {
     }
     */
 
+    //CivilSearch
     @FXML
     TextField searchfield;
 
     @FXML
     Button advSearchButton;
+
+    //CivilAdvSearch
+    @FXML
+    Button menuASButton;
+
+    @FXML
+    TextField searchASField;
+
+    @FXML
+    TextField alcTypeField;
+
+    @FXML
+    TextField manField;
+
+    @FXML
+    TextField stateField;
+
+    @FXML
+    TextField cityField;
+
+    @FXML
+    DatePicker manufactureDate;
+
+    @FXML
+    TextField idField;
+
+    @FXML
+    Button printResults;
+
 
     public void advSearch(ActionEvent event) throws IOException {
         pageSwitch(event,"CivilAdvSearch.fxml", advSearchButton);
