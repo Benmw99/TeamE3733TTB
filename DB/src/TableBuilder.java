@@ -1,6 +1,4 @@
-import javax.xml.transform.Result;
 import java.sql.*;
-import java.util.List;
 
 //This class may very well not exist on the final project, I'm really just using this as a place to store all the SQL
 //strings as I write them. We definitely need to write those, lol.
@@ -11,12 +9,12 @@ public class TableBuilder {
 
     TableBuilder(String path){
         try {
-            connection = DriverManager.getConnection("jdbc:derby:/Users/mjclements/IdeaProjects/TeamE3733TTB/DB/ttb.db;create=true");
+            connection = DriverManager.getConnection("jdbc:derby:" + path + ";create=true");
         } catch (SQLException e){
             System.out.println(e.toString());
         }
     }
-
+    //TODO switch all statements to prepared statements
     void resetDB() {
         try {
             String dropString = "Drop table Address";

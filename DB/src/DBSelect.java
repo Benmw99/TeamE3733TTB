@@ -5,7 +5,7 @@ public class DBSelect {
 
     DBSelect(String path){
         try {
-            connection = DriverManager.getConnection("jdbc:derby:/Users/mjclements/IdeaProjects/TeamE3733TTB/DB/ttb.db;create=true");
+            connection = DriverManager.getConnection("jdbc:derby:" + path + ";create=true");
         } catch (SQLException e){
             System.out.println(e.toString());
         }
