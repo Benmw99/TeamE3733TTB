@@ -71,7 +71,7 @@ public class WelcomeController {
 
 
     @FXML
-    public void manufactureLogin(ActionEvent event) throws IOException {
+    public void manufacturerLogin(ActionEvent event) throws IOException {
         pageSwitch(event, "ManLogin.fxml", manButton);
     }
 

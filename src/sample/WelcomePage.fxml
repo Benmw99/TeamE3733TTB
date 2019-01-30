@@ -68,7 +68,7 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="manButton" mnemonicParsing="false" onAction="#manufactureLogin" prefWidth="270.0" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Manufacturer" textFill="WHITE" underline="true">
+                  <Button fx:id="manButton" mnemonicParsing="false" onAction="#manufacturerLogin" prefWidth="270.0" style="-fx-background-color: #002F6C#002F6C #002F6C#002F6C;" text="Manufacturer" textFill="WHITE" underline="true">
                      <font>
                         <Font name="Palatino" size="36.0" />
                      </font>

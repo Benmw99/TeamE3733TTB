@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="762.0" prefWidth="1361.0" style="-fx-background-color: #1F2020#1F2020;">
          <children>
-            <Button fx:id="BacktoWelcome" mnemonicParsing="false" onAction="#welcomePage" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #1F2020;" text="&lt;" textFill="WHITE">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#welcomePage" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #1F2020;" text="&lt;" textFill="WHITE">
                <font>
                   <Font name="Palatino" size="18.0" />
                </font>

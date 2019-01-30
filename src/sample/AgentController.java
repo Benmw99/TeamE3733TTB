@@ -303,7 +303,7 @@ public class AgentController {
 
     //AgentLogin
     @FXML
-    Button BackToWelcome;
+    Button backButton;
 
     @FXML
     TextField nameField;
@@ -425,7 +425,7 @@ public class AgentController {
 
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
-        pageSwitch(event, "WelcomePage.fxml", BackToWelcome);
+        pageSwitch(event, "WelcomePage.fxml", backButton);
     }
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
