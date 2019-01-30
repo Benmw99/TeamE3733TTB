@@ -27,9 +27,7 @@ public class DBInsert {
             PreparedStatement ps =  connection.prepareStatement(buildString);
             ps.execute();
         } catch (SQLException e){
-            System.out.println("SQL State: " + e.getErrorCode());
-            System.out.println("Error Code: " + e.getSQLState());
-            System.out.println("Message: " + e.getMessage());
+            System.out.println(e.toString());
         }
     }
 

@@ -12,9 +12,7 @@ class Main {
         try{
             insert.insertCompany(12345, "Budweiser", "test123", "qwerty");
         } catch (SQLException e) {
-            System.out.println("SQL State: " + e.getErrorCode());
-            System.out.println("Error Code: " + e.getSQLState());
-            System.out.println("Message: " + e.getMessage());
+            System.out.println(e.toString());
         }
         System.out.println("Now querying data");
         ResultSet rset = init.selectAllCompany();
@@ -30,9 +28,7 @@ class Main {
                 password = rset.getString("Password");
             }
         } catch (SQLException e) {
-            System.out.println("SQL State: " + e.getErrorCode());
-            System.out.println("Error Code: " + e.getSQLState());
-            System.out.println("Message: " + e.getMessage());
+            System.out.println(e.toString());
         }
         System.out.println("Company ID: " + compID + "\nCompany Name: " + compName + "\nLogin Name: " + loginName + "\nPassword: " + password);
     }
