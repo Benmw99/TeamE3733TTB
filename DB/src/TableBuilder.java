@@ -14,57 +14,57 @@ public class TableBuilder {
             System.out.println(e.toString());
         }
     }
-    //TODO switch all statements to prepared statements
-    void resetDB() {
+
+     void resetDB() {
         try {
             String dropString = "Drop table Address";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table Wine";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table Approval";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table BrewersPermit";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table OtherInfo";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table Label";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table Form";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table Agents";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table Reps";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table Company";
-            Statement stmt = connection.createStatement();
-            stmt.execute(dropString);
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
         } catch (SQLException e) {}
         System.out.println("Build Agents");
         buildAgents();
@@ -93,14 +93,22 @@ public class TableBuilder {
             PreparedStatement ps =  connection.prepareStatement(buildString);
             ps.execute();
         } catch (SQLException e){
-            System.out.println("SQL State: " + e.getErrorCode());
-            System.out.println("Error Code: " + e.getSQLState());
-            System.out.println("Message: " + e.getMessage());
+            System.out.println(e.toString());
         }
     }
 
+    ResultSet sendQuery(String queryString){
+        ResultSet rs = null;
+        try{
+            PreparedStatement ps = connection.prepareStatement(queryString);
+            rs = ps.executeQuery();
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return rs;
+    }
 
-    void buildAddress(){
+    private void buildAddress(){
         String buildString = "CREATE TABLE ADDRESS (" +
                 "Zip_Code VARCHAR(8), " +
                 "isMailing BOOLEAN, " +
@@ -114,7 +122,7 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    void buildOtherInfo(){
+    private void buildOtherInfo(){
         String buildString = "CREATE TABLE OTHERINFO (" +
                 "TTB_ID BIGINT," +
                 "Text VARCHAR(256), " +
@@ -123,7 +131,7 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    void buildWine(){
+    private void buildWine(){
         String buildString = "CREATE TABLE WINE (" +
                 "TTB_ID BIGINT," +
                 "Grape_Varietals VARCHAR(256)," +
@@ -133,7 +141,7 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    void buildBrewersPermit(){
+    private void buildBrewersPermit(){
         String buildString = "CREATE TABLE BREWERSPERMIT (" +
                 "Brewers_No BIGINT," +
                 "TTB_ID BIGINT," +
@@ -143,7 +151,7 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    void buildApproval(){
+    private void buildApproval(){
         String buildString = "CREATE TABLE APPROVAL (" +
                 "Approving_Agent VARCHAR(32)," +
                 "TTB_ID BIGINT," +
@@ -155,7 +163,7 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    void buildLabel(){
+    private void buildLabel(){
         String buildString = "CREATE TABLE LABEL (" +
                 "ID BIGINT, " +
                 "Image blob(" + IMAGESIZE + "), " +
@@ -166,7 +174,7 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    void buildForm(){
+    private void buildForm(){
         String buildString = "CREATE TABLE FORM (" +
                 "TTB_ID BIGINT," +
                 "Serial_Number VARCHAR(8)," +
@@ -187,7 +195,7 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    void buildAgents() {
+    private void buildAgents() {
         String buildString = "CREATE TABLE AGENTS (" +
                 "Agent_Name VARCHAR(32), " +
                 "Agent_ID BIGINT, " +
@@ -198,7 +206,7 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    void buildReps() {
+    private void buildReps() {
         String buildString = "CREATE TABLE REPS (" +
                 "Rep_ID VARCHAR(16), " +
                 "Login_Name VARCHAR(32), " +
@@ -208,7 +216,7 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
-    void buildCompany(){
+    private void buildCompany(){
         String buildString = "CREATE TABLE COMPANY (" +
                 "Company_ID BIGINT," +
                 "Company_Name VARCHAR(256), " +
@@ -219,6 +227,24 @@ public class TableBuilder {
         sendStatement(buildString);
     }
 
+    //TODO communicate w/ rest of team about REP Data Type
+    ResultSet selectAllReps(){
+        String selectString = "SELECT * FROM REPS";
+        return sendQuery(selectString);
+    }
+    ResultSet selectRepByID(String Rep_ID){
+        String selectString = "SELECT * FROM REPS WHERE Rep_ID='";
+        selectString += Rep_ID += "'";
+        return sendQuery(selectString);
+    }
+    ResultSet selectAllCompany(){
+        String selectString = "SELECT * FROM COMPANY";
+        return sendQuery(selectString);
+    }
+    ResultSet selectAllAgents(){
+        String selectString = "SELECT * FROM AGENTS";
+        return sendQuery(selectString);
+    }
 
 
 }
