@@ -4,7 +4,6 @@ import java.sql.*;
 
 
 public class DBSelect extends Database {
-    Connection connection;
 
     public DBSelect(String path) {
         super(path);

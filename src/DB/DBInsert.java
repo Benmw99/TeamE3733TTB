@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.sql.*;
 
 public class DBInsert extends Database {
-    private Connection connection;
 
     public DBInsert(String path ) {
         super(path);

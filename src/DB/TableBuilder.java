@@ -4,7 +4,6 @@ import java.sql.*;
 
 
 public class TableBuilder extends Database {
-    private Connection connection;
     private static final String IMAGESIZE = "1M";
 
     public TableBuilder(String path) {
