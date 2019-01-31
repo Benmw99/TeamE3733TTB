@@ -1,5 +1,6 @@
 package DB;
 
+import java.io.FileInputStream;
 import java.sql.*;
 
 public class DBInsert {
@@ -13,6 +14,7 @@ public class DBInsert {
         }
     }
 
+    //TODO remove this possibly, if unnecessary
     private void sendStatement(String buildString) {
         try {
             PreparedStatement ps =  connection.prepareStatement(buildString);
@@ -23,17 +25,16 @@ public class DBInsert {
     }
 
     /**
-     * Inserts an address into the database, attatched to the TTB form corresponding to the TTB_ID
+     * Inserts an address into the database, attached to the TTB form corresponding to the TTB_ID
      * @param Zip The Zip code, shouldn't exceed 8 chars
      * @param isMailing A Boolean, true iff this is the mailing address
      * @param City The city name, TODO Standardize all string lengths
      * @param State The State, TODO Standardize all string lengths
      * @param Street The street address TODO Standardize all string lengths
      * @param TTB_ID The TTB_ID of the form this address goes with
-     * @param ID The unique ID for this form. May be auto generated later...
      * @throws SQLException
      */
-    public void insertAddress(String Zip, Boolean isMailing, String City, String State, String Street, int TTB_ID, int ID) throws SQLException{
+    public void insertAddress(String Zip, Boolean isMailing, String City, String State, String Street, int TTB_ID) throws SQLException{
         String insertString = "INSERT INTO ADDRESS (Zip_Code, isMailing, City, Street_Name, State, TTB_ID, ID) VALUES (" +
                 "?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
@@ -43,7 +44,7 @@ public class DBInsert {
         statement.setString(4, Street);
         statement.setString(5, State);
         statement.setInt(6, TTB_ID);
-        statement.setInt(7, ID);
+        statement.setString(7, "Next value for Address_ID"); //This might break it completely, idk really
         statement.execute();
     }
 
@@ -131,7 +132,6 @@ public class DBInsert {
 
     /**
      *
-     * @param TTB_ID
      * @param Serial_Number
      * @param Fanciful_Name
      * @param Brand_Name
@@ -146,14 +146,14 @@ public class DBInsert {
      * @param Alcohol_Type
      * @throws SQLException
      */
-    public void insertForm(int TTB_ID, String Serial_Number, String Fanciful_Name, String Brand_Name, Boolean Source,
+    public void insertForm(String Serial_Number, String Fanciful_Name, String Brand_Name, Boolean Source,
                     Boolean Approve, String Rep_ID, String email, int Company_ID, Timestamp submitted, String name,
                     String phone, int Alcohol_Type) throws SQLException {
         String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
                 " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
-        statement.setInt(1, TTB_ID);
+        statement.setString(1, "Next value for Form_ID");
         statement.setString(2, Serial_Number);
         statement.setString(3, Fanciful_Name);
         statement.setString(4, Brand_Name);
@@ -180,6 +180,21 @@ public class DBInsert {
         statement.setString(1, Rep_ID);
         statement.setString(2, login);
         statement.setString(3, password);
+        statement.execute();
+    }
+
+    /**
+     * Inserts a label into the database
+     * @param input A FileInputStream that was made from the input image
+     * @param fileName The file name of that image
+     * @throws SQLException
+     */
+    public void insertLabel(FileInputStream input, String fileName) throws SQLException{
+        String insertString = "insert into Label values (?, ?, ?)";
+        PreparedStatement statement =  connection.prepareStatement(insertString);
+        statement.setString(1, "Next value for Label_ID");
+        statement.setBinaryStream(2, input);
+        statement.setString(3, fileName);
         statement.execute();
     }
 }

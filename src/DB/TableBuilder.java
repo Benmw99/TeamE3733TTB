@@ -2,9 +2,7 @@ package DB;
 
 import java.sql.*;
 
-//This class may very well not exist on the final project, I'm really just using this as a place to store all the SQL
-//strings as I write them. We definitely need to write those, lol.
-//Even if this class doesn't exist in the final all these create tables will be
+
 public class TableBuilder {
     private Connection connection;
     private static final String IMAGESIZE = "1M";
@@ -89,17 +87,6 @@ public class TableBuilder {
         }
     }
 
-    ResultSet sendQuery(String queryString){
-        ResultSet rs = null;
-        try{
-            PreparedStatement ps = connection.prepareStatement(queryString);
-            rs = ps.executeQuery();
-        } catch (SQLException e){
-            System.out.println(e.toString());
-        }
-        return rs;
-    }
-
     private void buildAddress(){
         String buildString = "CREATE TABLE ADDRESS (" +
                 "Zip_Code VARCHAR(8), " +
@@ -112,6 +99,8 @@ public class TableBuilder {
                 "Constraint Address_PK Primary Key (ID), " +
                 "Constraint Address_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
         sendStatement(buildString);
+        String createSeq = "create sequence Address_ID as BIGINT start with 1";
+        sendStatement(createSeq);
     }
 
     private void buildOtherInfo(){
@@ -164,6 +153,8 @@ public class TableBuilder {
                 "Constraint Label_PK Primary Key (id), " +
                 "Constraint Label_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
         sendStatement(buildString);
+        String createSeq = "create sequence Label_ID as BIGINT start with 1";
+        sendStatement(createSeq);
     }
 
     private void buildForm(){
@@ -185,6 +176,8 @@ public class TableBuilder {
                 "Constraint Form_FK_Rep Foreign Key (Rep_ID) References Reps(Rep_ID), " +
                 "Constraint Form_FK_Company Foreign Key (Company_ID) References Company(Company_ID))";
         sendStatement(buildString);
+        String createSeq = "create sequence Form_ID as BIGINT start with 1";
+        sendStatement(createSeq);
     }
 
     private void buildAgents() {
@@ -195,6 +188,7 @@ public class TableBuilder {
                 "Password VARCHAR(256), " +
                 "Constraint Agents_PK Primary Key (Login_Name), " +
                 "Constraint Agents_UQ Unique (Agent_ID))";
+        //TODO Agent_ID Sequence? Maybe not
         sendStatement(buildString);
     }
 
