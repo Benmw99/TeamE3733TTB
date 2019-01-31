@@ -49,7 +49,11 @@ public class DBSelect {
         return sendQuery(selectString);
     }
     public ResultSet selectAllForms() {
-        String selectString = "SELECT * FROM FORM ";
+        String selectString = "SELECT * FROM FORM";
+        return sendQuery(selectString);
+    }
+    public ResultSet selectAllAddress() {
+        String selectString = "SELECT ID, Street FROM ADDRESS";
         return sendQuery(selectString);
     }
 }

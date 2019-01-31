@@ -41,7 +41,7 @@ public class DBInsert {
      * @throws SQLException
      */
     public void insertAddress(String Zip, Boolean isMailing, String City, String State, String Street, int TTB_ID) throws SQLException{
-        String insertString = "INSERT INTO ADDRESS (Zip_Code, isMailing, City, Street_Name, State, TTB_ID, ID) VALUES (" +
+        String insertString = "INSERT INTO ADDRESS (Zip_Code, isMailing, City, Street, State, TTB_ID, ID) VALUES (" +
                 "?, ?, ?, ?, ?, ?, NEXT VALUE FOR Address_ID)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, Zip);
@@ -170,6 +170,42 @@ public class DBInsert {
         statement.setString(10, name);
         statement.setString(11, phone);
         statement.setInt(12, Alcohol_Type);
+        statement.execute();
+    }
+
+    /**
+     *
+     * @param Serial_Number
+     * @param Fanciful_Name
+     * @param Brand_Name
+     * @param Source
+     * @param Approve
+     * @param email
+     * @param Company_ID
+     * @param submitted
+     * @param name
+     * @param phone
+     * @param Alcohol_Type
+     * @throws SQLException
+     */
+    public void insertFormNoRep(String Serial_Number, String Fanciful_Name, String Brand_Name, Boolean Source,
+                           Boolean Approve, String email, int Company_ID, Timestamp submitted, String name,
+                           String phone, int Alcohol_Type) throws SQLException {
+        String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
+                " Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type) " +
+                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(insertString);
+        statement.setString(1, Serial_Number);
+        statement.setString(2, Fanciful_Name);
+        statement.setString(3, Brand_Name);
+        statement.setBoolean(4, Source);
+        statement.setBoolean(5, Approve);
+        statement.setString(6, email);
+        statement.setInt(7, Company_ID);
+        statement.setTimestamp(8, submitted);
+        statement.setString(9, name);
+        statement.setString(10, phone);
+        statement.setInt(11, Alcohol_Type);
         statement.execute();
     }
 

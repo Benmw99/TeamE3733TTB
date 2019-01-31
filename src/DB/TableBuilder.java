@@ -115,7 +115,7 @@ public class TableBuilder {
                 "City VARCHAR(32), " +
                 "TTB_ID BIGINT, " +
                 "State VARCHAR(2), " +
-                "Street_Name VARCHAR(32), " +
+                "Street VARCHAR(32), " +
                 "ID BIGINT," +
                 "Constraint Address_PK Primary Key (ID), " +
                 "Constraint Address_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
@@ -184,15 +184,15 @@ public class TableBuilder {
                 "Serial_Number VARCHAR(8)," +
                 "Fanciful_Name VARCHAR(256)," +
                 "Brand_Name VARCHAR(256)," +
-                "Source SMALLINT," +
-                "APPROVE SMALLINT," +
-                "Rep_ID VARCHAR(16)," +
+                "Source BOOLEAN," +
+                "APPROVE BOOLEAN," +
                 "Email VARCHAR(256)," +
-                "Company_ID BIGINT," +
                 "Date_Submitted TIMESTAMP," +
                 "Applicant_Name VARCHAR(32)," +
                 "Phone VARCHAR(12)," +
                 "Alcohol_Type SMALLINT," +
+                "Rep_ID VARCHAR(16) DEFAULT NULL," + //Not sure both of these should be null
+                "Company_ID BIGINT DEFAULT NULL," +
                 "Constraint Form_PK Primary Key (TTB_ID), " +
                 "Constraint Form_FK_Rep Foreign Key (Rep_ID) References Reps(Rep_ID), " +
                 "Constraint Form_FK_Company Foreign Key (Company_ID) References Company(Company_ID))";
