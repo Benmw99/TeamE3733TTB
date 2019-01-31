@@ -1,7 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import static org.junit.Assert.*;
 
 public class TableBuilderTest {
@@ -39,5 +38,8 @@ public class TableBuilderTest {
         assertEquals("Budweiser", compName);
         assertEquals("test123", loginName);
         assertEquals("qwerty", password);
+        try {
+            DriverManager.getConnection("jdbc:derby:;shutdown=true");
+        } catch (SQLException e) {}
     }
 }

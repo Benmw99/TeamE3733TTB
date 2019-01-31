@@ -6,7 +6,13 @@ import java.sql.*;
 public class DBSelect {
     Connection connection;
 
-    public DBSelect(String path){
+    public DBSelect(String path) {
+        try {
+            String driver = "org.apache.derby.jdbc.EmbeddedDriver";
+            Class.forName(driver).newInstance();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         try {
             connection = DriverManager.getConnection("jdbc:derby:" + path + ";create=true");
         } catch (SQLException e){

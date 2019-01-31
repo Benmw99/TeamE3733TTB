@@ -7,7 +7,13 @@ public class TableBuilder {
     private Connection connection;
     private static final String IMAGESIZE = "1M";
 
-    public TableBuilder(String path){
+    public TableBuilder(String path) {
+        try {
+            String driver = "org.apache.derby.jdbc.EmbeddedDriver";
+            Class.forName(driver).newInstance();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         try {
             connection = DriverManager.getConnection("jdbc:derby:" + path + ";create=true");
         } catch (SQLException e){
@@ -63,6 +69,21 @@ public class TableBuilder {
         } catch (SQLException e) {}
         try {
             String dropString = "Drop table Company";
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop Sequence Address_ID RESTRICT ";
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop Sequence Label_ID RESTRICT ";
+            PreparedStatement ps =  connection.prepareStatement(dropString);
+            ps.execute();
+        } catch (SQLException e) {}
+        try {
+            String dropString = "Drop Sequence Form_ID RESTRICT ";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
         } catch (SQLException e) {}
