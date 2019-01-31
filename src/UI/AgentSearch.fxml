@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufactureController">
+    <children>
+        <Rectangle fill="#007bb0" height="136.0" layoutX="-14.0" layoutY="21.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Text fill="WHITE" layoutX="626.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="147.62400909650722">
+         <font>
+            <Font name="Georgia" size="48.0" />
+         </font></Text>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3b3b" height="563.0" layoutX="179.0" layoutY="280.0" stroke="TRANSPARENT" strokeType="INSIDE" width="332.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="62.0" layoutX="72.0" layoutY="141.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="136.0" />
+        <Rectangle fill="#e7e7e7" height="544.0" layoutX="358.0" layoutY="212.0" stroke="TRANSPARENT" strokeType="INSIDE" width="718.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="205.0" />
+        <Button fx:id="menuASButton" layoutX="58.0" layoutY="52.0" mnemonicParsing="false" onAction="#manufactureLogin" text="Return to Menu" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" />
+        <TextField fx:id="searchASField" alignment="CENTER" layoutX="349.0" layoutY="151.0" prefHeight="26.0" prefWidth="708.0" promptText="Search Applications" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="316.0" />
+      <Text layoutX="512.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search the TTB Database">
+         <font>
+            <Font name="Georgia" size="36.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="6.0" layoutY="205.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="205.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="6.0" layoutY="254.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="255.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="6.0" layoutY="303.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="305.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="6.0" layoutY="350.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="355.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="6.0" layoutY="451.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="455.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="6.0" layoutY="405.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="405.0" />
+      <TextField fx:id="alcTypeField" layoutX="151.0" layoutY="212.0" promptText="type" />
+      <TextField fx:id="manField" layoutX="151.0" layoutY="262.0" promptText="type" />
+      <TextField fx:id="stateField" layoutX="151.0" layoutY="312.0" promptText="type" />
+      <TextField fx:id="cityField" layoutX="151.0" layoutY="362.0" promptText="type" />
+      <TextField fx:id="dateField" layoutX="151.0" layoutY="412.0" promptText="type" />
+      <TextField fx:id="idField" layoutX="151.0" layoutY="462.0" promptText="type" />
+      <Text layoutX="32.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alcohol Type">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="32.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="34.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State of Origin">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="32.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City of Origin">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Manufactured">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="38.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Number">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="77.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categories">
+         <font>
+            <Font name="Georgia" size="36.0" />
+         </font>
+      </Text>
+      <Button fx:id="printASButton" layoutX="1166.0" layoutY="156.0" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Print Results" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>
