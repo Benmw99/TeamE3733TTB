@@ -42,7 +42,7 @@ public class DBInsert {
      */
     public void insertAddress(String Zip, Boolean isMailing, String City, String State, String Street, int TTB_ID) throws SQLException{
         String insertString = "INSERT INTO ADDRESS (Zip_Code, isMailing, City, Street_Name, State, TTB_ID, ID) VALUES (" +
-                "?, ?, ?, ?, ?, ?, ?)";
+                "?, ?, ?, ?, ?, ?, NEXT VALUE FOR Address_ID)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, Zip);
         statement.setBoolean(2, isMailing);
@@ -50,7 +50,6 @@ public class DBInsert {
         statement.setString(4, Street);
         statement.setString(5, State);
         statement.setInt(6, TTB_ID);
-        statement.setString(7, "Next value for Address_ID"); //This might break it completely, idk really
         statement.execute();
     }
 
@@ -157,21 +156,20 @@ public class DBInsert {
                     String phone, int Alcohol_Type) throws SQLException {
         String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
                 " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
-        statement.setString(1, "Next value for Form_ID");
-        statement.setString(2, Serial_Number);
-        statement.setString(3, Fanciful_Name);
-        statement.setString(4, Brand_Name);
-        statement.setBoolean(5, Source);
-        statement.setBoolean(6, Approve);
-        statement.setString(7, Rep_ID);
-        statement.setString(8, email);
-        statement.setInt(9, Company_ID);
-        statement.setTimestamp(10, submitted);
-        statement.setString(11, name);
-        statement.setString(12, phone);
-        statement.setInt(13, Alcohol_Type);
+        statement.setString(1, Serial_Number);
+        statement.setString(2, Fanciful_Name);
+        statement.setString(3, Brand_Name);
+        statement.setBoolean(4, Source);
+        statement.setBoolean(5, Approve);
+        statement.setString(6, Rep_ID);
+        statement.setString(7, email);
+        statement.setInt(8, Company_ID);
+        statement.setTimestamp(9, submitted);
+        statement.setString(10, name);
+        statement.setString(11, phone);
+        statement.setInt(12, Alcohol_Type);
         statement.execute();
     }
 
@@ -196,11 +194,30 @@ public class DBInsert {
      * @throws SQLException
      */
     public void insertLabel(FileInputStream input, String fileName) throws SQLException{
-        String insertString = "insert into Label values (?, ?, ?)";
+        String insertString = "INSERT INTO LABEL VALUES (NEXT VALUE FOR Label_ID, ?, ?)";
         PreparedStatement statement =  connection.prepareStatement(insertString);
-        statement.setString(1, "Next value for Label_ID");
-        statement.setBinaryStream(2, input);
-        statement.setString(3, fileName);
+        statement.setBinaryStream(1, input);
+        statement.setString(2, fileName);
+        statement.execute();
+    }
+
+    /**
+     * Inserts approval into the database
+     * @param appovingAgent The approving agents name
+     * @param TTB_ID The TTB ID of the form that is being approved
+     * @param date The date of its approval
+     * @param expiration The expiration of the approved form
+     * @param qualification Any special qualification the agent writes in
+     * @throws SQLException
+     */
+    public void insertApproval(String appovingAgent, int TTB_ID, Timestamp date, Timestamp expiration, String qualification) throws SQLException {
+        String insertString = "INSERT INTO APPROVAL VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(insertString);
+        statement.setString(1, appovingAgent);
+        statement.setInt(2, TTB_ID);
+        statement.setTimestamp(3, date);
+        statement.setTimestamp(4, expiration);
+        statement.setString(5, qualification);
         statement.execute();
     }
 }
