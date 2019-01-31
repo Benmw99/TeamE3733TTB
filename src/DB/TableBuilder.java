@@ -3,22 +3,12 @@ package DB;
 import java.sql.*;
 
 
-public class TableBuilder {
+public class TableBuilder extends Database {
     private Connection connection;
     private static final String IMAGESIZE = "1M";
 
     public TableBuilder(String path) {
-        try {
-            String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-            Class.forName(driver).newInstance();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        try {
-            connection = DriverManager.getConnection("jdbc:derby:" + path + ";create=true");
-        } catch (SQLException e){
-            System.out.println(e.toString());
-        }
+       super(path);
     }
 
     public void resetDB() {
