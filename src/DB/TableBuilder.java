@@ -68,25 +68,15 @@ public class TableBuilder {
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
         } catch (SQLException e) {}
-        System.out.println("Build Agents");
         buildAgents();
-        System.out.println("Build Reps");
         buildReps();
-        System.out.println("Build Company");
         buildCompany();
-        System.out.println("Build Form");
         buildForm();
-        System.out.println("Build Permit");
         buildBrewersPermit();
-        System.out.println("Build Approval");
         buildApproval();
-        System.out.println("Build Address");
         buildAddress();
-        System.out.println("Build Other Info");
         buildOtherInfo();
-        System.out.println("Build Wine");
         buildWine();
-        System.out.println("Build Label");
         buildLabel();
     }
 
@@ -228,25 +218,4 @@ public class TableBuilder {
                 "Constraint Company_UQ Unique (Company_ID))";
         sendStatement(buildString);
     }
-
-    //TODO communicate w/ rest of team about REP Data Type
-    ResultSet selectAllReps(){
-        String selectString = "SELECT * FROM REPS";
-        return sendQuery(selectString);
-    }
-    ResultSet selectRepByID(String Rep_ID){
-        String selectString = "SELECT * FROM REPS WHERE Rep_ID='";
-        selectString += Rep_ID += "'";
-        return sendQuery(selectString);
-    }
-    ResultSet selectAllCompany(){
-        String selectString = "SELECT * FROM COMPANY";
-        return sendQuery(selectString);
-    }
-    ResultSet selectAllAgents(){
-        String selectString = "SELECT * FROM AGENTS";
-        return sendQuery(selectString);
-    }
-
-
 }

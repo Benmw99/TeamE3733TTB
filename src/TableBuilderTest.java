@@ -1,21 +1,26 @@
+import org.junit.Before;
 import org.junit.Test;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import static org.junit.Assert.*;
 
 public class TableBuilderTest {
-
-    @Test
-    public void selectAllCompany() {
-        TableBuilder init = new TableBuilder("./ttb.db");
+    @Before
+    public void setup() {
+        DB.TableBuilder init = new DB.TableBuilder("./ttb.db");
         init.resetDB();
-        DBInsert insert = new DBInsert("./ttb.db");
+        DB.DBInsert insert = new DB.DBInsert("./ttb.db");
         try{
             insert.insertCompany(12345, "Budweiser", "test123", "qwerty");
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
-        ResultSet rset = init.selectAllCompany();
+    }
+
+    @Test
+    public void selectAllCompany() {
+        DB.DBSelect selection = new DB.DBSelect("./ttb.db");
+        ResultSet rset = selection.selectAllCompany();
         int compID = 0;
         String compName = "";
         String loginName = "";
