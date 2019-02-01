@@ -1,5 +1,5 @@
 package Entities;
 
 public enum AlcoholType {
-    Wine,DistilledLiquor,MaltBeverage;
+    Wine, DistilledLiquor, MaltBeverage;
 }
