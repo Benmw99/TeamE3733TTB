@@ -1,6 +1,7 @@
 package Entities;
 
-import java.sql.Timestamp;
+
+import java.util.Date;
 
 public class Form {
 
@@ -14,7 +15,7 @@ public class Form {
     private String repID;
     private int ttbID;
     private String email;
-    private Timestamp dateSubmitted;
+    private Date dateSubmitted;
     private String applicantName;
     private String phoneNum;
     private AlcoholType alcoholType;
@@ -41,7 +42,7 @@ public class Form {
         this.approval = null;
     }
 
-    public Form(String fancifulName, String brandName, boolean source, String repID, int ttbID, String email, Timestamp dateSubmitted, String applicantName, String phoneNum, AlcoholType alcoholType, String otherInfo, String brewersPermit, Approval approval) {
+    public Form(String fancifulName, String brandName, boolean source, String repID, int ttbID, String email, Date dateSubmitted, String applicantName, String phoneNum, AlcoholType alcoholType, String otherInfo, String brewersPermit, Approval approval) {
         this.fancifulName = fancifulName;
         this.brandName = brandName;
         this.source = source;
@@ -109,11 +110,11 @@ public class Form {
         this.email = email;
     }
 
-    public Timestamp getDateSubmitted() {
+    public Date getDateSubmitted() {
         return dateSubmitted;
     }
 
-    public void setDateSubmitted(Timestamp dateSubmitted) {
+    public void setDateSubmitted(Date dateSubmitted) {
         this.dateSubmitted = dateSubmitted;
     }
 
