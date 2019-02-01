@@ -46,6 +46,26 @@ public class DBSelect extends Database {
         String selectString = "SELECT ID, Street FROM ADDRESS";
         return sendQuery(selectString);
     }
+
+    public Boolean AuthenticateCompany(String login, String pass) {
+        String selectString = "SELECT COUNT(*) FROM COMPANY WHERE Login_Name =? AND Password =? ";
+        try {
+            PreparedStatement statement = connection.prepareStatement(selectString);
+            statement.setString(1, login);
+            statement.setString(2, pass);
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            if(rs.getInt(1) > 0){
+                statement.close();
+                return true;
+            } else {
+                statement.close();
+                return false;
+            }
+        } catch(SQLException e){
+            return false;
+        }
+    }
     //TODO Authenticate
 
     //TODO SELECT BY TYPE
