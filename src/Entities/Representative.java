@@ -3,14 +3,53 @@ package Entities;
 public class Representative implements IUser {
 
     String repID;
+    String login;
+    String password;
 
-    @Override
-    public void login() {
+    public Representative(String repID, String login, String password) {
+        this.repID = repID;
+        this.login = login;
+        this.password = password;
+    }
 
+    public String getRepID() {
+        return repID;
+    }
+
+    public void setRepID(String repID) {
+        this.repID = repID;
     }
 
     @Override
-    public String search() {
+    public String getLogin() {
+        return login;
+    }
+
+    @Override
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean authenticate(){
+        return false; //needs implementation
+    }
+
+    public IUser loadUser(){
+        return null; // needs implementation
+    }
+
+
+    public SearchResult search() {
         return null;
     }
 
