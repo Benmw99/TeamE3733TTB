@@ -97,7 +97,7 @@ public class DBInsert extends Database {
      * @throws SQLException
      */
     public void insertAgent(String name, int ID, String Login_Name, String Password) throws SQLException{
-        String insertString = "INSERT INTO AGENTS (Name, Agent_ID, Login_Name, Password) VALUES (?, ?, ?, ?)";
+        String insertString = "INSERT INTO AGENTS (Agent_Name, Agent_ID, Login_Name, Password) VALUES (?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, name);
         statement.setInt(2, ID);

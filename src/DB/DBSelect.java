@@ -49,6 +49,22 @@ public class DBSelect extends Database {
 
     public Boolean AuthenticateCompany(String login, String pass) {
         String selectString = "SELECT COUNT(*) FROM COMPANY WHERE Login_Name =? AND Password =? ";
+        return doAuthenticate(login, pass, selectString);
+    }
+
+    public Boolean AuthenticateAgent(String login, String pass) {
+        String selectString = "SELECT COUNT(*) FROM AGENTS WHERE Login_Name =? AND Password =? ";
+        return doAuthenticate(login, pass, selectString);
+    }
+
+    /**
+     * A Helper function for authentication
+     * @param login The login name
+     * @param pass The password
+     * @param selectString The select string for the table to authenticate against
+     * @return True if the login is valid, else false
+     */
+    private Boolean doAuthenticate(String login, String pass, String selectString) {
         try {
             PreparedStatement statement = connection.prepareStatement(selectString);
             statement.setString(1, login);
@@ -66,10 +82,13 @@ public class DBSelect extends Database {
             return false;
         }
     }
-    //TODO Authenticate
+    //DONE AUTHENTICATE
 
     //TODO SELECT BY TYPE
 
+    public void selectFormsWithData(){
+// this will probably return Type Form
+    }
     //TODO SELECT BY OWNER
 
     //TODO BIG OL' SELECT FUNCTION FOR FORMS

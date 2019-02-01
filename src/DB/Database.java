@@ -20,5 +20,12 @@ public class Database {
             System.out.println(e.toString());
         }
     }
+    public void close(){
+        try {
+            connection.close();
+        } catch(SQLException e){
+            System.out.println(e.toString());
+        }
+    }
 
 }
