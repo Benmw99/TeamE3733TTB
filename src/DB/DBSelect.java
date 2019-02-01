@@ -46,6 +46,21 @@ public class DBSelect extends Database {
         String selectString = "SELECT ID, Street FROM ADDRESS";
         return sendQuery(selectString);
     }
+    //Will return something else later
+    //To be used for displaying a companies submitted forms
+    public ResultSet selectByCompany(int companyID) {
+        //Serial number or TTB_ID?
+        String selectString = "SELECT TTB_ID, Date_Submitted, reviewDate where Company_ID = ?";
+        ResultSet rset = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(selectString);
+            statement.setInt(1, companyID);
+            rset = statement.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return rset;
+    }
 
     public Boolean AuthenticateCompany(String login, String pass) {
         String selectString = "SELECT COUNT(*) FROM COMPANY WHERE Login_Name =? AND Password =? ";
@@ -90,6 +105,7 @@ public class DBSelect extends Database {
 // this will probably return Type Form
     }
     //TODO SELECT BY OWNER
+
 
     //TODO BIG OL' SELECT FUNCTION FOR FORMS
 }

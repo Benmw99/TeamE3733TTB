@@ -9,16 +9,6 @@ public class DBInsert extends Database {
         super(path);
     }
 
-    //TODO remove this possibly, if unnecessary
-    private void sendStatement(String buildString) {
-        try {
-            PreparedStatement ps =  connection.prepareStatement(buildString);
-            ps.execute();
-        } catch (SQLException e){
-            System.out.println(e.toString());
-        }
-    }
-
     /**
      * Inserts an address into the database, attached to the TTB form corresponding to the TTB_ID
      * @param Zip The Zip code, shouldn't exceed 8 chars

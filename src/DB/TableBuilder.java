@@ -180,8 +180,8 @@ public class TableBuilder extends Database {
                 "Applicant_Name VARCHAR(32)," +
                 "Phone VARCHAR(12)," +
                 "Alcohol_Type SMALLINT," +
-                "Rep_ID VARCHAR(16) DEFAULT NULL," + //Not sure both of these should be null
-                "Company_ID BIGINT DEFAULT NULL," +
+                "Rep_ID VARCHAR(16) DEFAULT NULL," +
+                "Company_ID BIGINT," +
                 "Constraint Form_PK Primary Key (TTB_ID), " +
                 "Constraint Form_FK_Rep Foreign Key (Rep_ID) References Reps(Rep_ID), " +
                 "Constraint Form_FK_Company Foreign Key (Company_ID) References Company(Company_ID))";
