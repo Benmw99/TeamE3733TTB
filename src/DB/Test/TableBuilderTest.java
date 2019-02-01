@@ -1,5 +1,6 @@
-package DB;
+package DB.Test;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.sql.*;
@@ -14,7 +15,7 @@ public class TableBuilderTest {
         java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0");
         try {
             insert.insertCompany(12345, "Budweiser", "test123", "qwerty");
-            insert.insertFormNoRep("123", "Bud-lite", "Bud", true, false, "123@gmail.com", 12345, timestamp, "John", "7817817811", 2);
+            insert.insertForm("123", "Bud-lite", "Bud", true, false, null, "123@gmail.com", 12345, timestamp, "John", "7817817811", 2);
             insert.insertAddress("12345", true, "Worcester", "MA", "100 Road Road", 1);
             insert.insertAddress("67890", false, "Acton", "MA", "200 Street Street", 1);
         } catch (SQLException e) {
@@ -44,9 +45,6 @@ public class TableBuilderTest {
         assertEquals("Budweiser", compName);
         assertEquals("test123", loginName);
         assertEquals("qwerty", password);
-        try {
-            DriverManager.getConnection("jdbc:derby:;shutdown=true");
-        } catch (SQLException e) {}
     }
 
     @Test
@@ -65,6 +63,10 @@ public class TableBuilderTest {
         }
         assertEquals("1,2,", id);
         assertEquals("100 Road Road,200 Street Street,", street);
+    }
+
+    @After
+    public void close() {
         try {
             DriverManager.getConnection("jdbc:derby:;shutdown=true");
         } catch (SQLException e) {}
