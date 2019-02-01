@@ -48,12 +48,12 @@ public class DBSelect extends Database {
     }
 
     public Boolean AuthenticateCompany(String login, String pass) {
-        String selectString = "SELECT * FROM COMPANY WHERE Login_Name =? AND Password =? ";
+        String selectString = "SELECT COUNT(*) FROM COMPANY WHERE Login_Name =? AND Password =? ";
         return doAuthenticate(login, pass, selectString);
     }
 
     public Boolean AuthenticateAgent(String login, String pass) {
-        String selectString = "SELECT * FROM AGENTS WHERE Login_Name =? AND Password =? ";
+        String selectString = "SELECT COUNT(*) FROM AGENTS WHERE Login_Name =? AND Password =? ";
         return doAuthenticate(login, pass, selectString);
     }
 
@@ -70,7 +70,14 @@ public class DBSelect extends Database {
             statement.setString(1, login);
             statement.setString(2, pass);
             ResultSet rs = statement.executeQuery();
-            return rs.next();
+            rs.next();
+            if(rs.getInt(1) > 0){
+                statement.close();
+                return true;
+            } else {
+                statement.close();
+                return false;
+            }
         } catch(SQLException e){
             return false;
         }
