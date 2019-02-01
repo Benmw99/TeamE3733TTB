@@ -1,5 +1,6 @@
 package DB.Test;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.sql.*;
@@ -44,9 +45,6 @@ public class TableBuilderTest {
         assertEquals("Budweiser", compName);
         assertEquals("test123", loginName);
         assertEquals("qwerty", password);
-        try {
-            DriverManager.getConnection("jdbc:derby:;shutdown=true");
-        } catch (SQLException e) {}
     }
 
     @Test
@@ -65,6 +63,10 @@ public class TableBuilderTest {
         }
         assertEquals("1,2,", id);
         assertEquals("100 Road Road,200 Street Street,", street);
+    }
+
+    @After
+    public void close() {
         try {
             DriverManager.getConnection("jdbc:derby:;shutdown=true");
         } catch (SQLException e) {}

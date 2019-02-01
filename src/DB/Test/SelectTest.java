@@ -39,5 +39,8 @@ public class SelectTest {
     @After
     public void close(){
         sel.close();
+        try {
+            DriverManager.getConnection("jdbc:derby:;shutdown=true");
+        } catch (SQLException e) {}
     }
 }

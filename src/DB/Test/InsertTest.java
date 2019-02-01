@@ -39,6 +39,8 @@ public class InsertTest {
     @After
     public void close(){
         ins.close();
-
+        try {
+            DriverManager.getConnection("jdbc:derby:;shutdown=true");
+        } catch (SQLException e) {}
     }
 }
