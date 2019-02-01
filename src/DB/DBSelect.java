@@ -4,7 +4,7 @@ import java.sql.*;
 
 
 public class DBSelect extends Database {
-
+//TODO MAKE ALL SELECTS RETURN ENTITIES
     public DBSelect(String path) {
         super(path);
     }
@@ -40,9 +40,17 @@ public class DBSelect extends Database {
     public ResultSet selectAllForms() {
         String selectString = "SELECT * FROM FORM";
         return sendQuery(selectString);
+        //TODO GET THE REST OF THE SHIT
     }
     public ResultSet selectAllAddress() {
         String selectString = "SELECT ID, Street FROM ADDRESS";
         return sendQuery(selectString);
     }
+    //TODO Authenticate
+
+    //TODO SELECT BY TYPE
+
+    //TODO SELECT BY OWNER
+
+    //TODO BIG OL' SELECT FUNCTION FOR FORMS
 }
