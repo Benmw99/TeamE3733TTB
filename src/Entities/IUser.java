@@ -11,7 +11,6 @@ public interface IUser {
     IUser loadUser();
 
 
-
     //needs additional parameters relating to size of returned search
     SearchResult search();
 

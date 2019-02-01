@@ -2,10 +2,10 @@ package Entities;
 
 public class Manufacturer implements IUser {
 
-    String manID;
-    String manName;
-    String login;
-    String password;
+    private String manID;
+    private String manName;
+    private String login;
+    private String password;
 
 
     public Manufacturer(String manID, String manName, String login, String password) {

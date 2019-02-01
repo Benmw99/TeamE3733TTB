@@ -4,9 +4,9 @@ import DB.DBSelect;
 
 public class Agent implements IUser{
 
-    String repID;
-    String login;
-    String password;
+    private String repID;
+    private String login;
+    private String password;
 
     public Agent(String repID, String login, String password) {
         this.repID = repID;

@@ -2,9 +2,9 @@ package Entities;
 
 public class Representative implements IUser {
 
-    String repID;
-    String login;
-    String password;
+    private String repID;
+    private String login;
+    private String password;
 
     public Representative(String repID, String login, String password) {
         this.repID = repID;
