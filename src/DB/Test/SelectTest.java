@@ -1,5 +1,6 @@
 package DB.Test;
 import DB.*;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.sql.*;
@@ -34,5 +35,9 @@ public class SelectTest {
         assertTrue(sel.AuthenticateAgent("Agent_Mark", "PassWord"));
         assertFalse(sel.AuthenticateAgent("Agent_Mark", "WrongPass"));
         assertFalse(sel.AuthenticateAgent("Agent_Mork", "PassWord"));
+    }
+    @After
+    public void close(){
+        sel.close();
     }
 }
