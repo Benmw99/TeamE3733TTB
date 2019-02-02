@@ -9,9 +9,10 @@ import java.sql.*;
 import static org.junit.Assert.*;
 
 public class SelectTest {
+    static DB.Database db = DB.Database.getInstance();
+
     @BeforeClass
     public static void setup() {
-        DB.Database db = DB.Database.getInstance();
         db.tableBuilder.resetDB();
         java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0");
         try {
@@ -21,19 +22,20 @@ public class SelectTest {
                     123, timestamp, "ABC", "12312124", 2);
         } catch (SQLException e){
             System.out.println("ERROR: TEST DB INIT FAILED.");
-           System.out.println(e.toString());
+            System.out.println(e.toString());
         }
-    }
-    @Test
-    public void loginCompanyTest(){
-      DB.Database db = DB.Database.getInstance();
-      assertTrue(db.dbSelect.AuthenticateCompany("Buddy", "12345"));
-      assertFalse(db.dbSelect.AuthenticateCompany("Buddy", "GOD IS DEAD"));
-      assertFalse(db.dbSelect.AuthenticateCompany("UNREGISTERDCOMPANY", "12345"));
     }
 
     @Test
-    public void loginAgentTest(){
+    public void loginCompanyTest() {
+        DB.Database db = DB.Database.getInstance();
+        assertTrue(db.dbSelect.AuthenticateCompany("Buddy", "12345"));
+        assertFalse(db.dbSelect.AuthenticateCompany("Buddy", "GOD IS DEAD"));
+        assertFalse(db.dbSelect.AuthenticateCompany("UNREGISTERDCOMPANY", "12345"));
+    }
+
+    @Test
+    public void loginAgentTest() {
         DB.Database db = DB.Database.getInstance();
         assertTrue(db.dbSelect.AuthenticateAgent("Agent_Mark", "PassWord"));
         assertFalse(db.dbSelect.AuthenticateAgent("Agent_Mark", "WrongPass"));
