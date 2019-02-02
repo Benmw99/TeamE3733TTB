@@ -1,13 +1,14 @@
 package Entities;
 
-import java.sql.Timestamp;
+
+import java.util.Date;
 
 public class Approval {
 
     private boolean aproved;
-    private Timestamp timestamp;
+    private Date timestamp;
     private Agent agentApproval;
-    private Timestamp expDate;
+    private Date expDate;
     private String qualifications;
 
 
