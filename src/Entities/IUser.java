@@ -1,5 +1,7 @@
 package Entities;
 
+import DB.Database;
+
 public interface IUser {
 
     String getLogin();
@@ -7,7 +9,7 @@ public interface IUser {
     String getPassword();
     void setPassword(String password);
 
-    boolean authenticate();
+    boolean authenticate(Database db);
     IUser loadUser();
 
 

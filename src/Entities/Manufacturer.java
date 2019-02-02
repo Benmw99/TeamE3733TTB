@@ -1,5 +1,7 @@
 package Entities;
 
+import DB.Database;
+
 public class Manufacturer implements IUser {
 
     public int manID;
@@ -53,8 +55,8 @@ public class Manufacturer implements IUser {
 
 
 
-    public boolean authenticate(){
-        return false; //needs implementation
+    public boolean authenticate(Database db){
+        return db.dbSelect.AuthenticateCompany(login,password);
     }
 
     public IUser loadUser(){

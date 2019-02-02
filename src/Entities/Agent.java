@@ -1,6 +1,6 @@
 package Entities;
 
-import DB.DBSelect;
+import DB.Database;
 
 public class Agent implements IUser{
 
@@ -41,8 +41,9 @@ public class Agent implements IUser{
 
 
 
-    public boolean authenticate(){
-        return false; //needs implementation
+    public boolean authenticate(Database db){
+
+        return db.dbSelect.AuthenticateAgent(login,password);
     }
 
     public IUser loadUser(){

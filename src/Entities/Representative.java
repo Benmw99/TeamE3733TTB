@@ -1,5 +1,7 @@
 package Entities;
 
+import DB.Database;
+
 public class Representative implements IUser {
 
     private String repID;
@@ -40,8 +42,9 @@ public class Representative implements IUser {
         this.password = password;
     }
 
-    public boolean authenticate(){
-        return false; //needs implementation
+    public boolean authenticate(Database db){
+
+        return db.dbSelect.AuthenticateCompany(login,password);
     }
 
     public IUser loadUser(){

@@ -35,4 +35,13 @@ public class SearchResult {
     public void addResults(ArrayList<Form> forms){
         results.addAll(forms);
     }
+
+    public void printResults(){
+
+        for( int i = 1; i < results.size(); i++){
+
+        }
+
+    }
+
 }
