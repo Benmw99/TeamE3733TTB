@@ -14,6 +14,12 @@ public class Agent implements IUser{
         this.password = password;
     }
 
+    public Agent( String login, String password) {
+        this.repID = null;
+        this.login = login;
+        this.password = password;
+    }
+
     public String getRepID() {
         return repID;
     }
@@ -41,8 +47,8 @@ public class Agent implements IUser{
 
 
 
-    public boolean authenticate(Database db){
-
+    public boolean authenticate(){
+        DB.Database db = DB.Database.getInstance();
         return db.dbSelect.AuthenticateAgent(login,password);
     }
 

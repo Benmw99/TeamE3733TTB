@@ -3,17 +3,14 @@ package Entities;
 import Entities.Sorting.BrandNameSort;
 import Entities.Sorting.DateSort;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
+
 
 
 public class SearchResult {
     private ArrayList<Form> results;
+    private String query;
 
     /**
      * blank constructor for searchResult class
@@ -28,6 +25,11 @@ public class SearchResult {
      */
     public SearchResult(ArrayList<Form> forms){
         this.results = forms;
+    }
+
+    public SearchResult(ArrayList<Form> results, String query) {
+        this.results = results;
+        this.query = query;
     }
 
     /**
@@ -46,28 +48,16 @@ public class SearchResult {
         results.addAll(forms);
     }
 
-    public boolean printResults(){
+    public String getQuery() {
+        return query;
+    }
 
-        try {
-            String home = System.getProperty("user.home");
-            Date date = new Date() ;
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
-            File file = new File(home + "/Downloads/" + "TTBSearch" +dateFormat.format(date) + ".csv");
-            FileWriter outputfile = new FileWriter(file);
-            //CSVWriter writer = new CSVWriter(outputfile);
-            //String[] header = { "Name", "Class", "Marks" };
-            //writer.writeNext(header);
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
-            for (int i = 1; i < results.size(); i++) {
+    public void printResults(){
 
-            }
-
-
-            return true;
-        }catch(IOException e){
-            e.printStackTrace();
-            return false;
-        }
     }
 
 

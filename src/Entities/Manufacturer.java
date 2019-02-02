@@ -17,6 +17,13 @@ public class Manufacturer implements IUser {
         this.password = password;
     }
 
+    public Manufacturer(String login, String password) {
+        this.manID = 0;
+        this.manName = null;
+        this.login = login;
+        this.password = password;
+    }
+
     public int getManID() {
         return manID;
     }
@@ -55,7 +62,8 @@ public class Manufacturer implements IUser {
 
 
 
-    public boolean authenticate(Database db){
+    public boolean authenticate(){
+        DB.Database db = DB.Database.getInstance();
         return db.dbSelect.AuthenticateCompany(login,password);
     }
 

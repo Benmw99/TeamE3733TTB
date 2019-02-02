@@ -1,53 +1,53 @@
 package Entities;
 
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Approval {
 
-    private boolean aproved;
-    private Date timestamp;
-    private Agent agentApproval;
-    private Date expDate;
+    private boolean approved;
+    private Timestamp timestamp;
+    private String agentApprovalName;
+    private Timestamp expDate;
     private String qualifications;
 
-    public Approval(boolean aproved, Date timestamp, Agent agentApproval, Date expDate, String qualifications) {
-        this.aproved = aproved;
+    public Approval(boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
+        this.approved = approved;
         this.timestamp = timestamp;
-        this.agentApproval = agentApproval;
+        this.agentApprovalName = agentApprovalName;
         this.expDate = expDate;
         this.qualifications = qualifications;
     }
 
-    public boolean isAproved() {
-        return aproved;
+    public boolean isApproved() {
+        return approved;
     }
 
-    public void setAproved(boolean aproved) {
-        this.aproved = aproved;
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 
-    public Date getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 
-    public Agent getAgentApproval() {
-        return agentApproval;
+    public String getAgentApprovalName() {
+        return agentApprovalName;
     }
 
-    public void setAgentApproval(Agent agentApproval) {
-        this.agentApproval = agentApproval;
+    public void setAgentApprovalName(String agentApprovalName) {
+        this.agentApprovalName = agentApprovalName;
     }
 
-    public Date getExpDate() {
+    public Timestamp getExpDate() {
         return expDate;
     }
 
-    public void setExpDate(Date expDate) {
+    public void setExpDate(Timestamp expDate) {
         this.expDate = expDate;
     }
 

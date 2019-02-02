@@ -42,8 +42,8 @@ public class Representative implements IUser {
         this.password = password;
     }
 
-    public boolean authenticate(Database db){
-
+    public boolean authenticate(){
+        DB.Database db = DB.Database.getInstance();
         return db.dbSelect.AuthenticateCompany(login,password);
     }
 
