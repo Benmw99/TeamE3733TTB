@@ -68,6 +68,9 @@ public class SelectTest {
     public void retrieveFormTest(){
         Form form = db.dbSelect.getFormByTTB_ID(1);
         assertEquals("ABC", form.getFancifulName());
+        assertEquals("123", form.getBrandName());
+        assertEquals(true, form.getSource());
+//not implemented        assertEquals(true, form.getApproval());
     }
     /*@AfterClass
     public static void close(){

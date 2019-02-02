@@ -194,6 +194,47 @@ public class DBSelect extends DatabaseAbstract {
         return list_of_ids;
         }
 
+    public Form getFormMinimal(int TTB_ID){
+        String selString = "SELECT * FROM FORM WHERE TTB_ID=?";
+        String wineString = "SELECT * FROM WINE WHERE TTB_ID=?";
+        Form form = new Form();
+        WineFormItems wine;
+        try {
+            PreparedStatement ps = connection.prepareStatement(selString);
+            ps.setInt(1, TTB_ID);
+            ResultSet rs = ps.executeQuery();
+            form.setAlcoholContent(rs.getFloat("Alcohol_Content"));
+            AlcoholType type;
+            if (rs.getInt("Alcohol_Type") == 1) {
+                type = AlcoholType.Wine;
+            } else if (rs.getInt("Alcohol_Type") == 2) {
+                type = AlcoholType.MaltBeverage;
+            } else {
+                type = AlcoholType.DistilledLiquor;
+            }
+            if(type == AlcoholType.Wine){
+                ps.close();
+                ps = connection.prepareStatement(wineString);
+                rs = ps.executeQuery();
+                wine = new WineFormItems();
+                wine.setpH(rs.getFloat("pH"));
+                wine.setVintageYear(rs.getInt("Vintage_Year"));
+                form.setWineFormItems(wine);
+            }
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return form;
+    }
+
+
+
+
+    /**
+     *  We will get back to this later... it's very important, but not very important right now.
+     * @param TTB_ID
+     * @return
+     */
     public Form getFormByTTB_ID(int TTB_ID){
         String selString = "SELECT * FROM FORM WHERE TTB_ID=?";
         String otherInfString = "SELECT * FROM OTHERINFO WHERE TTB_ID=?";
@@ -264,6 +305,17 @@ public class DBSelect extends DatabaseAbstract {
         }
         return form;
     }
+/*
+    public ArrayList<Address> getListAddress(int TTB_ID){
+        String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(addressString);
+        } catch (SQLException e ){
+            System.out.println(e.toString());
+        }
+    }
+*/
+
     //TODO SELECT BY TYPE
 
     public void selectFormsWithData(){
