@@ -1,6 +1,8 @@
 package DB;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class DBSelect extends DatabaseAbstract {
@@ -107,6 +109,29 @@ public class DBSelect extends DatabaseAbstract {
         }
     }
     //DONE AUTHENTICATE
+
+    /**
+     * Downloads the selected results in a file without limit to the number of results
+     * @param query The query to be downloaded without a fetch first in it
+     */
+    public boolean downloadResults(String query) {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+        String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY (?,?,?,?,?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(download);
+            ps.setString(1,query);
+            ps.setString(2,"TTBSearch" + dateFormat.format(date) + ".csv");
+            ps.setString(3,null);
+            ps.setString(4,null);
+            ps.setString(5,null);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }
+    }
 
     //TODO SELECT BY TYPE
 

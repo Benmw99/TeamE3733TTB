@@ -13,9 +13,12 @@ public class SelectTest {
     public static void setup() {
         DB.Database db = DB.Database.getInstance();
         db.tableBuilder.resetDB();
+        java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0");
         try {
             db.dbInsert.insertCompany(123, "Budweiser", "Buddy", "12345");
             db.dbInsert.insertAgent("Mark", 1263, "Agent_Mark", "PassWord");
+            db.dbInsert.insertForm("12112", "Buddy", "Budweiser", true, false, null, "abc@gmail.com",
+                    123, timestamp, "ABC", "12312124", 2);
         } catch (SQLException e){
             System.out.println("ERROR: TEST DB INIT FAILED.");
            System.out.println(e.toString());
@@ -35,6 +38,13 @@ public class SelectTest {
         assertTrue(db.dbSelect.AuthenticateAgent("Agent_Mark", "PassWord"));
         assertFalse(db.dbSelect.AuthenticateAgent("Agent_Mark", "WrongPass"));
         assertFalse(db.dbSelect.AuthenticateAgent("Agent_Mork", "PassWord"));
+    }
+
+    @Test
+    public void downloadResultsTest() {
+        DB.Database db = DB.Database.getInstance();
+        String query = "Select * FROM Form";
+        assertTrue(db.dbSelect.downloadResults(query));
     }
 
     /*@AfterClass

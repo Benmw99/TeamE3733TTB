@@ -143,7 +143,7 @@ public class DBInsert extends DatabaseAbstract {
                     String phone, int Alcohol_Type) throws SQLException {
         String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
                 " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type) " +
-                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //TODO MAKE REP ID AND FORMULA OPTIONAL
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, Serial_Number);
         statement.setString(2, Fanciful_Name);

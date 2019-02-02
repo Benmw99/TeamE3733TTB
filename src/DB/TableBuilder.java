@@ -135,6 +135,8 @@ public class TableBuilder extends DatabaseAbstract {
                 "TTB_ID BIGINT," +
                 "Grape_Varietals VARCHAR(256)," +
                 "Wine_Appellation VARCHAR(32), " +
+                "PH REAL, " +
+                "Vintage INT, " +
                 "Constraint Wine_PK Primary Key (TTB_ID), " +
                 "Constraint Wine_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
         sendStatement(buildString);
@@ -188,6 +190,7 @@ public class TableBuilder extends DatabaseAbstract {
                 "Applicant_Name VARCHAR(32)," +
                 "Phone VARCHAR(12)," +
                 "Alcohol_Type SMALLINT," +
+                "Formula BIGINT DEFAULT NULL," +
                 "Rep_ID VARCHAR(16) DEFAULT NULL," +
                 "Company_ID BIGINT," +
                 "Constraint Form_PK Primary Key (TTB_ID), " +
