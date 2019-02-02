@@ -17,6 +17,9 @@ import java.io.IOException;
 
 
 public class AgentController {
+    Entities.Agent currentUser = new Entities.Agent();
+
+
 
     //AgentSearch
     @FXML
@@ -421,12 +424,46 @@ public class AgentController {
 
     @FXML
     Button printAVLButton;
+    private Entities.Form currentForm;
+    private Entities.Agent currentAgent;
 
 
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
+        if(this.currentAgent.authenticate())
         pageSwitch(event, "WelcomePage.fxml", backButton);
     }
+    @FXML
+    public void agentViewForm(ActionEvent event) throws IOException {
+        //have to load selected form somehow
+        agent
+        pageSwitch(event, "AgentViewForm.fxml", backButton);
+    }
+    @FXML
+    public void rejectForm(ActionEvent event) throws IOException {
+        this.currentForm.reject(this.currentAgent.name);
+        pageSwitch(event, "AgentHome.fxml", backButton);
+    }
+    @FXML
+    public void approveForm(ActionEvent event) throws IOException {
+        this.currentForm.approve(this.currentAgent.name);
+        pageSwitch(event, "AgentHome.fxml", backButton);
+    }
+    /* not needed for it. 1
+    @FXML
+    public void approveFormConditions(ActionEvent event) throws IOException {
+        this.currentForm.approve(this.currentAgent, StringConditions);
+        pageSwitch(event, "AgentHome.fxml", backButton);
+    }
+    @FXML
+    public void rejectFormFeedback(ActionEvent event) throws IOException {
+        this.currentForm.approve(this.currentAgent, String feedback);
+        pageSwitch(event, "AgentHome.fxml", backButton);
+    }
+    */
+
+
+
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;

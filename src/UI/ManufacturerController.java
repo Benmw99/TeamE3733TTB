@@ -15,7 +15,8 @@ import java.io.IOException;
 
 
 public class ManufacturerController {
-
+    Entities.Form currentForm;
+    private int currentFormPage;
 
     //ManHome
     @FXML
@@ -285,6 +286,25 @@ public class ManufacturerController {
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", backButton);
+    }
+    ///manApp
+    @FXML
+    public void newApp(ActionEvent event) throws IOException {
+        this.currentForm = new Entities.Form();
+        pageSwitch(event, "ManApp1.fxml", backButton);
+    }
+    @FXML
+    public void appNext(ActionEvent event) throws IOException {
+
+        if(this.currentFormPage<4) this.currentFormPage++;
+        String page = "ManApp"+Integer.toString(this.currentFormPage)+".fxml";
+        pageSwitch(event, page, backButton);
+    }
+    @FXML
+    public void appBack(ActionEvent event) throws IOException {
+        if(this.currentFormPage>1) this.currentFormPage--;
+        String page = "ManApp"+Integer.toString(this.currentFormPage)+".fxml";
+        pageSwitch(event, page, backButton);
     }
 
 
