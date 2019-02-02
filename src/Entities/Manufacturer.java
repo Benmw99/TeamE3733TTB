@@ -2,24 +2,24 @@ package Entities;
 
 public class Manufacturer implements IUser {
 
-    private String manID;
+    public int manID;
     private String manName;
     private String login;
     private String password;
 
 
-    public Manufacturer(String manID, String manName, String login, String password) {
+    public Manufacturer(int manID, String manName, String login, String password) {
         this.manID = manID;
         this.manName = manName;
         this.login = login;
         this.password = password;
     }
 
-    public String getManID() {
+    public int getManID() {
         return manID;
     }
 
-    public void setManID(String manID) {
+    public void setManID(int manID) {
         this.manID = manID;
     }
 

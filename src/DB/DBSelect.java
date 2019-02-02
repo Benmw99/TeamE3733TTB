@@ -3,12 +3,21 @@ package DB;
 import java.sql.*;
 
 
-public class DBSelect extends Database {
+public class DBSelect extends DatabaseAbstract {
+    private static DBSelect dbSelect_instance = null;
+
 //TODO MAKE ALL SELECTS RETURN ENTITIES
-    public DBSelect(String path) {
+    private DBSelect(String path) {
         super(path);
     }
+    static DBSelect dbSelect_instance;
 
+    protected static DBSelect getInstance() {
+        if (dbSelect_instance == null) {
+            dbSelect_instance = new DBSelect("./ttb.db");
+        }
+        return dbSelect_instance;
+    }
     private ResultSet sendQuery(String queryString){
         ResultSet rs = null;
         try{
@@ -45,6 +54,21 @@ public class DBSelect extends Database {
     public ResultSet selectAllAddress() {
         String selectString = "SELECT ID, Street FROM ADDRESS";
         return sendQuery(selectString);
+    }
+    //Will return something else later
+    //To be used for displaying a companies submitted forms
+    public ResultSet selectByCompany(int companyID) {
+        //Serial number or TTB_ID?
+        String selectString = "SELECT TTB_ID, Date_Submitted, reviewDate where Company_ID = ?";
+        ResultSet rset = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(selectString);
+            statement.setInt(1, companyID);
+            rset = statement.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return rset;
     }
 
     public Boolean AuthenticateCompany(String login, String pass) {
@@ -90,6 +114,7 @@ public class DBSelect extends Database {
 // this will probably return Type Form
     }
     //TODO SELECT BY OWNER
+
 
     //TODO BIG OL' SELECT FUNCTION FOR FORMS
 }
