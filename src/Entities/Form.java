@@ -256,9 +256,11 @@ public class Form {
         return approval;
     }
 
-    public void setApproval(Approval approval) {
-        this.approval = approval;
-    }
+    public void setApproval(Approval approval) { this.approval = approval; }
+
+    public boolean getSource(){ return this.source;}
+
+    public void setSource(Boolean source) { this.source = source;}
 
     public float getAlcoholContent() {
         return alcoholContent;
