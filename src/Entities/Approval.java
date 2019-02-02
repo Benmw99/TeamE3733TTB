@@ -1,7 +1,8 @@
 package Entities;
 
-
+import java.lang.*;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 public class Approval {
 
@@ -58,5 +59,21 @@ public class Approval {
     public void setQualifications(String qualifications) {
         this.qualifications = qualifications;
     }
-}
+
+//methods n the lot
+
+    public void approve(String name, String qualifications){
+        agentApprovalName = name;
+        this.qualifications = qualifications;
+        this.approved = true;
+        Calendar Cal = Calendar.getInstance();
+        Cal.add(Calendar.YEAR, 2);
+        java.util.Date now = Cal.getTime();
+        java.sql.Timestamp currTime = new java.sql.Timestamp(now.getTime());
+
+
+
+        this.timestamp = currTime;
+
+    }}
 
