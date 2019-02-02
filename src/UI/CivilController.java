@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.SplitMenuButton;
 
 import java.io.IOException;
 
@@ -40,7 +41,10 @@ public class CivilController {
     TextField searchASField;
 
     @FXML
-    TextField alcTypeField;
+    TextField alcoholContentTextField;
+
+    @FXML
+    TextField brandNameTextField;
 
     @FXML
     TextField manField;
@@ -59,6 +63,9 @@ public class CivilController {
 
     @FXML
     Button printResults;
+
+    @FXML
+    SplitMenuButton alcoholTypeSplitMenu;
 
 
     public void advSearch(ActionEvent event) throws IOException {
