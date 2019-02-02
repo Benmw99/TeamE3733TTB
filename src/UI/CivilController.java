@@ -14,6 +14,7 @@ import javafx.scene.control.SplitMenuButton;
 import java.io.IOException;
 
 public class CivilController {
+    private Entities.SearchResult results;
 
     //not added because no button to go back from civilsearch to welcome screen
     /*
@@ -72,7 +73,7 @@ public class CivilController {
         pageSwitch(event,"CivilAdvSearch.fxml", advSearchButton);
     }
 
-    public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
+    private void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
         Stage stage;
         stage=(Stage) b.getScene().getWindow();
