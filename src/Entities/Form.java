@@ -2,6 +2,7 @@ package Entities;
 
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class Form {
 
@@ -10,13 +11,13 @@ public class Form {
     //                                  Instance Vars
 
     private String repID;
-    private String brewersPermit;
+    private ArrayList<String> brewersPermit;
     private boolean source;  //true for domestic, false for imported
     private String serialNumber;
     private AlcoholType alcoholType;
     public String brandName;
     private String fancifulName;
-    private Address address;
+    private ArrayList<Address> address;
     private Address mailingAddress;
     private String formula;
     private WineFormItems wineFormItems;
@@ -78,7 +79,7 @@ public class Form {
         this.alcoholContent = alcoholContent;
     }
 
-    public Form(String repID, String brewersPermit, boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, Address address, Address mailingAddress, String formula, WineFormItems wineFormItems, String phoneNumber, String email, String blownBrandedEmbossedInfo, Timestamp dateSubmitted, int ttbID, int companyID, Approval approval, float alcoholContent) {
+    public Form(String repID, ArrayList<String> brewersPermit, boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, ArrayList<Address> address, Address mailingAddress, String formula, WineFormItems wineFormItems, String phoneNumber, String email, String blownBrandedEmbossedInfo, Timestamp dateSubmitted, int ttbID, int companyID, Approval approval, float alcoholContent) {
         this.repID = repID;
         this.brewersPermit = brewersPermit;
         this.source = source;
@@ -111,11 +112,11 @@ public class Form {
         this.repID = repID;
     }
 
-    public String getBrewersPermit() {
+    public ArrayList<String> getBrewersPermit() {
         return brewersPermit;
     }
 
-    public void setBrewersPermit(String brewersPermit) {
+    public void setBrewersPermit(ArrayList<String> brewersPermit) {
         this.brewersPermit = brewersPermit;
     }
 
@@ -159,11 +160,11 @@ public class Form {
         this.fancifulName = fancifulName;
     }
 
-    public Address getAddress() {
+    public ArrayList<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(ArrayList<Address> address) {
         this.address = address;
     }
 
