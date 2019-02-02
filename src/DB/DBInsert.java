@@ -237,6 +237,7 @@ public class DBInsert extends DatabaseAbstract {
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
                 type_num);
-
     }
+
+
 }
