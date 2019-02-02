@@ -2,6 +2,7 @@ package Entities;
 
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class Form {
 
@@ -10,14 +11,15 @@ public class Form {
     //                                  Instance Vars
 
     private String repID;
-    private String brewersPermit;
+    private ArrayList<String> brewersPermit;
     private boolean source;  //true for domestic, false for imported
     private String serialNumber;
     private AlcoholType alcoholType;
     public String brandName;
     private String fancifulName;
-    private Address address;
+    private ArrayList<Address> address;
     private Address mailingAddress;
+    private String applicantName;
     private String formula;
     private WineFormItems wineFormItems;
     private String phoneNumber;
@@ -28,33 +30,12 @@ public class Form {
     private int ttbID;
     private int companyID;
     private Approval approval;
+    private float alcoholContent; //in percent
 
     //#######################################################################################################
     //                                  constructors
 
-    public Form(String repID, String brewersPermit, boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, Address address, Address mailingAddress, String formula, WineFormItems wineFormItems, String phoneNumber, String email, String blownBrandedEmbossedInfo, Timestamp dateSubmitted, int ttbID, int companyID, Approval approval) {
-        this.repID = repID;
-        this.brewersPermit = brewersPermit;
-        this.source = source;
-        this.serialNumber = serialNumber;
-        this.alcoholType = alcoholType;
-        this.brandName = brandName;
-        this.fancifulName = fancifulName;
-        this.address = address;
-        this.mailingAddress = mailingAddress;
-        this.formula = formula;
-        this.wineFormItems = wineFormItems;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.blownBrandedEmbossedInfo = blownBrandedEmbossedInfo;
-        this.dateSubmitted = dateSubmitted;
-        this.ttbID = ttbID;
-        this.companyID = companyID;
-        this.approval = approval;
-    }
-
-
-    public Form() {
+    public Form(){
         this.repID = null;
         this.brewersPermit = null;
         this.source = true;
@@ -64,6 +45,7 @@ public class Form {
         this.fancifulName = null;
         this.address = null;
         this.mailingAddress = null;
+        this.applicantName = null;
         this.formula = null;
         this.wineFormItems = null;
         this.phoneNumber = null;
@@ -73,8 +55,55 @@ public class Form {
         this.ttbID = 0;
         this.companyID = 0;
         this.approval = null;
+        this.alcoholContent = 0;
     }
 
+    //minimal application constructor
+    public Form(AlcoholType alcoholType, String brandName, int alcoholContent){
+        this.repID = null;
+        this.brewersPermit = null;
+        this.source = true;
+        this.serialNumber = null;
+        this.alcoholType = alcoholType;
+        this.brandName = brandName;
+        this.fancifulName = null;
+        this.address = null;
+        this.mailingAddress = null;
+        this.applicantName = null;
+        this.formula = null;
+        this.wineFormItems = null;
+        this.phoneNumber = null;
+        this.email = null;
+        this.blownBrandedEmbossedInfo = null;
+        this.dateSubmitted = null;
+        this.ttbID = 0;
+        this.companyID = 0;
+        this.approval = null;
+        this.alcoholContent = alcoholContent;
+    }
+
+    public Form(String repID, ArrayList<String> brewersPermit, boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, ArrayList<Address> address, Address mailingAddress, String applicantName,String formula, WineFormItems wineFormItems, String phoneNumber, String email, String blownBrandedEmbossedInfo, Timestamp dateSubmitted, int ttbID, int companyID, Approval approval, float alcoholContent) {
+        this.repID = repID;
+        this.brewersPermit = brewersPermit;
+        this.source = source;
+        this.serialNumber = serialNumber;
+        this.alcoholType = alcoholType;
+        this.brandName = brandName;
+        this.fancifulName = fancifulName;
+        this.address = address;
+        this.mailingAddress = mailingAddress;
+        this.applicantName = applicantName;
+        this.formula = formula;
+        this.wineFormItems = wineFormItems;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.blownBrandedEmbossedInfo = blownBrandedEmbossedInfo;
+        this.dateSubmitted = dateSubmitted;
+        this.ttbID = ttbID;
+        this.companyID = companyID;
+        this.approval = approval;
+        this.alcoholContent = alcoholContent;
+    }
 
     //#######################################################################################################
     //                                  getters and setters
@@ -87,11 +116,11 @@ public class Form {
         this.repID = repID;
     }
 
-    public String getBrewersPermit() {
+    public ArrayList<String> getBrewersPermit() {
         return brewersPermit;
     }
 
-    public void setBrewersPermit(String brewersPermit) {
+    public void setBrewersPermit(ArrayList<String> brewersPermit) {
         this.brewersPermit = brewersPermit;
     }
 
@@ -135,11 +164,11 @@ public class Form {
         this.fancifulName = fancifulName;
     }
 
-    public Address getAddress() {
+    public ArrayList<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(ArrayList<Address> address) {
         this.address = address;
     }
 
@@ -149,6 +178,14 @@ public class Form {
 
     public void setMailingAddress(Address mailingAddress) {
         this.mailingAddress = mailingAddress;
+    }
+
+    public String getApplicantName() {
+        return applicantName;
+    }
+
+    public void setApplicantName(String applicantName) {
+        this.applicantName = applicantName;
     }
 
     public String getFormula() {
@@ -219,8 +256,18 @@ public class Form {
         return approval;
     }
 
-    public void setApproval(Approval approval) {
-        this.approval = approval;
+    public void setApproval(Approval approval) { this.approval = approval; }
+
+    public boolean getSource(){ return this.source;}
+
+    public void setSource(Boolean source) { this.source = source;}
+
+    public float getAlcoholContent() {
+        return alcoholContent;
+    }
+
+    public void setAlcoholContent(float alcoholContent) {
+        this.alcoholContent = alcoholContent;
     }
 
 

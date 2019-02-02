@@ -1,7 +1,12 @@
 package DB;
 
+import Entities.AlcoholType;
+import Entities.Form;
+import Entities.Manufacturer;
+
 import java.io.FileInputStream;
 import java.sql.*;
+import java.time.Instant;
 
 public class DBInsert extends DatabaseAbstract {
     private static DBInsert dbInsert_instance = null;
@@ -10,7 +15,7 @@ public class DBInsert extends DatabaseAbstract {
         super(path);
     }
 
-    protected static DBInsert getInstance() {
+    static DBInsert getInstance() {
         if (dbInsert_instance == null) {
             dbInsert_instance = new DBInsert("./ttb.db");
         }
@@ -143,7 +148,7 @@ public class DBInsert extends DatabaseAbstract {
                     String phone, int Alcohol_Type) throws SQLException {
         String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
                 " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type) " +
-                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //TODO MAKE REP ID AND FORMULA OPTIONAL
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, Serial_Number);
         statement.setString(2, Fanciful_Name);
@@ -210,4 +215,29 @@ public class DBInsert extends DatabaseAbstract {
         statement.execute();
     }
     //TODO APPROVE FORM --> Make UPDATE
+
+    public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{
+        int type_num = 0;
+        if(to_insert.getAlcoholType() == AlcoholType.Wine){
+            type_num = 1;
+        } else if (to_insert.getAlcoholType() == AlcoholType.MaltBeverage){
+            type_num = 2;
+        } else {
+            type_num = 3;
+        }
+        insertForm(null, //TODO SERIAL NUMBER
+                to_insert.getFancifulName(),
+                to_insert.getBrandName(),
+                to_insert.getSource(),
+                to_insert.getApproval() != null,
+                to_insert.getRepID(),
+                to_insert.getEmail(),
+                inserting.manID,
+                Timestamp.from(Instant.now()),
+                to_insert.getApplicantName(),
+                to_insert.getPhoneNumber(),
+                type_num);
+    }
+
+
 }

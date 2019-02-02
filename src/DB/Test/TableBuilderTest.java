@@ -66,11 +66,10 @@ public class TableBuilderTest {
         assertEquals("100 Road Road,200 Street Street,", street);
     }
 
-
-    @AfterClass
+    /*@AfterClass
     public static void close() {
         try {
             DriverManager.getConnection("jdbc:derby:;shutdown=true");
         } catch (SQLException e) {}
-    }
+    }*/
 }

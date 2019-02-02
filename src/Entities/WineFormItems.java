@@ -13,6 +13,10 @@ public class WineFormItems {
         this.appellation = appellation;
     }
 
+    public WineFormItems(){
+
+    }
+
     public int getVintageYear() {
         return vintageYear;
     }
