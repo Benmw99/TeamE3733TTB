@@ -11,7 +11,7 @@ public class DBSelect extends DatabaseAbstract {
         super(path);
     }
 
-    public static DBSelect getInstance() {
+    protected static DBSelect getInstance() {
         if (dbSelect_instance == null) {
             dbSelect_instance = new DBSelect("./ttb.db");
         }

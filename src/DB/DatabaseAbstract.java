@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public abstract class DatabaseAbstract {
     Connection connection;
 
-    public DatabaseAbstract(String path){
+    protected DatabaseAbstract(String path){
         try {
             String driver = "org.apache.derby.jdbc.EmbeddedDriver";
             Class.forName(driver).newInstance();

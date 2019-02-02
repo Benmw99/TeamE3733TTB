@@ -11,7 +11,7 @@ public class TableBuilder extends DatabaseAbstract {
        super(path);
     }
 
-    public static TableBuilder getInstance() {
+    protected static TableBuilder getInstance() {
         if (tableBuilder_instance == null) {
             tableBuilder_instance = new TableBuilder("./ttb.db");
         }

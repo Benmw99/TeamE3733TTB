@@ -1,6 +1,5 @@
 package DB.Test;
 
-import DB.DBInsert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.AfterClass;
@@ -13,13 +12,12 @@ public class InsertTest {
 
     @BeforeClass
     public static void setup() {
-        DB.TableBuilder init = DB.TableBuilder.getInstance();
-        init.resetDB();
-        DB.DBInsert insert = DB.DBInsert.getInstance();
+        DB.Database db = DB.Database.getInstance();
+        db.tableBuilder.resetDB();
         java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0");
         try {
-            insert.insertCompany(12345, "Budweiser", "test123", "qwerty");
-            insert.insertForm("12112", "Buddy", "Budweiser", true, false, null, "abc@gmail.com",
+            db.dbInsert.insertCompany(12345, "Budweiser", "test123", "qwerty");
+            db.dbInsert.insertForm("12112", "Buddy", "Budweiser", true, false, null, "abc@gmail.com",
                     12345, timestamp, "ABC", "12312124", 2);
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -28,13 +26,15 @@ public class InsertTest {
 
     @Test
     public void checkNullForm() {
-        DB.DBSelect sel = DB.DBSelect.getInstance();
+        DB.Database db = DB.Database.getInstance();
         try {
-            assertTrue(sel.selectAllForms().getFetchSize() > 0);
+            assertTrue(db.dbSelect.selectAllForms().getFetchSize() > 0);
         } catch(SQLException e){
             System.out.println(e.toString());
         }
     }
+
+
     @AfterClass
     public static void close(){
         try {

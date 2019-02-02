@@ -1,9 +1,9 @@
 package DB.Test;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Before;
 import org.junit.Test;
 import java.sql.*;
 import static org.junit.Assert.*;
@@ -11,15 +11,14 @@ import static org.junit.Assert.*;
 public class TableBuilderTest {
     @BeforeClass
     public static void setup() {
-        DB.TableBuilder init = DB.TableBuilder.getInstance();
-        init.resetDB();
-        DB.DBInsert insert = DB.DBInsert.getInstance();
+        DB.Database db = DB.Database.getInstance();
+        db.tableBuilder.resetDB();
         java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0");
         try {
-            insert.insertCompany(12345, "Budweiser", "test123", "qwerty");
-            insert.insertForm("123", "Bud-lite", "Bud", true, false, null, "123@gmail.com", 12345, timestamp, "John", "7817817811", 2);
-            insert.insertAddress("12345", true, "Worcester", "MA", "100 Road Road", 1);
-            insert.insertAddress("67890", false, "Acton", "MA", "200 Street Street", 1);
+            db.dbInsert.insertCompany(12345, "Budweiser", "test123", "qwerty");
+            db.dbInsert.insertForm("123", "Bud-lite", "Bud", true, false, null, "123@gmail.com", 12345, timestamp, "John", "7817817811", 2);
+            db.dbInsert.insertAddress("12345", true, "Worcester", "MA", "100 Road Road", 1);
+            db.dbInsert.insertAddress("67890", false, "Acton", "MA", "200 Street Street", 1);
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
@@ -27,8 +26,8 @@ public class TableBuilderTest {
 
     @Test
     public void selectAllCompany() {
-        DB.DBSelect selection = DB.DBSelect.getInstance();
-        ResultSet rset = selection.selectAllCompany();
+        DB.Database db = DB.Database.getInstance();
+        ResultSet rset = db.dbSelect.selectAllCompany();
         int compID = 0;
         String compName = "";
         String loginName = "";
@@ -51,8 +50,8 @@ public class TableBuilderTest {
 
     @Test
     public void selectAllAddress() {
-        DB.DBSelect selection = DB.DBSelect.getInstance();
-        ResultSet rset = selection.selectAllAddress();
+        DB.Database db = DB.Database.getInstance();
+        ResultSet rset = db.dbSelect.selectAllAddress();
         String id = "";
         String street = "";
         try {
@@ -66,6 +65,7 @@ public class TableBuilderTest {
         assertEquals("1,2,", id);
         assertEquals("100 Road Road,200 Street Street,", street);
     }
+
 
     @AfterClass
     public static void close() {

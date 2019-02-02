@@ -10,7 +10,7 @@ public class DBInsert extends DatabaseAbstract {
         super(path);
     }
 
-    public static DBInsert getInstance() {
+    protected static DBInsert getInstance() {
         if (dbInsert_instance == null) {
             dbInsert_instance = new DBInsert("./ttb.db");
         }
