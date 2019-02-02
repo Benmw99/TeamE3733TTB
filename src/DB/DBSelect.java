@@ -194,6 +194,11 @@ public class DBSelect extends DatabaseAbstract {
         return list_of_ids;
         }
 
+    /**
+     * Retrieves the form according to the minimal Application
+     * @param TTB_ID The TTB_ID of the form to retrieve
+     * @return
+     */
     public Form getFormMinimal(int TTB_ID){
         String selString = "SELECT * FROM FORM WHERE TTB_ID=?";
         String wineString = "SELECT * FROM WINE WHERE TTB_ID=?";
@@ -226,8 +231,6 @@ public class DBSelect extends DatabaseAbstract {
         }
         return form;
     }
-
-
 
 
     /**
