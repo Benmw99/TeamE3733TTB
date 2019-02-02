@@ -2,7 +2,7 @@ package DB;
 
 import Entities.SearchResult;
 
-import Entities.Agent;
+import Entities.*;
 import Entities.AlcoholType;
 import Entities.Form;
 import Entities.Manufacturer;
@@ -152,8 +152,6 @@ public class DBSelect extends DatabaseAbstract {
     public Entities.SearchResult searchBy(AdvancedSearch as) {
         SearchResult result = new SearchResult();
         String baseString = "SELECT ABV, Brand_Name, Alcohol_Type FROM Form";
-        if ()
-
         return result;
     }
 
@@ -200,7 +198,8 @@ public class DBSelect extends DatabaseAbstract {
         String otherInfString = "SELECT * FROM OTHERINFO WHERE TTB_ID=?";
         String brewersPermit = "SELECT * FROM BREWERSPERMIT WHERE TTB_ID=?";
         String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
-        List<String> list_permits = new ArrayList<String>();
+        ArrayList<String> list_permits = new ArrayList<String>();
+        ArrayList<Address> addresses = new ArrayList<Address>();
         Form form = new Form();
         //TODO Communicate with Nick about addresses.
         try {
@@ -215,7 +214,7 @@ public class DBSelect extends DatabaseAbstract {
             form.setTtbID(TTB_ID);
             form.setEmail(rs.getString("Email"));
             form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
-            form.setApplicantName(rs.getString("Applicant_Name"));
+            form.setName(rs.getString("Applicant_Name"));
             form.setPhoneNum(rs.getString("Phone"));
             AlcoholType type;
             if (rs.getInt("Alcohol_Type") == 1) {
@@ -232,7 +231,7 @@ public class DBSelect extends DatabaseAbstract {
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
             rs.first();
-            form.setOtherInfo(rs.getString("Text"));
+            form.setBlownBrandedEmbossedInfo(rs.getString("Text"));
             ps.close();
             /* BREWERS PERMIT BLOCK */
             ps = connection.prepareStatement(brewersPermit);
@@ -241,15 +240,23 @@ public class DBSelect extends DatabaseAbstract {
             while (rs.next()) {
                 list_permits.add(rs.getString("Brewers_No"));
             }
-            form.setBrewersPermit(list_permits.get(0)); //TODO MAKE THIS TAKE A WHOLE LIST
+            form.setBrewersPermit(list_permits);
             ps.close();
             /* Address Block */
             ps = connection.prepareStatement(addressString);
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
             while(rs.next()){
-                // This doesn't do anything just yet
+                if(rs.getBoolean("isMailing")){
+                   Address mailing = new Address(rs.getString("City"), rs.getString("State"),
+                           rs.getString("Zip_Code"), rs.getString("Street"), "NAME");
+                   //TODO RESOLVE PROBLEMS WITH NAME
+                } else {
+                    addresses.add(new Address(rs.getString("City"), rs.getString("State"),
+                            rs.getString("Zip_Code"), rs.getString("Street"), "NAME"));
+                }
             }
+            form.setAddress(addresses);
             ps.close();
         }catch (SQLException e){
             System.out.println(e.toString());
