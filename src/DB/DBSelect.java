@@ -1,5 +1,7 @@
 package DB;
 
+import Entities.SearchResult;
+
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -83,6 +85,11 @@ public class DBSelect extends DatabaseAbstract {
         return doAuthenticate(login, pass, selectString);
     }
 
+    public Boolean AuthenticateRep(String login, String pass) {
+        String selectString = "SELECT COUNT(*) FROM REPS WHERE Login_Name =? AND Password =? ";
+        return doAuthenticate(login, pass, selectString);
+    }
+
     /**
      * A Helper function for authentication
      * @param login The login name
@@ -131,6 +138,16 @@ public class DBSelect extends DatabaseAbstract {
             System.out.println(e.toString());
             return false;
         }
+    }
+
+    //Figure out what this is passed
+    //TODO FINISH THIS
+    public Entities.SearchResult searchBy() {
+        SearchResult result = new SearchResult();
+        String baseString = "SELECT * FROM Form";
+
+
+        return result;
     }
 
     //TODO SELECT BY TYPE

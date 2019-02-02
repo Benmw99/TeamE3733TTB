@@ -158,7 +158,7 @@ public class TableBuilder extends DatabaseAbstract {
                 "TTB_ID BIGINT," +
                 "Date TIMESTAMP," +
                 "Expiration TIMESTAMP," +
-                "Qualification VARCHAR(256), " +
+                "Qualification VARCHAR(256) DEFAULT NULL, " +
                 "Constraint Approval_PK Primary Key (TTB_ID), " +
                 "Constraint Approval_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
         sendStatement(buildString);
