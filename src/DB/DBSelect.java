@@ -10,6 +10,7 @@ public class DBSelect extends DatabaseAbstract {
     private DBSelect(String path) {
         super(path);
     }
+    static DBSelect dbSelect_instance;
 
     protected static DBSelect getInstance() {
         if (dbSelect_instance == null) {
@@ -17,7 +18,6 @@ public class DBSelect extends DatabaseAbstract {
         }
         return dbSelect_instance;
     }
-
     private ResultSet sendQuery(String queryString){
         ResultSet rs = null;
         try{

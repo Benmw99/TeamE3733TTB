@@ -2,7 +2,7 @@ package Entities;
 
 public class Manufacturer implements IUser {
 
-    String manID;
+    public int manID;
     String manName;
 
     @Override
