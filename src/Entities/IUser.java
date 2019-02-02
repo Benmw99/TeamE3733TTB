@@ -1,12 +1,18 @@
 package Entities;
 
+
 public interface IUser {
 
-    String login = null;
-    String password = null;
+    String getLogin();
+    void setLogin(String login);
+    String getPassword();
+    void setPassword(String password);
 
-    void login();
-    //This should be of type SearchEngine, but that doesn't exist yet
-    String search();
+    boolean authenticate();
+    IUser loadUser();
+
+
+    //needs additional parameters relating to size of returned search
+    SearchResult search();
 
 }
