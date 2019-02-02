@@ -18,6 +18,9 @@ public class SelectTest {
         try {
             db.dbInsert.insertCompany(123, "Budweiser", "Buddy", "12345");
             db.dbInsert.insertAgent("Mark", 1263, "Agent_Mark", "PassWord");
+            db.dbInsert.insertForm("123YY", "ABC", "123", true, true, null,
+                    "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2);
+        } catch (SQLException e) {
             db.dbInsert.insertForm("12112", "Buddy", "Budweiser", true, false, null, "abc@gmail.com",
                     123, timestamp, "ABC", "12312124", 2);
         } catch (SQLException e){
