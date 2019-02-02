@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class SelectTest {
     @BeforeClass
-    public static void create(){
+    public static void setup() {
         DB.Database db = DB.Database.getInstance();
         db.tableBuilder.resetDB();
         try {
@@ -37,10 +37,10 @@ public class SelectTest {
         assertFalse(db.dbSelect.AuthenticateAgent("Agent_Mork", "PassWord"));
     }
 
-    @AfterClass
+    /*@AfterClass
     public static void close(){
         try {
             DriverManager.getConnection("jdbc:derby:;shutdown=true");
         } catch (SQLException e) {}
-    }
+    }*/
 }

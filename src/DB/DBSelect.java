@@ -10,21 +10,21 @@ public class DBSelect extends DatabaseAbstract {
     private DBSelect(String path) {
         super(path);
     }
-    static DBSelect dbSelect_instance;
 
-    protected static DBSelect getInstance() {
+    static DBSelect getInstance() {
         if (dbSelect_instance == null) {
             dbSelect_instance = new DBSelect("./ttb.db");
         }
         return dbSelect_instance;
     }
+
     private ResultSet sendQuery(String queryString){
         ResultSet rs = null;
         try{
             PreparedStatement ps = connection.prepareStatement(queryString);
             rs = ps.executeQuery();
         } catch (SQLException e){
-
+            System.out.println(e.toString());
         }
         return rs;
     }
@@ -59,7 +59,7 @@ public class DBSelect extends DatabaseAbstract {
     //To be used for displaying a companies submitted forms
     public ResultSet selectByCompany(int companyID) {
         //Serial number or TTB_ID?
-        String selectString = "SELECT TTB_ID, Date_Submitted, reviewDate where Company_ID = ?";
+        String selectString = "SELECT TTB_ID, Date_Submitted, reviewDate FROM COMPANY WHERE Company_ID = ?";
         ResultSet rset = null;
         try {
             PreparedStatement statement = connection.prepareStatement(selectString);

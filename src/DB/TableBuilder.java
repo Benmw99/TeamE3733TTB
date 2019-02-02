@@ -11,7 +11,7 @@ public class TableBuilder extends DatabaseAbstract {
        super(path);
     }
 
-    protected static TableBuilder getInstance() {
+    static TableBuilder getInstance() {
         if (tableBuilder_instance == null) {
             tableBuilder_instance = new TableBuilder("./ttb.db");
         }
@@ -23,67 +23,67 @@ public class TableBuilder extends DatabaseAbstract {
             String dropString = "Drop table Address";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Wine";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Approval";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table BrewersPermit";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table OtherInfo";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Label";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Form";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Agents";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Reps";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Company";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop Sequence Address_ID RESTRICT ";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop Sequence Label_ID RESTRICT ";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop Sequence Form_ID RESTRICT ";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         buildAgents();
         buildReps();
         buildCompany();
