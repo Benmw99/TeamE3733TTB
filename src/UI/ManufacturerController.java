@@ -23,6 +23,9 @@ public class ManufacturerController {
     SplitMenuButton menuSplitButton;
 
     @FXML
+    SplitMenuButton alcoholTypeSplitMenu;
+
+    @FXML
     TextField searchMHField;
 
     @FXML
@@ -60,7 +63,7 @@ public class ManufacturerController {
     Button faqButton;
 
     @FXML
-    Button searchButton;
+    Button search1Button;
 
     //ManProfile
     @FXML
@@ -73,8 +76,6 @@ public class ManufacturerController {
     @FXML
     TextField searchMSField;
 
-    @FXML
-    TextField alcTypeField;
 
     @FXML
     TextField manField;
@@ -134,6 +135,12 @@ public class ManufacturerController {
 
     @FXML
     TextField typeField;
+
+    @FXML
+    TextField alcoholContentTextField;
+
+    @FXML
+    TextField brandNameTextField;
 
     @FXML
     TextField brandField;
@@ -281,6 +288,9 @@ public class ManufacturerController {
 
     @FXML
     Button submitButton;
+
+    @FXML
+    Button manRegisterButton;
 
 
     @FXML

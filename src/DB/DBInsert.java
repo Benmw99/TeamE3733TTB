@@ -3,31 +3,18 @@ package DB;
 import java.io.FileInputStream;
 import java.sql.*;
 
-public class DBInsert {
-    private Connection connection;
+public class DBInsert extends DatabaseAbstract {
+    private static DBInsert dbInsert_instance = null;
 
-    public DBInsert(String path ) {
-        try {
-            String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-            Class.forName(driver).newInstance();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        try {
-            connection = DriverManager.getConnection("jdbc:derby:" + path + ";create=true");
-        } catch (SQLException e){
-            System.out.println(e.toString());
-        }
+    private DBInsert(String path ) {
+        super(path);
     }
 
-    //TODO remove this possibly, if unnecessary
-    private void sendStatement(String buildString) {
-        try {
-            PreparedStatement ps =  connection.prepareStatement(buildString);
-            ps.execute();
-        } catch (SQLException e){
-            System.out.println(e.toString());
+    protected static DBInsert getInstance() {
+        if (dbInsert_instance == null) {
+            dbInsert_instance = new DBInsert("./ttb.db");
         }
+        return dbInsert_instance;
     }
 
     /**
@@ -108,7 +95,7 @@ public class DBInsert {
      * @throws SQLException
      */
     public void insertAgent(String name, int ID, String Login_Name, String Password) throws SQLException{
-        String insertString = "INSERT INTO AGENTS (Name, Agent_ID, Login_Name, Password) VALUES (?, ?, ?, ?)";
+        String insertString = "INSERT INTO AGENTS (Agent_Name, Agent_ID, Login_Name, Password) VALUES (?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, name);
         statement.setInt(2, ID);
@@ -173,44 +160,10 @@ public class DBInsert {
         statement.execute();
     }
 
-    /**
-     *
-     * @param Serial_Number
-     * @param Fanciful_Name
-     * @param Brand_Name
-     * @param Source
-     * @param Approve
-     * @param email
-     * @param Company_ID
-     * @param submitted
-     * @param name
-     * @param phone
-     * @param Alcohol_Type
-     * @throws SQLException
-     */
-    public void insertFormNoRep(String Serial_Number, String Fanciful_Name, String Brand_Name, Boolean Source,
-                           Boolean Approve, String email, int Company_ID, Timestamp submitted, String name,
-                           String phone, int Alcohol_Type) throws SQLException {
-        String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
-                " Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type) " +
-                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement statement = connection.prepareStatement(insertString);
-        statement.setString(1, Serial_Number);
-        statement.setString(2, Fanciful_Name);
-        statement.setString(3, Brand_Name);
-        statement.setBoolean(4, Source);
-        statement.setBoolean(5, Approve);
-        statement.setString(6, email);
-        statement.setInt(7, Company_ID);
-        statement.setTimestamp(8, submitted);
-        statement.setString(9, name);
-        statement.setString(10, phone);
-        statement.setInt(11, Alcohol_Type);
-        statement.execute();
-    }
+
 
     /**
-     * Inserts a representative into the Database.
+     * Inserts a representative into the database.
      * @param Rep_ID The Rep_ID for the new representative
      * @throws SQLException
      */
@@ -256,4 +209,5 @@ public class DBInsert {
         statement.setString(5, qualification);
         statement.execute();
     }
+    //TODO APPROVE FORM --> Make UPDATE
 }

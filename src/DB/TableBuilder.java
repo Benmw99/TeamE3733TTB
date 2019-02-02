@@ -3,22 +3,19 @@ package DB;
 import java.sql.*;
 
 
-public class TableBuilder {
-    private Connection connection;
+public class TableBuilder extends DatabaseAbstract {
+    private static TableBuilder tableBuilder_instance = null;
     private static final String IMAGESIZE = "1M";
 
-    public TableBuilder(String path) {
-        try {
-            String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-            Class.forName(driver).newInstance();
-        } catch (Exception e) {
-            System.out.println(e.toString());
+    private TableBuilder(String path) {
+       super(path);
+    }
+
+    protected static TableBuilder getInstance() {
+        if (tableBuilder_instance == null) {
+            tableBuilder_instance = new TableBuilder("./ttb.db");
         }
-        try {
-            connection = DriverManager.getConnection("jdbc:derby:" + path + ";create=true");
-        } catch (SQLException e){
-            System.out.println(e.toString());
-        }
+        return tableBuilder_instance;
     }
 
     public void resetDB() {
@@ -191,8 +188,8 @@ public class TableBuilder {
                 "Applicant_Name VARCHAR(32)," +
                 "Phone VARCHAR(12)," +
                 "Alcohol_Type SMALLINT," +
-                "Rep_ID VARCHAR(16) DEFAULT NULL," + //Not sure both of these should be null
-                "Company_ID BIGINT DEFAULT NULL," +
+                "Rep_ID VARCHAR(16) DEFAULT NULL," +
+                "Company_ID BIGINT," +
                 "Constraint Form_PK Primary Key (TTB_ID), " +
                 "Constraint Form_FK_Rep Foreign Key (Rep_ID) References Reps(Rep_ID), " +
                 "Constraint Form_FK_Company Foreign Key (Company_ID) References Company(Company_ID))";
