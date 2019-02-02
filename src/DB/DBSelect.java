@@ -115,6 +115,5 @@ public class DBSelect extends DatabaseAbstract {
     }
     //TODO SELECT BY OWNER
 
-
     //TODO BIG OL' SELECT FUNCTION FOR FORMS
 }
