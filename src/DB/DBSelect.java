@@ -141,7 +141,7 @@ public class DBSelect extends Database {
             PreparedStatement ps = connection.prepareStatement(selString);
             ps.setInt(1, TTB_ID);
             ResultSet rs = ps.executeQuery();
-            rs.first();
+            rs.next();
             form.setFancifulName(rs.getString("Fanciful_Name"));
             form.setBrandName(rs.getString("Brand_Name"));
             form.setSource(rs.getBoolean("Source"));

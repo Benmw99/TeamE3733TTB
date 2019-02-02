@@ -1,7 +1,12 @@
 package DB;
 
+import Entities.AlcoholType;
+import Entities.Form;
+import Entities.Manufacturer;
+
 import java.io.FileInputStream;
 import java.sql.*;
+import java.time.Instant;
 
 public class DBInsert extends DatabaseAbstract {
     private static DBInsert dbInsert_instance = null;
@@ -210,4 +215,28 @@ public class DBInsert extends DatabaseAbstract {
         statement.execute();
     }
     //TODO APPROVE FORM --> Make UPDATE
+
+    public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{
+        int type_num = 0;
+        if(to_insert.getAlcoholType() == AlcoholType.Wine){
+            type_num = 1;
+        } else if (to_insert.getAlcoholType() == AlcoholType.MaltBeverage){
+            type_num = 2;
+        } else {
+            type_num = 3;
+        }
+        insertForm(null, //TODO SERIAL NUMBER
+                to_insert.getFancifulName(),
+                to_insert.getBrandName(),
+                to_insert.getSource(),
+                to_insert.getApproval() != null,
+                to_insert.getRepID(),
+                to_insert.getEmail(),
+                inserting.manID,
+                Timestamp.from(Instant.now()),
+                to_insert.getApplicantName(),
+                to_insert.getPhoneNum(),
+                type_num);
+
+    }
 }

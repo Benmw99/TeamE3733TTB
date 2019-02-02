@@ -1,5 +1,6 @@
 package DB.Test;
 import DB.*;
+import Entities.Form;
 import Entities.Manufacturer;
 import org.junit.After;
 import org.junit.Before;
@@ -57,8 +58,14 @@ public class SelectTest {
         assertTrue(list.get(0) == 1);
         List<Integer> list2 = sel.getTTB_IDbyManufactuer(man2);
         assertTrue(list2.size() == 0);
-
     }
+    @Test
+    public void retrieveFormByIDTest(){
+        Form form = sel.getFormByTTB_ID(1);
+        assertEquals( "Budweiser", form.brandName);
+        assertEquals("Buddy", form.getFancifulName());
+    }
+
     @After
     public void close(){
         sel.close();
