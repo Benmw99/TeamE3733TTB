@@ -3,11 +3,19 @@ package DB;
 import java.sql.*;
 
 
-public class TableBuilder extends Database {
+public class TableBuilder extends DatabaseAbstract {
+    private static TableBuilder tableBuilder_instance = null;
     private static final String IMAGESIZE = "1M";
 
-    public TableBuilder(String path) {
+    private TableBuilder(String path) {
        super(path);
+    }
+
+    public static TableBuilder getInstance() {
+        if (tableBuilder_instance == null) {
+            tableBuilder_instance = new TableBuilder("./ttb.db");
+        }
+        return tableBuilder_instance;
     }
 
     public void resetDB() {

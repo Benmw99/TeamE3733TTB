@@ -3,10 +3,19 @@ package DB;
 import java.sql.*;
 
 
-public class DBSelect extends Database {
+public class DBSelect extends DatabaseAbstract {
+    private static DBSelect dbSelect_instance = null;
+
 //TODO MAKE ALL SELECTS RETURN ENTITIES
-    public DBSelect(String path) {
+    private DBSelect(String path) {
         super(path);
+    }
+
+    public static DBSelect getInstance() {
+        if (dbSelect_instance == null) {
+            dbSelect_instance = new DBSelect("./ttb.db");
+        }
+        return dbSelect_instance;
     }
 
     private ResultSet sendQuery(String queryString){

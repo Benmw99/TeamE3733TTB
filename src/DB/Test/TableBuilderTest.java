@@ -1,17 +1,19 @@
 package DB.Test;
 
 import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Before;
 import org.junit.Test;
 import java.sql.*;
 import static org.junit.Assert.*;
 
 public class TableBuilderTest {
-    @Before
-    public void setup() {
-        DB.TableBuilder init = new DB.TableBuilder("./ttb.db");
+    @BeforeClass
+    public static void setup() {
+        DB.TableBuilder init = DB.TableBuilder.getInstance();
         init.resetDB();
-        DB.DBInsert insert = new DB.DBInsert("./ttb.db");
+        DB.DBInsert insert = DB.DBInsert.getInstance();
         java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0");
         try {
             insert.insertCompany(12345, "Budweiser", "test123", "qwerty");
@@ -25,7 +27,7 @@ public class TableBuilderTest {
 
     @Test
     public void selectAllCompany() {
-        DB.DBSelect selection = new DB.DBSelect("./ttb.db");
+        DB.DBSelect selection = DB.DBSelect.getInstance();
         ResultSet rset = selection.selectAllCompany();
         int compID = 0;
         String compName = "";
@@ -49,7 +51,7 @@ public class TableBuilderTest {
 
     @Test
     public void selectAllAddress() {
-        DB.DBSelect selection = new DB.DBSelect("./ttb.db");
+        DB.DBSelect selection = DB.DBSelect.getInstance();
         ResultSet rset = selection.selectAllAddress();
         String id = "";
         String street = "";
@@ -65,8 +67,8 @@ public class TableBuilderTest {
         assertEquals("100 Road Road,200 Street Street,", street);
     }
 
-    @After
-    public void close() {
+    @AfterClass
+    public static void close() {
         try {
             DriverManager.getConnection("jdbc:derby:;shutdown=true");
         } catch (SQLException e) {}

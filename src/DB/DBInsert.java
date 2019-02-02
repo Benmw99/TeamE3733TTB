@@ -3,10 +3,18 @@ package DB;
 import java.io.FileInputStream;
 import java.sql.*;
 
-public class DBInsert extends Database {
+public class DBInsert extends DatabaseAbstract {
+    private static DBInsert dbInsert_instance = null;
 
-    public DBInsert(String path ) {
+    private DBInsert(String path ) {
         super(path);
+    }
+
+    public static DBInsert getInstance() {
+        if (dbInsert_instance == null) {
+            dbInsert_instance = new DBInsert("./ttb.db");
+        }
+        return dbInsert_instance;
     }
 
     /**
@@ -155,7 +163,7 @@ public class DBInsert extends Database {
 
 
     /**
-     * Inserts a representative into the Database.
+     * Inserts a representative into the database.
      * @param Rep_ID The Rep_ID for the new representative
      * @throws SQLException
      */
