@@ -28,33 +28,12 @@ public class Form {
     private int ttbID;
     private int companyID;
     private Approval approval;
+    private float alcoholContent; //in percent
 
     //#######################################################################################################
     //                                  constructors
 
-    public Form(String repID, String brewersPermit, boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, Address address, Address mailingAddress, String formula, WineFormItems wineFormItems, String phoneNumber, String email, String blownBrandedEmbossedInfo, Timestamp dateSubmitted, int ttbID, int companyID, Approval approval) {
-        this.repID = repID;
-        this.brewersPermit = brewersPermit;
-        this.source = source;
-        this.serialNumber = serialNumber;
-        this.alcoholType = alcoholType;
-        this.brandName = brandName;
-        this.fancifulName = fancifulName;
-        this.address = address;
-        this.mailingAddress = mailingAddress;
-        this.formula = formula;
-        this.wineFormItems = wineFormItems;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.blownBrandedEmbossedInfo = blownBrandedEmbossedInfo;
-        this.dateSubmitted = dateSubmitted;
-        this.ttbID = ttbID;
-        this.companyID = companyID;
-        this.approval = approval;
-    }
-
-
-    public Form() {
+    public Form(){
         this.repID = null;
         this.brewersPermit = null;
         this.source = true;
@@ -73,8 +52,53 @@ public class Form {
         this.ttbID = 0;
         this.companyID = 0;
         this.approval = null;
+        this.alcoholContent = 0;
     }
 
+    //minimal application constructor
+    public Form(AlcoholType alcoholType, String brandName, int alcoholContent){
+        this.repID = null;
+        this.brewersPermit = null;
+        this.source = true;
+        this.serialNumber = null;
+        this.alcoholType = alcoholType;
+        this.brandName = brandName;
+        this.fancifulName = null;
+        this.address = null;
+        this.mailingAddress = null;
+        this.formula = null;
+        this.wineFormItems = null;
+        this.phoneNumber = null;
+        this.email = null;
+        this.blownBrandedEmbossedInfo = null;
+        this.dateSubmitted = null;
+        this.ttbID = 0;
+        this.companyID = 0;
+        this.approval = null;
+        this.alcoholContent = alcoholContent;
+    }
+
+    public Form(String repID, String brewersPermit, boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, Address address, Address mailingAddress, String formula, WineFormItems wineFormItems, String phoneNumber, String email, String blownBrandedEmbossedInfo, Timestamp dateSubmitted, int ttbID, int companyID, Approval approval, float alcoholContent) {
+        this.repID = repID;
+        this.brewersPermit = brewersPermit;
+        this.source = source;
+        this.serialNumber = serialNumber;
+        this.alcoholType = alcoholType;
+        this.brandName = brandName;
+        this.fancifulName = fancifulName;
+        this.address = address;
+        this.mailingAddress = mailingAddress;
+        this.formula = formula;
+        this.wineFormItems = wineFormItems;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.blownBrandedEmbossedInfo = blownBrandedEmbossedInfo;
+        this.dateSubmitted = dateSubmitted;
+        this.ttbID = ttbID;
+        this.companyID = companyID;
+        this.approval = approval;
+        this.alcoholContent = alcoholContent;
+    }
 
     //#######################################################################################################
     //                                  getters and setters
@@ -221,6 +245,14 @@ public class Form {
 
     public void setApproval(Approval approval) {
         this.approval = approval;
+    }
+
+    public float getAlcoholContent() {
+        return alcoholContent;
+    }
+
+    public void setAlcoholContent(float alcoholContent) {
+        this.alcoholContent = alcoholContent;
     }
 
 
