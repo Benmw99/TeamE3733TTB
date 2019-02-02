@@ -57,7 +57,8 @@ public class SearchResult {
     }
 
     public void printResults(){
-
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.downloadResults(query);
     }
 
 
