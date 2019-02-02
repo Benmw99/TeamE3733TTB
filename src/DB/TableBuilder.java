@@ -190,6 +190,7 @@ public class TableBuilder extends DatabaseAbstract {
                 "Applicant_Name VARCHAR(32)," +
                 "Phone VARCHAR(12)," +
                 "Alcohol_Type SMALLINT," +
+                "ABV REAL, " +
                 "Formula BIGINT DEFAULT NULL," +
                 "Rep_ID VARCHAR(16) DEFAULT NULL," +
                 "Company_ID BIGINT," +

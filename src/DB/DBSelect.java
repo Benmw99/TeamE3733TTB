@@ -142,10 +142,10 @@ public class DBSelect extends DatabaseAbstract {
 
     //Figure out what this is passed
     //TODO FINISH THIS
-    public Entities.SearchResult searchBy() {
+    public Entities.SearchResult searchBy(AdvancedSearch as) {
         SearchResult result = new SearchResult();
-        String baseString = "SELECT * FROM Form";
-
+        String baseString = "SELECT ABV, Brand_Name, Alcohol_Type FROM Form";
+        if ()
 
         return result;
     }
