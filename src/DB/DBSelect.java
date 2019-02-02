@@ -2,9 +2,16 @@ package DB;
 
 import Entities.SearchResult;
 
+import Entities.Agent;
+import Entities.AlcoholType;
+import Entities.Form;
+import Entities.Manufacturer;
+import java.lang.Exception;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DBSelect extends DatabaseAbstract {
@@ -150,6 +157,105 @@ public class DBSelect extends DatabaseAbstract {
         return result;
     }
 
+    public Manufacturer getManufacturer(String login_name) throws Exception{
+        String selString = "SELECT * FROM COMPANY WHERE Login_Name=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(selString);
+            ps.setString(1, login_name);
+            ResultSet rs = ps.executeQuery();
+            //TODO When NICK WRITES A VALID MANUFACTURER CONSTRUCTOR, I WILL PASS THE NEEDED INFO INTO THERE
+            return new Manufacturer();
+        } catch (SQLException e) {
+            System.out.println("No Company found.");
+            System.out.println(e.toString());
+            throw new Exception("Company Does Not Exist.");
+        }
+    }
+
+    /**
+     * Get a List of TTB_ID's associated with the manufactuer
+     * @param man The manufacturer who has logged in to look at their forms
+     * @return A list of Ints representing their TTB_ID's
+     */
+    public List<Integer> getTTB_IDbyManufactuer(Manufacturer man){
+        String selString = "SELECT TTB_ID FROM FORM WHERE Company_ID=? ";
+        int comp_id = man.manID;
+        List<Integer> list_of_ids= new ArrayList<Integer>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(selString);
+            ps.setInt(1, comp_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                list_of_ids.add(rs.getInt("TTB_ID"));
+            }
+        }catch (SQLException e){
+                System.out.println(e.toString());
+            }
+        return list_of_ids;
+        }
+
+    public Form getFormByTTB_ID(int TTB_ID){
+        String selString = "SELECT * FROM FORM WHERE TTB_ID=?";
+        String otherInfString = "SELECT * FROM OTHERINFO WHERE TTB_ID=?";
+        String brewersPermit = "SELECT * FROM BREWERSPERMIT WHERE TTB_ID=?";
+        String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
+        List<String> list_permits = new ArrayList<String>();
+        Form form = new Form();
+        //TODO Communicate with Nick about addresses.
+        try {
+            PreparedStatement ps = connection.prepareStatement(selString);
+            ps.setInt(1, TTB_ID);
+            ResultSet rs = ps.executeQuery();
+            rs.first();
+            form.setFancifulName(rs.getString("Fanciful_Name"));
+            form.setBrandName(rs.getString("Brand_Name"));
+            form.setSource(rs.getBoolean("Source"));
+            form.setRepID(rs.getString("Rep_ID"));
+            form.setTtbID(TTB_ID);
+            form.setEmail(rs.getString("Email"));
+            form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
+            form.setApplicantName(rs.getString("Applicant_Name"));
+            form.setPhoneNum(rs.getString("Phone"));
+            AlcoholType type;
+            if (rs.getInt("Alcohol_Type") == 1) {
+                type = AlcoholType.Wine;
+            } else if (rs.getInt("Alcohol_Type") == 2) {
+                type = AlcoholType.MaltBeverage;
+            } else {
+                type = AlcoholType.DistilledLiquor;
+            }
+            form.setAlcoholType(type);
+            ps.close();
+            /* OTHER INFO BLOCK */
+            ps = connection.prepareStatement(otherInfString);
+            ps.setInt(1, TTB_ID);
+            rs = ps.executeQuery();
+            rs.first();
+            form.setOtherInfo(rs.getString("Text"));
+            ps.close();
+            /* BREWERS PERMIT BLOCK */
+            ps = connection.prepareStatement(brewersPermit);
+            ps.setInt(1, TTB_ID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list_permits.add(rs.getString("Brewers_No"));
+            }
+            form.setBrewersPermit(list_permits.get(0)); //TODO MAKE THIS TAKE A WHOLE LIST
+            ps.close();
+            /* Address Block */
+            ps = connection.prepareStatement(addressString);
+            ps.setInt(1, TTB_ID);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                // This doesn't do anything just yet
+            }
+            ps.close();
+        }catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return form;
+    }
     //TODO SELECT BY TYPE
 
     public void selectFormsWithData(){
