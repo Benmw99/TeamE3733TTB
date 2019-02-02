@@ -281,6 +281,9 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
+    @FXML
+    Button manRegisterButton;
+
 
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {

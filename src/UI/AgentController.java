@@ -120,6 +120,9 @@ public class AgentController {
     @FXML
     Button sendAFButton;
 
+    @FXML
+    Button agentRegisterButton;
+
     //AgentApp1
     @FXML
     MenuButton menuAA1MenuButton;
