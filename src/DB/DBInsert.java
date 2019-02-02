@@ -235,8 +235,9 @@ public class DBInsert extends DatabaseAbstract {
                 inserting.manID,
                 Timestamp.from(Instant.now()),
                 to_insert.getApplicantName(),
-                to_insert.getPhoneNum(),
+                to_insert.getPhoneNumber(),
                 type_num);
-
     }
+
+
 }
