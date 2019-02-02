@@ -162,7 +162,8 @@ public class DBSelect extends DatabaseAbstract {
             ps.setString(1, login_name);
             ResultSet rs = ps.executeQuery();
             //TODO When NICK WRITES A VALID MANUFACTURER CONSTRUCTOR, I WILL PASS THE NEEDED INFO INTO THERE
-            return new Manufacturer();
+            return new Manufacturer(rs.getInt("Company_ID"), rs.getString("Company_Name"), rs.getString("Login_Name"),
+                    rs.getString("Password"));
         } catch (SQLException e) {
             System.out.println("No Company found.");
             System.out.println(e.toString());
@@ -206,7 +207,7 @@ public class DBSelect extends DatabaseAbstract {
             PreparedStatement ps = connection.prepareStatement(selString);
             ps.setInt(1, TTB_ID);
             ResultSet rs = ps.executeQuery();
-            rs.first();
+            rs.next();
             form.setFancifulName(rs.getString("Fanciful_Name"));
             form.setBrandName(rs.getString("Brand_Name"));
             form.setSource(rs.getBoolean("Source"));
@@ -214,8 +215,8 @@ public class DBSelect extends DatabaseAbstract {
             form.setTtbID(TTB_ID);
             form.setEmail(rs.getString("Email"));
             form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
-            form.setName(rs.getString("Applicant_Name"));
-            form.setPhoneNum(rs.getString("Phone"));
+            form.setApplicantName(rs.getString("Applicant_Name"));
+            form.setPhoneNumber(rs.getString("Phone"));
             AlcoholType type;
             if (rs.getInt("Alcohol_Type") == 1) {
                 type = AlcoholType.Wine;

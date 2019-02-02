@@ -1,6 +1,7 @@
 package DB.Test;
 import DB.*;
 import Entities.AlcoholType;
+import Entities.Form;
 import Entities.Manufacturer;
 import org.junit.After;
 import org.junit.Before;
@@ -47,9 +48,9 @@ public class SelectTest {
 
     @Test
     public void retrieveList_TTBIDTest() {
-        Manufacturer man = new Manufacturer();
+        Manufacturer man = new Manufacturer(123, null, null, null);
         man.manID = 123;
-        Manufacturer man2 = new Manufacturer();
+        Manufacturer man2 = new Manufacturer(456, null, null, null);
         man2.manID = 45543;
         List<Integer> list = db.dbSelect.getTTB_IDbyManufactuer(man);
         assertEquals(1, list.size());
@@ -63,7 +64,11 @@ public class SelectTest {
         String query = "Select * FROM Form";
         assertTrue(db.dbSelect.downloadResults(query));
     }
-
+    @Test
+    public void retrieveFormTest(){
+        Form form = db.dbSelect.getFormByTTB_ID(1);
+        assertEquals("ABC", form.getFancifulName());
+    }
     /*@AfterClass
     public static void close(){
         try {
