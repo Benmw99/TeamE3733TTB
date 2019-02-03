@@ -7,6 +7,7 @@ public class Agent implements IUser{
     private String repID;
     private String login;
     private String password;
+    private String name;
 
     public Agent(String repID, String login, String password) {
         this.repID = repID;
@@ -18,6 +19,9 @@ public class Agent implements IUser{
         this.repID = null;
         this.login = login;
         this.password = password;
+    }
+    public String getName() {
+        return name;
     }
 
     public String getRepID() {
