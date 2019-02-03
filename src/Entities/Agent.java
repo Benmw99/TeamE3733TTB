@@ -2,6 +2,8 @@ package Entities;
 
 import DB.Database;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static Entities.ApprovalStatus.*;
@@ -59,9 +61,9 @@ public class Agent implements IUser{
     }
 
 
-    public void getThreeForms() {
+    public List<Form> getThreeForms() {
         DB.Database db = DB.Database.getInstance();
-        db.dbSelect.getThreeForms();
+        return db.dbSelect.getThreeForms();
     }
 
     public boolean authenticate(){
@@ -92,9 +94,6 @@ public class Agent implements IUser{
 
     }
 
-    void fillQueue() {
-
-    }
 
     Form importPhysicalForm() {
         Form form = new Form();
