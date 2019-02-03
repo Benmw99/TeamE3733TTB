@@ -49,8 +49,8 @@ public class Representative implements IUser {
         return db.dbSelect.AuthenticateRep(login,password);
     }
 
-    public IUser loadUser(){
-        return null; // needs implementation
+    public void loadUser(){
+
     }
 
 
