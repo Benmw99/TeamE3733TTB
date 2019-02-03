@@ -11,11 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import org.apache.commons.lang3.*;
 
-import java.awt.*;
+
 import java.io.IOException;
 
 import Entities.*;
+import org.apache.derby.iapi.util.StringUtil;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -28,11 +30,15 @@ public class ManufacturerController {
 
 
     Manufacturer manufacturer;
+    Entities.Form form;
 
 
     //ManHome
     @FXML
     SplitMenuButton menuSplitButton;
+
+    @FXML
+    SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
     TextField searchMHField;
@@ -81,11 +87,6 @@ public class ManufacturerController {
     //ManProfile
     @FXML
     Button menuMPButton;
-
-    //ManSearch
-
-    @FXML
-    SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
     Button menuMSButton;
@@ -211,7 +212,19 @@ public class ManufacturerController {
     RadioButton sameAddressRadioButton;
 
     @FXML
-    RadioButton difAddressRadioButton;
+    TextField name9Field;
+
+    @FXML
+    ComboBox<String> state9ComboBox;
+
+    @FXML
+    TextField address9Field;
+
+    @FXML
+    TextField city9Field;
+
+    @FXML
+    TextField zip9Field;
 
     @FXML
     TextField formulaField;
@@ -251,19 +264,19 @@ public class ManufacturerController {
     TextField emailField;
 
     @FXML
-    Checkbox certCheckbox;
+    CheckBox certCheckbox;
 
     @FXML
     TextField state15Field;
 
     @FXML
-    Checkbox liquorCheckbox;
+    CheckBox liquorCheckbox;
 
     @FXML
     TextField amountField;
 
     @FXML
-    Checkbox resubmitCheckbox;
+    CheckBox resubmitCheckbox;
 
     @FXML
     TextField TTBIDField;
@@ -426,12 +439,12 @@ public class ManufacturerController {
     }
 
     ///manApp
-    /*
     @FXML
     public void newApp(ActionEvent event) throws IOException {
         this.currentForm = new Entities.Form();
         pageSwitch(event, "ManApp1.fxml", backButton);
     }
+
     @FXML
     public void appNext(ActionEvent event) throws IOException {
 
@@ -446,7 +459,6 @@ public class ManufacturerController {
         pageSwitch(event, page, backButton);
     }
 
-    */
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
@@ -481,7 +493,66 @@ public class ManufacturerController {
             incorrectLogin.setTitle("Incorrect Login");
             incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
             incorrectLogin.show();
+        }
+    }
 
+
+    // Checks through the first page of the full TTB application to see if any of the text fields are blank.
+    // If they are all filled, then the user can move on to the second page
+    @FXML
+    public void checkBlanksPage1(ActionEvent event) throws IOException{
+        this.form = new Form();
+        this.form.setRepID(repIDField.getText());
+        this.form.setSerialNumber(serialDigitsField.getText());
+        this.form.setBrandName(brandField.getText());
+
+        if(StringUtils.isBlank(this.form.getRepID())|| StringUtils.isBlank(this.form.getSerialNumber())|| StringUtils.isBlank(this.form.getBrandName())){
+            System.out.println("I'm stuck thinking things aren't filled in");
+            Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
+            missingTextFieldPage1.setTitle("Missing Text Field");
+            missingTextFieldPage1.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
+            missingTextFieldPage1.show();
+        }
+        else{
+            System.out.println("I need to go to the second page");
+            pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
+        }
+    }
+
+    // Checks through the second page of the full TTB application to see if any of the text fields are blank.
+    // If they are all filled, then the user can move on to the third page
+    @FXML
+    public void checkBlanksPage2(ActionEvent event) throws IOException{
+        this.form = new Form();
+        this.form.setFancifulName(fancifulField.getText());
+        this.form.setFormula(formulaField.getText());
+
+        if(StringUtils.isBlank(this.form.getFancifulName()) || StringUtils.isBlank(this.form.getFormula())){
+            Alert missingTextFieldPage2 = new Alert(Alert.AlertType.WARNING);
+            missingTextFieldPage2.setTitle("Missing Text Field");
+            missingTextFieldPage2.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
+            missingTextFieldPage2.show();
+        }
+        else{
+            pageSwitch(event, "ManApp3.fxml", nextSectionMA2Button);
+        }
+    }
+
+    // Checks through the third page of the full TTB application to see if any of the text fields are blank.
+    // If they are all filled, then the user can move on to the fourth page
+    @FXML
+    public void checkBlanksPage3(ActionEvent event) throws IOException{
+        this.form = new Form();
+        this.form.setPhoneNumber(phoneNumField.getText());
+        this.form.setEmail(emailField.getText());
+        if(StringUtils.isBlank(this.form.getPhoneNumber()) || StringUtils.isBlank(this.form.getEmail())){
+            Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
+            missingTextFieldPage1.setTitle("Missing Text Field");
+            missingTextFieldPage1.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
+            missingTextFieldPage1.show();
+        }
+        else{
+            pageSwitch(event, "ManApp4.fxml", nextSectionMA3Button);
         }
     }
 
@@ -496,6 +567,24 @@ public class ManufacturerController {
         else{
             vintageYearField.disableProperty().setValue(true);
             phField.disableProperty().setValue(true);
+        }
+    }
+
+    @FXML
+    public void checkMail(ActionEvent event) throws IOException{
+        if (sameAddressRadioButton.selectedProperty().equals(true)){
+            name9Field.disableProperty().setValue(true);
+            state9ComboBox.disableProperty().setValue(true);
+            address9Field.disableProperty().setValue(true);
+            city9Field.disableProperty().setValue(true);
+            zip9Field.disableProperty().setValue(true);
+        }
+        else{
+            name9Field.disableProperty().setValue(false);
+            state9ComboBox.disableProperty().setValue(false);
+            address9Field.disableProperty().setValue(false);
+            city9Field.disableProperty().setValue(false);
+            zip9Field.disableProperty().setValue(false);
         }
     }
 

@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -90,7 +90,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section2MA2Button" mnemonicParsing="false" onAction="#manBackToApp3a" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="2" textFill="WHITE">
+                  <Button fx:id="section2MA2Button" mnemonicParsing="false"  style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="2" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -166,8 +166,8 @@
       </VBox>
       <MenuButton layoutX="24.0" layoutY="25.0" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem disable="true" mnemonicParsing="false" text="Submit Form" />
+          <MenuItem mnemonicParsing="false" text="Go Home" />
         </items>
          <font>
             <Font size="26.0" />
@@ -370,30 +370,117 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT">
                      <children>
-                        <Label prefHeight="80.0" text=" Mailing Address" textFill="WHITE">
+                        <VBox alignment="CENTER" prefHeight="76.0">
+                           <children>
+                              <Label prefHeight="41.0" prefWidth="188.0" text=" Mailing Address" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <RadioButton fx:id="sameAddressRadioButton" mnemonicParsing="false" onAction="#checkMail" text="Same as question 8" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                        </VBox>
+                        <TextField fx:id="name9Field" prefWidth="200.0" promptText="Name">
                            <font>
-                              <Font size="24.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <RadioButton fx:id="sameAddressRadioButton" mnemonicParsing="false" text="Same as question 8" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
+                              <Font size="21.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
-                        </RadioButton>
-                        <RadioButton fx:id="difAddressRadioButton" mnemonicParsing="false" text="Different from question 8" textFill="WHITE">
+                        </TextField>
+                        <ComboBox fx:id="state9ComboBox" prefHeight="41.0" prefWidth="150.0" promptText="State">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="AL" />
+                                 <String fx:value="AK" />
+                                 <String fx:value="AZ" />
+                                 <String fx:value="AR" />
+                                 <String fx:value="CA" />
+                                 <String fx:value="CO" />
+                                 <String fx:value="CT" />
+                                 <String fx:value="DE" />
+                                 <String fx:value="FL" />
+                                 <String fx:value="GA" />
+                                 <String fx:value="HI" />
+                                 <String fx:value="ID" />
+                                 <String fx:value="IL" />
+                                 <String fx:value="IN" />
+                                 <String fx:value="IA" />
+                                 <String fx:value="KS" />
+                                 <String fx:value="KY" />
+                                 <String fx:value="LA" />
+                                 <String fx:value="ME" />
+                                 <String fx:value="MD" />
+                                 <String fx:value="MA" />
+                                 <String fx:value="MI" />
+                                 <String fx:value="MN" />
+                                 <String fx:value="MS" />
+                                 <String fx:value="MO" />
+                                 <String fx:value="MT" />
+                                 <String fx:value="NE" />
+                                 <String fx:value="NV" />
+                                 <String fx:value="NH" />
+                                 <String fx:value="NJ" />
+                                 <String fx:value="NM" />
+                                 <String fx:value="NY" />
+                                 <String fx:value="NC" />
+                                 <String fx:value="ND" />
+                                 <String fx:value="OH" />
+                                 <String fx:value="OK" />
+                                 <String fx:value="OR" />
+                                 <String fx:value="PA" />
+                                 <String fx:value="RI" />
+                                 <String fx:value="SC" />
+                                 <String fx:value="SD" />
+                                 <String fx:value="TN" />
+                                 <String fx:value="TX" />
+                                 <String fx:value="UT" />
+                                 <String fx:value="VT" />
+                                 <String fx:value="VA" />
+                                 <String fx:value="WA" />
+                                 <String fx:value="WV" />
+                                 <String fx:value="WI" />
+                                 <String fx:value="WY" />
+                              </FXCollections>
+                           </items>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                        <TextField fx:id="address9Field" prefWidth="200.0" promptText="Address">
                            <font>
-                              <Font size="25.0" />
+                              <Font size="21.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="40.0" />
+                              <Insets left="20.0" />
                            </HBox.margin>
-                        </RadioButton>
+                        </TextField>
+                        <TextField fx:id="city9Field" prefHeight="41.0" prefWidth="122.0" promptText="City">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="zip9Field" prefHeight="41.0" prefWidth="122.0" promptText="Zip Code">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </TextField>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../assets/tool-tip.png" />
@@ -514,7 +601,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="nextSectionMA2Button" mnemonicParsing="false" onAction="#manApp3d" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
+            <Button fx:id="nextSectionMA2Button" mnemonicParsing="false" onAction="#checkBlanksPage2" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -524,6 +611,5 @@
             </Button>
          </children>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0" />
    </children>
 </AnchorPane>
