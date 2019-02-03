@@ -9,6 +9,7 @@ import Entities.Manufacturer;
 import java.lang.Exception;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -193,9 +194,9 @@ public class DBSelect extends DatabaseAbstract {
         //The base search string
         String baseString;
         if (as.type == 1 && ((as.vintageYear > 0) || (as.pH > 0) || (as.grapeVarietal != null) || (as.appellation != null))) {
-            baseString = "SELECT TTB_ID FROM Form JOIN Wine ON Form.TTB_ID = Wine.TTB_ID WHERE APPROVE = TRUE";
+            baseString = "SELECT TTB_ID FROM Form JOIN Wine ON Form.TTB_ID = Wine.TTB_ID WHERE APPROVE = 1 ";
         } else {
-            baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = TRUE";
+            baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = 1 ";
         }
         //Manually goes through and checks if stuff is set and then adds it to the string. Later it will set all those question marks
         if (as.source != null) {
@@ -453,7 +454,7 @@ public class DBSelect extends DatabaseAbstract {
         List<Form> list_form = new ArrayList<Form>();
         try{
             PreparedStatement ps = connection.prepareStatement(selStr);
-            ps.setBoolean(1, false);
+            ps.setInt(1, 2);
             ResultSet rs = ps.executeQuery();
             int i = 0;
             while(rs.next() && i < 3){
@@ -478,10 +479,16 @@ public class DBSelect extends DatabaseAbstract {
         try{
             PreparedStatement ps = connection.prepareStatement(selStr);
             ps.setInt(2, form.getTtbID());
-            ps.setBoolean(1, true);
+            if(!approval.isApproved()){
+                ps.setInt(1, 1);
+            } else if(approval.isApproved()){
+                ps.setInt(1,3);
+            }
+            ps.setInt(1, 1);
             ps.execute();
             ps.close();
-            //TODO MAKE AN INSERT APPROVAL ONCE APPROVALS MAKE SENSE
+            Database.getInstance().dbInsert.insertApproval(approval.getAgentApprovalName(), form.getTtbID(),
+                    approval.getTimestamp(), approval.getExpDate(), approval.getQualifications());
     } catch (SQLException e){
             System.out.println(e.toString());
         }

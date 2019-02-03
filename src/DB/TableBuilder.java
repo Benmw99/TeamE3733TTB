@@ -185,7 +185,7 @@ public class TableBuilder extends DatabaseAbstract {
                 "Fanciful_Name VARCHAR(256)," +
                 "Brand_Name VARCHAR(256)," +
                 "Source BOOLEAN," +
-                "APPROVE BOOLEAN," +
+                "APPROVE SMALLINT," +
                 "Email VARCHAR(256)," +
                 "Date_Submitted TIMESTAMP," +
                 "Applicant_Name VARCHAR(32)," +

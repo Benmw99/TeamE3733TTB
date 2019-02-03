@@ -1,8 +1,6 @@
 package DB;
 
-import Entities.AlcoholType;
-import Entities.Form;
-import Entities.Manufacturer;
+import Entities.*;
 
 import java.io.FileInputStream;
 import java.sql.*;
@@ -154,7 +152,11 @@ public class DBInsert extends DatabaseAbstract {
         statement.setString(2, Fanciful_Name);
         statement.setString(3, Brand_Name);
         statement.setBoolean(4, Source);
-        statement.setBoolean(5, Approve);
+        if(Approve == true){
+            statement.setInt(5,1);
+        } else {
+            statement.setInt(5, 2);
+        }
         statement.setString(6, Rep_ID);
         statement.setString(7, email);
         statement.setInt(8, Company_ID);
@@ -165,6 +167,8 @@ public class DBInsert extends DatabaseAbstract {
         statement.setFloat(13, (float)APV);
         statement.execute();
     }
+
+
 
 
 
@@ -219,6 +223,7 @@ public class DBInsert extends DatabaseAbstract {
 
     public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{
         int type_num = 0;
+        int approval_num = 1;
         if(to_insert.getAlcoholType() == AlcoholType.Wine){
             type_num = 1;
         } else if (to_insert.getAlcoholType() == AlcoholType.MaltBeverage){
@@ -226,11 +231,12 @@ public class DBInsert extends DatabaseAbstract {
         } else {
             type_num = 3;
         }
+
         insertForm(null, //TODO SERIAL NUMBER
                 to_insert.getFancifulName(),
                 to_insert.getBrandName(),
                 to_insert.getSource(),
-                to_insert.getApproval() != null,
+                (to_insert.getApprovalStatus() == ApprovalStatus.Complete),
                 to_insert.getRepID(),
                 to_insert.getEmail(),
                 inserting.manID,
