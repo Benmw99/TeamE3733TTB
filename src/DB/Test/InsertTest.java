@@ -17,7 +17,7 @@ public class InsertTest {
         try {
             db.dbInsert.insertCompany(12345, "Budweiser", "test123", "qwerty");
             db.dbInsert.insertForm("12112", "Buddy", "Budweiser", true, false, null, "abc@gmail.com",
-                    12345, timestamp, "ABC", "12312124", 2);
+                    12345, timestamp, "ABC", "12312124", 2, 1.0);
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
