@@ -435,7 +435,7 @@ public class DBSelect extends DatabaseAbstract {
                 }
             }
             form.setAddress(addresses);
-            //TODO APPROVAL, WINE, LABELIMAGES
+            //TODO APPROVAL, WINE
             ps.close();
         }catch (SQLException e){
             System.out.println(e.toString());
