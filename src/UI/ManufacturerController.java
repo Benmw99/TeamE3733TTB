@@ -28,9 +28,6 @@ public class ManufacturerController {
     SplitMenuButton menuSplitButton;
 
     @FXML
-    SplitMenuButton alcoholTypeSplitMenu;
-
-    @FXML
     TextField searchMHField;
 
     @FXML
@@ -49,6 +46,10 @@ public class ManufacturerController {
     Button printButton;
 
     //ManLogin
+
+    @FXML
+    Button manRegisterButton;
+
     @FXML
     Button backButton;
 
@@ -75,12 +76,15 @@ public class ManufacturerController {
     Button menuMPButton;
 
     //ManSearch
+
+    @FXML
+    SplitMenuButton alcoholTypeSplitMenu;
+
     @FXML
     Button menuMSButton;
 
     @FXML
     TextField searchMSField;
-
 
     @FXML
     TextField manField;
@@ -294,14 +298,76 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
+
+    //new application
     @FXML
-    Button manRegisterButton;
+    public void manApp1(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", addAppButton);
+    }
 
-
+    //back buttons
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", backButton);
     }
+    @FXML
+    public void manLogin(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManLogin.fxml", backButton);
+    }
+    @FXML
+    public void manHome(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManHome.fxml", backButton);
+    }
+
+    // move up sections from ManApp1
+    @FXML
+    public void manApp2a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section2MA1Button);
+    }
+    @FXML
+    public void manApp2b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", section3MA1Button);
+    }
+    @FXML
+    public void manApp2c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", section4MA1Button);
+    }
+
+    //move up pages by arrows from ManApp1
+    @FXML
+    public void manApp2d(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
+    }
+
+
+
+    @FXML
+    public void manApp3a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section2MA2Button);
+    }
+    @FXML
+    public void manApp3b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", nextSectionMA2Button);
+    }
+    @FXML
+    public void manBackToApp3a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section1MA2Button);
+    }
+    @FXML
+    public void manBackToApp3b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", prevSectionMA2Button);
+    }
+    @FXML
+    public void manApp4a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section4MA3Button);
+    }
+    @FXML
+    public void manApp4b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", nextSectionMA3Button);
+    }
+
+
+
     ///manApp
     @FXML
     public void newApp(ActionEvent event) throws IOException {
@@ -321,6 +387,7 @@ public class ManufacturerController {
         String page = "ManApp"+Integer.toString(this.currentFormPage)+".fxml";
         pageSwitch(event, page, backButton);
     }
+
 
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{

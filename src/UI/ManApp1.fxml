@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -86,7 +86,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section2MA1Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
+                  <Button fx:id="section2MA1Button" mnemonicParsing="false" onAction="#manApp2a" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -94,7 +94,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section3MA1Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
+                  <Button fx:id="section3MA1Button" mnemonicParsing="false" onAction="#manApp2b" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -102,7 +102,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="section4MA1Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
+                  <Button fx:id="section4MA1Button" mnemonicParsing="false" onAction="#manApp2c" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -157,7 +157,7 @@
             </VBox>
          </children>
       </VBox>
-      <MenuButton mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
+      <MenuButton layoutX="13.0" layoutY="41.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="147.0" style="-fx-border-color: #000000;" text="Menu">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -229,7 +229,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="repIDField">
+                        <TextField fx:id="repIDField" promptText="number">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -257,7 +257,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="producerNumField">
+                        <TextField fx:id="producerNumField" promptText="number">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -424,7 +424,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="nextSectionMA1Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
+            <Button fx:id="nextSectionMA1Button" mnemonicParsing="false" onAction="#manApp2d" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -435,5 +435,10 @@
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0" />
+      <Button fx:id="backButton" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" onAction="#manHome" prefHeight="27.0" prefWidth="49.0" style="-fx-background-color: #B5072C#B5072C #B5072C#B5072C;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="Palatino" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
