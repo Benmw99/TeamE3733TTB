@@ -493,7 +493,6 @@ public class ManufacturerController {
             incorrectLogin.setTitle("Incorrect Login");
             incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
             incorrectLogin.show();
-
         }
     }
 
