@@ -128,7 +128,7 @@ public class DBSelect extends DatabaseAbstract {
      * Downloads the selected results in a file without limit to the number of results
      * @param query The query to be downloaded without a fetch first in it
      */
-    public boolean downloadResults(String query) {
+    public boolean downloadResults(String query) { //TODO FIX TO WORK WITH PREPARED STATEMENTS
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY (?,?,?,?,?)";
@@ -147,11 +147,56 @@ public class DBSelect extends DatabaseAbstract {
         }
     }
 
-    //Figure out what this is passed
-    //TODO FINISH THIS
-    public Entities.SearchResult searchBy(AdvancedSearch as) {
+    //ONLY WORKS FOR MINIMAL APPLICATION RIGHT NOW
+    //TODO WINE SPECIFIC RESULTS
+    public SearchResult searchBy(AdvancedSearch as) {
         SearchResult result = new SearchResult();
-        String baseString = "SELECT ABV, Brand_Name, Alcohol_Type FROM Form";
+        //To be used later for setting stuff
+        int set = 1;
+        //The base search string
+        String baseString = "SELECT ABV, Brand_Name, Alcohol_Type FROM Form WHERE APPROVE = TRUE";
+        if (as.brandName != null) {
+            baseString += " AND Brand_Name = ?";
+        }
+        if (as.alcoholType != null) {
+            int type = 0;
+            if (as.alcoholType == AlcoholType.Wine) {
+                type = 1;
+            } else if (as.alcoholType == AlcoholType.MaltBeverage) {
+                type = 2;
+            } else if (as.alcoholType == AlcoholType.DistilledLiquor) {
+                type = 3;
+            }
+            baseString += " AND Alcohol_Type = " + type;
+        }
+        result.setQuery(baseString);
+        System.out.println(baseString);
+        if (as.numResults > 0) {
+            baseString = baseString + " FETCH NEXT " + as.numResults + " ROWS ONLY";
+        }
+        try {
+            PreparedStatement statement = connection.prepareStatement(baseString);
+            if (as.brandName != null) {
+                statement.setString(set, as.brandName);
+            }
+            ResultSet rs = statement.executeQuery();
+            int boozeType = 0;
+            AlcoholType type = AlcoholType.Wine;
+            while (rs.next()) {
+                //Wine 1, Malt 2, Spirit 3
+                boozeType = rs.getInt("Alcohol_Type");
+                if (boozeType == 1) {
+                    type = AlcoholType.Wine;
+                } else if (boozeType == 2) {
+                    type = AlcoholType.MaltBeverage;
+                } else if (boozeType == 3) {
+                    type = AlcoholType.DistilledLiquor;
+                }
+                result.addResult(new Form(type, rs.getString("Brand_Name"), rs.getFloat("ABV")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
         return result;
     }
 

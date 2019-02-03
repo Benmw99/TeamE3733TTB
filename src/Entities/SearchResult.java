@@ -32,6 +32,10 @@ public class SearchResult {
         this.query = query;
     }
 
+    public ArrayList<Form> getResults() {
+        return results;
+    }
+
     /**
      * used to add a single result to the form
      * @param form result to be added

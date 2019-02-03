@@ -1,8 +1,6 @@
 package DB.Test;
 import DB.*;
-import Entities.AlcoholType;
-import Entities.Form;
-import Entities.Manufacturer;
+import Entities.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -24,6 +22,10 @@ public class SelectTest {
             db.dbInsert.insertAgent("Mark", 1263, "Agent_Mark", "PassWord");
             db.dbInsert.insertForm("123YY", "ABC", "123", true, true, null,
                     "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2);
+            db.dbInsert.insertForm("12Y", "Suds", "Delio", true, true, null,
+                    "tim@jimmail.com", 123, Timestamp.from(Instant.now()), "Tim", "6045026034", 1);
+            db.dbInsert.insertForm("93F", "SodaB", "Escus", true, false, null,
+                    "bob@jimmail.com", 123, Timestamp.from(Instant.now()), "Bob", "6025026034", 3);
         } catch (SQLException e) {
             System.out.println("ERROR: TEST DB INIT FAILED.");
             System.out.println(e.toString());
@@ -53,7 +55,7 @@ public class SelectTest {
         Manufacturer man2 = new Manufacturer(456, null, null, null);
         man2.manID = 45543;
         List<Integer> list = db.dbSelect.getTTB_IDbyManufactuer(man);
-        assertEquals(1, list.size());
+        assertEquals(3, list.size());
         assertTrue(list.get(0) == 1);
         List<Integer> list2 = db.dbSelect.getTTB_IDbyManufactuer(man2);
         assertTrue(list2.size() == 0);
@@ -72,6 +74,44 @@ public class SelectTest {
         assertEquals(true, form.getSource());
 //not implemented        assertEquals(true, form.getApproval());
     }
+
+    @Test
+    public void searchByTest() {
+        DB.Database db = DB.Database.getInstance();
+
+        AdvancedSearch ASNone = new AdvancedSearch();
+        AdvancedSearch ASBrand = new AdvancedSearch();
+        ASBrand.setBrandName("123");
+        AdvancedSearch ASType = new AdvancedSearch();
+        ASType.setAlcoholType(AlcoholType.Wine);
+        AdvancedSearch ASBoth = new AdvancedSearch();
+        ASBoth.setBrandName("123");
+        ASBoth.setAlcoholType(AlcoholType.MaltBeverage);
+
+        SearchResult SRNone = new SearchResult();
+        SearchResult SRBrand = new SearchResult();
+        SearchResult SRType = new SearchResult();
+        SearchResult SRBoth = new SearchResult();
+
+        SRNone.addResult(new Form(AlcoholType.MaltBeverage, "123", (float)8.3));
+        SRNone.addResult(new Form(AlcoholType.Wine, "Delio", (float)12.3));
+        SRBrand.addResult(new Form(AlcoholType.MaltBeverage, "123", (float)8.3));
+        SRType.addResult(new Form(AlcoholType.Wine, "Delio", (float)12.3));
+        SRBoth.addResult(new Form(AlcoholType.MaltBeverage, "123", (float)8.3));
+
+        assertEquals(SRNone.getResults().size(), db.dbSelect.searchBy(ASNone).getResults().size());
+        assertEquals(SRBrand.getResults().size(), db.dbSelect.searchBy(ASBrand).getResults().size());
+        assertEquals(SRType.getResults().size(), db.dbSelect.searchBy(ASType).getResults().size());
+        assertEquals(SRBoth.getResults().size(), db.dbSelect.searchBy(ASBoth).getResults().size());
+
+        /* This shit doesn't work and I can't even get the tests to look correct
+        assertTrue(SRNone.getResults().contains(db.dbSelect.searchBy(ASNone).getResults()));
+        assertTrue(SRNone.getResults().contains(db.dbSelect.searchBy(ASNone).getResults()));
+
+        assertTrue(SRBrand.getResults().contains(db.dbSelect.searchBy(ASBrand).getResults()));
+        */
+    }
+
     /*@AfterClass
     public static void close(){
         try {
