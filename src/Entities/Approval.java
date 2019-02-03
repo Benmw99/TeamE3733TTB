@@ -6,6 +6,10 @@ import java.util.Calendar;
 
 public class Approval {
 
+    private ApprovalStatus page1;
+    private ApprovalStatus page2;
+    private ApprovalStatus page3;
+
     private boolean approved;
     private Timestamp timestamp;
     private String agentApprovalName;
