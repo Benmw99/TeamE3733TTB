@@ -308,6 +308,33 @@ public class DBSelect extends DatabaseAbstract {
         }
         return form;
     }
+
+    /**Get first three not-yet-approved forms for an agent to look over
+     *
+     */
+
+    public List<Form> getThreeForms(){
+        String selStr = "SELECT * FROM FORMS WHERE APPROVE=?";
+        List<Integer> list_ID = new ArrayList<Integer>();
+        List<Form> list_form = new ArrayList<Form>();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selStr);
+            ps.setBoolean(1, false);
+            ResultSet rs = ps.executeQuery();
+            int i = 0;
+            while(rs.next() && i < 3){
+                i ++;
+                list_ID.add(rs.getInt("TTB_ID"));
+            }
+    } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        while(!list_ID.isEmpty()){
+            list_form.add(this.getFormMinimal(list_ID.get(1)));
+            list_ID.remove(1);
+        }
+        return list_form;
+    }
 /*
     public ArrayList<Address> getListAddress(int TTB_ID){
         String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
