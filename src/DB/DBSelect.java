@@ -275,7 +275,7 @@ public class DBSelect extends DatabaseAbstract {
             ps = connection.prepareStatement(otherInfString);
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
-            rs.first();
+            rs.next();
             form.setBlownBrandedEmbossedInfo(rs.getString("Text"));
             ps.close();
             /* BREWERS PERMIT BLOCK */
@@ -314,7 +314,7 @@ public class DBSelect extends DatabaseAbstract {
      */
 
     public List<Form> getThreeForms(){
-        String selStr = "SELECT * FROM FORMS WHERE APPROVE=?";
+        String selStr = "SELECT * FROM FORM WHERE APPROVE=?";
         List<Integer> list_ID = new ArrayList<Integer>();
         List<Form> list_form = new ArrayList<Form>();
         try{
@@ -326,15 +326,20 @@ public class DBSelect extends DatabaseAbstract {
                 i ++;
                 list_ID.add(rs.getInt("TTB_ID"));
             }
+            ps.close();
     } catch (SQLException e){
             System.out.println(e.toString());
         }
         while(!list_ID.isEmpty()){
-            list_form.add(this.getFormMinimal(list_ID.get(1)));
-            list_ID.remove(1);
+            list_form.add(this.getFormMinimal(list_ID.get(0)));
+            list_ID.remove(0);
         }
         return list_form;
     }
+
+
+
+
 /*
     public ArrayList<Address> getListAddress(int TTB_ID){
         String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
