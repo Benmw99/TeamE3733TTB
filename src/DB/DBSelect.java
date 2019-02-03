@@ -128,18 +128,7 @@ public class DBSelect extends DatabaseAbstract {
      * Downloads the selected results in a file without limit to the number of results
      * @param query The query to be downloaded without a fetch first in it
      */
-    public boolean downloadResults(String query, AdvancedSearch search) {
-        //Copy paste codes and pass the advanced search?
-        int type = 0;
-        if (search.alcoholType != null) {
-            if (search.alcoholType == AlcoholType.Wine) {
-                type = 1;
-            } else if (search.alcoholType == AlcoholType.MaltBeverage) {
-                type = 2;
-            } else if (search.alcoholType == AlcoholType.DistilledLiquor) {
-                type = 3;
-            }
-        }
+    public boolean downloadResults(String query, AdvancedSearch search) { //TODO GET RID OF DUPLICATE CODE
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY ("+ query +",?,?,?,?)";
@@ -162,19 +151,19 @@ public class DBSelect extends DatabaseAbstract {
                 ps.setString(set, search.fancifulName);
                 set += 1;
             }
-            if (type == 1 && search.vintageYear > 0) {
+            if (search.type == 1 && search.vintageYear > 0) {
                 ps.setInt(set, search.vintageYear);
                 set += 1;
             }
-            if (type == 1 && search.pH > 0) {
+            if (search.type == 1 && search.pH > 0) {
                 ps.setFloat(set, search.pH);
                 set += 1;
             }
-            if (type == 1 && search.grapeVarietal != null) {
+            if (search.type == 1 && search.grapeVarietal != null) {
                 ps.setString(set, search.grapeVarietal);
                 set += 1;
             }
-            if (type == 1 && search.appellation != null) {
+            if (search.type == 1 && search.appellation != null) {
                 ps.setString(set, search.appellation);
                 set += 1;
             }
@@ -198,23 +187,12 @@ public class DBSelect extends DatabaseAbstract {
     //TODO Implement Sorting
     //public Timestamp timestamp; NOT IMPLEMENTED YET
     //THIS IS THE CIVILIAN SEARCH
-    public SearchResult searchBy(AdvancedSearch as) {
+    public SearchResult searchBy(AdvancedSearch as) { //TODO GET RID OF DUPLICATE CODE
         SearchResult result = new SearchResult();
         result.setSearch(as);
-        //Used for alcohol type
-        int type = 0;
-        if (as.alcoholType != null) {
-            if (as.alcoholType == AlcoholType.Wine) {
-                type = 1;
-            } else if (as.alcoholType == AlcoholType.MaltBeverage) {
-                type = 2;
-            } else if (as.alcoholType == AlcoholType.DistilledLiquor) {
-                type = 3;
-            }
-        }
         //The base search string
         String baseString;
-        if (type == 1 && ((as.vintageYear > 0) || (as.pH > 0) || (as.grapeVarietal != null) || (as.appellation != null))) {
+        if (as.type == 1 && ((as.vintageYear > 0) || (as.pH > 0) || (as.grapeVarietal != null) || (as.appellation != null))) {
             baseString = "SELECT TTB_ID FROM Form JOIN Wine ON Form.TTB_ID = Wine.TTB_ID WHERE APPROVE = TRUE";
         } else {
             baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = TRUE";
@@ -227,7 +205,7 @@ public class DBSelect extends DatabaseAbstract {
             baseString += " AND Serial_Number = ?";
         }
         if (as.alcoholType != null) {
-            baseString += " AND Alcohol_Type = " + type;
+            baseString += " AND Alcohol_Type = " + as.type;
         }
         if (as.brandName != null) {
             baseString += " AND Brand_Name = ?";
@@ -235,16 +213,16 @@ public class DBSelect extends DatabaseAbstract {
         if (as.fancifulName != null) {
             baseString += " AND Fanciful_Name = ?";
         }
-        if (type == 1 && as.vintageYear > 0) {
+        if (as.type == 1 && as.vintageYear > 0) {
             baseString += " AND Vintage = ?";
         }
-        if (type == 1 && as.pH > 0) {
+        if (as.type == 1 && as.pH > 0) {
             baseString += " AND PH = ?";
         }
-        if (type == 1 && as.grapeVarietal != null) {
+        if (as.type == 1 && as.grapeVarietal != null) {
             baseString += " AND Grape_Varietals = ?";
         }
-        if (type == 1 && as.appellation != null) {
+        if (as.type == 1 && as.appellation != null) {
             baseString += " AND Wine_Appellation = ?";
         }
         if (as.ttbID > 0) {
@@ -276,19 +254,19 @@ public class DBSelect extends DatabaseAbstract {
                 statement.setString(set, as.fancifulName);
                 set += 1;
             }
-            if (type == 1 && as.vintageYear > 0) {
+            if (as.type == 1 && as.vintageYear > 0) {
                 statement.setInt(set, as.vintageYear);
                 set += 1;
             }
-            if (type == 1 && as.pH > 0) {
+            if (as.type == 1 && as.pH > 0) {
                 statement.setFloat(set, as.pH);
                 set += 1;
             }
-            if (type == 1 && as.grapeVarietal != null) {
+            if (as.type == 1 && as.grapeVarietal != null) {
                 statement.setString(set, as.grapeVarietal);
                 set += 1;
             }
-            if (type == 1 && as.appellation != null) {
+            if (as.type == 1 && as.appellation != null) {
                 statement.setString(set, as.appellation);
                 set += 1;
             }

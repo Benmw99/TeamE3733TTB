@@ -19,21 +19,8 @@ public class AdvancedSearch {
     public int ttbID;
     //Number of results to return
     public int numResults;
-
-    public AdvancedSearch(Boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, int vintageYear, float pH, String grapeVarietal, String appellation, Timestamp timestamp, int ttbID, int numResults) {
-        this.source = source;
-        this.serialNumber = serialNumber;
-        this.alcoholType = alcoholType;
-        this.brandName = brandName;
-        this.fancifulName = fancifulName;
-        this.vintageYear = vintageYear;
-        this.pH = pH;
-        this.grapeVarietal = grapeVarietal;
-        this.appellation = appellation;
-        this.timestamp = timestamp;
-        this.ttbID = ttbID;
-        this.numResults = numResults;
-    }
+    //Alcohol type but numeric for the DB
+    public int type;
 
     public AdvancedSearch() {
         this.source = null;
@@ -71,7 +58,16 @@ public class AdvancedSearch {
     }
 
     public void setAlcoholType(AlcoholType alcoholType) {
+        int type = 0;
+        if (alcoholType == AlcoholType.Wine) {
+            type = 1;
+        } else if (alcoholType == AlcoholType.MaltBeverage) {
+            type = 2;
+        } else if (alcoholType == AlcoholType.DistilledLiquor) {
+            type = 3;
+        }
         this.alcoholType = alcoholType;
+        this.type = type;
     }
 
     public String getBrandName() {
