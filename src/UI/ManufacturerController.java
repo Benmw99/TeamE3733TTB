@@ -19,7 +19,6 @@ import Entities.*;
 public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
-
     Manufacturer manufacturer;
 
 
@@ -321,7 +320,7 @@ public class ManufacturerController {
         String page = "ManApp"+Integer.toString(this.currentFormPage)+".fxml";
         pageSwitch(event, page, backButton);
     }
-
+    private void save() {}
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;

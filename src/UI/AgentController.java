@@ -446,6 +446,7 @@ public class AgentController {
         else {
             Alert ohNo = new Alert(Alert.AlertType.WARNING);
             ohNo.setContentText("Invalid Password or Username my dude");
+            ohNo.showAndWait();
         }
     }
 
