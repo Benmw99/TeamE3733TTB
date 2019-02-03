@@ -343,13 +343,13 @@ public class AgentController {
     ToggleButton commentAHToggle;
 
     @FXML
-    Button section1AHButton;
+    ToggleButton section1AHButton;
 
     @FXML
-    Button section2AHButton;
+    ToggleButton section2AHButton;
 
     @FXML
-    Button section3AHButton;
+    ToggleButton section3AHButton;
 
     @FXML
     Button approveAHButton;
@@ -441,7 +441,7 @@ public class AgentController {
     public void login(ActionEvent event) throws IOException {
         this.currentAgent = new Agent(nameField.getText(),passField.getText());
         if(this.currentAgent.authenticate()) {
-            pageSwitch(event, "WelcomePage.fxml", backButton);
+            pageSwitch(event, "AgentHome.fxml", loginButton);
         }
         else {
             Alert ohNo = new Alert(Alert.AlertType.WARNING);
