@@ -66,8 +66,8 @@ public class Agent implements IUser{
         return db.dbSelect.AuthenticateAgent(login,password);
     }
 
-    public IUser loadUser(){
-        return null; // needs implementation
+    public void loadUser(){
+
     }
 
     public SearchResult search() {
