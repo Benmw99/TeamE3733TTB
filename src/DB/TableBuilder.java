@@ -215,7 +215,6 @@ public class TableBuilder extends DatabaseAbstract {
                 "Password VARCHAR(256), " +
                 "Constraint Agents_PK Primary Key (Login_Name), " +
                 "Constraint Agents_UQ Unique (Agent_ID))";
-        //TODO Agent_ID Sequence? Maybe not
         sendStatement(buildString);
     }
 

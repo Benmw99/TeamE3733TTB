@@ -274,10 +274,7 @@ public class Form {
     public ApprovalStatus getApprovalStatus(){ return this.approvalStatus;}
     //#######################################################################################################
     //                                  UI API (to be implemented)
-    public void approve(String agentName){//TODO: Implement
-    }
-    public void reject(String agentName){ //TODO: Implement
-    }
+    // approve./reject is in agent class
     //#######################################################################################################
     //                                  Helper Functions
 
