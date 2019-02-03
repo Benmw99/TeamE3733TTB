@@ -452,7 +452,6 @@ public class AgentController {
 
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
-        if(this.currentAgent.authenticate())
         pageSwitch(event, "WelcomePage.fxml", backButton);
     }
     @FXML
