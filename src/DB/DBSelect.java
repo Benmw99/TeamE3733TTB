@@ -128,7 +128,7 @@ public class DBSelect extends DatabaseAbstract {
      * Downloads the selected results in a file without limit to the number of results
      * @param query The query to be downloaded without a fetch first in it
      */
-    public boolean downloadResults(String query, AdvancedSearch search) { //TODO FIX TO WORK WITH PREPARED STATEMENTS
+    public boolean downloadResults(String query, AdvancedSearch search) {
         //Copy paste codes and pass the advanced search?
         int type = 0;
         if (search.alcoholType != null) {
@@ -195,7 +195,6 @@ public class DBSelect extends DatabaseAbstract {
         }
     }
 
-    //TODO WINE SPECIFIC RESULTS
     //TODO Implement Sorting
     //public Timestamp timestamp; NOT IMPLEMENTED YET
     //THIS IS THE CIVILIAN SEARCH
