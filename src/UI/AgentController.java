@@ -461,12 +461,12 @@ public class AgentController {
     }
     @FXML
     public void rejectForm(ActionEvent event) throws IOException {
-        this.currentForm.reject(this.currentAgent.getName());
+//        this.currentForm.reject(this.currentAgent.getName());
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
-        this.currentForm.approve(this.currentAgent.getName());
+//        this.currentForm.approve(this.currentAgent.getName());
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
     /* not needed for it. 1
