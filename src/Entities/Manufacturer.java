@@ -78,7 +78,8 @@ public class Manufacturer implements IUser {
     }
 
     public IUser loadUser(){
-        return null; // needs implementation
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.getManufacturer(login);
     }
 
 
@@ -92,7 +93,7 @@ public class Manufacturer implements IUser {
             DB.Database db = DB.Database.getInstance();
             db.dbInsert.insertForm(form, this);
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println(e.toString());
         }
 
     }
