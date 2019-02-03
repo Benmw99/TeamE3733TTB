@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -270,11 +272,65 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </TextField>
-                        <ChoiceBox fx:id="state8ChoiceBox" prefHeight="41.0" prefWidth="150.0">
+                        <ComboBox fx:id="state8ComboBox" prefHeight="41.0" prefWidth="150.0" promptText="State">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="AL" />
+                                 <String fx:value="AK" />
+                                 <String fx:value="AZ" />
+                                 <String fx:value="AR" />
+                                 <String fx:value="CA" />
+                                 <String fx:value="CO" />
+                                 <String fx:value="CT" />
+                                 <String fx:value="DE" />
+                                 <String fx:value="FL" />
+                                 <String fx:value="GA" />
+                                 <String fx:value="HI" />
+                                 <String fx:value="ID" />
+                                 <String fx:value="IL" />
+                                 <String fx:value="IN" />
+                                 <String fx:value="IA" />
+                                 <String fx:value="KS" />
+                                 <String fx:value="KY" />
+                                 <String fx:value="LA" />
+                                 <String fx:value="ME" />
+                                 <String fx:value="MD" />
+                                 <String fx:value="MA" />
+                                 <String fx:value="MI" />
+                                 <String fx:value="MN" />
+                                 <String fx:value="MS" />
+                                 <String fx:value="MO" />
+                                 <String fx:value="MT" />
+                                 <String fx:value="NE" />
+                                 <String fx:value="NV" />
+                                 <String fx:value="NH" />
+                                 <String fx:value="NJ" />
+                                 <String fx:value="NM" />
+                                 <String fx:value="NY" />
+                                 <String fx:value="NC" />
+                                 <String fx:value="ND" />
+                                 <String fx:value="OH" />
+                                 <String fx:value="OK" />
+                                 <String fx:value="OR" />
+                                 <String fx:value="PA" />
+                                 <String fx:value="RI" />
+                                 <String fx:value="SC" />
+                                 <String fx:value="SD" />
+                                 <String fx:value="TN" />
+                                 <String fx:value="TX" />
+                                 <String fx:value="UT" />
+                                 <String fx:value="VT" />
+                                 <String fx:value="VA" />
+                                 <String fx:value="WA" />
+                                 <String fx:value="WV" />
+                                 <String fx:value="WI" />
+                                 <String fx:value="WY" />
+                              </FXCollections>
+                           </items>
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
-                        </ChoiceBox>
+                        </ComboBox>
                         <TextField fx:id="address8Field" prefWidth="200.0" promptText="Address">
                            <font>
                               <Font size="21.0" />

@@ -1,5 +1,6 @@
 package UI;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -15,10 +17,15 @@ import java.io.IOException;
 
 import Entities.*;
 
+import static javafx.collections.FXCollections.observableArrayList;
+
 
 public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
+
+
+
 
     Manufacturer manufacturer;
 
@@ -134,7 +141,7 @@ public class ManufacturerController {
     TextField producerNumField;
 
     @FXML
-    TextField sourceField;
+    ComboBox<String> sourceComboBox;
 
     @FXML
     TextField serialYearField;
@@ -143,7 +150,13 @@ public class ManufacturerController {
     TextField serialDigitsField;
 
     @FXML
-    TextField typeField;
+    ComboBox<String> typeComboBox;
+
+    @FXML
+    TextField vintageYearField;
+
+    @FXML
+    TextField phField;
 
     @FXML
     TextField alcoholContentTextField;
@@ -183,7 +196,7 @@ public class ManufacturerController {
     TextField name8Field;
 
     @FXML
-    ChoiceBox state8ChoiceBox;
+    ComboBox<String> state8ComboBox;
 
     @FXML
     TextField address8Field;
@@ -407,6 +420,11 @@ public class ManufacturerController {
         pageSwitch(event, "ManApp3.fxml", prevSectionMA4Button);
     }
 
+    //manHome
+    public void goHome(ActionEvent event) throws IOException {
+        menuSwitch(event, "ManHome.fxml", menuMA1MenuButton);
+    }
+
     ///manApp
     /*
     @FXML
@@ -440,23 +458,47 @@ public class ManufacturerController {
         stage.show();
     }
 
+    public void menuSwitch(ActionEvent event, String filename, MenuButton b) throws IOException{
+        Parent root;
+        Stage stage;
+        stage=(Stage) b.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource(filename));
+        Scene scene = new Scene(root, 1360, 760);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
     @FXML
     public void correctLogin(ActionEvent event) throws IOException{
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
-        System.out.println(""+ manufacturer.getLogin()+", " + manufacturer.getPassword());
-        System.out.println(""+ nameField.getText() + ", " + passField.getText());
         if(this.manufacturer.authenticate()){
             pageSwitch(event, "ManHome.fxml", loginButton);
         }
         else{
+            //pageSwitch(event, "ManHome.fxml", loginButton);
             Alert incorrectLogin = new Alert(Alert.AlertType.WARNING);
             incorrectLogin.setTitle("Incorrect Login");
             incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
             incorrectLogin.show();
+
         }
-
-
     }
+
+    @FXML
+    public void checkWine(ActionEvent event) throws IOException{
+        if (typeComboBox.getValue().equals("Wine")){
+            vintageYearField.disableProperty().setValue(false);
+            phField.disableProperty().setValue(false);
+
+            //System.out.println("GotHERE");
+        }
+        else{
+            vintageYearField.disableProperty().setValue(true);
+            phField.disableProperty().setValue(true);
+        }
+    }
+
 
 
 }
