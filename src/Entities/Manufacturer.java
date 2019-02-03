@@ -3,6 +3,8 @@ package Entities;
 import DB.Database;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
+import java.util.Objects;
+
 public class Manufacturer implements IUser {
 
     public int manID;
@@ -23,6 +25,13 @@ public class Manufacturer implements IUser {
         this.manName = null;
         this.login = login;
         this.password = password;
+    }
+
+    public Manufacturer(){
+        this.manID = 0;
+        this.manName = null;
+        this.login = null;
+        this.password = null;
     }
 
     public int getManID() {
@@ -69,7 +78,8 @@ public class Manufacturer implements IUser {
     }
 
     public IUser loadUser(){
-        return null; // needs implementation
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.getManufacturer(login);
     }
 
 
@@ -83,7 +93,7 @@ public class Manufacturer implements IUser {
             DB.Database db = DB.Database.getInstance();
             db.dbInsert.insertForm(form, this);
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println(e.toString());
         }
 
     }
@@ -96,7 +106,15 @@ public class Manufacturer implements IUser {
 
     }
 
-
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Manufacturer that = (Manufacturer) o;
+        return manID == that.manID &&
+                Objects.equals(manName, that.manName) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password);
+    }
 
 }

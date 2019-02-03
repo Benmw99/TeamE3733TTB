@@ -1,6 +1,7 @@
 package Entities;
 
 import java.io.InputStream;
+import java.util.Objects;
 
 public class LabelImage {
     private int ID;
@@ -36,4 +37,15 @@ public class LabelImage {
     public void setImage(InputStream image) {
         this.image = image;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LabelImage that = (LabelImage) o;
+        return ID == that.ID &&
+                Objects.equals(imageName, that.imageName) &&
+                Objects.equals(image, that.image);
+    }
+
 }

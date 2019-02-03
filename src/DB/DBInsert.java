@@ -66,12 +66,13 @@ public class DBInsert extends DatabaseAbstract {
      * @param Wine_Appellation The wine appellation field for the entry
      * @throws SQLException
      */
-    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation) throws SQLException{
-        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation) VALUES (?,?, ?)";
+    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH) throws SQLException{
+        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH) VALUES (?,?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setInt(1, TTB_ID);
         statement.setString(2, Grape_Varietals);
         statement.setString(3, Wine_Appellation);
+        statement.setFloat(4, pH);
         statement.execute();
     }
 
@@ -255,16 +256,15 @@ public class DBInsert extends DatabaseAbstract {
 
     public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{ //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
         int type_num = 0;
-        int approval_num = 1;
-        if(to_insert.getAlcoholType() == AlcoholType.Wine){
-            type_num = 1;
-        } else if (to_insert.getAlcoholType() == AlcoholType.MaltBeverage){
-            type_num = 2;
-        } else {
-            type_num = 3;
-        }
-
-        insertForm(null, //TODO SERIAL NUMBER
+        int TTB_ID;
+        try{
+            String selstr = "SELECT (NEXT VALUE FOR Form_ID) FROM FORM";
+            PreparedStatement ps = connection.prepareStatement(selstr);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            TTB_ID = rs.getInt(1);
+            ps.close();
+        insertForm(to_insert.getSerialNumber(),
                 to_insert.getFancifulName(),
                 to_insert.getBrandName(),
                 to_insert.getSource(),
@@ -276,6 +276,26 @@ public class DBInsert extends DatabaseAbstract {
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
                 type_num, to_insert.getAlcoholContent());
+            insertWine(TTB_ID, to_insert.getWineFormItems());
+            insertOtherInfo(TTB_ID, to_insert.getBlownBrandedEmbossedInfo());
+            insertMailingAddress( TTB_ID, to_insert.getMailingAddress());
+            for( Address a : to_insert.getAddress()){
+                insertOtherAddress(TTB_ID, a);
+            }
+        } catch (SQLException e ){
+            System.out.println(e.toString());
+        }
+    }
+
+    public void insertWine(int TTB_ID, WineFormItems wine) throws SQLException{
+        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH());
+    }
+
+    public void insertMailingAddress(int TTB_ID, Address to_insert) throws SQLException {
+        insertAddress(to_insert.getZip(), true,  to_insert.getCity(), to_insert.getState(), to_insert.getStreet(), TTB_ID);
+    }
+    public void insertOtherAddress(int TTB_ID, Address to_insert) throws SQLException {
+        insertAddress(to_insert.getZip(), false,  to_insert.getCity(), to_insert.getState(), to_insert.getStreet(), TTB_ID);
     }
 
 

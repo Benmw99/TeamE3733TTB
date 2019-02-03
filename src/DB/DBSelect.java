@@ -89,6 +89,40 @@ public class DBSelect extends DatabaseAbstract {
         return doAuthenticate(login, pass, selectString);
     }
 
+    public Manufacturer getManufacturer(String login){
+        String selectString = "SELECT * FROM COMPANY WHERE Login_Name=?";
+        Manufacturer man = new Manufacturer();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selectString);
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            man.setManID(rs.getInt("Company_ID"));
+            man.setManName(rs.getString("Company_Name"));
+            man.setLogin(login);
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return man;
+    }
+
+
+    public Agent getAgent(String login){
+        String selectString = "SELECT * FROM AGENTS WHERE Login_Name=?";
+        Agent agent = new Agent();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selectString);
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            agent.setLogin(login);
+            agent.setRepID(String.valueOf(rs.getInt("Agent_ID")));
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return agent;
+    }
+
     public Boolean AuthenticateAgent(String login, String pass) {
         String selectString = "SELECT COUNT(*) FROM AGENTS WHERE Login_Name =? AND Password =? ";
         return doAuthenticate(login, pass, selectString);
@@ -287,22 +321,6 @@ public class DBSelect extends DatabaseAbstract {
         return result;
     }
 
-    public Manufacturer getManufacturer(String login_name) throws Exception{
-        String selString = "SELECT * FROM COMPANY WHERE Login_Name=?";
-        try {
-            PreparedStatement ps = connection.prepareStatement(selString);
-            ps.setString(1, login_name);
-            ResultSet rs = ps.executeQuery();
-            //TODO When NICK WRITES A VALID MANUFACTURER CONSTRUCTOR, I WILL PASS THE NEEDED INFO INTO THERE
-            return new Manufacturer(rs.getInt("Company_ID"), rs.getString("Company_Name"), rs.getString("Login_Name"),
-                    rs.getString("Password"));
-        } catch (SQLException e) {
-            System.out.println("No Company found.");
-            System.out.println(e.toString());
-            throw new Exception("Company Does Not Exist.");
-        }
-    }
-
     /**
      * Get a List of TTB_ID's associated with the manufactuer
      * @param man The manufacturer who has logged in to look at their forms
@@ -404,12 +422,12 @@ public class DBSelect extends DatabaseAbstract {
                     type = AlcoholType.DistilledLiquor;
                 }
                 form.setAlcoholType(type);
-                if (rs.getInt("Approval") == 1) {
+                if (rs.getInt("Approve") == 1) {
                     stat = ApprovalStatus.Complete;
                     form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
-                } else if (rs.getInt("Approval") == 2) {
+                } else if (rs.getInt("Approve") == 2) {
                     stat = ApprovalStatus.Incomplete;
-                } else if (rs.getInt("Approval") == 3) {
+                } else if (rs.getInt("Approve") == 3) {
                     stat = ApprovalStatus.Incorrect;
                     form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
                 }
