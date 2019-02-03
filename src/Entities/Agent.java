@@ -59,7 +59,10 @@ public class Agent implements IUser{
     }
 
 
-
+    public void getThreeForms() {
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.getThreeForms();
+    }
 
     public boolean authenticate(){
         DB.Database db = DB.Database.getInstance();
