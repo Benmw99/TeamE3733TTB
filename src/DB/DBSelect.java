@@ -106,6 +106,23 @@ public class DBSelect extends DatabaseAbstract {
         return man;
     }
 
+
+    public Agent getAgent(String login){
+        String selectString = "SELECT * FROM AGENTS WHERE Login_Name=?";
+        Agent agent = new Agent();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selectString);
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            agent.setLogin(login);
+            agent.setRepID(String.valueOf(rs.getInt("Agent_ID")));
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return agent;
+    }
+
     public Boolean AuthenticateAgent(String login, String pass) {
         String selectString = "SELECT COUNT(*) FROM AGENTS WHERE Login_Name =? AND Password =? ";
         return doAuthenticate(login, pass, selectString);

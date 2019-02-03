@@ -24,6 +24,12 @@ public class Agent implements IUser{
         this.login = login;
         this.password = password;
     }
+
+    public Agent (){
+        this.password = null;
+        this.repID = null;
+        this.login = null;
+    }
     public String getName() {
         return name;
     }
