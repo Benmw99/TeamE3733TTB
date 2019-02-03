@@ -260,7 +260,7 @@ public class DBInsert extends DatabaseAbstract {
                 to_insert.getFancifulName(),
                 to_insert.getBrandName(),
                 to_insert.getSource(),
-                (to_insert.getApprovalStatus() == ApprovalStatus.Complete),
+                false,
                 to_insert.getRepID(),
                 to_insert.getEmail(),
                 inserting.manID,
