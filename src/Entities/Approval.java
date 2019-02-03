@@ -67,15 +67,14 @@ public class Approval {
         this.qualifications = qualifications;
         this.approved = true;
         Calendar Cal = Calendar.getInstance();
+
         java.util.Date now = Cal.getTime();
+        java.sql.Timestamp currTime = new java.sql.Timestamp(now.getTime());
+        this.timestamp = currTime;
+
         Cal.add(Calendar.YEAR, 2);
         java.util.Date expire = Cal.getTime();
-        java.sql.Timestamp currTime = new java.sql.Timestamp(now.getTime());
         java.sql.Timestamp expirationDate = new java.sql.Timestamp(expire.getTime());
-
-
-
-        this.timestamp = currTime;
         this.expDate = expirationDate;
 
     }}

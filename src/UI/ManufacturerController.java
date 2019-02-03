@@ -315,8 +315,6 @@ public class ManufacturerController {
     @FXML
     public void correctLogin(ActionEvent event) throws IOException{
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
-        System.out.println(""+ manufacturer.getLogin()+", " + manufacturer.getPassword());
-        System.out.println(""+ nameField.getText() + ", " + passField.getText());
         if(this.manufacturer.authenticate()){
             pageSwitch(event, "ManHome.fxml", loginButton);
         }
