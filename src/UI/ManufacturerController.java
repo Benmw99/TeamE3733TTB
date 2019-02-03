@@ -367,6 +367,28 @@ public class ManufacturerController {
     }
 
     // move up sections from ManApp3
+    public void manApp4a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", section4MA3Button);
+    }
+
+    // move down sections from ManApp3
+    public void manApp4b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section2MA3Button);
+    }
+    public void manApp4c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", section1MA3Button);
+    }
+
+    //move up pages by arrows from ManApp3
+    @FXML
+    public void manApp4d(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", nextSectionMA3Button);
+    }
+    //move down pages by arrows from ManApp3
+    @FXML
+    public void manApp4e(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", prevSectionMA3Button);
+    }
 
     ///manApp
     @FXML
