@@ -10,14 +10,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sun.management.resources.agent;
 
 import java.awt.*;
 import java.io.IOException;
 
-
+import Entities.*;
 
 public class AgentController {
-
     //AgentSearch
     @FXML
     Button menuASButton;
@@ -343,13 +343,13 @@ public class AgentController {
     ToggleButton commentAHToggle;
 
     @FXML
-    Button section1AHButton;
+    ToggleButton section1AHButton;
 
     @FXML
-    Button section2AHButton;
+    ToggleButton section2AHButton;
 
     @FXML
-    Button section3AHButton;
+    ToggleButton section3AHButton;
 
     @FXML
     Button approveAHButton;
@@ -433,12 +433,57 @@ public class AgentController {
 
     @FXML
     Button printAVLButton;
+    private Form currentForm;
+    private Agent currentAgent;
 
 
     @FXML
+    public void login(ActionEvent event) throws IOException {
+        this.currentAgent = new Agent(nameField.getText(),passField.getText());
+        if(this.currentAgent.authenticate()) {
+            pageSwitch(event, "AgentHome.fxml", loginButton);
+        }
+        else {
+            Alert ohNo = new Alert(Alert.AlertType.WARNING);
+            ohNo.setContentText("Invalid Password or Username my dude");
+        }
+    }
+
+    @FXML
     public void welcomePage(ActionEvent event) throws IOException {
+        if(this.currentAgent.authenticate())
         pageSwitch(event, "WelcomePage.fxml", backButton);
     }
+    @FXML
+    public void agentViewForm(ActionEvent event) throws IOException {
+        //TODO:have to load selected form somehow
+        pageSwitch(event, "AgentViewForm.fxml", backButton);
+    }
+    @FXML
+    public void rejectForm(ActionEvent event) throws IOException {
+        this.currentForm.reject(this.currentAgent.getName());
+        pageSwitch(event, "AgentHome.fxml", backButton);
+    }
+    @FXML
+    public void approveForm(ActionEvent event) throws IOException {
+        this.currentForm.approve(this.currentAgent.getName());
+        pageSwitch(event, "AgentHome.fxml", backButton);
+    }
+    /* not needed for it. 1
+    @FXML
+    public void approveFormConditions(ActionEvent event) throws IOException {
+        this.currentForm.approve(this.currentAgent, StringConditions);
+        pageSwitch(event, "AgentHome.fxml", backButton);
+    }
+    @FXML
+    public void rejectFormFeedback(ActionEvent event) throws IOException {
+        this.currentForm.approve(this.currentAgent, String feedback);
+        pageSwitch(event, "AgentHome.fxml", backButton);
+    }
+    */
+
+
+
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;

@@ -1,8 +1,6 @@
 package DB;
 
-import Entities.AlcoholType;
-import Entities.Form;
-import Entities.Manufacturer;
+import Entities.*;
 
 import java.io.FileInputStream;
 import java.sql.*;
@@ -145,16 +143,20 @@ public class DBInsert extends DatabaseAbstract {
      */
     public void insertForm(String Serial_Number, String Fanciful_Name, String Brand_Name, Boolean Source,
                     Boolean Approve, String Rep_ID, String email, int Company_ID, Timestamp submitted, String name,
-                    String phone, int Alcohol_Type) throws SQLException {
+                    String phone, int Alcohol_Type, double APV) throws SQLException {
         String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
-                " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type) " +
-                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //TODO MAKE REP ID AND FORMULA OPTIONAL
+                " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type, APV) " +
+                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //TODO MAKE REP ID AND FORMULA OPTIONAL
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, Serial_Number);
         statement.setString(2, Fanciful_Name);
         statement.setString(3, Brand_Name);
         statement.setBoolean(4, Source);
-        statement.setBoolean(5, Approve);
+        if(Approve == true){
+            statement.setInt(5,1);
+        } else {
+            statement.setInt(5, 2);
+        }
         statement.setString(6, Rep_ID);
         statement.setString(7, email);
         statement.setInt(8, Company_ID);
@@ -162,8 +164,11 @@ public class DBInsert extends DatabaseAbstract {
         statement.setString(10, name);
         statement.setString(11, phone);
         statement.setInt(12, Alcohol_Type);
+        statement.setFloat(13, (float)APV);
         statement.execute();
     }
+
+
 
 
 
@@ -218,6 +223,7 @@ public class DBInsert extends DatabaseAbstract {
 
     public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{
         int type_num = 0;
+        int approval_num = 1;
         if(to_insert.getAlcoholType() == AlcoholType.Wine){
             type_num = 1;
         } else if (to_insert.getAlcoholType() == AlcoholType.MaltBeverage){
@@ -225,18 +231,19 @@ public class DBInsert extends DatabaseAbstract {
         } else {
             type_num = 3;
         }
+
         insertForm(null, //TODO SERIAL NUMBER
                 to_insert.getFancifulName(),
                 to_insert.getBrandName(),
                 to_insert.getSource(),
-                to_insert.getApproval() != null,
+                (to_insert.getApprovalStatus() == ApprovalStatus.Complete),
                 to_insert.getRepID(),
                 to_insert.getEmail(),
                 inserting.manID,
                 Timestamp.from(Instant.now()),
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
-                type_num);
+                type_num, to_insert.getAlcoholContent());
     }
 
 

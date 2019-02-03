@@ -16,7 +16,7 @@ public class TableBuilderTest {
         java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0");
         try {
             db.dbInsert.insertCompany(12345, "Budweiser", "test123", "qwerty");
-            db.dbInsert.insertForm("123", "Bud-lite", "Bud", true, false, null, "123@gmail.com", 12345, timestamp, "John", "7817817811", 2);
+            db.dbInsert.insertForm("123", "Bud-lite", "Bud", true, false, null, "123@gmail.com", 12345, timestamp, "John", "7817817811", 2, 1.0);
             db.dbInsert.insertAddress("12345", true, "Worcester", "MA", "100 Road Road", 1);
             db.dbInsert.insertAddress("67890", false, "Acton", "MA", "200 Street Street", 1);
         } catch (SQLException e) {
@@ -56,8 +56,8 @@ public class TableBuilderTest {
         String street = "";
         try {
             while (rset.next()) {
-                id = id + rset.getInt("ID") + ",";
-                street = street + rset.getString("Street") + ",";
+                id += rset.getInt("ID") + ",";
+                street += rset.getString("Street") + ",";
             }
         } catch (SQLException e) {
             System.out.println(e.toString());

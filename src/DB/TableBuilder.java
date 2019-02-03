@@ -110,6 +110,7 @@ public class TableBuilder extends DatabaseAbstract {
                 "Zip_Code VARCHAR(8), " +
                 "isMailing BOOLEAN, " +
                 "City VARCHAR(32), " +
+                "APV REAL," +
                 "TTB_ID BIGINT, " +
                 "State VARCHAR(2), " +
                 "Street VARCHAR(32), " +
@@ -184,13 +185,13 @@ public class TableBuilder extends DatabaseAbstract {
                 "Fanciful_Name VARCHAR(256)," +
                 "Brand_Name VARCHAR(256)," +
                 "Source BOOLEAN," +
-                "APPROVE BOOLEAN," +
+                "APPROVE SMALLINT," +
                 "Email VARCHAR(256)," +
                 "Date_Submitted TIMESTAMP," +
                 "Applicant_Name VARCHAR(32)," +
                 "Phone VARCHAR(12)," +
                 "Alcohol_Type SMALLINT," +
-                "ABV REAL, " +
+                "APV REAL, " +
                 "Formula BIGINT DEFAULT NULL," +
                 "Rep_ID VARCHAR(16) DEFAULT NULL," +
                 "Company_ID BIGINT," +
