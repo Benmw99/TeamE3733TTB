@@ -406,7 +406,6 @@ public class ManufacturerController {
     public void manApp5d(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp3.fxml", prevSectionMA4Button);
     }
-    ---------
 
     ///manApp
     @FXML
