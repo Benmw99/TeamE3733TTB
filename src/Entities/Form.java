@@ -19,6 +19,7 @@ public class Form {
     private String fancifulName;
     private ArrayList<Address> address;
     private Address mailingAddress;
+    private String applicantName;
     private String formula;
     private WineFormItems wineFormItems;
     private String phoneNumber;
@@ -44,6 +45,7 @@ public class Form {
         this.fancifulName = null;
         this.address = null;
         this.mailingAddress = null;
+        this.applicantName = null;
         this.formula = null;
         this.wineFormItems = null;
         this.phoneNumber = null;
@@ -67,6 +69,7 @@ public class Form {
         this.fancifulName = null;
         this.address = null;
         this.mailingAddress = null;
+        this.applicantName = null;
         this.formula = null;
         this.wineFormItems = null;
         this.phoneNumber = null;
@@ -79,7 +82,7 @@ public class Form {
         this.alcoholContent = alcoholContent;
     }
 
-    public Form(String repID, ArrayList<String> brewersPermit, boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, ArrayList<Address> address, Address mailingAddress, String formula, WineFormItems wineFormItems, String phoneNumber, String email, String blownBrandedEmbossedInfo, Timestamp dateSubmitted, int ttbID, int companyID, Approval approval, float alcoholContent) {
+    public Form(String repID, ArrayList<String> brewersPermit, boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, ArrayList<Address> address, Address mailingAddress, String applicantName,String formula, WineFormItems wineFormItems, String phoneNumber, String email, String blownBrandedEmbossedInfo, Timestamp dateSubmitted, int ttbID, int companyID, Approval approval, float alcoholContent) {
         this.repID = repID;
         this.brewersPermit = brewersPermit;
         this.source = source;
@@ -89,6 +92,7 @@ public class Form {
         this.fancifulName = fancifulName;
         this.address = address;
         this.mailingAddress = mailingAddress;
+        this.applicantName = applicantName;
         this.formula = formula;
         this.wineFormItems = wineFormItems;
         this.phoneNumber = phoneNumber;
@@ -174,6 +178,14 @@ public class Form {
 
     public void setMailingAddress(Address mailingAddress) {
         this.mailingAddress = mailingAddress;
+    }
+
+    public String getApplicantName() {
+        return applicantName;
+    }
+
+    public void setApplicantName(String applicantName) {
+        this.applicantName = applicantName;
     }
 
     public String getFormula() {

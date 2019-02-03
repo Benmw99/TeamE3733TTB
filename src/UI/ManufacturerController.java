@@ -13,10 +13,15 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.io.IOException;
 
+import Entities.*;
+
 
 public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
+
+    Manufacturer manufacturer;
+
 
     //ManHome
     @FXML
@@ -326,6 +331,24 @@ public class ManufacturerController {
         Scene scene = new Scene(root, 1360, 760);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void correctLogin(ActionEvent event) throws IOException{
+        this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
+        System.out.println(""+ manufacturer.getLogin()+", " + manufacturer.getPassword());
+        System.out.println(""+ nameField.getText() + ", " + passField.getText());
+        if(this.manufacturer.authenticate()){
+            pageSwitch(event, "ManHome.fxml", loginButton);
+        }
+        else{
+            Alert incorrectLogin = new Alert(Alert.AlertType.WARNING);
+            incorrectLogin.setTitle("Incorrect Login");
+            incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
+            incorrectLogin.show();
+        }
+
+
     }
 
 

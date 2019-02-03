@@ -2,7 +2,7 @@ package DB;
 
 import Entities.SearchResult;
 
-import Entities.Agent;
+import Entities.*;
 import Entities.AlcoholType;
 import Entities.Form;
 import Entities.Manufacturer;
@@ -152,8 +152,6 @@ public class DBSelect extends DatabaseAbstract {
     public Entities.SearchResult searchBy(AdvancedSearch as) {
         SearchResult result = new SearchResult();
         String baseString = "SELECT ABV, Brand_Name, Alcohol_Type FROM Form";
-        if ()
-
         return result;
     }
 
@@ -164,7 +162,8 @@ public class DBSelect extends DatabaseAbstract {
             ps.setString(1, login_name);
             ResultSet rs = ps.executeQuery();
             //TODO When NICK WRITES A VALID MANUFACTURER CONSTRUCTOR, I WILL PASS THE NEEDED INFO INTO THERE
-            return new Manufacturer();
+            return new Manufacturer(rs.getInt("Company_ID"), rs.getString("Company_Name"), rs.getString("Login_Name"),
+                    rs.getString("Password"));
         } catch (SQLException e) {
             System.out.println("No Company found.");
             System.out.println(e.toString());
@@ -195,19 +194,64 @@ public class DBSelect extends DatabaseAbstract {
         return list_of_ids;
         }
 
+    /**
+     * Retrieves the form according to the minimal Application
+     * @param TTB_ID The TTB_ID of the form to retrieve
+     * @return
+     */
+    public Form getFormMinimal(int TTB_ID){
+        String selString = "SELECT * FROM FORM WHERE TTB_ID=?";
+        String wineString = "SELECT * FROM WINE WHERE TTB_ID=?";
+        Form form = new Form();
+        WineFormItems wine;
+        try {
+            PreparedStatement ps = connection.prepareStatement(selString);
+            ps.setInt(1, TTB_ID);
+            ResultSet rs = ps.executeQuery();
+            form.setAlcoholContent(rs.getFloat("Alcohol_Content"));
+            AlcoholType type;
+            if (rs.getInt("Alcohol_Type") == 1) {
+                type = AlcoholType.Wine;
+            } else if (rs.getInt("Alcohol_Type") == 2) {
+                type = AlcoholType.MaltBeverage;
+            } else {
+                type = AlcoholType.DistilledLiquor;
+            }
+            if(type == AlcoholType.Wine){
+                ps.close();
+                ps = connection.prepareStatement(wineString);
+                rs = ps.executeQuery();
+                wine = new WineFormItems();
+                wine.setpH(rs.getFloat("pH"));
+                wine.setVintageYear(rs.getInt("Vintage_Year"));
+                form.setWineFormItems(wine);
+            }
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return form;
+    }
+
+
+    /**
+     *  We will get back to this later... it's very important, but not very important right now.
+     * @param TTB_ID
+     * @return
+     */
     public Form getFormByTTB_ID(int TTB_ID){
         String selString = "SELECT * FROM FORM WHERE TTB_ID=?";
         String otherInfString = "SELECT * FROM OTHERINFO WHERE TTB_ID=?";
         String brewersPermit = "SELECT * FROM BREWERSPERMIT WHERE TTB_ID=?";
         String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
-        List<String> list_permits = new ArrayList<String>();
+        ArrayList<String> list_permits = new ArrayList<String>();
+        ArrayList<Address> addresses = new ArrayList<Address>();
         Form form = new Form();
         //TODO Communicate with Nick about addresses.
         try {
             PreparedStatement ps = connection.prepareStatement(selString);
             ps.setInt(1, TTB_ID);
             ResultSet rs = ps.executeQuery();
-            rs.first();
+            rs.next();
             form.setFancifulName(rs.getString("Fanciful_Name"));
             form.setBrandName(rs.getString("Brand_Name"));
             form.setSource(rs.getBoolean("Source"));
@@ -216,7 +260,7 @@ public class DBSelect extends DatabaseAbstract {
             form.setEmail(rs.getString("Email"));
             form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
             form.setApplicantName(rs.getString("Applicant_Name"));
-            form.setPhoneNum(rs.getString("Phone"));
+            form.setPhoneNumber(rs.getString("Phone"));
             AlcoholType type;
             if (rs.getInt("Alcohol_Type") == 1) {
                 type = AlcoholType.Wine;
@@ -232,7 +276,7 @@ public class DBSelect extends DatabaseAbstract {
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
             rs.first();
-            form.setOtherInfo(rs.getString("Text"));
+            form.setBlownBrandedEmbossedInfo(rs.getString("Text"));
             ps.close();
             /* BREWERS PERMIT BLOCK */
             ps = connection.prepareStatement(brewersPermit);
@@ -241,21 +285,67 @@ public class DBSelect extends DatabaseAbstract {
             while (rs.next()) {
                 list_permits.add(rs.getString("Brewers_No"));
             }
-            form.setBrewersPermit(list_permits.get(0)); //TODO MAKE THIS TAKE A WHOLE LIST
+            form.setBrewersPermit(list_permits);
             ps.close();
             /* Address Block */
             ps = connection.prepareStatement(addressString);
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
             while(rs.next()){
-                // This doesn't do anything just yet
+                if(rs.getBoolean("isMailing")){
+                   Address mailing = new Address(rs.getString("City"), rs.getString("State"),
+                           rs.getString("Zip_Code"), rs.getString("Street"), "NAME");
+                   //TODO RESOLVE PROBLEMS WITH NAME
+                } else {
+                    addresses.add(new Address(rs.getString("City"), rs.getString("State"),
+                            rs.getString("Zip_Code"), rs.getString("Street"), "NAME"));
+                }
             }
+            form.setAddress(addresses);
             ps.close();
         }catch (SQLException e){
             System.out.println(e.toString());
         }
         return form;
     }
+
+    /**Get first three not-yet-approved forms for an agent to look over
+     *
+     */
+
+    public List<Form> getThreeForms(){
+        String selStr = "SELECT * FROM FORMS WHERE APPROVE=?";
+        List<Integer> list_ID = new ArrayList<Integer>();
+        List<Form> list_form = new ArrayList<Form>();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selStr);
+            ps.setBoolean(1, false);
+            ResultSet rs = ps.executeQuery();
+            int i = 0;
+            while(rs.next() && i < 3){
+                i ++;
+                list_ID.add(rs.getInt("TTB_ID"));
+            }
+    } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        while(!list_ID.isEmpty()){
+            list_form.add(this.getFormMinimal(list_ID.get(1)));
+            list_ID.remove(1);
+        }
+        return list_form;
+    }
+/*
+    public ArrayList<Address> getListAddress(int TTB_ID){
+        String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(addressString);
+        } catch (SQLException e ){
+            System.out.println(e.toString());
+        }
+    }
+*/
+
     //TODO SELECT BY TYPE
 
     public void selectFormsWithData(){
