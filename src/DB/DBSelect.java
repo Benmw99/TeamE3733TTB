@@ -154,7 +154,7 @@ public class DBSelect extends DatabaseAbstract {
         //To be used later for setting stuff
         int set = 1;
         //The base search string
-        String baseString = "SELECT ABV, Brand_Name, Alcohol_Type FROM Form WHERE APPROVE = TRUE";
+        String baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = TRUE";
         if (as.brandName != null) {
             baseString += " AND Brand_Name = ?";
         }
@@ -169,7 +169,7 @@ public class DBSelect extends DatabaseAbstract {
             }
             baseString += " AND Alcohol_Type = " + type;
         }
-        result.setQuery(baseString);
+        result.setQuery(baseString); //TODO FIX THIS SO STUFF CAN BE SAVED
         System.out.println(baseString);
         if (as.numResults > 0) {
             baseString = baseString + " FETCH NEXT " + as.numResults + " ROWS ONLY";
@@ -178,21 +178,13 @@ public class DBSelect extends DatabaseAbstract {
             PreparedStatement statement = connection.prepareStatement(baseString);
             if (as.brandName != null) {
                 statement.setString(set, as.brandName);
+                set += 1;
             }
             ResultSet rs = statement.executeQuery();
-            int boozeType = 0;
-            AlcoholType type = AlcoholType.Wine;
+            int id = 0;
             while (rs.next()) {
-                //Wine 1, Malt 2, Spirit 3
-                boozeType = rs.getInt("Alcohol_Type");
-                if (boozeType == 1) {
-                    type = AlcoholType.Wine;
-                } else if (boozeType == 2) {
-                    type = AlcoholType.MaltBeverage;
-                } else if (boozeType == 3) {
-                    type = AlcoholType.DistilledLiquor;
-                }
-                result.addResult(new Form(type, rs.getString("Brand_Name"), rs.getFloat("ABV")));
+                id = rs.getInt("TTB_ID");
+                result.addResult(getFormByTTB_ID(id));
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -320,7 +312,7 @@ public class DBSelect extends DatabaseAbstract {
             ps = connection.prepareStatement(otherInfString);
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
-            rs.first();
+            rs.next();
             form.setBlownBrandedEmbossedInfo(rs.getString("Text"));
             ps.close();
             /* BREWERS PERMIT BLOCK */
