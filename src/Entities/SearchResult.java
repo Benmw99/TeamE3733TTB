@@ -89,7 +89,7 @@ public class SearchResult {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SearchResult that = (SearchResult) o;
-        return Objects.equals(results, that.results) &&
+        return (results.equals(that.results)) &&
                 Objects.equals(query, that.query) &&
                 Objects.equals(search, that.search);
     }
