@@ -23,9 +23,9 @@ public class SelectTest {
             db.dbInsert.insertCompany(123, "Budweiser", "Buddy", "12345");
             db.dbInsert.insertAgent("Mark", 1263, "Agent_Mark", "PassWord");
             db.dbInsert.insertForm("123YY", "ABC", "123", true, true, null,
-                    "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2);
+                    "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2, 1.0);
             db.dbInsert.insertForm("123YY", "ABC", "123", true, false, null,
-                    "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2);
+                    "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2, 1.0);
         } catch (SQLException e) {
             System.out.println("ERROR: TEST DB INIT FAILED.");
             System.out.println(e.toString());

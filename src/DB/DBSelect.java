@@ -331,10 +331,26 @@ public class DBSelect extends DatabaseAbstract {
             System.out.println(e.toString());
         }
         while(!list_ID.isEmpty()){
-            list_form.add(this.getFormMinimal(list_ID.get(0)));
+            list_form.add(this.getFormByTTB_ID(list_ID.get(0)));
             list_ID.remove(0);
         }
         return list_form;
+    }
+
+    //TODO MAKE AN UPDATE CLASS
+
+    public void approveForm(Form form, Approval approval){
+        String selStr = "UPDATE FORM SET APPROVAL=? WHERE ID=? ";
+        try{
+            PreparedStatement ps = connection.prepareStatement(selStr);
+            ps.setInt(2, form.getTtbID());
+            ps.setBoolean(1, true);
+            ps.execute();
+            ps.close();
+            //TODO MAKE AN INSERT APPROVAL ONCE APPROVALS MAKE SENSE
+    } catch (SQLException e){
+            System.out.println(e.toString());
+        }
     }
 
 
