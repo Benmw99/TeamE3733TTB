@@ -171,10 +171,10 @@ public class DBSelect extends DatabaseAbstract {
                 ps.setInt(set, search.ttbID);
                 set += 1;
             }
-            ps.setString(set + 1,"TTBSearch" + dateFormat.format(date) + ".csv");
+            ps.setString(set,"TTBSearch" + dateFormat.format(date) + ".csv");
+            ps.setString(set + 1,null);
             ps.setString(set + 2,null);
             ps.setString(set + 3,null);
-            ps.setString(set + 4,null);
             ps.execute();
             ps.close();
             return true;
@@ -435,6 +435,7 @@ public class DBSelect extends DatabaseAbstract {
                 }
             }
             form.setAddress(addresses);
+            //TODO APPROVAL, WINE, LABELIMAGES
             ps.close();
         }catch (SQLException e){
             System.out.println(e.toString());
@@ -486,6 +487,49 @@ public class DBSelect extends DatabaseAbstract {
         }
     }
 
+    /**
+     * Gets all the TTBID's of forms that a company has submitted for viewing on their dashboard
+     * @param companyID The company that you want all the forms for
+     * @return A list of all the TTBID's of forms that the company has submitted
+     */
+    public ArrayList<Integer> selectFormByCompany(int companyID) {
+        ArrayList<Integer> results = new ArrayList<Integer>();
+        String select = "SELECT TTB_ID FROM FORM WHERE Company_ID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(select);
+            ps.setInt(1, companyID);
+            ResultSet rs = ps.executeQuery();
+            Integer ttbID = 0;
+            while (rs.next()) {
+                results.add(rs.getInt("TTB_ID"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return results;
+    }
+
+    /**
+     * Gets all the TTBID's of forms that a rep has submitted for viewing on their dashboard
+     * @param repID The rep that you want all the forms for
+     * @return A list of all the TTBID's of forms that the rep has submitted
+     */
+    public ArrayList<Integer> selectFormByRep(int repID) {
+        ArrayList<Integer> results = new ArrayList<Integer>();
+        String select = "SELECT TTB_ID FROM FORM WHERE REP_ID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(select);
+            ps.setInt(1, repID);
+            ResultSet rs = ps.executeQuery();
+            Integer ttbID = 0;
+            while (rs.next()) {
+                results.add(rs.getInt("TTB_ID"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return results;
+    }
 
 
 
@@ -505,7 +549,6 @@ public class DBSelect extends DatabaseAbstract {
     public void selectFormsWithData(){
 // this will probably return Type Form
     }
-    //TODO SELECT BY OWNER
 
     //TODO BIG OL' SELECT FUNCTION FOR FORMS
 }
