@@ -123,6 +123,22 @@ public class DBSelect extends DatabaseAbstract {
         return agent;
     }
 
+    public Representative getRepresentative(String login){
+        String selectString = "SELECT * FROM REPS WHERE Login_Name=?";
+        Representative rep = new Representative();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selectString);
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            rep.setLogin(login);
+            rep.setRepID(String.valueOf(rs.getInt("Agent_ID")));
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return rep;
+    }
+
     public Boolean AuthenticateAgent(String login, String pass) {
         String selectString = "SELECT COUNT(*) FROM AGENTS WHERE Login_Name =? AND Password =? ";
         return doAuthenticate(login, pass, selectString);
@@ -422,12 +438,13 @@ public class DBSelect extends DatabaseAbstract {
                     type = AlcoholType.DistilledLiquor;
                 }
                 form.setAlcoholType(type);
-                if (rs.getInt("Approve") == 1) {
+                int status = rs.getInt("Approve");
+                if (status == 1) {
                     stat = ApprovalStatus.Complete;
                     form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
-                } else if (rs.getInt("Approve") == 2) {
+                } else if (status == 2) {
                     stat = ApprovalStatus.Incomplete;
-                } else if (rs.getInt("Approve") == 3) {
+                } else if (status == 3) {
                     stat = ApprovalStatus.Incorrect;
                     form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
                 }
@@ -625,6 +642,7 @@ public class DBSelect extends DatabaseAbstract {
 
         } catch (SQLException e){
             System.out.println(e.toString());
+            System.out.println(e.getStackTrace());
         }
         return app;
     }

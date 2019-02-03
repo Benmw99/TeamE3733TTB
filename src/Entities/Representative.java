@@ -16,6 +16,12 @@ public class Representative implements IUser {
         this.password = password;
     }
 
+    public Representative(){
+        this.repID = null;
+        this.login = null;
+        this.password = null;
+    }
+
     public String getRepID() {
         return repID;
     }
