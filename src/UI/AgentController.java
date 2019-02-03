@@ -126,9 +126,6 @@ public class AgentController {
     @FXML
     Button sendAFButton;
 
-    @FXML
-    Button agentRegisterButton;
-
     //AgentApp1
     @FXML
     MenuButton menuAA1MenuButton;
@@ -311,6 +308,9 @@ public class AgentController {
     Button submitButton;
 
     //AgentLogin
+    @FXML
+    Button agentRegisterButton;
+
     @FXML
     Button backButton;
 

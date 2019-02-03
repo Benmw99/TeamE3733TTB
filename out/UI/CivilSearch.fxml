@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CivilController">
+    <Rectangle fill="#4ba77a" height="100.0" layoutX="-14.0" layoutY="21.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1385.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <Text fill="WHITE" layoutX="585.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="220.37358185041347">
+        <font>
+            <Font name="Georgia" size="48.0" />
+        </font></Text>
+   <Rectangle fill="#4ba77a" height="260.0" layoutX="174.0" layoutY="301.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1393.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="290.0" />
+   <TextField fx:id="searchField" alignment="CENTER" layoutX="453.0" layoutY="388.0" prefHeight="71.0" prefWidth="565.0" promptText="Search the Database" AnchorPane.leftAnchor="453.3" AnchorPane.rightAnchor="453.3" AnchorPane.topAnchor="350.0" />
+   <Button fx:id="advSearchButton" contentDisplay="CENTER" layoutX="614.0" layoutY="473.0" mnemonicParsing="false" text="Advanced Search" textAlignment="CENTER" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="473.0" />
+   <ImageView fitHeight="155.0" fitWidth="142.0" layoutX="395.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="130.0">
+      <image>
+         <Image url="@../../../../Documents/TTBLogo.png" />
+      </image>
+   </ImageView>
+   <Text layoutX="613.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alcohol and Tobacco">
+      <font>
+         <Font name="Georgia" size="48.0" />
+      </font>
+   </Text>
+   <Text layoutX="623.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tax and Trade Bureau" AnchorPane.leftAnchor="597.0" AnchorPane.topAnchor="175.0">
+      <font>
+         <Font name="Georgia" size="48.0" />
+      </font>
+   </Text>
+   <Text layoutX="633.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="U.S. Department of the Treasury" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="240.0">
+      <font>
+         <Font name="Georgia" size="24.0" />
+      </font>
+   </Text>
+</AnchorPane>

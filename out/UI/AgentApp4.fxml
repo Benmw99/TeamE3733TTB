@@ -14,11 +14,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManApp">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Rectangle fill="#b5072c" height="100.0" stroke="BLACK" strokeType="INSIDE" width="1360.0" />
+            <Rectangle fill="#007bb0" height="100.0" stroke="BLACK" strokeType="INSIDE" width="1360.0" />
             <Rectangle fill="#c4c4c4" height="70.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="1360.0" />
             <Rectangle fill="#c4c4c4" height="80.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="1360.0">
                <VBox.margin>
@@ -58,7 +58,7 @@
                         <Insets left="30.0" right="15.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="section1MA4Button" mnemonicParsing="false" onAction="#manApp5c" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
+                  <Button fx:id="section1AA4Button" mnemonicParsing="false" style="-fx-border-color: #019ADD; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -66,7 +66,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section2MA4Button" mnemonicParsing="false" onAction="#manApp5b" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
+                  <Button fx:id="section2AA4Button" mnemonicParsing="false" style="-fx-border-color: #019ADD; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -74,7 +74,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="section3MA4Button" mnemonicParsing="false" onAction="#manApp5a" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
+                  <Button fx:id="section3AA4Button" mnemonicParsing="false" style="-fx-border-color: #019ADD; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -82,7 +82,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="section4MA4Button" mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="4" textFill="WHITE">
+                  <Button fx:id="section4AA4Button" mnemonicParsing="false" style="-fx-background-color: #019ADD; -fx-border-color: #019ADD;" text="4" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -106,17 +106,12 @@
             </HBox>
             <VBox prefWidth="1360.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets left="30.0" top="3.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
-                     <VBox.margin>
-                        <Insets left="30.0" top="3.0" />
-                     </VBox.margin>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets left="30.0" top="3.0" />
                      </VBox.margin>
@@ -125,10 +120,10 @@
             </VBox>
          </children>
       </VBox>
-      <MenuButton fx:id="menuMA4MenuButton" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
+      <MenuButton fx:id="menuAA4MenuButton" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
         <items>
-          <MenuItem disable="true" mnemonicParsing="false" text="Submit Form" />
-          <MenuItem mnemonicParsing="false" text="Go Home" />
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
          <font>
             <Font size="26.0" />
@@ -153,11 +148,6 @@
                      <VBox.margin>
                         <Insets top="3.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="19" textFill="WHITE">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
                   </Label>
                </children>
             </VBox>
@@ -198,7 +188,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Button fx:id="uploadLabelButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="150.0" style="-fx-border-color: #bf0a30;" text="Upload Label">
+                        <Button fx:id="uploadLabelButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="150.0" style="-fx-border-color: #019ADD;" text="Upload Label">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -219,38 +209,13 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT">
-                     <children>
-                        <Label prefHeight="80.0" text="Alcohol Content" textFill="WHITE">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <TextField prefHeight="41.0" promptText="Enter a Percentage">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../assets/tool-tip.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
                </children>
             </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button fx:id="prevSectionMA4Button" mnemonicParsing="false" onAction="#manApp5d" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
+            <Button fx:id="prevSectionButton" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #019ADD;" text="&lt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -262,7 +227,7 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button fx:id="submitButton" mnemonicParsing="false" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #71071D;" text="Submit" textFill="WHITE">
+            <Button fx:id="submitButton" mnemonicParsing="false" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #012B3D;" text="Submit" textFill="WHITE">
                <HBox.margin>
                   <Insets right="80.0" />
                </HBox.margin>

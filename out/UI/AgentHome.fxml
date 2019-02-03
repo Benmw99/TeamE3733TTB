@@ -15,40 +15,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
    <children>
       <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
          <children>
-            <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="89.0" prefWidth="1367.0" style="-fx-background-color: #B5072C#B5072C;">
+            <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="89.0" prefWidth="1367.0" style="-fx-background-color: #007BB0#007BB0;">
                <children>
-                  <SplitMenuButton fx:id="menuSplitButton" layoutX="76.0" layoutY="14.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="116.0" style="-fx-background-color: #B5072C#B5072C;" text="Menu">
+                  <SplitMenuButton fx:id="menuSplitButton" layoutX="33.0" layoutY="15.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="116.0" style="-fx-background-color: #007BB0#007BB0;" text="Menu">
                     <items>
-                      <MenuItem mnemonicParsing="false" onAction="#newApp" text="Submit Application" />
-                      <MenuItem mnemonicParsing="false" text="Exit to Welcome Page" />
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                      <font>
                         <Font name="Palatino" size="18.0" />
                      </font>
                   </SplitMenuButton>
-                  <Text fill="WHITE" layoutX="547.0" layoutY="53.0" strokeWidth="0.0" text="My Applications">
+                  <Text fill="WHITE" layoutX="549.0" layoutY="53.0" strokeWidth="0.0" text="My Current Queue">
                      <font>
                         <Font name="Palatino" size="36.0" />
                      </font>
                   </Text>
-                  <Button fx:id="backButton" layoutX="4.0" layoutY="-2.0" mnemonicParsing="false" onAction="#manLogin" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #B5072C#B5072C #B5072C#B5072C;" text="&lt;" textFill="WHITE">
-                     <font>
-                        <Font name="Palatino" size="18.0" />
-                     </font>
-                  </Button>
                </children>
             </Pane>
             <Pane layoutX="-1.0" layoutY="87.0" prefHeight="676.0" prefWidth="311.0" style="-fx-background-color: #3C3B3B#3C3B3B;">
                <children>
-                  <TextField fx:id="searchMHField" layoutX="14.0" layoutY="14.0" prefHeight="19.0" prefWidth="240.0" promptText="Search Applications">
+                  <TextField fx:id="searchAHField" layoutX="14.0" layoutY="14.0" prefHeight="19.0" prefWidth="240.0" promptText="Search Applications">
                      <font>
                         <Font name="Palatino" size="18.0" />
                      </font></TextField>
-                  <Button fx:id="addAppButton" layoutX="269.0" layoutY="16.0" mnemonicParsing="false" onAction="#manApp1" style="-fx-background-color: white; -fx-background-radius: 15;" text="+">
+                  <Button fx:id="addAppButton" layoutX="269.0" layoutY="16.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 15;" text="+">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -320,10 +315,21 @@
             </Pane>
             <Pane layoutX="310.0" layoutY="88.0" prefHeight="64.0" prefWidth="1051.0" style="-fx-background-color: #C4C4C4#C4C4C4;">
                <children>
-                  <ToggleButton fx:id="editToggle" layoutX="58.0" layoutY="18.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="62.0" text="Edit" />
-                  <Button fx:id="downloadButton" layoutX="727.0" layoutY="18.0" mnemonicParsing="false" text="Download" />
-                  <Button fx:id="commentsButton" layoutX="832.0" layoutY="18.0" mnemonicParsing="false" text="Agent Comments" />
-                  <Button fx:id="printButton" layoutX="981.0" layoutY="18.0" mnemonicParsing="false" text="Print" />
+                  <ToggleButton fx:id="commentAHToggle" layoutX="753.0" layoutY="17.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="125.0" text="Make Comments" />
+                  <Button fx:id="approveAHButton" layoutX="269.0" layoutY="19.0" mnemonicParsing="false" text="Approve" />
+                  <Button fx:id="checkFormAHButton" layoutX="883.0" layoutY="18.0" mnemonicParsing="false" text="Check Form" />
+                  <Button fx:id="printAHButton" layoutX="986.0" layoutY="18.0" mnemonicParsing="false" text="Print" />
+                  <ToggleButton fx:id="section1AHButton" layoutX="69.0" layoutY="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0" text="1" />
+                  <Button fx:id="rejectAHButton" layoutX="351.0" layoutY="18.0" mnemonicParsing="false" text="Reject" />
+                  <Button fx:id="sendToAgentAHButton" layoutX="419.0" layoutY="18.0" mnemonicParsing="false" text="Send to Agent" />
+                  <Button fx:id="feedbackAHButton" layoutX="536.0" layoutY="18.0" mnemonicParsing="false" text="Send Feedback" />
+                  <Label layoutX="21.0" layoutY="26.0" text="Section">
+                     <font>
+                        <Font name="Palatino" size="13.0" />
+                     </font>
+                  </Label>
+                  <ToggleButton fx:id="section2AHButton" layoutX="104.0" layoutY="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0" text="2" />
+                  <ToggleButton fx:id="section3AHButton" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0" text="3" />
                </children>
             </Pane>
             <Pane layoutX="487.0" layoutY="153.0" prefHeight="606.0" prefWidth="576.0" style="-fx-background-color: #E7E7E7#E7E7E7;">
