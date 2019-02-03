@@ -3,6 +3,7 @@ package Entities;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Form {
 
@@ -278,6 +279,32 @@ public class Form {
     //#######################################################################################################
     //                                  Helper Functions
 
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Form form = (Form) o;
+        return source == form.source &&
+                ttbID == form.ttbID &&
+                companyID == form.companyID &&
+                Float.compare(form.alcoholContent, alcoholContent) == 0 &&
+                Objects.equals(repID, form.repID) &&
+                Objects.equals(brewersPermit, form.brewersPermit) &&
+                Objects.equals(serialNumber, form.serialNumber) &&
+                alcoholType == form.alcoholType &&
+                Objects.equals(brandName, form.brandName) &&
+                Objects.equals(fancifulName, form.fancifulName) &&
+                Objects.equals(address, form.address) &&
+                Objects.equals(mailingAddress, form.mailingAddress) &&
+                Objects.equals(applicantName, form.applicantName) &&
+                Objects.equals(formula, form.formula) &&
+                Objects.equals(wineFormItems, form.wineFormItems) &&
+                Objects.equals(phoneNumber, form.phoneNumber) &&
+                Objects.equals(email, form.email) &&
+                Objects.equals(blownBrandedEmbossedInfo, form.blownBrandedEmbossedInfo) &&
+                Objects.equals(dateSubmitted, form.dateSubmitted) &&
+                Objects.equals(approval, form.approval) &&
+                approvalStatus == form.approvalStatus;
+    }
 
 }

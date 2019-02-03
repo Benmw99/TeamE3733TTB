@@ -126,9 +126,6 @@ public class AgentController {
     @FXML
     Button sendAFButton;
 
-    @FXML
-    Button agentRegisterButton;
-
     //AgentApp1
     @FXML
     MenuButton menuAA1MenuButton;
@@ -312,6 +309,9 @@ public class AgentController {
 
     //AgentLogin
     @FXML
+    Button agentRegisterButton;
+
+    @FXML
     Button backButton;
 
     @FXML
@@ -446,6 +446,7 @@ public class AgentController {
         else {
             Alert ohNo = new Alert(Alert.AlertType.WARNING);
             ohNo.setContentText("Invalid Password or Username my dude");
+            ohNo.showAndWait();
         }
     }
 

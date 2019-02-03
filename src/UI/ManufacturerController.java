@@ -1,5 +1,6 @@
 package UI;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -8,17 +9,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 
 import Entities.*;
+
+import static javafx.collections.FXCollections.observableArrayList;
 
 
 public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
+
+
+
 
     Manufacturer manufacturer;
 
@@ -26,9 +32,6 @@ public class ManufacturerController {
     //ManHome
     @FXML
     SplitMenuButton menuSplitButton;
-
-    @FXML
-    SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
     TextField searchMHField;
@@ -49,6 +52,10 @@ public class ManufacturerController {
     Button printButton;
 
     //ManLogin
+
+    @FXML
+    Button manRegisterButton;
+
     @FXML
     Button backButton;
 
@@ -75,12 +82,15 @@ public class ManufacturerController {
     Button menuMPButton;
 
     //ManSearch
+
+    @FXML
+    SplitMenuButton alcoholTypeSplitMenu;
+
     @FXML
     Button menuMSButton;
 
     @FXML
     TextField searchMSField;
-
 
     @FXML
     TextField manField;
@@ -130,7 +140,7 @@ public class ManufacturerController {
     TextField producerNumField;
 
     @FXML
-    TextField sourceField;
+    ComboBox<String> sourceComboBox;
 
     @FXML
     TextField serialYearField;
@@ -139,7 +149,13 @@ public class ManufacturerController {
     TextField serialDigitsField;
 
     @FXML
-    TextField typeField;
+    ComboBox<String> typeComboBox;
+
+    @FXML
+    TextField vintageYearField;
+
+    @FXML
+    TextField phField;
 
     @FXML
     TextField alcoholContentTextField;
@@ -179,7 +195,7 @@ public class ManufacturerController {
     TextField name8Field;
 
     @FXML
-    ChoiceBox state8ChoiceBox;
+    ComboBox<String> state8ComboBox;
 
     @FXML
     TextField address8Field;
@@ -194,7 +210,19 @@ public class ManufacturerController {
     RadioButton sameAddressRadioButton;
 
     @FXML
-    RadioButton difAddressRadioButton;
+    TextField name9Field;
+
+    @FXML
+    ComboBox<String> state9ComboBox;
+
+    @FXML
+    TextField address9Field;
+
+    @FXML
+    TextField city9Field;
+
+    @FXML
+    TextField zip9Field;
 
     @FXML
     TextField formulaField;
@@ -234,19 +262,19 @@ public class ManufacturerController {
     TextField emailField;
 
     @FXML
-    Checkbox certCheckbox;
+    CheckBox certCheckbox;
 
     @FXML
     TextField state15Field;
 
     @FXML
-    Checkbox liquorCheckbox;
+    CheckBox liquorCheckbox;
 
     @FXML
     TextField amountField;
 
     @FXML
-    Checkbox resubmitCheckbox;
+    CheckBox resubmitCheckbox;
 
     @FXML
     TextField TTBIDField;
@@ -294,15 +322,122 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
+
+    //new application
     @FXML
-    Button manRegisterButton;
+    public void manApp1(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", addAppButton);
+    }
 
-
+    //back buttons
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", backButton);
     }
+    @FXML
+    public void manLogin(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManLogin.fxml", backButton);
+    }
+    @FXML
+    public void manHome(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManHome.fxml", backButton);
+    }
+
+    // move up sections from ManApp1
+    @FXML
+    public void manApp2a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section2MA1Button);
+    }
+    @FXML
+    public void manApp2b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", section3MA1Button);
+    }
+    @FXML
+    public void manApp2c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", section4MA1Button);
+    }
+
+    //move up pages by arrows from ManApp1
+    @FXML
+    public void manApp2d(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
+    }
+
+    // move up sections from ManApp2
+    @FXML
+    public void manApp3a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", section3MA2Button);
+    }
+    @FXML
+    public void manApp3b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", section4MA2Button);
+    }
+
+    // move down sections from ManApp2
+    @FXML
+    public void manApp3c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", section1MA2Button);
+    }
+
+    //move up pages by arrows from ManApp2
+    @FXML
+    public void manApp3d(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", nextSectionMA2Button);
+    }
+    //move down pages by arrows from ManApp2
+    @FXML
+    public void manApp3e(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", prevSectionMA2Button);
+    }
+
+    // move up sections from ManApp3
+    public void manApp4a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", section4MA3Button);
+    }
+
+    // move down sections from ManApp3
+    public void manApp4b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section2MA3Button);
+    }
+    public void manApp4c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", section1MA3Button);
+    }
+
+    //move up pages by arrows from ManApp3
+    @FXML
+    public void manApp4d(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", nextSectionMA3Button);
+    }
+    //move down pages by arrows from ManApp3
+    @FXML
+    public void manApp4e(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", prevSectionMA3Button);
+    }
+
+    // move down sections from ManApp4
+    public void manApp5a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", section3MA4Button);
+    }
+    public void manApp5b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section2MA4Button);
+    }
+    public void manApp5c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", section1MA4Button);
+    }
+
+    //move down pages by arrows from ManApp3
+    @FXML
+    public void manApp5d(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", prevSectionMA4Button);
+    }
+
+    //manHome
+    public void goHome(ActionEvent event) throws IOException {
+        menuSwitch(event, "ManHome.fxml", menuMA1MenuButton);
+    }
+
     ///manApp
+    /*
     @FXML
     public void newApp(ActionEvent event) throws IOException {
         this.currentForm = new Entities.Form();
@@ -322,6 +457,7 @@ public class ManufacturerController {
         pageSwitch(event, page, backButton);
     }
 
+    */
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
@@ -333,6 +469,17 @@ public class ManufacturerController {
         stage.show();
     }
 
+    public void menuSwitch(ActionEvent event, String filename, MenuButton b) throws IOException{
+        Parent root;
+        Stage stage;
+        stage=(Stage) b.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource(filename));
+        Scene scene = new Scene(root, 1360, 760);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
     @FXML
     public void correctLogin(ActionEvent event) throws IOException{
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
@@ -340,14 +487,46 @@ public class ManufacturerController {
             pageSwitch(event, "ManHome.fxml", loginButton);
         }
         else{
+            //pageSwitch(event, "ManHome.fxml", loginButton);
             Alert incorrectLogin = new Alert(Alert.AlertType.WARNING);
             incorrectLogin.setTitle("Incorrect Login");
             incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
             incorrectLogin.show();
         }
-
-
     }
+
+    @FXML
+    public void checkWine(ActionEvent event) throws IOException{
+        if (typeComboBox.getValue().equals("Wine")){
+            vintageYearField.disableProperty().setValue(false);
+            phField.disableProperty().setValue(false);
+
+            //System.out.println("GotHERE");
+        }
+        else{
+            vintageYearField.disableProperty().setValue(true);
+            phField.disableProperty().setValue(true);
+        }
+    }
+
+    @FXML
+    public void checkMail(ActionEvent event) throws IOException{
+        if (sameAddressRadioButton.selectedProperty().equals(true)){
+            name9Field.disableProperty().setValue(true);
+            state9ComboBox.disableProperty().setValue(true);
+            address9Field.disableProperty().setValue(true);
+            city9Field.disableProperty().setValue(true);
+            zip9Field.disableProperty().setValue(true);
+        }
+        else{
+            name9Field.disableProperty().setValue(false);
+            state9ComboBox.disableProperty().setValue(false);
+            address9Field.disableProperty().setValue(false);
+            city9Field.disableProperty().setValue(false);
+            zip9Field.disableProperty().setValue(false);
+        }
+    }
+
 
 
 }

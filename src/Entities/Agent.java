@@ -2,6 +2,8 @@ package Entities;
 
 import DB.Database;
 
+import java.util.Objects;
+
 import static Entities.ApprovalStatus.*;
 
 public class Agent implements IUser{
@@ -93,8 +95,20 @@ public class Agent implements IUser{
     void SendToAgent() {
 
     }
-void csvDownload(){
 
-}
+    void csvDownload(){
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Agent agent = (Agent) o;
+        return Objects.equals(repID, agent.repID) &&
+                Objects.equals(login, agent.login) &&
+                Objects.equals(password, agent.password) &&
+                Objects.equals(name, agent.name);
+    }
 
 }

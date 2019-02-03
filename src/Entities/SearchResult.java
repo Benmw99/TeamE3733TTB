@@ -5,7 +5,7 @@ import Entities.Sorting.DateSort;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+import java.util.Objects;
 
 
 public class SearchResult {
@@ -83,4 +83,15 @@ public class SearchResult {
     public void setSearch(AdvancedSearch search) {
         this.search = search;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SearchResult that = (SearchResult) o;
+        return Objects.equals(results, that.results) &&
+                Objects.equals(query, that.query) &&
+                Objects.equals(search, that.search);
+    }
+
 }
