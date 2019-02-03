@@ -3,6 +3,8 @@ package Entities;
 import DB.Database;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
+import java.util.Objects;
+
 public class Manufacturer implements IUser {
 
     public int manID;
@@ -96,7 +98,15 @@ public class Manufacturer implements IUser {
 
     }
 
-
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Manufacturer that = (Manufacturer) o;
+        return manID == that.manID &&
+                Objects.equals(manName, that.manName) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password);
+    }
 
 }

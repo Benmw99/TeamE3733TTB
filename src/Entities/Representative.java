@@ -2,6 +2,8 @@ package Entities;
 
 import DB.Database;
 
+import java.util.Objects;
+
 public class Representative implements IUser {
 
     private String repID;
@@ -68,5 +70,14 @@ public class Representative implements IUser {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Representative that = (Representative) o;
+        return Objects.equals(repID, that.repID) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password);
+    }
 
 }
