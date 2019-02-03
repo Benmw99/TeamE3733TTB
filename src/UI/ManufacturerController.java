@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 
 import Entities.*;
@@ -263,19 +262,19 @@ public class ManufacturerController {
     TextField emailField;
 
     @FXML
-    Checkbox certCheckbox;
+    CheckBox certCheckbox;
 
     @FXML
     TextField state15Field;
 
     @FXML
-    Checkbox liquorCheckbox;
+    CheckBox liquorCheckbox;
 
     @FXML
     TextField amountField;
 
     @FXML
-    Checkbox resubmitCheckbox;
+    CheckBox resubmitCheckbox;
 
     @FXML
     TextField TTBIDField;

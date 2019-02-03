@@ -90,7 +90,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section2MA2Button" mnemonicParsing="false" onAction="#manBackToApp3a" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="2" textFill="WHITE">
+                  <Button fx:id="section2MA2Button" mnemonicParsing="false"  style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="2" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

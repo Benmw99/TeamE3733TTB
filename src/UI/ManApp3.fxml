@@ -304,7 +304,7 @@
                               <Insets top="3.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="translationField" alignment="CENTER_LEFT" prefHeight="80.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="80.0">
                            <children>
                               <CheckBox fx:id="liquorCheckbox" mnemonicParsing="false" text="Distinctive Liquor Bottle Approval" textFill="WHITE">
                                  <font>
