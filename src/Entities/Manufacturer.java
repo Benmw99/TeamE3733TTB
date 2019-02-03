@@ -77,10 +77,14 @@ public class Manufacturer implements IUser {
         return db.dbSelect.AuthenticateCompany(login,password);
     }
 
-    public IUser loadUser(){
+    public void loadUser(){
         DB.Database db = DB.Database.getInstance();
-        return db.dbSelect.getManufacturer(login);
+        Manufacturer man = db.dbSelect.getManufacturer(login);
+        this.manID = man.getManID();
+        this.manName = man.getManName();
     }
+
+
 
 
 

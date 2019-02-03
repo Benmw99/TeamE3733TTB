@@ -289,12 +289,12 @@ public class Form {
                 companyID == form.companyID &&
                 Float.compare(form.alcoholContent, alcoholContent) == 0 &&
                 Objects.equals(repID, form.repID) &&
-                Objects.equals(brewersPermit, form.brewersPermit) &&
+                (brewersPermit.equals(form.brewersPermit)) &&
                 Objects.equals(serialNumber, form.serialNumber) &&
                 alcoholType == form.alcoholType &&
                 Objects.equals(brandName, form.brandName) &&
                 Objects.equals(fancifulName, form.fancifulName) &&
-                Objects.equals(address, form.address) &&
+                (address.equals(form.address)) &&
                 Objects.equals(mailingAddress, form.mailingAddress) &&
                 Objects.equals(applicantName, form.applicantName) &&
                 Objects.equals(formula, form.formula) &&

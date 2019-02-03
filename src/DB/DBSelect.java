@@ -504,6 +504,12 @@ public class DBSelect extends DatabaseAbstract {
 
     //TODO MAKE AN UPDATE CLASS
 
+    /**
+     *  Approves a formn, in the loose sense of the term. You should put a form with the correct approval type here
+     *
+     * @param form the form to approve
+     * @param approval the approval for the form
+     */
     public void approveForm(Form form, Approval approval){
         String selStr = "UPDATE FORM SET APPROVAL=? WHERE ID=? ";
         try{
@@ -520,6 +526,19 @@ public class DBSelect extends DatabaseAbstract {
             Database.getInstance().dbInsert.insertApproval(approval, form.getTtbID());
     } catch (SQLException e){
             System.out.println(e.toString());
+        }
+    }
+
+    /**
+     *
+     * @param form
+     */
+    public void approveOrReject(Form form) throws Exception{
+        if(form.getApproval() == null){
+            Exception e = new Exception("No approval Object for Form. Form not ready.");
+            throw e;
+        } else {
+            approveForm(form, form.getApproval());
         }
     }
 
