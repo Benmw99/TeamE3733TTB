@@ -9,7 +9,6 @@ import java.sql.*;
 import static org.junit.Assert.*;
 
 public class InsertTest {
-
     @BeforeClass
     public static void setup() {
         DB.Database db = DB.Database.getInstance();
@@ -28,17 +27,20 @@ public class InsertTest {
     public void checkNullForm() {
         DB.Database db = DB.Database.getInstance();
         try {
-            assertTrue(db.dbSelect.selectAllForms().getFetchSize() > 0);
+            //This format is key to freeing the resources so lockouts don't occur.
+            ResultSet rset = db.dbSelect.selectAllForms();
+            int answer = rset.getFetchSize();
+            rset.close();
+            assertTrue(answer > 0);
         } catch(SQLException e){
             System.out.println(e.toString());
         }
     }
 
-
-    @AfterClass
+    /*@AfterClass
     public static void close(){
         try {
             DriverManager.getConnection("jdbc:derby:;shutdown=true");
         } catch (SQLException e) {}
-    }
+    }*/
 }
