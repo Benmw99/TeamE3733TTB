@@ -9,6 +9,7 @@ public class Approval {
     private ApprovalStatus page1;
     private ApprovalStatus page2;
     private ApprovalStatus page3;
+    private ApprovalStatus page4;
 
     private boolean approved;
     private Timestamp timestamp;
@@ -25,12 +26,22 @@ public class Approval {
         this.page1 = null;
         this.page2 = null;
         this.page3 = null;
+        this.page4 = null;
     }
 
-    public Approval(ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
+    public ApprovalStatus getPage4() {
+        return page4;
+    }
+
+    public void setPage4(ApprovalStatus page4) {
+        this.page4 = page4;
+    }
+
+    public Approval(ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, ApprovalStatus page4, boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
         this.page1 = page1;
         this.page2 = page2;
         this.page3 = page3;
+        this.page4 = page4;
         this.approved = approved;
         this.timestamp = timestamp;
         this.agentApprovalName = agentApprovalName;
@@ -47,6 +58,7 @@ public class Approval {
         this.page1 = null;
         this.page2 = null;
         this.page3 = null;
+        this.page4 = null;
     }
 
     public ApprovalStatus getPage1() {

@@ -377,6 +377,8 @@ public class DBSelect extends DatabaseAbstract {
         String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
         ArrayList<String> list_permits = new ArrayList<String>();
         ArrayList<Address> addresses = new ArrayList<Address>();
+        AlcoholType type;
+        ApprovalStatus stat = ApprovalStatus.Incomplete;
         Form form = new Form();
         //TODO Communicate with Nick about addresses.
         try {
@@ -393,15 +395,25 @@ public class DBSelect extends DatabaseAbstract {
                 form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
                 form.setApplicantName(rs.getString("Applicant_Name"));
                 form.setPhoneNumber(rs.getString("Phone"));
-                AlcoholType type;
                 if (rs.getInt("Alcohol_Type") == 1) {
                     type = AlcoholType.Wine;
+                    form.setWineFormItems(this.getWineBlock(TTB_ID));
                 } else if (rs.getInt("Alcohol_Type") == 2) {
                     type = AlcoholType.MaltBeverage;
                 } else {
                     type = AlcoholType.DistilledLiquor;
                 }
                 form.setAlcoholType(type);
+                if (rs.getInt("Approval") == 1) {
+                    stat = ApprovalStatus.Complete;
+                    form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
+                } else if (rs.getInt("Approval") == 2) {
+                    stat = ApprovalStatus.Incomplete;
+                } else if (rs.getInt("Approval") == 3) {
+                    stat = ApprovalStatus.Incorrect;
+                    form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
+                }
+                form.setApprovalStatus(stat);
             }
             ps.close();
             /* OTHER INFO BLOCK */
@@ -435,9 +447,9 @@ public class DBSelect extends DatabaseAbstract {
                             rs.getString("Zip_Code"), rs.getString("Street"), "NAME"));
                 }
             }
-            form.setAddress(addresses);
-            //TODO APPROVAL, WINE, LABELIMAGES
             ps.close();
+            form.setAddress(addresses);
+
         }catch (SQLException e){
             System.out.println(e.toString());
         }
@@ -487,8 +499,7 @@ public class DBSelect extends DatabaseAbstract {
             ps.setInt(1, 1);
             ps.execute();
             ps.close();
-            Database.getInstance().dbInsert.insertApproval(approval.getAgentApprovalName(), form.getTtbID(),
-                    approval.getTimestamp(), approval.getExpDate(), approval.getQualifications());
+            Database.getInstance().dbInsert.insertApproval(approval, form.getTtbID());
     } catch (SQLException e){
             System.out.println(e.toString());
         }
@@ -539,6 +550,47 @@ public class DBSelect extends DatabaseAbstract {
     }
 
 
+    public WineFormItems getWineBlock(int TTB_ID){
+        String selstr = "SELECT * FROM WINE WHERE TTB_ID=?";
+        WineFormItems wine = new  WineFormItems();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selstr);
+            ps.setInt(1, TTB_ID);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            wine.setVintageYear(rs.getInt("Vintage"));
+            wine.setpH(rs.getFloat("pH"));
+            wine.setGrapeVarietal(rs.getString("Grape_Varietals"));
+            wine.setAppellation(rs.getString("Wine_Appellation"));
+            rs.close();
+    } catch(SQLException e ){
+            System.out.println(e.toString());
+        }
+        return wine;
+    }
+
+    public Approval getApproval_By_TTB_ID(int TTB_ID){
+        String selStr = "SELECT * FROM APPROVAL WHERE TTB_ID=?";
+        Approval app = new Approval();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selStr);
+            ps.setInt(1, TTB_ID);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            app.setAgentApprovalName(rs.getString("APPROVING_AGENT"));
+            app.setExpDate(rs.getTimestamp("Expiration"));
+            app.setTimestamp(rs.getTimestamp("Timestamp"));
+            app.setPage1(ApprovalStatus.fromInt(rs.getInt("Page_1")));
+            app.setPage2(ApprovalStatus.fromInt(rs.getInt("Page_2")));
+            app.setPage3(ApprovalStatus.fromInt(rs.getInt("Page_3")));
+            app.setPage4(ApprovalStatus.fromInt(rs.getInt("Page_4")));
+            rs.close();
+
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return app;
+    }
 
 /*
     public ArrayList<Address> getListAddress(int TTB_ID){
