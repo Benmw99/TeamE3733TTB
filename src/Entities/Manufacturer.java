@@ -25,6 +25,13 @@ public class Manufacturer implements IUser {
         this.password = password;
     }
 
+    public Manufacturer(){
+        this.manID = 0;
+        this.manName = null;
+        this.login = null;
+        this.password = null;
+    }
+
     public int getManID() {
         return manID;
     }

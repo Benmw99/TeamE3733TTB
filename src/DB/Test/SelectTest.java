@@ -65,6 +65,11 @@ public class SelectTest {
         assertEquals(true, form.getSource());
 //not implemented        assertEquals(true, form.getApproval());
     }
+    @Test
+    public void retrieveManTest(){
+        Manufacturer man = db.dbSelect.getManufacturer("Buddy");
+        assertEquals(123, man.manID);
+    }
 
     @Test
     public void searchByTest() {
