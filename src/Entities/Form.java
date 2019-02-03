@@ -3,6 +3,7 @@ package Entities;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Form {
 
@@ -30,7 +31,8 @@ public class Form {
     private int ttbID;
     private int companyID;
     private Approval approval;
-    private float alcoholContent; //in percent
+    private float alcoholContent;
+    private ApprovalStatus approvalStatus = ApprovalStatus.Incomplete; //in percent
 
     //#######################################################################################################
     //                                  constructors
@@ -266,19 +268,43 @@ public class Form {
         return alcoholContent;
     }
 
-    public void setAlcoholContent(float alcoholContent) {
-        this.alcoholContent = alcoholContent;
-    }
+    public void setAlcoholContent(float alcoholContent) { this.alcoholContent = alcoholContent; }
 
+    public void setApprovalStatus(ApprovalStatus approvalStatus){ this.approvalStatus = approvalStatus;}
+
+    public ApprovalStatus getApprovalStatus(){ return this.approvalStatus;}
     //#######################################################################################################
     //                                  UI API (to be implemented)
-    public void approve(String agentName){//TODO: Implement
-    }
-    public void reject(String agentName){ //TODO: Implement
-    }
+    // approve./reject is in agent class
     //#######################################################################################################
     //                                  Helper Functions
 
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Form form = (Form) o;
+        return source == form.source &&
+                ttbID == form.ttbID &&
+                companyID == form.companyID &&
+                Float.compare(form.alcoholContent, alcoholContent) == 0 &&
+                Objects.equals(repID, form.repID) &&
+                (brewersPermit.equals(form.brewersPermit)) &&
+                Objects.equals(serialNumber, form.serialNumber) &&
+                alcoholType == form.alcoholType &&
+                Objects.equals(brandName, form.brandName) &&
+                Objects.equals(fancifulName, form.fancifulName) &&
+                (address.equals(form.address)) &&
+                Objects.equals(mailingAddress, form.mailingAddress) &&
+                Objects.equals(applicantName, form.applicantName) &&
+                Objects.equals(formula, form.formula) &&
+                Objects.equals(wineFormItems, form.wineFormItems) &&
+                Objects.equals(phoneNumber, form.phoneNumber) &&
+                Objects.equals(email, form.email) &&
+                Objects.equals(blownBrandedEmbossedInfo, form.blownBrandedEmbossedInfo) &&
+                Objects.equals(dateSubmitted, form.dateSubmitted) &&
+                Objects.equals(approval, form.approval) &&
+                approvalStatus == form.approvalStatus;
+    }
 
 }

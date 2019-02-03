@@ -159,6 +159,10 @@ public class TableBuilder extends DatabaseAbstract {
                 "TTB_ID BIGINT," +
                 "Date TIMESTAMP," +
                 "Expiration TIMESTAMP," +
+                "Page_1 Int," +
+                "Page_2 Int," +
+                "Page_3 Int, " +
+                "Page_4 Int, " +
                 "Qualification VARCHAR(256) DEFAULT NULL, " +
                 "Constraint Approval_PK Primary Key (TTB_ID), " +
                 "Constraint Approval_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
@@ -185,7 +189,7 @@ public class TableBuilder extends DatabaseAbstract {
                 "Fanciful_Name VARCHAR(256)," +
                 "Brand_Name VARCHAR(256)," +
                 "Source BOOLEAN," +
-                "APPROVE BOOLEAN," +
+                "APPROVE SMALLINT," +
                 "Email VARCHAR(256)," +
                 "Date_Submitted TIMESTAMP," +
                 "Applicant_Name VARCHAR(32)," +
@@ -211,7 +215,6 @@ public class TableBuilder extends DatabaseAbstract {
                 "Password VARCHAR(256), " +
                 "Constraint Agents_PK Primary Key (Login_Name), " +
                 "Constraint Agents_UQ Unique (Agent_ID))";
-        //TODO Agent_ID Sequence? Maybe not
         sendStatement(buildString);
     }
 
