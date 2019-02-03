@@ -59,7 +59,7 @@ public class Form {
     }
 
     //minimal application constructor
-    public Form(AlcoholType alcoholType, String brandName, int alcoholContent){
+    public Form(AlcoholType alcoholType, String brandName, float alcoholContent){
         this.repID = null;
         this.brewersPermit = null;
         this.source = true;
@@ -256,9 +256,11 @@ public class Form {
         return approval;
     }
 
-    public void setApproval(Approval approval) {
-        this.approval = approval;
-    }
+    public void setApproval(Approval approval) { this.approval = approval; }
+
+    public boolean getSource(){ return this.source;}
+
+    public void setSource(Boolean source) { this.source = source;}
 
     public float getAlcoholContent() {
         return alcoholContent;

@@ -9,10 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.SplitMenuButton;
 
 import java.io.IOException;
 
 public class CivilController {
+    private Entities.SearchResult results;
 
     //not added because no button to go back from civilsearch to welcome screen
     /*
@@ -40,7 +42,10 @@ public class CivilController {
     TextField searchASField;
 
     @FXML
-    TextField alcTypeField;
+    TextField alcoholContentTextField;
+
+    @FXML
+    TextField brandNameTextField;
 
     @FXML
     TextField manField;
@@ -60,12 +65,15 @@ public class CivilController {
     @FXML
     Button printResults;
 
+    @FXML
+    SplitMenuButton alcoholTypeSplitMenu;
+
 
     public void advSearch(ActionEvent event) throws IOException {
         pageSwitch(event,"CivilAdvSearch.fxml", advSearchButton);
     }
 
-    public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
+    private void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
         Stage stage;
         stage=(Stage) b.getScene().getWindow();

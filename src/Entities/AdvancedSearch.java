@@ -16,8 +16,9 @@ public class AdvancedSearch {
     //typeOfApplication
     public Timestamp timestamp;
     public int ttbID;
+    public int numResults;
 
-    public AdvancedSearch(boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, int vintageYear, float pH, String grapeVarietal, String appellation, Timestamp timestamp, int ttbID) {
+    public AdvancedSearch(boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, int vintageYear, float pH, String grapeVarietal, String appellation, Timestamp timestamp, int ttbID, int numResults) {
         this.source = source;
         this.serialNumber = serialNumber;
         this.alcoholType = alcoholType;
@@ -29,6 +30,7 @@ public class AdvancedSearch {
         this.appellation = appellation;
         this.timestamp = timestamp;
         this.ttbID = ttbID;
+        this.numResults = numResults;
     }
 
     public AdvancedSearch() {
@@ -43,6 +45,7 @@ public class AdvancedSearch {
         this.appellation = null;
         this.timestamp = null;
         this.ttbID = 0;
+        this.numResults = 0;
     }
 
     public boolean isSource() {
@@ -131,5 +134,13 @@ public class AdvancedSearch {
 
     public void setTtbID(int ttbID) {
         this.ttbID = ttbID;
+    }
+
+    public int getNumResults() {
+        return numResults;
+    }
+
+    public void setNumResults(int numResults) {
+        this.numResults = numResults;
     }
 }

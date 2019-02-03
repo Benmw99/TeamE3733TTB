@@ -23,10 +23,16 @@ public class AgentController {
     Button menuASButton;
 
     @FXML
+    Button searchButton;
+
+    @FXML
     TextField searchASField;
 
     @FXML
-    TextField alcTypeField;
+    TextField alcoholContentTextField;
+
+    @FXML
+    TextField brandNameTextField;
 
     @FXML
     TextField manField;
@@ -119,6 +125,9 @@ public class AgentController {
 
     @FXML
     Button sendAFButton;
+
+    @FXML
+    Button agentRegisterButton;
 
     //AgentApp1
     @FXML
@@ -320,6 +329,9 @@ public class AgentController {
     //AgentHome
     @FXML
     SplitMenuButton menuSplitButton;
+
+    @FXML
+    SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
     TextField searchAHField;

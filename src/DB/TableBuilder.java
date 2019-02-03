@@ -11,7 +11,7 @@ public class TableBuilder extends DatabaseAbstract {
        super(path);
     }
 
-    protected static TableBuilder getInstance() {
+    static TableBuilder getInstance() {
         if (tableBuilder_instance == null) {
             tableBuilder_instance = new TableBuilder("./ttb.db");
         }
@@ -23,67 +23,67 @@ public class TableBuilder extends DatabaseAbstract {
             String dropString = "Drop table Address";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Wine";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Approval";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table BrewersPermit";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table OtherInfo";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Label";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Form";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Agents";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Reps";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop table Company";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop Sequence Address_ID RESTRICT ";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop Sequence Label_ID RESTRICT ";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         try {
             String dropString = "Drop Sequence Form_ID RESTRICT ";
             PreparedStatement ps =  connection.prepareStatement(dropString);
             ps.execute();
-        } catch (SQLException e) {}
+        } catch (SQLException ignored) {}
         buildAgents();
         buildReps();
         buildCompany();
@@ -135,6 +135,8 @@ public class TableBuilder extends DatabaseAbstract {
                 "TTB_ID BIGINT," +
                 "Grape_Varietals VARCHAR(256)," +
                 "Wine_Appellation VARCHAR(32), " +
+                "PH REAL, " +
+                "Vintage INT, " +
                 "Constraint Wine_PK Primary Key (TTB_ID), " +
                 "Constraint Wine_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
         sendStatement(buildString);
@@ -156,7 +158,7 @@ public class TableBuilder extends DatabaseAbstract {
                 "TTB_ID BIGINT," +
                 "Date TIMESTAMP," +
                 "Expiration TIMESTAMP," +
-                "Qualification VARCHAR(256), " +
+                "Qualification VARCHAR(256) DEFAULT NULL, " +
                 "Constraint Approval_PK Primary Key (TTB_ID), " +
                 "Constraint Approval_FK Foreign Key (TTB_ID) References Form(TTB_ID) On Delete Cascade)";
         sendStatement(buildString);
@@ -188,6 +190,8 @@ public class TableBuilder extends DatabaseAbstract {
                 "Applicant_Name VARCHAR(32)," +
                 "Phone VARCHAR(12)," +
                 "Alcohol_Type SMALLINT," +
+                "ABV REAL, " +
+                "Formula BIGINT DEFAULT NULL," +
                 "Rep_ID VARCHAR(16) DEFAULT NULL," +
                 "Company_ID BIGINT," +
                 "Constraint Form_PK Primary Key (TTB_ID), " +

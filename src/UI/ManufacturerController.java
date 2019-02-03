@@ -13,13 +13,20 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.io.IOException;
 
+import Entities.*;
+
 
 public class ManufacturerController {
+
+    Manufacturer manufacturer;
 
 
     //ManHome
     @FXML
     SplitMenuButton menuSplitButton;
+
+    @FXML
+    SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
     TextField searchMHField;
@@ -59,7 +66,7 @@ public class ManufacturerController {
     Button faqButton;
 
     @FXML
-    Button searchButton;
+    Button search1Button;
 
     //ManProfile
     @FXML
@@ -72,8 +79,6 @@ public class ManufacturerController {
     @FXML
     TextField searchMSField;
 
-    @FXML
-    TextField alcTypeField;
 
     @FXML
     TextField manField;
@@ -133,6 +138,12 @@ public class ManufacturerController {
 
     @FXML
     TextField typeField;
+
+    @FXML
+    TextField alcoholContentTextField;
+
+    @FXML
+    TextField brandNameTextField;
 
     @FXML
     TextField brandField;
@@ -281,6 +292,9 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
+    @FXML
+    Button manRegisterButton;
+
 
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
@@ -296,6 +310,24 @@ public class ManufacturerController {
         Scene scene = new Scene(root, 1360, 760);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void correctLogin(ActionEvent event) throws IOException{
+        this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
+        System.out.println(""+ manufacturer.getLogin()+", " + manufacturer.getPassword());
+        System.out.println(""+ nameField.getText() + ", " + passField.getText());
+        if(this.manufacturer.authenticate()){
+            pageSwitch(event, "ManHome.fxml", loginButton);
+        }
+        else{
+            Alert incorrectLogin = new Alert(Alert.AlertType.WARNING);
+            incorrectLogin.setTitle("Incorrect Login");
+            incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
+            incorrectLogin.show();
+        }
+
+
     }
 
 
