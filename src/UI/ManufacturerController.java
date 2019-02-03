@@ -207,7 +207,19 @@ public class ManufacturerController {
     RadioButton sameAddressRadioButton;
 
     @FXML
-    RadioButton difAddressRadioButton;
+    TextField name9Field;
+
+    @FXML
+    ComboBox<String> state9ComboBox;
+
+    @FXML
+    TextField address9Field;
+
+    @FXML
+    TextField city9Field;
+
+    @FXML
+    TextField zip9Field;
 
     @FXML
     TextField formulaField;
@@ -391,6 +403,24 @@ public class ManufacturerController {
         else{
             vintageYearField.disableProperty().setValue(true);
             phField.disableProperty().setValue(true);
+        }
+    }
+
+    @FXML
+    public void checkMail(ActionEvent event) throws IOException{
+        if (sameAddressRadioButton.selectedProperty().equals(true)){
+            name9Field.disableProperty().setValue(true);
+            state9ComboBox.disableProperty().setValue(true);
+            address9Field.disableProperty().setValue(true);
+            city9Field.disableProperty().setValue(true);
+            zip9Field.disableProperty().setValue(true);
+        }
+        else{
+            name9Field.disableProperty().setValue(false);
+            state9ComboBox.disableProperty().setValue(false);
+            address9Field.disableProperty().setValue(false);
+            city9Field.disableProperty().setValue(false);
+            zip9Field.disableProperty().setValue(false);
         }
     }
 
