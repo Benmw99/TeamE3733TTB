@@ -26,6 +26,9 @@ public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
 
+
+
+
     Manufacturer manufacturer;
     Entities.Form form;
 
@@ -95,7 +98,6 @@ public class ManufacturerController {
 
     @FXML
     TextField searchMSField;
-
 
     @FXML
     TextField manField;
@@ -215,7 +217,19 @@ public class ManufacturerController {
     RadioButton sameAddressRadioButton;
 
     @FXML
-    RadioButton difAddressRadioButton;
+    TextField name9Field;
+
+    @FXML
+    ComboBox<String> state9ComboBox;
+
+    @FXML
+    TextField address9Field;
+
+    @FXML
+    TextField city9Field;
+
+    @FXML
+    TextField zip9Field;
 
     @FXML
     TextField formulaField;
@@ -484,7 +498,6 @@ public class ManufacturerController {
             incorrectLogin.setTitle("Incorrect Login");
             incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
             incorrectLogin.show();
-
         }
     }
 
@@ -560,5 +573,25 @@ public class ManufacturerController {
             phField.disableProperty().setValue(true);
         }
     }
+
+    @FXML
+    public void checkMail(ActionEvent event) throws IOException{
+        if (sameAddressRadioButton.selectedProperty().equals(true)){
+            name9Field.disableProperty().setValue(true);
+            state9ComboBox.disableProperty().setValue(true);
+            address9Field.disableProperty().setValue(true);
+            city9Field.disableProperty().setValue(true);
+            zip9Field.disableProperty().setValue(true);
+        }
+        else{
+            name9Field.disableProperty().setValue(false);
+            state9ComboBox.disableProperty().setValue(false);
+            address9Field.disableProperty().setValue(false);
+            city9Field.disableProperty().setValue(false);
+            zip9Field.disableProperty().setValue(false);
+        }
+    }
+
+
 
 }

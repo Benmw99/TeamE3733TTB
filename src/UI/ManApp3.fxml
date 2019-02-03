@@ -152,8 +152,8 @@
       </VBox>
       <MenuButton fx:id="menuMA3MenuButton" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem mnemonicParsing="false" text="Submit Form" />
+          <MenuItem mnemonicParsing="false" text="Go Home" />
         </items>
          <font>
             <Font size="26.0" />
