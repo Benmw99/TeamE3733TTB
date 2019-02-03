@@ -408,6 +408,7 @@ public class ManufacturerController {
     }
 
     ///manApp
+    /*
     @FXML
     public void newApp(ActionEvent event) throws IOException {
         this.currentForm = new Entities.Form();
@@ -427,7 +428,7 @@ public class ManufacturerController {
         pageSwitch(event, page, backButton);
     }
 
-
+    */
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
