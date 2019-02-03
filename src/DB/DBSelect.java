@@ -592,6 +592,12 @@ public class DBSelect extends DatabaseAbstract {
         return app;
     }
 
+    /**
+     *
+     * @param ttbID The TTB_ID that you want to get all the forms of
+     * @return An arrayList of LabelImages where each label image is can be loaded as an image
+     */
+    //THIS FUNCTION MAY NOT WORK AT ALL. IT IS POSSIBLE MEMORY CLOSURES INVALIDATES THIS
     public ArrayList<LabelImage> selectImagesbyTTBID(int ttbID) {
         ArrayList<LabelImage> results = new ArrayList<>();
         try {
@@ -617,7 +623,9 @@ public class DBSelect extends DatabaseAbstract {
             }
             connection.setAutoCommit(true);
             //Might not be necessary but also might be preventing memory leaks. I don't really know
-            image.free();
+            try{
+                image.free();
+            } catch (NullPointerException ignored) { }
             rs.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
