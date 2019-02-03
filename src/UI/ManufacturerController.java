@@ -192,7 +192,7 @@ public class ManufacturerController {
     TextField name8Field;
 
     @FXML
-    ChoiceBox state8ChoiceBox;
+    ComboBox<String> state8ComboBox;
 
     @FXML
     TextField address8Field;
@@ -382,7 +382,6 @@ public class ManufacturerController {
 
     @FXML
     public void checkWine(ActionEvent event) throws IOException{
-        //String combo = sourceComboBox.getValue();
         if (typeComboBox.getValue().equals("Wine")){
             vintageYearField.disableProperty().setValue(false);
             phField.disableProperty().setValue(false);

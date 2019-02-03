@@ -8,3 +8,5 @@ derby.log
 *.jar
 *.lock
 *.iml
+derby.log
+*.log
