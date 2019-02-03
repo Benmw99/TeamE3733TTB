@@ -2,6 +2,8 @@ package Entities;
 
 import DB.Database;
 
+import static Entities.ApprovalStatus.*;
+
 public class Agent implements IUser{
 
     private String repID;
@@ -64,11 +66,18 @@ public class Agent implements IUser{
         return null;
     }
 
-    void approveForm() {
+    void approveForm(Form form, String qualifications) {
+        form.getApproval().approve(name, qualifications);
+        form.setApprovalStatus(Complete);
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.approveForm(form,form.getApproval());
 
     }
 
-    void rejectForm() {
+    void rejectForm(Form form) {
+        form.setApprovalStatus(Incomplete);
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.approveForm(form, form.getApproval());
 
     }
 
