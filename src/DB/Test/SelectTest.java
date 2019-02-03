@@ -24,6 +24,8 @@ public class SelectTest {
             db.dbInsert.insertAgent("Mark", 1263, "Agent_Mark", "PassWord");
             db.dbInsert.insertForm("123YY", "ABC", "123", true, true, null,
                     "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2);
+            db.dbInsert.insertForm("123YY", "ABC", "123", true, false, null,
+                    "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2);
         } catch (SQLException e) {
             System.out.println("ERROR: TEST DB INIT FAILED.");
             System.out.println(e.toString());
@@ -49,11 +51,9 @@ public class SelectTest {
     @Test
     public void retrieveList_TTBIDTest() {
         Manufacturer man = new Manufacturer(123, null, null, null);
-        man.manID = 123;
         Manufacturer man2 = new Manufacturer(456, null, null, null);
-        man2.manID = 45543;
         List<Integer> list = db.dbSelect.getTTB_IDbyManufactuer(man);
-        assertEquals(1, list.size());
+        assertEquals(2, list.size());
         assertTrue(list.get(0) == 1);
         List<Integer> list2 = db.dbSelect.getTTB_IDbyManufactuer(man2);
         assertTrue(list2.size() == 0);
@@ -72,6 +72,12 @@ public class SelectTest {
         assertEquals(true, form.getSource());
 //not implemented        assertEquals(true, form.getApproval());
     }
+
+    @Test
+    public void getThreeFormsTest(){
+        assertEquals(1, db.dbSelect.getThreeForms().size());
+    }
+
     /*@AfterClass
     public static void close(){
         try {
