@@ -83,4 +83,10 @@ public class SearchResult {
     public void setSearch(AdvancedSearch search) {
         this.search = search;
     }
+
+    public void getThreeForms() {
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.getThreeForms();
+    }
+
 }
