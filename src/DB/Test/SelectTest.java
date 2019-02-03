@@ -98,7 +98,6 @@ public class SelectTest {
         /* This shit doesn't work and I can't even get the tests to look correct
         assertTrue(SRNone.getResults().contains(db.dbSelect.searchBy(ASNone).getResults()));
         assertTrue(SRNone.getResults().contains(db.dbSelect.searchBy(ASNone).getResults()));
-
         assertTrue(SRBrand.getResults().contains(db.dbSelect.searchBy(ASBrand).getResults()));
         */
     }

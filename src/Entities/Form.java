@@ -30,7 +30,8 @@ public class Form {
     private int ttbID;
     private int companyID;
     private Approval approval;
-    private float alcoholContent; //in percent
+    private float alcoholContent;
+    private ApprovalStatus approvalStatus = ApprovalStatus.Incomplete; //in percent
 
     //#######################################################################################################
     //                                  constructors
@@ -266,16 +267,14 @@ public class Form {
         return alcoholContent;
     }
 
-    public void setAlcoholContent(float alcoholContent) {
-        this.alcoholContent = alcoholContent;
-    }
+    public void setAlcoholContent(float alcoholContent) { this.alcoholContent = alcoholContent; }
 
+    public void setApprovalStatus(ApprovalStatus approvalStatus){ this.approvalStatus = approvalStatus;}
+
+    public ApprovalStatus getApprovalStatus(){ return this.approvalStatus;}
     //#######################################################################################################
     //                                  UI API (to be implemented)
-    public void approve(String agentName){//TODO: Implement
-    }
-    public void reject(String agentName){ //TODO: Implement
-    }
+    // approve./reject is in agent class
     //#######################################################################################################
     //                                  Helper Functions
 

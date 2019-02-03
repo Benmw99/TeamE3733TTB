@@ -1,6 +1,7 @@
 package Entities;
 
 import DB.Database;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 public class Manufacturer implements IUser {
 
@@ -77,7 +78,13 @@ public class Manufacturer implements IUser {
         return null;
     }
 
-    void SubmitForm() {
+    void SubmitForm(Form form) {
+        try {
+            DB.Database db = DB.Database.getInstance();
+            db.dbInsert.insertForm(form, this);
+        }catch (Exception e){
+            System.out.println(e);
+        }
 
     }
 

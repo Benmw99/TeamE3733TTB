@@ -6,9 +6,11 @@ import Entities.*;
 import Entities.AlcoholType;
 import Entities.Form;
 import Entities.Manufacturer;
+import java.io.InputStream;
 import java.lang.Exception;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -193,9 +195,9 @@ public class DBSelect extends DatabaseAbstract {
         //The base search string
         String baseString;
         if (as.type == 1 && ((as.vintageYear > 0) || (as.pH > 0) || (as.grapeVarietal != null) || (as.appellation != null))) {
-            baseString = "SELECT TTB_ID FROM Form JOIN Wine ON Form.TTB_ID = Wine.TTB_ID WHERE APPROVE = TRUE";
+            baseString = "SELECT TTB_ID FROM Form JOIN Wine ON Form.TTB_ID = Wine.TTB_ID WHERE APPROVE = 1";
         } else {
-            baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = TRUE";
+            baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = 1";
         }
         //Manually goes through and checks if stuff is set and then adds it to the string. Later it will set all those question marks
         if (as.source != null) {
@@ -229,7 +231,6 @@ public class DBSelect extends DatabaseAbstract {
             baseString += " AND TTB_ID = ?";
         }
         result.setQuery(baseString);
-        System.out.println(baseString);
         if (as.numResults > 0) {
             baseString = baseString + " FETCH NEXT " + as.numResults + " ROWS ONLY";
         }
@@ -376,6 +377,8 @@ public class DBSelect extends DatabaseAbstract {
         String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
         ArrayList<String> list_permits = new ArrayList<String>();
         ArrayList<Address> addresses = new ArrayList<Address>();
+        AlcoholType type;
+        ApprovalStatus stat = ApprovalStatus.Incomplete;
         Form form = new Form();
         //TODO Communicate with Nick about addresses.
         try {
@@ -392,15 +395,25 @@ public class DBSelect extends DatabaseAbstract {
                 form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
                 form.setApplicantName(rs.getString("Applicant_Name"));
                 form.setPhoneNumber(rs.getString("Phone"));
-                AlcoholType type;
                 if (rs.getInt("Alcohol_Type") == 1) {
                     type = AlcoholType.Wine;
+                    form.setWineFormItems(this.getWineBlock(TTB_ID));
                 } else if (rs.getInt("Alcohol_Type") == 2) {
                     type = AlcoholType.MaltBeverage;
                 } else {
                     type = AlcoholType.DistilledLiquor;
                 }
                 form.setAlcoholType(type);
+                if (rs.getInt("Approval") == 1) {
+                    stat = ApprovalStatus.Complete;
+                    form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
+                } else if (rs.getInt("Approval") == 2) {
+                    stat = ApprovalStatus.Incomplete;
+                } else if (rs.getInt("Approval") == 3) {
+                    stat = ApprovalStatus.Incorrect;
+                    form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
+                }
+                form.setApprovalStatus(stat);
             }
             ps.close();
             /* OTHER INFO BLOCK */
@@ -434,9 +447,9 @@ public class DBSelect extends DatabaseAbstract {
                             rs.getString("Zip_Code"), rs.getString("Street"), "NAME"));
                 }
             }
-            form.setAddress(addresses);
-            //TODO APPROVAL, WINE, LABELIMAGES
             ps.close();
+            form.setAddress(addresses);
+
         }catch (SQLException e){
             System.out.println(e.toString());
         }
@@ -453,7 +466,7 @@ public class DBSelect extends DatabaseAbstract {
         List<Form> list_form = new ArrayList<Form>();
         try{
             PreparedStatement ps = connection.prepareStatement(selStr);
-            ps.setBoolean(1, false);
+            ps.setInt(1, 2);
             ResultSet rs = ps.executeQuery();
             int i = 0;
             while(rs.next() && i < 3){
@@ -478,10 +491,15 @@ public class DBSelect extends DatabaseAbstract {
         try{
             PreparedStatement ps = connection.prepareStatement(selStr);
             ps.setInt(2, form.getTtbID());
-            ps.setBoolean(1, true);
+            if(!approval.isApproved()){
+                ps.setInt(1, 1);
+            } else if(approval.isApproved()){
+                ps.setInt(1,3);
+            }
+            ps.setInt(1, 1);
             ps.execute();
             ps.close();
-            //TODO MAKE AN INSERT APPROVAL ONCE APPROVALS MAKE SENSE
+            Database.getInstance().dbInsert.insertApproval(approval, form.getTtbID());
     } catch (SQLException e){
             System.out.println(e.toString());
         }
@@ -532,23 +550,78 @@ public class DBSelect extends DatabaseAbstract {
     }
 
 
-
-/*
-    public ArrayList<Address> getListAddress(int TTB_ID){
-        String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
-        try {
-            PreparedStatement ps = connection.prepareStatement(addressString);
-        } catch (SQLException e ){
+    public WineFormItems getWineBlock(int TTB_ID){
+        String selstr = "SELECT * FROM WINE WHERE TTB_ID=?";
+        WineFormItems wine = new  WineFormItems();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selstr);
+            ps.setInt(1, TTB_ID);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            wine.setVintageYear(rs.getInt("Vintage"));
+            wine.setpH(rs.getFloat("pH"));
+            wine.setGrapeVarietal(rs.getString("Grape_Varietals"));
+            wine.setAppellation(rs.getString("Wine_Appellation"));
+            rs.close();
+    } catch(SQLException e ){
             System.out.println(e.toString());
         }
-    }
-*/
-
-    //TODO SELECT BY TYPE
-
-    public void selectFormsWithData(){
-// this will probably return Type Form
+        return wine;
     }
 
-    //TODO BIG OL' SELECT FUNCTION FOR FORMS
+    public Approval getApproval_By_TTB_ID(int TTB_ID){
+        String selStr = "SELECT * FROM APPROVAL WHERE TTB_ID=?";
+        Approval app = new Approval();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selStr);
+            ps.setInt(1, TTB_ID);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            app.setAgentApprovalName(rs.getString("APPROVING_AGENT"));
+            app.setExpDate(rs.getTimestamp("Expiration"));
+            app.setTimestamp(rs.getTimestamp("Timestamp"));
+            app.setPage1(ApprovalStatus.fromInt(rs.getInt("Page_1")));
+            app.setPage2(ApprovalStatus.fromInt(rs.getInt("Page_2")));
+            app.setPage3(ApprovalStatus.fromInt(rs.getInt("Page_3")));
+            app.setPage4(ApprovalStatus.fromInt(rs.getInt("Page_4")));
+            rs.close();
+
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        return app;
+    }
+
+    public ArrayList<LabelImage> selectImagesbyTTBID(int ttbID) {
+        ArrayList<LabelImage> results = new ArrayList<>();
+        try {
+            //Autcommit must be turned off to work with blobs
+            connection.setAutoCommit(false);
+            //Select the entry searched for in the DB
+            String selectString = "SELECT * FROM Label WHERE TTB_ID = ?";
+            //Create the statement and execute the query
+            PreparedStatement ps = connection.prepareStatement(selectString);
+            ps.setInt(1, ttbID);
+            ResultSet rs = ps.executeQuery();
+            Blob image = null;
+            String imageFileName = null;
+            int id = 0;
+            //Get everything from the ResultSet
+            while (rs.next()) {
+                image = rs.getBlob("Image");
+                imageFileName = rs.getString("ImageName");
+                id = rs.getInt("ID");
+                //Make an inputstream from the blobs binary stream
+                InputStream in = image.getBinaryStream();
+                results.add(new LabelImage(id, imageFileName, in));
+            }
+            connection.setAutoCommit(true);
+            //Might not be necessary but also might be preventing memory leaks. I don't really know
+            image.free();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return results;
+    }
 }
