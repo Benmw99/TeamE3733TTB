@@ -6,6 +6,8 @@ import Entities.*;
 import Entities.AlcoholType;
 import Entities.Form;
 import Entities.Manufacturer;
+
+import java.io.InputStream;
 import java.lang.Exception;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -194,9 +196,9 @@ public class DBSelect extends DatabaseAbstract {
         //The base search string
         String baseString;
         if (as.type == 1 && ((as.vintageYear > 0) || (as.pH > 0) || (as.grapeVarietal != null) || (as.appellation != null))) {
-            baseString = "SELECT TTB_ID FROM Form JOIN Wine ON Form.TTB_ID = Wine.TTB_ID WHERE APPROVE = 1 ";
+            baseString = "SELECT TTB_ID FROM Form JOIN Wine ON Form.TTB_ID = Wine.TTB_ID WHERE APPROVE = 1";
         } else {
-            baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = 1 ";
+            baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = 1";
         }
         //Manually goes through and checks if stuff is set and then adds it to the string. Later it will set all those question marks
         if (as.source != null) {
@@ -230,7 +232,6 @@ public class DBSelect extends DatabaseAbstract {
             baseString += " AND TTB_ID = ?";
         }
         result.setQuery(baseString);
-        System.out.println(baseString);
         if (as.numResults > 0) {
             baseString = baseString + " FETCH NEXT " + as.numResults + " ROWS ONLY";
         }
@@ -538,24 +539,36 @@ public class DBSelect extends DatabaseAbstract {
         return results;
     }
 
-
-
-/*
-    public ArrayList<Address> getListAddress(int TTB_ID){
-        String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";
+    public ArrayList<LabelImage> selectImagesbyTTBID(int ttbID) {
+        ArrayList<LabelImage> results = new ArrayList<>();
         try {
-            PreparedStatement ps = connection.prepareStatement(addressString);
-        } catch (SQLException e ){
+            //Autcommit must be turned off to work with blobs
+            connection.setAutoCommit(false);
+            //Select the entry searched for in the DB
+            String selectString = "SELECT * FROM Label WHERE TTB_ID = ?";
+            //Create the statement and execute the query
+            PreparedStatement ps = connection.prepareStatement(selectString);
+            ps.setInt(1, ttbID);
+            ResultSet rs = ps.executeQuery();
+            Blob image = null;
+            String imageFileName = null;
+            int id = 0;
+            //Get everything from the ResultSet
+            while (rs.next()) {
+                image = rs.getBlob("Image");
+                imageFileName = rs.getString("ImageName");
+                id = rs.getInt("ID");
+                //Make an inputstream from the blobs binary stream
+                InputStream in = image.getBinaryStream();
+                results.add(new LabelImage(id, imageFileName, in));
+            }
+            connection.setAutoCommit(true);
+            //Might not be necessary but also might be preventing memory leaks. I don't really know
+            image.free();
+            rs.close();
+        } catch (SQLException e) {
             System.out.println(e.toString());
         }
+        return results;
     }
-*/
-
-    //TODO SELECT BY TYPE
-
-    public void selectFormsWithData(){
-// this will probably return Type Form
-    }
-
-    //TODO BIG OL' SELECT FUNCTION FOR FORMS
 }

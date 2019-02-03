@@ -2,7 +2,9 @@ package DB;
 
 import Entities.*;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.time.Instant;
 
@@ -188,12 +190,18 @@ public class DBInsert extends DatabaseAbstract {
 
     /**
      * Inserts a label into the database
-     * @param input A FileInputStream that was made from the input image
+     * @param inputFile A File that was made from the input image file selection
      * @param fileName The file name of that image
      * @throws SQLException
      */
-    public void insertLabel(FileInputStream input, String fileName) throws SQLException{
-        String insertString = "INSERT INTO LABEL VALUES (NEXT VALUE FOR Label_ID, ?, ?)";
+    public void insertLabel(File inputFile, String fileName) throws SQLException{
+        String insertString = "INSERT INTO LABEL (ID, Image, ImageName) VALUES (NEXT VALUE FOR Label_ID, ?, ?)";
+        FileInputStream input = null;
+        try {
+            input = new FileInputStream(inputFile);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: " + e);
+        }
         PreparedStatement statement =  connection.prepareStatement(insertString);
         statement.setBinaryStream(1, input);
         statement.setString(2, fileName);
@@ -221,7 +229,7 @@ public class DBInsert extends DatabaseAbstract {
     }
     //TODO APPROVE FORM --> Make UPDATE
 
-    public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{
+    public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{ //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
         int type_num = 0;
         int approval_num = 1;
         if(to_insert.getAlcoholType() == AlcoholType.Wine){
