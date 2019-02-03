@@ -92,7 +92,7 @@ public class Manufacturer implements IUser {
         return null;
     }
 
-    void SubmitForm(Form form) {
+    public void submitForm(Form form) {
         try {
             DB.Database db = DB.Database.getInstance();
             db.dbInsert.insertForm(form, this);
