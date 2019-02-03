@@ -10,3 +10,4 @@ derby.log
 *.iml
 derby.log
 *.log
+*.xml
