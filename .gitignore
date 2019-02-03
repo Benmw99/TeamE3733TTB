@@ -11,4 +11,5 @@ derby.log
 derby.log
 *.log
 *.xml
-*.class
+
+.idea/*

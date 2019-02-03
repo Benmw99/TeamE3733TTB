@@ -15,13 +15,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
    <children>
       <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
          <children>
             <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="89.0" prefWidth="1367.0" style="-fx-background-color: #B5072C#B5072C;">
                <children>
-                  <SplitMenuButton fx:id="menuSplitButton" layoutX="33.0" layoutY="15.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="116.0" style="-fx-background-color: #B5072C#B5072C;" text="Menu">
+                  <SplitMenuButton fx:id="menuSplitButton" layoutX="76.0" layoutY="14.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="116.0" style="-fx-background-color: #B5072C#B5072C;" text="Menu">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#newApp" text="Submit Application" />
                       <MenuItem mnemonicParsing="false" text="Exit to Welcome Page" />
@@ -35,6 +35,11 @@
                         <Font name="Palatino" size="36.0" />
                      </font>
                   </Text>
+                  <Button fx:id="backButton" layoutX="4.0" layoutY="-2.0" mnemonicParsing="false" onAction="#manLogin" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #B5072C#B5072C #B5072C#B5072C;" text="&lt;" textFill="WHITE">
+                     <font>
+                        <Font name="Palatino" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             <Pane layoutX="-1.0" layoutY="87.0" prefHeight="676.0" prefWidth="311.0" style="-fx-background-color: #3C3B3B#3C3B3B;">
@@ -43,7 +48,7 @@
                      <font>
                         <Font name="Palatino" size="18.0" />
                      </font></TextField>
-                  <Button fx:id="addAppButton" layoutX="269.0" layoutY="16.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 15;" text="+">
+                  <Button fx:id="addAppButton" layoutX="269.0" layoutY="16.0" mnemonicParsing="false" onAction="#manApp1" style="-fx-background-color: white; -fx-background-radius: 15;" text="+">
                      <font>
                         <Font size="14.0" />
                      </font>
