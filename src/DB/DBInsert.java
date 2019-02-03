@@ -145,10 +145,10 @@ public class DBInsert extends DatabaseAbstract {
      */
     public void insertForm(String Serial_Number, String Fanciful_Name, String Brand_Name, Boolean Source,
                     Boolean Approve, String Rep_ID, String email, int Company_ID, Timestamp submitted, String name,
-                    String phone, int Alcohol_Type) throws SQLException {
+                    String phone, int Alcohol_Type, double APV) throws SQLException {
         String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
-                " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type) " +
-                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //TODO MAKE REP ID AND FORMULA OPTIONAL
+                " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type, APV) " +
+                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //TODO MAKE REP ID AND FORMULA OPTIONAL
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, Serial_Number);
         statement.setString(2, Fanciful_Name);
@@ -162,6 +162,7 @@ public class DBInsert extends DatabaseAbstract {
         statement.setString(10, name);
         statement.setString(11, phone);
         statement.setInt(12, Alcohol_Type);
+        statement.setFloat(13, (float)APV);
         statement.execute();
     }
 
@@ -236,7 +237,7 @@ public class DBInsert extends DatabaseAbstract {
                 Timestamp.from(Instant.now()),
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
-                type_num);
+                type_num, to_insert.getAlcoholContent());
     }
 
 

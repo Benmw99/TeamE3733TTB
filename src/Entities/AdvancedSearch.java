@@ -3,7 +3,8 @@ package Entities;
 import java.sql.Timestamp;
 
 public class AdvancedSearch {
-    public boolean source;  //true for domestic, false for imported
+    //Gotta be a Boolean so it can be null
+    public Boolean source;  //true for domestic, false for imported
     public String serialNumber;
     public AlcoholType alcoholType;
     public String brandName;
@@ -16,25 +17,13 @@ public class AdvancedSearch {
     //typeOfApplication
     public Timestamp timestamp;
     public int ttbID;
+    //Number of results to return
     public int numResults;
-
-    public AdvancedSearch(boolean source, String serialNumber, AlcoholType alcoholType, String brandName, String fancifulName, int vintageYear, float pH, String grapeVarietal, String appellation, Timestamp timestamp, int ttbID, int numResults) {
-        this.source = source;
-        this.serialNumber = serialNumber;
-        this.alcoholType = alcoholType;
-        this.brandName = brandName;
-        this.fancifulName = fancifulName;
-        this.vintageYear = vintageYear;
-        this.pH = pH;
-        this.grapeVarietal = grapeVarietal;
-        this.appellation = appellation;
-        this.timestamp = timestamp;
-        this.ttbID = ttbID;
-        this.numResults = numResults;
-    }
+    //Alcohol type but numeric for the DB
+    public int type;
 
     public AdvancedSearch() {
-        this.source = true;
+        this.source = null;
         this.serialNumber = null;
         this.alcoholType = null;
         this.brandName = null;
@@ -48,11 +37,11 @@ public class AdvancedSearch {
         this.numResults = 0;
     }
 
-    public boolean isSource() {
+    public Boolean isSource() {
         return source;
     }
 
-    public void setSource(boolean source) {
+    public void setSource(Boolean source) {
         this.source = source;
     }
 
@@ -69,7 +58,16 @@ public class AdvancedSearch {
     }
 
     public void setAlcoholType(AlcoholType alcoholType) {
+        int type = 0;
+        if (alcoholType == AlcoholType.Wine) {
+            type = 1;
+        } else if (alcoholType == AlcoholType.MaltBeverage) {
+            type = 2;
+        } else if (alcoholType == AlcoholType.DistilledLiquor) {
+            type = 3;
+        }
         this.alcoholType = alcoholType;
+        this.type = type;
     }
 
     public String getBrandName() {
