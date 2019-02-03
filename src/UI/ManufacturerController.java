@@ -1,5 +1,6 @@
 package UI;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -15,10 +17,15 @@ import java.io.IOException;
 
 import Entities.*;
 
+import static javafx.collections.FXCollections.observableArrayList;
+
 
 public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
+
+
+
 
     Manufacturer manufacturer;
 
@@ -130,7 +137,7 @@ public class ManufacturerController {
     TextField producerNumField;
 
     @FXML
-    TextField sourceField;
+    ComboBox<String> sourceComboBox;
 
     @FXML
     TextField serialYearField;
@@ -139,7 +146,7 @@ public class ManufacturerController {
     TextField serialDigitsField;
 
     @FXML
-    TextField typeField;
+    ComboBox<String> typeComboBox;
 
     @FXML
     TextField alcoholContentTextField;
@@ -302,22 +309,29 @@ public class ManufacturerController {
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", backButton);
     }
+    //manHome
+    public void goHome(ActionEvent event) throws IOException {
+        menuSwitch(event, "ManHome.fxml", menuMA1MenuButton);
+    }
+
     ///manApp
     @FXML
     public void newApp(ActionEvent event) throws IOException {
         this.currentForm = new Entities.Form();
-        pageSwitch(event, "ManApp1.fxml", backButton);
+
+        menuSwitch(event, "ManApp1.fxml", menuSplitButton);
     }
     @FXML
     public void appNext(ActionEvent event) throws IOException {
 
-        if(this.currentFormPage<4) this.currentFormPage++;
+        if(this.currentFormPage < 4) this.currentFormPage++;
         String page = "ManApp"+Integer.toString(this.currentFormPage)+".fxml";
-        pageSwitch(event, page, backButton);
+        //pageSwitch(event, page, nextSectionMA1Button);
+        pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
     }
     @FXML
     public void appBack(ActionEvent event) throws IOException {
-        if(this.currentFormPage>1) this.currentFormPage--;
+        if(this.currentFormPage > 1) this.currentFormPage--;
         String page = "ManApp"+Integer.toString(this.currentFormPage)+".fxml";
         pageSwitch(event, page, backButton);
     }
@@ -333,6 +347,17 @@ public class ManufacturerController {
         stage.show();
     }
 
+    public void menuSwitch(ActionEvent event, String filename, MenuButton b) throws IOException{
+        Parent root;
+        Stage stage;
+        stage=(Stage) b.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource(filename));
+        Scene scene = new Scene(root, 1360, 760);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
     @FXML
     public void correctLogin(ActionEvent event) throws IOException{
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
@@ -342,14 +367,22 @@ public class ManufacturerController {
             pageSwitch(event, "ManHome.fxml", loginButton);
         }
         else{
+            pageSwitch(event, "ManHome.fxml", loginButton);
+            /*
             Alert incorrectLogin = new Alert(Alert.AlertType.WARNING);
             incorrectLogin.setTitle("Incorrect Login");
             incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
             incorrectLogin.show();
+            */
         }
-
-
     }
+
+    @FXML
+    public void printCombo(ActionEvent event) throws IOException{
+        //String combo = sourceComboBox.getValue();
+        System.out.printf("%s", sourceComboBox.getValue());
+    }
+
 
 
 }

@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun Feb 03 12:39:19 EST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0168-b471-6c98-000004e70390 
+on database directory /Users/brandonnavarro/Documents/GitHub/TeamE3733TTB/ttb.db with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/Users/brandonnavarro/Desktop/Soft%20Eng/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_171-b11
+user.dir=/Users/brandonnavarro/Documents/GitHub/TeamE3733TTB
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.13.6
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
