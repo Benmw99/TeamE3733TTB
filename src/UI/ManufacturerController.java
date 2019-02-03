@@ -339,34 +339,34 @@ public class ManufacturerController {
         pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
     }
 
-
-
+    // move up sections from ManApp2
     @FXML
     public void manApp3a(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp2.fxml", section2MA2Button);
+        pageSwitch(event, "ManApp3.fxml", section3MA2Button);
     }
     @FXML
     public void manApp3b(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp2.fxml", nextSectionMA2Button);
-    }
-    @FXML
-    public void manBackToApp3a(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp2.fxml", section1MA2Button);
-    }
-    @FXML
-    public void manBackToApp3b(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp2.fxml", prevSectionMA2Button);
-    }
-    @FXML
-    public void manApp4a(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp2.fxml", section4MA3Button);
-    }
-    @FXML
-    public void manApp4b(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp2.fxml", nextSectionMA3Button);
+        pageSwitch(event, "ManApp4.fxml", section4MA2Button);
     }
 
+    // move down sections from ManApp2
+    @FXML
+    public void manApp3c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", section1MA2Button);
+    }
 
+    //move up pages by arrows from ManApp2
+    @FXML
+    public void manApp3d(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", nextSectionMA2Button);
+    }
+    //move down pages by arrows from ManApp2
+    @FXML
+    public void manApp3e(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", prevSectionMA2Button);
+    }
+
+    // move up sections from ManApp3
 
     ///manApp
     @FXML
