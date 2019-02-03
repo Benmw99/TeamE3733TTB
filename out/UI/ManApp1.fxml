@@ -291,7 +291,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <ComboBox fx:id="sourceComboBox" onAction="#printCombo" prefHeight="41.0" prefWidth="270.0" promptText="Choose">
+                        <ComboBox fx:id="sourceComboBox" prefHeight="41.0" prefWidth="270.0" promptText="Choose">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
                                  <String fx:value="Domestic" />
@@ -364,7 +364,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <ComboBox fx:id="typeComboBox" prefHeight="41.0" prefWidth="270.0" promptText="Choose">
+                        <ComboBox fx:id="typeComboBox" onAction="#checkWine" prefHeight="41.0" prefWidth="270.0" promptText="Choose">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
                                  <String fx:value="Wine" />
@@ -376,6 +376,16 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </ComboBox>
+                        <TextField fx:id="vintageYearField" prefHeight="41.0" promptText="Vintage Year">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="phField" prefHeight="41.0" promptText="pH Level">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </TextField>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../assets/tool-tip.png" />

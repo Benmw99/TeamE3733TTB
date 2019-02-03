@@ -149,6 +149,12 @@ public class ManufacturerController {
     ComboBox<String> typeComboBox;
 
     @FXML
+    TextField vintageYearField;
+
+    @FXML
+    TextField phField;
+
+    @FXML
     TextField alcoholContentTextField;
 
     @FXML
@@ -361,26 +367,32 @@ public class ManufacturerController {
     @FXML
     public void correctLogin(ActionEvent event) throws IOException{
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
-        System.out.println(""+ manufacturer.getLogin()+", " + manufacturer.getPassword());
-        System.out.println(""+ nameField.getText() + ", " + passField.getText());
         if(this.manufacturer.authenticate()){
             pageSwitch(event, "ManHome.fxml", loginButton);
         }
         else{
-            pageSwitch(event, "ManHome.fxml", loginButton);
-            /*
+            //pageSwitch(event, "ManHome.fxml", loginButton);
             Alert incorrectLogin = new Alert(Alert.AlertType.WARNING);
             incorrectLogin.setTitle("Incorrect Login");
             incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
             incorrectLogin.show();
-            */
+
         }
     }
 
     @FXML
-    public void printCombo(ActionEvent event) throws IOException{
+    public void checkWine(ActionEvent event) throws IOException{
         //String combo = sourceComboBox.getValue();
-        System.out.printf("%s", sourceComboBox.getValue());
+        if (typeComboBox.getValue().equals("Wine")){
+            vintageYearField.disableProperty().setValue(false);
+            phField.disableProperty().setValue(false);
+
+            //System.out.println("GotHERE");
+        }
+        else{
+            vintageYearField.disableProperty().setValue(true);
+            phField.disableProperty().setValue(true);
+        }
     }
 
 

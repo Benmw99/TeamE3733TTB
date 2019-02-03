@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9beb4eea-350d-4a5a-9f4a-ffe057fa32e6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/UI/MainUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/UI/MainUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/UI/ManApp1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/UI/ManApp1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/UI/ManApp21.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/UI/ManufacturerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/UI/ManufacturerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/MainUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/ManApp1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/ManApp1.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/ManApp2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/ManApp2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/ManHome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/ManHome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/ManApp21.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/ManufacturerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/ManufacturerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ttb.db/db.lck" beforeDir="false" afterPath="$PROJECT_DIR$/ttb.db/db.lck" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ttb.db/log/log.ctrl" beforeDir="false" afterPath="$PROJECT_DIR$/ttb.db/log/log.ctrl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ttb.db/log/log1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/ttb.db/log/log1.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ttb.db/log/logmirror.ctrl" beforeDir="false" afterPath="$PROJECT_DIR$/ttb.db/log/logmirror.ctrl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/ManufacturerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="336" column="5" lean-forward="true" selection-start-line="336" selection-start-column="5" selection-end-line="336" selection-end-column="5" />
+            <state relative-caret-position="316">
+              <caret line="378" selection-start-line="378" selection-end-line="378" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,11 +57,14 @@
           <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UI/MainUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <caret line="16" column="68" lean-forward="true" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,9 +105,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/UI/ManufacturerController.java" />
         <option value="$PROJECT_DIR$/src/UI/ManApp1.fxml" />
         <option value="$PROJECT_DIR$/src/UI/ManApp2.fxml" />
+        <option value="$PROJECT_DIR$/src/UI/ManufacturerController.java" />
+        <option value="$PROJECT_DIR$/src/UI/MainUI.java" />
       </list>
     </option>
   </component>
@@ -136,9 +150,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549217374913" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549220502065" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -212,12 +226,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1549158338611</updated>
-      <workItem from="1549158344532" duration="20541000" />
+      <workItem from="1549158344532" duration="23281000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14006000" />
+    <option name="totallyTimeSpent" value="16746000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -288,19 +302,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/MainUI.java">
+    <entry file="file://$PROJECT_DIR$/src/UI/ManApp2.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        <state relative-caret-position="527">
+          <caret line="326" column="53" selection-start-line="326" selection-start-column="53" selection-end-line="326" selection-end-column="53" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/Address.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/ManApp1.fxml">
       <provider selected="true" editor-type-id="text-editor">
@@ -310,18 +318,27 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/ManApp2.fxml">
+    <entry file="file://$PROJECT_DIR$/src/Entities/Address.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="326" column="53" selection-start-line="326" selection-start-column="53" selection-end-line="326" selection-end-column="53" />
+        <state relative-caret-position="30">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/ManufacturerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="336" column="5" lean-forward="true" selection-start-line="336" selection-start-column="5" selection-end-line="336" selection-end-column="5" />
+        <state relative-caret-position="316">
+          <caret line="378" selection-start-line="378" selection-end-line="378" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/MainUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="68" lean-forward="true" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
