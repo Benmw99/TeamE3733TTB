@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
    <children>
       <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
          <children>
@@ -23,7 +23,7 @@
                <children>
                   <SplitMenuButton fx:id="menuSplitButton" layoutX="76.0" layoutY="14.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="116.0" style="-fx-background-color: #B5072C#B5072C;" text="Menu">
                     <items>
-                      <MenuItem mnemonicParsing="false" onAction="#newApp" text="Submit Application" />
+                      <MenuItem mnemonicParsing="false" onAction="#manApp1" text="Submit Application" />
                       <MenuItem mnemonicParsing="false" text="Exit to Welcome Page" />
                     </items>
                      <font>
