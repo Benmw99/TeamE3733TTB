@@ -1,0 +1,10 @@
+.gradle/
+.idea/
+classes/
+build/
+out/
+derby.log
+*.class
+*.jar
+*.lock
+*.iml
