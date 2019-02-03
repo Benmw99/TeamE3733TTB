@@ -18,6 +18,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import Entities.*;
+import org.apache.derby.iapi.util.StringUtil;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -87,11 +88,6 @@ public class ManufacturerController {
     //ManProfile
     @FXML
     Button menuMPButton;
-
-    //ManSearch
-
-    @FXML
-    SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
     Button menuMSButton;
@@ -547,9 +543,10 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the fourth page
     @FXML
     public void checkBlanksPage3(ActionEvent event) throws IOException{
-        this.form = new Form(repIDField.getText(), null, true, serialDigitsField.getText(), null, brandNameTextField.getText(), fancifulField.getText(), null, null, nameField.getText(),formulaField.getText(), null, phoneNumField.getText(), emailField.getText(), null,
-                null, 0, 0, null, 0);
-        if(this.form.getPhoneNumber() == null || this.form.getEmail() == null){
+        this.form = new Form();
+        this.form.setPhoneNumber(phoneNumField.getText());
+        this.form.setEmail(emailField.getText());
+        if(StringUtils.isBlank(this.form.getPhoneNumber()) || StringUtils.isBlank(this.form.getEmail())){
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
             missingTextFieldPage1.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
