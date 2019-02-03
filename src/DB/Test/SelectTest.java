@@ -52,7 +52,7 @@ public class SelectTest {
         Manufacturer man = new Manufacturer(123, null, null, null);
         Manufacturer man2 = new Manufacturer(456, null, null, null);
         List<Integer> list = db.dbSelect.getTUB_IDblManufacturer(man);
-        assertEquals(5, list.size());
+        assertEquals(4, list.size());
         assertTrue(list.get(0) == 1);
         List<Integer> list2 = db.dbSelect.getTUB_IDblManufacturer(man2);
         assertTrue(list2.size() == 0);
@@ -106,7 +106,7 @@ public class SelectTest {
 
     @Test
     public void getThreeFormsTest(){
-        assertEquals(1, db.dbSelect.getThreeForms().size());
+        assertEquals(2, db.dbSelect.getThreeForms().size());
     }
 
     /*@AfterClass

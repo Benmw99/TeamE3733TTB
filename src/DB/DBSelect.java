@@ -382,32 +382,34 @@ public class DBSelect extends DatabaseAbstract {
             PreparedStatement ps = connection.prepareStatement(selString);
             ps.setInt(1, TTB_ID);
             ResultSet rs = ps.executeQuery();
-            rs.next();
-            form.setFancifulName(rs.getString("Fanciful_Name"));
-            form.setBrandName(rs.getString("Brand_Name"));
-            form.setSource(rs.getBoolean("Source"));
-            form.setRepID(rs.getString("Rep_ID"));
-            form.setTtbID(TTB_ID);
-            form.setEmail(rs.getString("Email"));
-            form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
-            form.setApplicantName(rs.getString("Applicant_Name"));
-            form.setPhoneNumber(rs.getString("Phone"));
-            AlcoholType type;
-            if (rs.getInt("Alcohol_Type") == 1) {
-                type = AlcoholType.Wine;
-            } else if (rs.getInt("Alcohol_Type") == 2) {
-                type = AlcoholType.MaltBeverage;
-            } else {
-                type = AlcoholType.DistilledLiquor;
+            while (rs.next()) {
+                form.setFancifulName(rs.getString("Fanciful_Name"));
+                form.setBrandName(rs.getString("Brand_Name"));
+                form.setSource(rs.getBoolean("Source"));
+                form.setRepID(rs.getString("Rep_ID"));
+                form.setTtbID(TTB_ID);
+                form.setEmail(rs.getString("Email"));
+                form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
+                form.setApplicantName(rs.getString("Applicant_Name"));
+                form.setPhoneNumber(rs.getString("Phone"));
+                AlcoholType type;
+                if (rs.getInt("Alcohol_Type") == 1) {
+                    type = AlcoholType.Wine;
+                } else if (rs.getInt("Alcohol_Type") == 2) {
+                    type = AlcoholType.MaltBeverage;
+                } else {
+                    type = AlcoholType.DistilledLiquor;
+                }
+                form.setAlcoholType(type);
             }
-            form.setAlcoholType(type);
             ps.close();
             /* OTHER INFO BLOCK */
             ps = connection.prepareStatement(otherInfString);
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
-            rs.next();
-            form.setBlownBrandedEmbossedInfo(rs.getString("Text"));
+            while (rs.next()) {
+                form.setBlownBrandedEmbossedInfo(rs.getString("Text"));
+            }
             ps.close();
             /* BREWERS PERMIT BLOCK */
             ps = connection.prepareStatement(brewersPermit);

@@ -56,8 +56,8 @@ public class TableBuilderTest {
         String street = "";
         try {
             while (rset.next()) {
-                id = id + rset.getInt("ID") + ",";
-                street = street + rset.getString("Street") + ",";
+                id += rset.getInt("ID") + ",";
+                street += rset.getString("Street") + ",";
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
