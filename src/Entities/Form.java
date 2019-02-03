@@ -74,7 +74,14 @@ public class Form {
         this.companyID = 0;
         this.approval = null;
     }
-
+    //#######################################################################################################
+    //                                  UI API (to be implemented)
+    public void approve(String agentName){//TODO: Implement
+        return;
+    }
+    public void reject(String agentName){ //TODO: Implement
+        return;
+    }
 
     //#######################################################################################################
     //                                  getters and setters

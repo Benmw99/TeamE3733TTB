@@ -10,17 +10,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sun.management.resources.agent;
 
 import java.awt.*;
 import java.io.IOException;
 
-
+import Entities.*;
 
 public class AgentController {
-    Entities.Agent currentUser = new Entities.Agent();
-
-
-
     //AgentSearch
     @FXML
     Button menuASButton;
@@ -436,9 +433,21 @@ public class AgentController {
 
     @FXML
     Button printAVLButton;
-    private Entities.Form currentForm;
-    private Entities.Agent currentAgent;
+    private Form currentForm;
+    private Agent currentAgent;
 
+
+    @FXML
+    public void login(ActionEvent event) throws IOException {
+        this.currentAgent = new Agent(nameField.getText(),passField.getText());
+        if(this.currentAgent.authenticate()) {
+            pageSwitch(event, "WelcomePage.fxml", backButton);
+        }
+        else {
+            Alert ohNo = new Alert(Alert.AlertType.WARNING);
+            ohNo.setContentText("Invalid Password or Username my dude");
+        }
+    }
 
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
@@ -447,18 +456,17 @@ public class AgentController {
     }
     @FXML
     public void agentViewForm(ActionEvent event) throws IOException {
-        //have to load selected form somehow
-        agent
+        //TODO:have to load selected form somehow
         pageSwitch(event, "AgentViewForm.fxml", backButton);
     }
     @FXML
     public void rejectForm(ActionEvent event) throws IOException {
-        this.currentForm.reject(this.currentAgent.name);
+        this.currentForm.reject(this.currentAgent.getName());
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
-        this.currentForm.approve(this.currentAgent.name);
+        this.currentForm.approve(this.currentAgent.getName());
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
     /* not needed for it. 1
