@@ -1,8 +1,5 @@
 package DB.Test;
-import DB.*;
 import Entities.*;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import java.sql.*;
@@ -21,11 +18,13 @@ public class SelectTest {
             db.dbInsert.insertCompany(123, "Budweiser", "Buddy", "12345");
             db.dbInsert.insertAgent("Mark", 1263, "Agent_Mark", "PassWord");
             db.dbInsert.insertForm("123YY", "ABC", "123", true, true, null,
-                    "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2);
+                    "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2, 1.0);
             db.dbInsert.insertForm("12Y", "Suds", "Delio", true, true, null,
-                    "tim@jimmail.com", 123, Timestamp.from(Instant.now()), "Tim", "6045026034", 1);
+                    "tim@jimmail.com", 123, Timestamp.from(Instant.now()), "Tim", "6045026034", 1, 2.0);
             db.dbInsert.insertForm("93F", "SodaB", "Escus", true, false, null,
-                    "bob@jimmail.com", 123, Timestamp.from(Instant.now()), "Bob", "6025026034", 3);
+                    "bob@jimmail.com", 123, Timestamp.from(Instant.now()), "Bob", "6025026034", 3, 14.0);
+            db.dbInsert.insertForm("123YY", "ABC", "123", true, false, null,
+                    "jim@jimmail.com", 123, Timestamp.from(Instant.now()), "Jimmy", "6035026034", 2, 1.0);
         } catch (SQLException e) {
             System.out.println("ERROR: TEST DB INIT FAILED.");
             System.out.println(e.toString());
@@ -51,20 +50,12 @@ public class SelectTest {
     @Test
     public void retrieveList_TTBIDTest() {
         Manufacturer man = new Manufacturer(123, null, null, null);
-        man.manID = 123;
         Manufacturer man2 = new Manufacturer(456, null, null, null);
-        man2.manID = 45543;
-        List<Integer> list = db.dbSelect.getTTB_IDbyManufactuer(man);
-        assertEquals(3, list.size());
+        List<Integer> list = db.dbSelect.getTUB_IDblManufacturer(man);
+        assertEquals(5, list.size());
         assertTrue(list.get(0) == 1);
-        List<Integer> list2 = db.dbSelect.getTTB_IDbyManufactuer(man2);
+        List<Integer> list2 = db.dbSelect.getTUB_IDblManufacturer(man2);
         assertTrue(list2.size() == 0);
-    }
-    @Test
-    public void downloadResultsTest() {
-        DB.Database db = DB.Database.getInstance();
-        String query = "Select * FROM Form";
-        assertTrue(db.dbSelect.downloadResults(query));
     }
     @Test
     public void retrieveFormTest(){
@@ -110,6 +101,12 @@ public class SelectTest {
 
         assertTrue(SRBrand.getResults().contains(db.dbSelect.searchBy(ASBrand).getResults()));
         */
+    }
+
+
+    @Test
+    public void getThreeFormsTest(){
+        assertEquals(1, db.dbSelect.getThreeForms().size());
     }
 
     /*@AfterClass

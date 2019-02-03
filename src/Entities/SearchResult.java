@@ -11,6 +11,7 @@ import java.util.Collections;
 public class SearchResult {
     private ArrayList<Form> results;
     private String query;
+    private AdvancedSearch search;
 
     /**
      * blank constructor for searchResult class
@@ -61,7 +62,8 @@ public class SearchResult {
     }
 
     public void printResults(){
-
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.downloadResults(query, search);
     }
 
 
@@ -74,4 +76,11 @@ public class SearchResult {
     }
 
 
+    public AdvancedSearch getSearch() {
+        return search;
+    }
+
+    public void setSearch(AdvancedSearch search) {
+        this.search = search;
+    }
 }

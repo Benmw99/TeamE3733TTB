@@ -270,7 +270,12 @@ public class Form {
         this.alcoholContent = alcoholContent;
     }
 
-
+    //#######################################################################################################
+    //                                  UI API (to be implemented)
+    public void approve(String agentName){//TODO: Implement
+    }
+    public void reject(String agentName){ //TODO: Implement
+    }
     //#######################################################################################################
     //                                  Helper Functions
 

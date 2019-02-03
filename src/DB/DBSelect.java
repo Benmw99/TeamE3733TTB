@@ -128,18 +128,66 @@ public class DBSelect extends DatabaseAbstract {
      * Downloads the selected results in a file without limit to the number of results
      * @param query The query to be downloaded without a fetch first in it
      */
-    public boolean downloadResults(String query) { //TODO FIX TO WORK WITH PREPARED STATEMENTS
+    public boolean downloadResults(String query, AdvancedSearch search) { //TODO FIX TO WORK WITH PREPARED STATEMENTS
+        //Copy paste codes and pass the advanced search?
+        int type = 0;
+        if (search.alcoholType != null) {
+            if (search.alcoholType == AlcoholType.Wine) {
+                type = 1;
+            } else if (search.alcoholType == AlcoholType.MaltBeverage) {
+                type = 2;
+            } else if (search.alcoholType == AlcoholType.DistilledLiquor) {
+                type = 3;
+            }
+        }
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY (?,?,?,?,?)";
+        String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY ("+ query +",?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(download);
-            ps.setString(1,query);
-            ps.setString(2,"TTBSearch" + dateFormat.format(date) + ".csv");
-            ps.setString(3,null);
-            ps.setString(4,null);
-            ps.setString(5,null);
+            int set = 1;
+            if (search.source != null) {
+                ps.setBoolean(set, search.source);
+                set += 1;
+            }
+            if (search.serialNumber != null) {
+                ps.setString(set, search.serialNumber);
+                set += 1;
+            }
+            if (search.brandName != null) {
+                ps.setString(set, search.brandName);
+                set += 1;
+            }
+            if (search.fancifulName != null) {
+                ps.setString(set, search.fancifulName);
+                set += 1;
+            }
+            if (type == 1 && search.vintageYear > 0) {
+                ps.setInt(set, search.vintageYear);
+                set += 1;
+            }
+            if (type == 1 && search.pH > 0) {
+                ps.setFloat(set, search.pH);
+                set += 1;
+            }
+            if (type == 1 && search.grapeVarietal != null) {
+                ps.setString(set, search.grapeVarietal);
+                set += 1;
+            }
+            if (type == 1 && search.appellation != null) {
+                ps.setString(set, search.appellation);
+                set += 1;
+            }
+            if (search.ttbID > 0) {
+                ps.setInt(set, search.ttbID);
+                set += 1;
+            }
+            ps.setString(set + 1,"TTBSearch" + dateFormat.format(date) + ".csv");
+            ps.setString(set + 2,null);
+            ps.setString(set + 3,null);
+            ps.setString(set + 4,null);
             ps.execute();
+            ps.close();
             return true;
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -147,19 +195,16 @@ public class DBSelect extends DatabaseAbstract {
         }
     }
 
-    //ONLY WORKS FOR MINIMAL APPLICATION RIGHT NOW
     //TODO WINE SPECIFIC RESULTS
+    //TODO Implement Sorting
+    //public Timestamp timestamp; NOT IMPLEMENTED YET
+    //THIS IS THE CIVILIAN SEARCH
     public SearchResult searchBy(AdvancedSearch as) {
         SearchResult result = new SearchResult();
-        //To be used later for setting stuff
-        int set = 1;
-        //The base search string
-        String baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = TRUE";
-        if (as.brandName != null) {
-            baseString += " AND Brand_Name = ?";
-        }
+        result.setSearch(as);
+        //Used for alcohol type
+        int type = 0;
         if (as.alcoholType != null) {
-            int type = 0;
             if (as.alcoholType == AlcoholType.Wine) {
                 type = 1;
             } else if (as.alcoholType == AlcoholType.MaltBeverage) {
@@ -167,25 +212,97 @@ public class DBSelect extends DatabaseAbstract {
             } else if (as.alcoholType == AlcoholType.DistilledLiquor) {
                 type = 3;
             }
+        }
+        //The base search string
+        String baseString;
+        if (type == 1 && ((as.vintageYear > 0) || (as.pH > 0) || (as.grapeVarietal != null) || (as.appellation != null))) {
+            baseString = "SELECT TTB_ID FROM Form JOIN Wine ON Form.TTB_ID = Wine.TTB_ID WHERE APPROVE = TRUE";
+        } else {
+            baseString = "SELECT TTB_ID FROM Form WHERE APPROVE = TRUE";
+        }
+        //Manually goes through and checks if stuff is set and then adds it to the string. Later it will set all those question marks
+        if (as.source != null) {
+            baseString += " AND Source = ?";
+        }
+        if (as.serialNumber != null) {
+            baseString += " AND Serial_Number = ?";
+        }
+        if (as.alcoholType != null) {
             baseString += " AND Alcohol_Type = " + type;
         }
-        result.setQuery(baseString); //TODO FIX THIS SO STUFF CAN BE SAVED
+        if (as.brandName != null) {
+            baseString += " AND Brand_Name = ?";
+        }
+        if (as.fancifulName != null) {
+            baseString += " AND Fanciful_Name = ?";
+        }
+        if (type == 1 && as.vintageYear > 0) {
+            baseString += " AND Vintage = ?";
+        }
+        if (type == 1 && as.pH > 0) {
+            baseString += " AND PH = ?";
+        }
+        if (type == 1 && as.grapeVarietal != null) {
+            baseString += " AND Grape_Varietals = ?";
+        }
+        if (type == 1 && as.appellation != null) {
+            baseString += " AND Wine_Appellation = ?";
+        }
+        if (as.ttbID > 0) {
+            baseString += " AND TTB_ID = ?";
+        }
+        result.setQuery(baseString);
         System.out.println(baseString);
         if (as.numResults > 0) {
             baseString = baseString + " FETCH NEXT " + as.numResults + " ROWS ONLY";
         }
         try {
             PreparedStatement statement = connection.prepareStatement(baseString);
+
+            //Manually sets those question marks
+            int set = 1;
+            if (as.source != null) {
+                statement.setBoolean(set, as.source);
+                set += 1;
+            }
+            if (as.serialNumber != null) {
+                statement.setString(set, as.serialNumber);
+                set += 1;
+            }
             if (as.brandName != null) {
                 statement.setString(set, as.brandName);
                 set += 1;
             }
-            ResultSet rs = statement.executeQuery();
-            int id = 0;
-            while (rs.next()) {
-                id = rs.getInt("TTB_ID");
-                result.addResult(getFormByTTB_ID(id));
+            if (as.fancifulName != null) {
+                statement.setString(set, as.fancifulName);
+                set += 1;
             }
+            if (type == 1 && as.vintageYear > 0) {
+                statement.setInt(set, as.vintageYear);
+                set += 1;
+            }
+            if (type == 1 && as.pH > 0) {
+                statement.setFloat(set, as.pH);
+                set += 1;
+            }
+            if (type == 1 && as.grapeVarietal != null) {
+                statement.setString(set, as.grapeVarietal);
+                set += 1;
+            }
+            if (type == 1 && as.appellation != null) {
+                statement.setString(set, as.appellation);
+                set += 1;
+            }
+            if (as.ttbID > 0) {
+                statement.setInt(set, as.ttbID);
+                set += 1;
+            }
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                result.addResult(getFormByTTB_ID(rs.getInt("TTB_ID")));
+            }
+            rs.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
@@ -213,7 +330,7 @@ public class DBSelect extends DatabaseAbstract {
      * @param man The manufacturer who has logged in to look at their forms
      * @return A list of Ints representing their TTB_ID's
      */
-    public List<Integer> getTTB_IDbyManufactuer(Manufacturer man){
+    public List<Integer> getTUB_IDblManufacturer(Manufacturer man){
         String selString = "SELECT TTB_ID FROM FORM WHERE Company_ID=? ";
         int comp_id = man.manID;
         List<Integer> list_of_ids= new ArrayList<Integer>();
@@ -345,6 +462,54 @@ public class DBSelect extends DatabaseAbstract {
         }
         return form;
     }
+
+    /**Get first three not-yet-approved forms for an agent to look over
+     *
+     */
+
+    public List<Form> getThreeForms(){
+        String selStr = "SELECT * FROM FORM WHERE APPROVE=?";
+        List<Integer> list_ID = new ArrayList<Integer>();
+        List<Form> list_form = new ArrayList<Form>();
+        try{
+            PreparedStatement ps = connection.prepareStatement(selStr);
+            ps.setBoolean(1, false);
+            ResultSet rs = ps.executeQuery();
+            int i = 0;
+            while(rs.next() && i < 3){
+                i ++;
+                list_ID.add(rs.getInt("TTB_ID"));
+            }
+            ps.close();
+    } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+        while(!list_ID.isEmpty()){
+            list_form.add(this.getFormByTTB_ID(list_ID.get(0)));
+            list_ID.remove(0);
+        }
+        return list_form;
+    }
+
+    //TODO MAKE AN UPDATE CLASS
+
+    public void approveForm(Form form, Approval approval){
+        String selStr = "UPDATE FORM SET APPROVAL=? WHERE ID=? ";
+        try{
+            PreparedStatement ps = connection.prepareStatement(selStr);
+            ps.setInt(2, form.getTtbID());
+            ps.setBoolean(1, true);
+            ps.execute();
+            ps.close();
+            //TODO MAKE AN INSERT APPROVAL ONCE APPROVALS MAKE SENSE
+    } catch (SQLException e){
+            System.out.println(e.toString());
+        }
+    }
+
+
+
+
 /*
     public ArrayList<Address> getListAddress(int TTB_ID){
         String addressString = "SELECT * FROM ADDRESS WHERE TTB_ID = ?";

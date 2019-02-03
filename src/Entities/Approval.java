@@ -1,9 +1,14 @@
 package Entities;
 
-
+import java.lang.*;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 public class Approval {
+
+    private ApprovalStatus page1;
+    private ApprovalStatus page2;
+    private ApprovalStatus page3;
 
     private boolean approved;
     private Timestamp timestamp;
@@ -17,6 +22,55 @@ public class Approval {
         this.agentApprovalName = agentApprovalName;
         this.expDate = expDate;
         this.qualifications = qualifications;
+        this.page1 = null;
+        this.page2 = null;
+        this.page3 = null;
+    }
+
+    public Approval(ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
+        this.page1 = page1;
+        this.page2 = page2;
+        this.page3 = page3;
+        this.approved = approved;
+        this.timestamp = timestamp;
+        this.agentApprovalName = agentApprovalName;
+        this.expDate = expDate;
+        this.qualifications = qualifications;
+    }
+
+    public Approval() {
+        this.approved = false;
+        this.timestamp = null;
+        this.agentApprovalName = null;
+        this.expDate = null;
+        this.qualifications = null;
+        this.page1 = null;
+        this.page2 = null;
+        this.page3 = null;
+    }
+
+    public ApprovalStatus getPage1() {
+        return page1;
+    }
+
+    public void setPage1(ApprovalStatus page1) {
+        this.page1 = page1;
+    }
+
+    public ApprovalStatus getPage2() {
+        return page2;
+    }
+
+    public void setPage2(ApprovalStatus page2) {
+        this.page2 = page2;
+    }
+
+    public ApprovalStatus getPage3() {
+        return page3;
+    }
+
+    public void setPage3(ApprovalStatus page3) {
+        this.page3 = page3;
     }
 
     public boolean isApproved() {
@@ -58,5 +112,23 @@ public class Approval {
     public void setQualifications(String qualifications) {
         this.qualifications = qualifications;
     }
-}
+
+//methods n the lot
+
+    public void approve(String name, String qualifications){
+        agentApprovalName = name;
+        this.qualifications = qualifications;
+        this.approved = true;
+        Calendar Cal = Calendar.getInstance();
+
+        java.util.Date now = Cal.getTime();
+        java.sql.Timestamp currTime = new java.sql.Timestamp(now.getTime());
+        this.timestamp = currTime;
+
+        Cal.add(Calendar.YEAR, 2);
+        java.util.Date expire = Cal.getTime();
+        java.sql.Timestamp expirationDate = new java.sql.Timestamp(expire.getTime());
+        this.expDate = expirationDate;
+
+    }}
 
