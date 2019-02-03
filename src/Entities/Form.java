@@ -59,7 +59,7 @@ public class Form {
     }
 
     //minimal application constructor
-    public Form(AlcoholType alcoholType, String brandName, int alcoholContent){
+    public Form(AlcoholType alcoholType, String brandName, float alcoholContent){
         this.repID = null;
         this.brewersPermit = null;
         this.source = true;
