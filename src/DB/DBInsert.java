@@ -254,7 +254,7 @@ public class DBInsert extends DatabaseAbstract {
 
     //TODO APPROVE FORM --> Make UPDATE
 
-    public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{ //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
+    public void insertForm(Form to_insert, Manufacturer inserting) { //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
         int type_num = 0;
         int TTB_ID;
         try{
