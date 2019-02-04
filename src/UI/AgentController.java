@@ -14,6 +14,7 @@ import sun.management.resources.agent;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 import Entities.*;
 
@@ -334,6 +335,9 @@ public class AgentController {
     SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
+    Button getnewQueueButton;
+
+    @FXML
     TextField searchAHField;
 
     @FXML
@@ -435,6 +439,7 @@ public class AgentController {
     Button printAVLButton;
     private Form currentForm;
     private Agent currentAgent;
+    private List<Form> queue;
 
 
     @FXML
@@ -481,6 +486,8 @@ public class AgentController {
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
     */
+
+
 
 
 
