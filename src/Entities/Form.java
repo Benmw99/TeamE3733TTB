@@ -1,6 +1,7 @@
 package Entities;
 
 
+import java.sql.Array;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -275,36 +276,58 @@ public class Form {
     public ApprovalStatus getApprovalStatus(){ return this.approvalStatus;}
     //#######################################################################################################
     //                                  UI API (to be implemented)
-    // approve./reject is in agent class
+    public void approve(String agentName){//TODO: Implement
+    }
+    public void reject(String agentName){ //TODO: Implement
+    }
     //#######################################################################################################
     //                                  Helper Functions
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Form form = (Form) o;
-        return source == form.source &&
-                ttbID == form.ttbID &&
-                companyID == form.companyID &&
-                Float.compare(form.alcoholContent, alcoholContent) == 0 &&
-                Objects.equals(repID, form.repID) &&
-                (brewersPermit.equals(form.brewersPermit)) &&
-                Objects.equals(serialNumber, form.serialNumber) &&
-                alcoholType == form.alcoholType &&
-                Objects.equals(brandName, form.brandName) &&
-                Objects.equals(fancifulName, form.fancifulName) &&
-                (address.equals(form.address)) &&
-                Objects.equals(mailingAddress, form.mailingAddress) &&
-                Objects.equals(applicantName, form.applicantName) &&
-                Objects.equals(formula, form.formula) &&
-                Objects.equals(wineFormItems, form.wineFormItems) &&
-                Objects.equals(phoneNumber, form.phoneNumber) &&
-                Objects.equals(email, form.email) &&
-                Objects.equals(blownBrandedEmbossedInfo, form.blownBrandedEmbossedInfo) &&
-                Objects.equals(dateSubmitted, form.dateSubmitted) &&
-                Objects.equals(approval, form.approval) &&
-                approvalStatus == form.approvalStatus;
+    boolean equals(Form aform){
+        return (this.repID.equals(aform.repID) &&
+                brewListEquals(aform.brewersPermit) &&
+                this.source == aform.source &&
+                this.serialNumber.equals(aform.serialNumber) &&
+                this.alcoholType.equals(aform.alcoholType) &&
+                this.brandName.equals(aform.brandName) &&
+                this.fancifulName.equals(aform.fancifulName) &&
+                addressListEquals(aform.address) &&
+                this.mailingAddress.equals(aform.mailingAddress) &&
+                this.applicantName.equals(aform.applicantName) &&
+                this.formula.equals(aform.formula) &&
+                this.wineFormItems.equals(aform.wineFormItems) &&
+                this.phoneNumber.equals(aform.phoneNumber) &&
+                this.email.equals(aform.email) &&
+                this.blownBrandedEmbossedInfo.equals(aform.blownBrandedEmbossedInfo) &&
+                this.dateSubmitted.equals(aform.dateSubmitted) &&
+                this.ttbID == aform.ttbID &&
+                this.companyID == aform.companyID &&
+                this.approval.equals(aform.approval) &&
+                this.alcoholContent == aform.alcoholContent);
+    }
+
+    boolean brewListEquals(ArrayList<String> aList) {
+        ArrayList<String> resultList = new ArrayList<String>();
+        for (String s: aList) {
+            for (String t: this.brewersPermit) {
+                if (s.equals(t)) {
+                    resultList.add(s);
+                }
+            }
+        }
+        return(this.brewersPermit.size() == resultList.size());
+    }
+
+    boolean addressListEquals(ArrayList<Address> aList) {
+        ArrayList<Address> resultList = new ArrayList<Address>();
+        for (Address a: aList) {
+            for (Address s: this.address) {
+                if (a.equals(s)) {
+                    resultList.add(a);
+                }
+            }
+        }
+        return(this.brewersPermit.size() == resultList.size());
     }
 
 }

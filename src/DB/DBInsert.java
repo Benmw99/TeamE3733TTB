@@ -174,6 +174,7 @@ public class DBInsert extends DatabaseAbstract {
         statement.setInt(12, Alcohol_Type);
         statement.setFloat(13, (float)APV);
         statement.execute();
+
     }
 
 
@@ -257,15 +258,16 @@ public class DBInsert extends DatabaseAbstract {
 
     //TODO APPROVE FORM --> Make UPDATE
 
-    public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{ //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
+    public int insertForm(Form to_insert, Manufacturer inserting) { //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
         int type_num = 0;
-        int TTB_ID;
+        int TTB_ID = -1;
         try{
-            String selstr = "SELECT (NEXT VALUE FOR Form_ID) FROM FORM";
+            String selstr =  "VALUES (NEXT VALUE FOR FORM_ID)";
             PreparedStatement ps = connection.prepareStatement(selstr);
             ResultSet rs = ps.executeQuery();
             rs.next();
             TTB_ID = rs.getInt(1);
+            TTB_ID ++;
             ps.close();
         insertForm(to_insert.getSerialNumber(),
                 to_insert.getFancifulName(),
@@ -279,15 +281,23 @@ public class DBInsert extends DatabaseAbstract {
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
                 type_num, to_insert.getAlcoholContent());
+        if(to_insert.getAlcoholType() == AlcoholType.Wine && to_insert.getWineFormItems() != null) {
             insertWine(TTB_ID, to_insert.getWineFormItems());
+        }
             insertOtherInfo(TTB_ID, to_insert.getBlownBrandedEmbossedInfo());
-            insertMailingAddress( TTB_ID, to_insert.getMailingAddress());
-            for( Address a : to_insert.getAddress()){
+        if(to_insert.getMailingAddress() != null) {
+            insertMailingAddress(TTB_ID, to_insert.getMailingAddress());
+        }
+        if(to_insert.getAddress() != null) {
+            for (Address a : to_insert.getAddress()) {
                 insertOtherAddress(TTB_ID, a);
             }
+        }
         } catch (SQLException e ){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
+        return TTB_ID;
     }
 
     public void insertWine(int TTB_ID, WineFormItems wine) throws SQLException{
