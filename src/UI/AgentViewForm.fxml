@@ -72,7 +72,7 @@
       <HBox alignment="CENTER" layoutX="667.0" layoutY="175.0" prefHeight="580.0" prefWidth="687.0" AnchorPane.leftAnchor="667.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="175.0" />
       <VBox alignment="CENTER" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="View Form" textFill="WHITE">
+            <Label text="Form Reviewing Tools" textFill="WHITE">
                <font>
                   <Font size="38.0" />
                </font>
