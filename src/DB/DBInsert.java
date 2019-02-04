@@ -1,10 +1,10 @@
 package DB;
 
-import Entities.AlcoholType;
-import Entities.Form;
-import Entities.Manufacturer;
+import Entities.*;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.time.Instant;
 
@@ -66,12 +66,13 @@ public class DBInsert extends DatabaseAbstract {
      * @param Wine_Appellation The wine appellation field for the entry
      * @throws SQLException
      */
-    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation) throws SQLException{
-        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation) VALUES (?,?, ?)";
+    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH) throws SQLException{
+        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH) VALUES (?,?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setInt(1, TTB_ID);
         statement.setString(2, Grape_Varietals);
         statement.setString(3, Wine_Appellation);
+        statement.setFloat(4, pH);
         statement.execute();
     }
 
@@ -154,7 +155,11 @@ public class DBInsert extends DatabaseAbstract {
         statement.setString(2, Fanciful_Name);
         statement.setString(3, Brand_Name);
         statement.setBoolean(4, Source);
-        statement.setBoolean(5, Approve);
+        if(Approve == true){
+            statement.setInt(5,1);
+        } else {
+            statement.setInt(5, 2);
+        }
         statement.setString(6, Rep_ID);
         statement.setString(7, email);
         statement.setInt(8, Company_ID);
@@ -165,6 +170,8 @@ public class DBInsert extends DatabaseAbstract {
         statement.setFloat(13, (float)APV);
         statement.execute();
     }
+
+
 
 
 
@@ -184,12 +191,18 @@ public class DBInsert extends DatabaseAbstract {
 
     /**
      * Inserts a label into the database
-     * @param input A FileInputStream that was made from the input image
+     * @param inputFile A File that was made from the input image file selection
      * @param fileName The file name of that image
      * @throws SQLException
      */
-    public void insertLabel(FileInputStream input, String fileName) throws SQLException{
-        String insertString = "INSERT INTO LABEL VALUES (NEXT VALUE FOR Label_ID, ?, ?)";
+    public void insertLabel(File inputFile, String fileName) throws SQLException{
+        String insertString = "INSERT INTO LABEL (ID, Image, ImageName) VALUES (NEXT VALUE FOR Label_ID, ?, ?)";
+        FileInputStream input = null;
+        try {
+            input = new FileInputStream(inputFile);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: " + e);
+        }
         PreparedStatement statement =  connection.prepareStatement(insertString);
         statement.setBinaryStream(1, input);
         statement.setString(2, fileName);
@@ -214,23 +227,48 @@ public class DBInsert extends DatabaseAbstract {
         statement.setTimestamp(4, expiration);
         statement.setString(5, qualification);
         statement.execute();
+        statement.close();
     }
+
+    public void insertApproval(String approvingAgent, int TTB_ID, Timestamp date, Timestamp expiration, String qualification, ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, ApprovalStatus page4) throws SQLException {
+        String insertString = "INSERT INTO APPROVAL VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(insertString);
+        statement.setString(1, approvingAgent);
+        statement.setInt(2, TTB_ID);
+        statement.setTimestamp(3, date);
+        statement.setTimestamp(4, expiration);
+        statement.setString(5, qualification);
+        statement.setInt(6, page1.toInt());
+        statement.setInt(7, page2.toInt());
+        statement.setInt(8, page3.toInt());
+        statement.setInt(9, page4.toInt());
+        statement.execute();
+        statement.close();
+    }
+
+    public void insertApproval(Approval approval, int TTB_ID) throws SQLException{
+        insertApproval(approval.getAgentApprovalName(), TTB_ID, approval.getTimestamp(), approval.getExpDate(),
+                approval.getQualifications(), approval.getPage1()
+        , approval.getPage2(), approval.getPage3(), approval.getPage4());
+    }
+
     //TODO APPROVE FORM --> Make UPDATE
 
-    public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{
+    public void insertForm(Form to_insert, Manufacturer inserting) throws SQLException{ //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
         int type_num = 0;
-        if(to_insert.getAlcoholType() == AlcoholType.Wine){
-            type_num = 1;
-        } else if (to_insert.getAlcoholType() == AlcoholType.MaltBeverage){
-            type_num = 2;
-        } else {
-            type_num = 3;
-        }
-        insertForm(null, //TODO SERIAL NUMBER
+        int TTB_ID;
+        try{
+            String selstr = "SELECT (NEXT VALUE FOR Form_ID) FROM FORM";
+            PreparedStatement ps = connection.prepareStatement(selstr);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            TTB_ID = rs.getInt(1);
+            ps.close();
+        insertForm(to_insert.getSerialNumber(),
                 to_insert.getFancifulName(),
                 to_insert.getBrandName(),
                 to_insert.getSource(),
-                to_insert.getApproval() != null,
+                false,
                 to_insert.getRepID(),
                 to_insert.getEmail(),
                 inserting.manID,
@@ -238,6 +276,26 @@ public class DBInsert extends DatabaseAbstract {
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
                 type_num, to_insert.getAlcoholContent());
+            insertWine(TTB_ID, to_insert.getWineFormItems());
+            insertOtherInfo(TTB_ID, to_insert.getBlownBrandedEmbossedInfo());
+            insertMailingAddress( TTB_ID, to_insert.getMailingAddress());
+            for( Address a : to_insert.getAddress()){
+                insertOtherAddress(TTB_ID, a);
+            }
+        } catch (SQLException e ){
+            System.out.println(e.toString());
+        }
+    }
+
+    public void insertWine(int TTB_ID, WineFormItems wine) throws SQLException{
+        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH());
+    }
+
+    public void insertMailingAddress(int TTB_ID, Address to_insert) throws SQLException {
+        insertAddress(to_insert.getZip(), true,  to_insert.getCity(), to_insert.getState(), to_insert.getStreet(), TTB_ID);
+    }
+    public void insertOtherAddress(int TTB_ID, Address to_insert) throws SQLException {
+        insertAddress(to_insert.getZip(), false,  to_insert.getCity(), to_insert.getState(), to_insert.getStreet(), TTB_ID);
     }
 
 

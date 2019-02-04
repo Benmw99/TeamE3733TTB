@@ -65,6 +65,11 @@ public class SelectTest {
         assertEquals(true, form.getSource());
 //not implemented        assertEquals(true, form.getApproval());
     }
+    @Test
+    public void retrieveManTest(){
+        Manufacturer man = db.dbSelect.getManufacturer("Buddy");
+        assertEquals(123, man.manID);
+    }
 
     @Test
     public void searchByTest() {
@@ -98,7 +103,6 @@ public class SelectTest {
         /* This shit doesn't work and I can't even get the tests to look correct
         assertTrue(SRNone.getResults().contains(db.dbSelect.searchBy(ASNone).getResults()));
         assertTrue(SRNone.getResults().contains(db.dbSelect.searchBy(ASNone).getResults()));
-
         assertTrue(SRBrand.getResults().contains(db.dbSelect.searchBy(ASBrand).getResults()));
         */
     }

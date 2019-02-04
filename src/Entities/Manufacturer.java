@@ -1,6 +1,9 @@
 package Entities;
 
 import DB.Database;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
+import java.util.Objects;
 
 public class Manufacturer implements IUser {
 
@@ -22,6 +25,13 @@ public class Manufacturer implements IUser {
         this.manName = null;
         this.login = login;
         this.password = password;
+    }
+
+    public Manufacturer(){
+        this.manID = 0;
+        this.manName = null;
+        this.login = null;
+        this.password = null;
     }
 
     public int getManID() {
@@ -67,17 +77,29 @@ public class Manufacturer implements IUser {
         return db.dbSelect.AuthenticateCompany(login,password);
     }
 
-    public IUser loadUser(){
-        return null; // needs implementation
+    public void loadUser(){
+        DB.Database db = DB.Database.getInstance();
+        Manufacturer man = db.dbSelect.getManufacturer(login);
+        this.manID = man.getManID();
+        this.manName = man.getManName();
     }
 
 
 
-    public SearchResult search() {
-        return null;
+
+
+    public SearchResult search(AdvancedSearch advancedSearch) {
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.searchBy(advancedSearch);
     }
 
-    void SubmitForm() {
+    public void submitForm(Form form) {
+        try {
+            DB.Database db = DB.Database.getInstance();
+            db.dbInsert.insertForm(form, this);
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
 
     }
 
@@ -89,7 +111,15 @@ public class Manufacturer implements IUser {
 
     }
 
-
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Manufacturer that = (Manufacturer) o;
+        return manID == that.manID &&
+                Objects.equals(manName, that.manName) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password);
+    }
 
 }

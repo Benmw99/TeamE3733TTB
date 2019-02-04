@@ -9,10 +9,10 @@ public interface IUser {
     void setPassword(String password);
 
     boolean authenticate();
-    IUser loadUser();
+    void loadUser();
 
 
     //needs additional parameters relating to size of returned search
-    SearchResult search();
+    SearchResult search(AdvancedSearch advancedSearch);
 
 }

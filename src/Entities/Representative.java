@@ -2,6 +2,8 @@ package Entities;
 
 import DB.Database;
 
+import java.util.Objects;
+
 public class Representative implements IUser {
 
     private String repID;
@@ -12,6 +14,12 @@ public class Representative implements IUser {
         this.repID = repID;
         this.login = login;
         this.password = password;
+    }
+
+    public Representative(){
+        this.repID = null;
+        this.login = null;
+        this.password = null;
     }
 
     public String getRepID() {
@@ -47,13 +55,17 @@ public class Representative implements IUser {
         return db.dbSelect.AuthenticateRep(login,password);
     }
 
-    public IUser loadUser(){
-        return null; // needs implementation
+    public void loadUser(){
+        DB.Database db = DB.Database.getInstance();
+        Representative rep = db.dbSelect.getRepresentative(login);
+        this.repID = rep.getRepID();
+
     }
 
 
-    public SearchResult search() {
-        return null;
+    public SearchResult search(AdvancedSearch advancedSearch) {
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.searchBy(advancedSearch);
     }
 
     void SubmitForm() {
@@ -68,5 +80,14 @@ public class Representative implements IUser {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Representative that = (Representative) o;
+        return Objects.equals(repID, that.repID) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password);
+    }
 
 }

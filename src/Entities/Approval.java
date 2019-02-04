@@ -3,12 +3,14 @@ package Entities;
 import java.lang.*;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class Approval {
 
     private ApprovalStatus page1;
     private ApprovalStatus page2;
     private ApprovalStatus page3;
+    private ApprovalStatus page4;
 
     private boolean approved;
     private Timestamp timestamp;
@@ -25,12 +27,22 @@ public class Approval {
         this.page1 = null;
         this.page2 = null;
         this.page3 = null;
+        this.page4 = null;
     }
 
-    public Approval(ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
+    public ApprovalStatus getPage4() {
+        return page4;
+    }
+
+    public void setPage4(ApprovalStatus page4) {
+        this.page4 = page4;
+    }
+
+    public Approval(ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, ApprovalStatus page4, boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
         this.page1 = page1;
         this.page2 = page2;
         this.page3 = page3;
+        this.page4 = page4;
         this.approved = approved;
         this.timestamp = timestamp;
         this.agentApprovalName = agentApprovalName;
@@ -47,6 +59,7 @@ public class Approval {
         this.page1 = null;
         this.page2 = null;
         this.page3 = null;
+        this.page4 = null;
     }
 
     public ApprovalStatus getPage1() {
@@ -130,5 +143,23 @@ public class Approval {
         java.sql.Timestamp expirationDate = new java.sql.Timestamp(expire.getTime());
         this.expDate = expirationDate;
 
-    }}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Approval approval = (Approval) o;
+        return approved == approval.approved &&
+                page1 == approval.page1 &&
+                page2 == approval.page2 &&
+                page3 == approval.page3 &&
+                page4 == approval.page4 &&
+                Objects.equals(timestamp, approval.timestamp) &&
+                Objects.equals(agentApprovalName, approval.agentApprovalName) &&
+                Objects.equals(expDate, approval.expDate) &&
+                Objects.equals(qualifications, approval.qualifications);
+    }
+
+}
 

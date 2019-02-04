@@ -2,6 +2,12 @@ package Entities;
 
 import DB.Database;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import static Entities.ApprovalStatus.*;
+
 public class Agent implements IUser{
 
     private String repID;
@@ -19,6 +25,12 @@ public class Agent implements IUser{
         this.repID = null;
         this.login = login;
         this.password = password;
+    }
+
+    public Agent (){
+        this.password = null;
+        this.repID = null;
+        this.login = null;
     }
     public String getName() {
         return name;
@@ -49,32 +61,40 @@ public class Agent implements IUser{
     }
 
 
-
+    public List<Form> getThreeForms() {
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.getThreeForms();
+    }
 
     public boolean authenticate(){
         DB.Database db = DB.Database.getInstance();
         return db.dbSelect.AuthenticateAgent(login,password);
     }
 
-    public IUser loadUser(){
-        return null; // needs implementation
-    }
-
-    public SearchResult search() {
-        return null;
-    }
-
-    void approveForm() {
+    public void loadUser(){
 
     }
 
-    void rejectForm() {
+    public SearchResult search(AdvancedSearch advancedSearch) {
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.searchBy(advancedSearch);
+    }
+
+    void approveForm(Form form, String qualifications) {
+        form.getApproval().approve(name, qualifications);
+        form.setApprovalStatus(Complete);
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.approveForm(form,form.getApproval());
 
     }
 
-    void fillQueue() {
+    void rejectForm(Form form) {
+        form.setApprovalStatus(Incomplete);
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.approveForm(form, form.getApproval());
 
     }
+
 
     Form importPhysicalForm() {
         Form form = new Form();
@@ -84,8 +104,22 @@ public class Agent implements IUser{
     void SendToAgent() {
 
     }
-void csvDownload(){
 
-}
+    public void csvDownload(String query, AdvancedSearch advancedSearch){
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.downloadResults(query,advancedSearch);
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Agent agent = (Agent) o;
+        return Objects.equals(repID, agent.repID) &&
+                Objects.equals(login, agent.login) &&
+                Objects.equals(password, agent.password) &&
+                Objects.equals(name, agent.name);
+    }
 
 }
