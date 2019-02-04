@@ -63,8 +63,9 @@ public class Representative implements IUser {
     }
 
 
-    public SearchResult search() {
-        return null;
+    public SearchResult search(AdvancedSearch advancedSearch) {
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.searchBy(advancedSearch);
     }
 
     void SubmitForm() {

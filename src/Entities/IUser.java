@@ -13,6 +13,6 @@ public interface IUser {
 
 
     //needs additional parameters relating to size of returned search
-    SearchResult search();
+    SearchResult search(AdvancedSearch advancedSearch);
 
 }

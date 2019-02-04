@@ -84,6 +84,11 @@ public class SearchResult {
         this.search = search;
     }
 
+    public void getThreeForms() {
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.getThreeForms();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

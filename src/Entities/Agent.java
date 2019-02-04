@@ -2,6 +2,8 @@ package Entities;
 
 import DB.Database;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static Entities.ApprovalStatus.*;
@@ -59,9 +61,9 @@ public class Agent implements IUser{
     }
 
 
-    public void getThreeForms() {
+    public List<Form> getThreeForms() {
         DB.Database db = DB.Database.getInstance();
-        db.dbSelect.getThreeForms();
+        return db.dbSelect.getThreeForms();
     }
 
     public boolean authenticate(){
@@ -73,8 +75,9 @@ public class Agent implements IUser{
 
     }
 
-    public SearchResult search() {
-        return null;
+    public SearchResult search(AdvancedSearch advancedSearch) {
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.searchBy(advancedSearch);
     }
 
     void approveForm(Form form, String qualifications) {
@@ -92,9 +95,6 @@ public class Agent implements IUser{
 
     }
 
-    void fillQueue() {
-
-    }
 
     Form importPhysicalForm() {
         Form form = new Form();
@@ -105,7 +105,9 @@ public class Agent implements IUser{
 
     }
 
-    void csvDownload(){
+    public void csvDownload(String query, AdvancedSearch advancedSearch){
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.downloadResults(query,advancedSearch);
 
     }
 
@@ -120,9 +122,5 @@ public class Agent implements IUser{
                 Objects.equals(name, agent.name);
     }
 
-    public void getThreeForms() {
-        DB.Database db = DB.Database.getInstance();
-        db.dbSelect.getThreeForms();
-    }
 
 }
