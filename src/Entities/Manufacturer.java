@@ -111,15 +111,13 @@ public class Manufacturer implements IUser {
 
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Manufacturer that = (Manufacturer) o;
-        return manID == that.manID &&
-                Objects.equals(manName, that.manName) &&
-                Objects.equals(login, that.login) &&
-                Objects.equals(password, that.password);
+    boolean equals(Manufacturer aMan){
+            return( this.manID == aMan.manID &&
+        this.manName.equals(aMan.manName) &&
+        this.login.equals(aMan.login) &&
+        this.password.equals(aMan.password));
     }
+
+
 
 }

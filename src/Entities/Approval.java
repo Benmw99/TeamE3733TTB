@@ -144,22 +144,17 @@ public class Approval {
         this.expDate = expirationDate;
 
     }
+boolean equals(Approval appr){
+        return ((this.approved == appr.approved) &&
+    this.timestamp.equals(appr.timestamp) &&
+    this.agentApprovalName.equals(appr.agentApprovalName) &&
+    this.expDate.equals(appr.expDate) &&
+    this.qualifications.equals(appr.qualifications) &&
+    this.page1.equals(appr.page1) &&
+    this.page1.equals(appr.page2) &&
+    this.page1.equals(appr.page3));
+}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Approval approval = (Approval) o;
-        return approved == approval.approved &&
-                page1 == approval.page1 &&
-                page2 == approval.page2 &&
-                page3 == approval.page3 &&
-                page4 == approval.page4 &&
-                Objects.equals(timestamp, approval.timestamp) &&
-                Objects.equals(agentApprovalName, approval.agentApprovalName) &&
-                Objects.equals(expDate, approval.expDate) &&
-                Objects.equals(qualifications, approval.qualifications);
-    }
 
 }
 

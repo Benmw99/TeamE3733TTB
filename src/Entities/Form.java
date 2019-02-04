@@ -275,36 +275,34 @@ public class Form {
     public ApprovalStatus getApprovalStatus(){ return this.approvalStatus;}
     //#######################################################################################################
     //                                  UI API (to be implemented)
-    // approve./reject is in agent class
+    public void approve(String agentName){//TODO: Implement
+    }
+    public void reject(String agentName){ //TODO: Implement
+    }
     //#######################################################################################################
     //                                  Helper Functions
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Form form = (Form) o;
-        return source == form.source &&
-                ttbID == form.ttbID &&
-                companyID == form.companyID &&
-                Float.compare(form.alcoholContent, alcoholContent) == 0 &&
-                Objects.equals(repID, form.repID) &&
-                (brewersPermit.equals(form.brewersPermit)) &&
-                Objects.equals(serialNumber, form.serialNumber) &&
-                alcoholType == form.alcoholType &&
-                Objects.equals(brandName, form.brandName) &&
-                Objects.equals(fancifulName, form.fancifulName) &&
-                (address.equals(form.address)) &&
-                Objects.equals(mailingAddress, form.mailingAddress) &&
-                Objects.equals(applicantName, form.applicantName) &&
-                Objects.equals(formula, form.formula) &&
-                Objects.equals(wineFormItems, form.wineFormItems) &&
-                Objects.equals(phoneNumber, form.phoneNumber) &&
-                Objects.equals(email, form.email) &&
-                Objects.equals(blownBrandedEmbossedInfo, form.blownBrandedEmbossedInfo) &&
-                Objects.equals(dateSubmitted, form.dateSubmitted) &&
-                Objects.equals(approval, form.approval) &&
-                approvalStatus == form.approvalStatus;
-    }
+boolean equals (Form aform){
+        return (this.repID.equals(aform.repID) &&
+    this.brewersPermit.equals(aform.brewersPermit) &&
+    this.source == aform.source &&
+    this.serialNumber.equals(aform.serialNumber) &&
+    this.alcoholType.equals(aform.alcoholType) &&
+    this.brandName.equals(aform.brandName) &&
+    this.fancifulName.equals(aform.fancifulName) &&
+    this.address.equals(aform.address) &&
+    this.mailingAddress.equals(aform.mailingAddress) &&
+    this.applicantName.equals(aform.applicantName) &&
+    this.formula.equals(aform.formula) &&
+    this.wineFormItems.equals(aform.wineFormItems) &&
+    this.phoneNumber.equals(aform.phoneNumber) &&
+    this.email.equals(aform.email) &&
+    this.blownBrandedEmbossedInfo.equals(aform.blownBrandedEmbossedInfo) &&
+    this.dateSubmitted.equals(aform.dateSubmitted) &&
+    this.ttbID == aform.ttbID &&
+    this.companyID == aform.companyID &&
+    this.approval.equals(aform.approval) &&
+    this.alcoholContent == aform.alcoholContent);
+}
 
 }

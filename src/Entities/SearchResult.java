@@ -84,14 +84,12 @@ public class SearchResult {
         this.search = search;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SearchResult that = (SearchResult) o;
-        return (results.equals(that.results)) &&
-                Objects.equals(query, that.query) &&
-                Objects.equals(search, that.search);
-    }
+boolean equals(SearchResult aSearchRes){
+
+
+        return ( this.results.containsAll(aSearchRes.results) &&
+     this.query.equals(aSearchRes.query) &&
+    this.search.equals(aSearchRes.search));
+}
 
 }

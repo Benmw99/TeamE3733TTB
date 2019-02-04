@@ -57,16 +57,13 @@ public class Address {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return Objects.equals(city, address.city) &&
-                Objects.equals(state, address.state) &&
-                Objects.equals(zip, address.zip) &&
-                Objects.equals(street, address.street) &&
-                Objects.equals(name, address.name);
+boolean equals(Address anAddy) {
+    return (this.city.equals(anAddy.city) &&
+            this.state.equals(anAddy.state) &&
+            this.name.equals(anAddy.name) &&
+            this.street.equals(anAddy.street) &&
+            this.zip.equals(anAddy.zip));
     }
+
 
 }

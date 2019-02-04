@@ -143,24 +143,20 @@ public class AdvancedSearch {
         this.numResults = numResults;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AdvancedSearch that = (AdvancedSearch) o;
-        return vintageYear == that.vintageYear &&
-                Float.compare(that.pH, pH) == 0 &&
-                ttbID == that.ttbID &&
-                numResults == that.numResults &&
-                type == that.type &&
-                Objects.equals(source, that.source) &&
-                Objects.equals(serialNumber, that.serialNumber) &&
-                alcoholType == that.alcoholType &&
-                Objects.equals(brandName, that.brandName) &&
-                Objects.equals(fancifulName, that.fancifulName) &&
-                Objects.equals(grapeVarietal, that.grapeVarietal) &&
-                Objects.equals(appellation, that.appellation) &&
-                Objects.equals(timestamp, that.timestamp);
-    }
+boolean equal(AdvancedSearch aSearch){
+
+        return(
+    this.serialNumber.equals(aSearch.serialNumber) &&
+            this.alcoholType.equals(aSearch.alcoholType) &&
+            this.brandName.equals(aSearch.brandName)
+            && this.fancifulName.equals(aSearch.fancifulName) &&
+   this.vintageYear == aSearch.vintageYear &&
+   this.pH == aSearch.pH &&
+            this.grapeVarietal.equals(aSearch.grapeVarietal) &&
+    this.appellation.equals(aSearch.appellation)&&
+    this.timestamp.equals(aSearch.timestamp) &&
+    this.ttbID == aSearch.ttbID &&
+    this.numResults == aSearch.numResults);
+}
 
 }
