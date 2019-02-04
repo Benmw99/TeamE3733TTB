@@ -17,7 +17,7 @@
 <?import javafx.scene.control.cell.ComboBoxListCell?>
 <?import java.lang.String?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
-<children>
+<ComboBox>
     <Rectangle fill="#4BA77A" height="136.0" layoutX="-14.0" layoutY="21.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <Text fill="WHITE" layoutX="473.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced Search" wrappingWidth="429.9218606590072">
         <font>
@@ -266,6 +266,4 @@
               </FXCollections>
           </Items>
       </ComboBox>
-
-</children>
 </AnchorPane>
