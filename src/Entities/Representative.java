@@ -56,12 +56,16 @@ public class Representative implements IUser {
     }
 
     public void loadUser(){
+        DB.Database db = DB.Database.getInstance();
+        Representative rep = db.dbSelect.getRepresentative(login);
+        this.repID = rep.getRepID();
 
     }
 
 
-    public SearchResult search() {
-        return null;
+    public SearchResult search(AdvancedSearch advancedSearch) {
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.searchBy(advancedSearch);
     }
 
     void SubmitForm() {
