@@ -89,14 +89,22 @@ public class SearchResult {
         db.dbSelect.getThreeForms();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SearchResult that = (SearchResult) o;
-        return (results.equals(that.results)) &&
-                Objects.equals(query, that.query) &&
-                Objects.equals(search, that.search);
+    boolean equals(SearchResult aSearchRes){
+        return ( resultsEquals(aSearchRes.results) &&
+            this.query.equals(aSearchRes.query) &&
+            this.search.equals(aSearchRes.search));
+    }
+
+    boolean resultsEquals(ArrayList<Form> aList) {
+        ArrayList<Form> resultList = new ArrayList<Form>();
+        for (Form f : aList) {
+            for (Form s : this.results) {
+                if (f.equals(s)) {
+                    resultList.add(f);
+                }
+            }
+        }
+        return (this.results.size() == resultList.size());
     }
 
 }

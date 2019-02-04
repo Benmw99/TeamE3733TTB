@@ -38,14 +38,11 @@ public class LabelImage {
         this.image = image;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LabelImage that = (LabelImage) o;
-        return ID == that.ID &&
-                Objects.equals(imageName, that.imageName) &&
-                Objects.equals(image, that.image);
+
+    public boolean equals(LabelImage aLabel) {
+        return (this.ID == aLabel.ID &&
+                this.imageName.equals(aLabel.imageName) &&
+                this.image.equals(aLabel.image));
     }
 
 }
