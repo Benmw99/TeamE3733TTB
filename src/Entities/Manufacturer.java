@@ -88,11 +88,12 @@ public class Manufacturer implements IUser {
 
 
 
-    public SearchResult search() {
-        return null;
+    public SearchResult search(AdvancedSearch advancedSearch) {
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.searchBy(advancedSearch);
     }
 
-    void SubmitForm(Form form) {
+    public void submitForm(Form form) {
         try {
             DB.Database db = DB.Database.getInstance();
             db.dbInsert.insertForm(form, this);
