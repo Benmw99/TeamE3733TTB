@@ -1,5 +1,8 @@
 package UI;
 
+import DB.Database;
+import Entities.AdvancedSearch;
+import Entities.SearchResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -96,6 +99,7 @@ public class CivilController {
     @FXML
     Button printSearchResultsCSV;
 
+    SearchResult result;
 
 
     public void advSearch(ActionEvent event) throws IOException {
@@ -103,7 +107,22 @@ public class CivilController {
     }
 
     public void searchAdvanced(ActionEvent event) throws IOException {
-        pageSwitch(event,"CivilAdvSearch.fxml", search1Button);
+        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
+
+        advancedSearch.setBrandName(brandNameTextField.getText());
+        /*
+        if(TypeComboBox.getValue().equals("Beer")){
+
+        }else if(typeComboBox.getValue().equals("Wine")){
+
+        }else{
+
+        }
+        */
+
+        DB.Database db = DB.Database.getInstance();
+        result = db.dbSelect.searchBy(advancedSearch);
+
     }
 
     public void goBackToSearch(ActionEvent event) throws IOException {

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -78,7 +81,7 @@
                         <Insets left="30.0" right="15.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="section1MA1Button" mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="1" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="1" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -86,7 +89,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section2MA1Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -94,7 +97,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section3MA1Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -102,7 +105,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="section4MA1Button" mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -157,10 +160,10 @@
             </VBox>
          </children>
       </VBox>
-      <MenuButton mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
+      <MenuButton fx:id="menuMA1MenuButton" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem disable="true" mnemonicParsing="false" text="Submit Application" />
+          <MenuItem mnemonicParsing="false" onAction="#goHome" text="Go Home" />
         </items>
          <font>
             <Font size="26.0" />
@@ -229,7 +232,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="repIDField">
+                        <TextField fx:id="repIDField" promptText="Number">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -257,7 +260,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="producerNumField">
+                        <TextField fx:id="producerNumField" promptText="number">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -288,14 +291,17 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="sourceField">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
+                        <ComboBox fx:id="sourceComboBox" prefHeight="41.0" prefWidth="270.0" promptText="Choose">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Domestic" />
+                                 <String fx:value="Imported" />
+                              </FXCollections>
+                           </items>
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
-                        </TextField>
+                        </ComboBox>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../assets/tool-tip.png" />
@@ -358,10 +364,24 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="typeField" prefHeight="41.0" prefWidth="385.0" promptText="Wine/Distilled Sprits/Malt Beverage">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
+                        <ComboBox fx:id="typeComboBox" onAction="#checkWine" prefHeight="41.0" prefWidth="270.0" promptText="Choose">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Wine" />
+                                 <String fx:value="Distilled Spirits" />
+                                 <String fx:value="Malt Beverage" />
+                              </FXCollections>
+                           </items>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                        <TextField fx:id="vintageYearField" prefHeight="41.0" promptText="Vintage Year">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="phField" prefHeight="41.0" promptText="pH Level">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -424,7 +444,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="nextSectionMA1Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
+            <Button fx:id="nextSectionMA1Button" mnemonicParsing="false" onAction="#checkBlanksPage1" onMouseClicked="#appNext" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -434,6 +454,10 @@
             </Button>
          </children>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0" />
+      <Button fx:id="backButton" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" onAction="#manHome" prefHeight="27.0" prefWidth="49.0" style="-fx-background-color: #B5072C#B5072C #B5072C#B5072C;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="Palatino" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
