@@ -79,15 +79,10 @@ public class Representative implements IUser {
     void CheckProgress() {
 
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Representative that = (Representative) o;
-        return Objects.equals(repID, that.repID) &&
-                Objects.equals(login, that.login) &&
-                Objects.equals(password, that.password);
+    boolean equals(Representative rep){
+        return(this.repID.equals(rep.repID) &&
+            this.login.equals(rep.login) &&
+            this.password.equals(rep.password));
     }
 
 }
