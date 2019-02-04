@@ -35,13 +35,16 @@ public class CivilController {
     @FXML
     CheckBox ttbIDSearchcheckBox;
     @FXML
-    Label civilRepIDLabel;
+    Label civilTTBLabel;
 
     @FXML
     Label civilAlcTypeLabel;
 
     @FXML
     Label civilManLabel;
+
+    @FXML
+    Label civilBrandLabel;
 
     @FXML
     Button menuASButton;
