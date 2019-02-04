@@ -84,11 +84,6 @@ public class SearchResult {
         this.search = search;
     }
 
-    public void getThreeForms() {
-        DB.Database db = DB.Database.getInstance();
-        db.dbSelect.getThreeForms();
-    }
-
     boolean equals(SearchResult aSearchRes){
         return ( resultsEquals(aSearchRes.results) &&
             this.query.equals(aSearchRes.query) &&
@@ -104,7 +99,13 @@ public class SearchResult {
                 }
             }
         }
-        return (this.results.size() == resultList.size());
+        return(this.results.size() == resultList.size());
+
+    public void getThreeForms(){
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.getThreeForms();
     }
+
+
 
 }
