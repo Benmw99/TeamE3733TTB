@@ -95,6 +95,9 @@ public class Agent implements IUser{
 
     }
 
+    void fillQueue() {
+
+    }
 
     Form importPhysicalForm() {
         Form form = new Form();
@@ -111,15 +114,11 @@ public class Agent implements IUser{
 
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Agent agent = (Agent) o;
-        return Objects.equals(repID, agent.repID) &&
-                Objects.equals(login, agent.login) &&
-                Objects.equals(password, agent.password) &&
-                Objects.equals(name, agent.name);
+    public boolean equals(Agent anAgent){
+        return (this.repID.equals(anAgent.repID)&&
+        this.login.equals(anAgent.login) &&
+        this.password.equals(anAgent.password) &&
+        this.name.equals(anAgent.name));
     }
 
 }
