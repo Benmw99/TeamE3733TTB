@@ -2,6 +2,7 @@ package UI;
 
 import DB.Database;
 import Entities.AdvancedSearch;
+import Entities.AlcoholType;
 import Entities.SearchResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static Entities.AlcoholType.*;
 
 public class CivilController {
     private Entities.SearchResult results;
@@ -109,16 +112,18 @@ public class CivilController {
     public void searchAdvanced(ActionEvent event) throws IOException {
         Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
 
-        advancedSearch.setBrandName(brandNameTextField.getText());
-        /*
-        if(TypeComboBox.getValue().equals("Beer")){
-
-        }else if(typeComboBox.getValue().equals("Wine")){
-
-        }else{
-
+        if(typeComboBox.getValue().equals("Beers")){
+            advancedSearch.setAlcoholType(MaltBeverage);
+        }else if(typeComboBox.getValue().equals("Wines")){
+            advancedSearch.setAlcoholType(Wine);
         }
-        */
+        /*else if(typeComboBox.getValue().equals("Wines")){
+            advancedSearch.setAlcoholType(DistilledLiquor);
+        }*/
+
+        advancedSearch.setBrandName(brandNameTextField.getText());
+
+
 
         DB.Database db = DB.Database.getInstance();
         result = db.dbSelect.searchBy(advancedSearch);
