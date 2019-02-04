@@ -81,7 +81,7 @@ public class CivilController {
     Button printResults;
 
     @FXML
-    SplitMenuButton alcoholTypeSplitMenu;
+    ComboBox typeComboBox;
 
     @FXML
     Button goUpPageButton;
@@ -118,13 +118,6 @@ public class CivilController {
         pageSwitch(event,"CivilAdvSearch.fxml", goDownPageButton);
     }
 
-    public void goToPage3(ActionEvent event) throws IOException {
-        pageSwitch(event,"CivilAdvSearch3.fxml", goUpPageButton);
-    }
-
-    public void goDownToPage2(ActionEvent event) throws IOException {
-        pageSwitch(event,"CivilAdvSearch.fxml", goDownPageButton);
-    }
 
     private void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
