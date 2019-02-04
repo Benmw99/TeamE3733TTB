@@ -34,6 +34,7 @@ public class CivilController {
     //CivilAdvSearch
     @FXML
     CheckBox ttbIDSearchcheckBox;
+
     @FXML
     Label civilTTBLabel;
 
@@ -48,6 +49,9 @@ public class CivilController {
 
     @FXML
     Button menuASButton;
+
+    @FXML
+    Button search1Button;
 
     @FXML
     TextField searchASField;
@@ -96,6 +100,10 @@ public class CivilController {
 
     public void advSearch(ActionEvent event) throws IOException {
         pageSwitch(event,"CivilAdvSearch.fxml", advSearchButton);
+    }
+
+    public void searchAdvanced(ActionEvent event) throws IOException {
+        pageSwitch(event,"CivilAdvSearch.fxml", search1Button);
     }
 
     public void goBackToSearch(ActionEvent event) throws IOException {
