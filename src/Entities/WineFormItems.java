@@ -51,7 +51,6 @@ public class WineFormItems {
         this.appellation = appellation;
     }
 
-
     boolean equals(WineFormItems aWine) {
         return (this.vintageYear == aWine.vintageYear &&
         this.pH == aWine.pH &&

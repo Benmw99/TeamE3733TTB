@@ -114,7 +114,6 @@ public class Agent implements IUser{
 
     }
 
-
     public boolean equals(Agent anAgent){
         return (this.repID.equals(anAgent.repID)&&
         this.login.equals(anAgent.login) &&

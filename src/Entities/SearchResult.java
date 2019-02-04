@@ -84,12 +84,10 @@ public class SearchResult {
         this.search = search;
     }
 
-boolean equals(SearchResult aSearchRes){
-
-
-        return ( this.results.containsAll(aSearchRes.results) &&
-     this.query.equals(aSearchRes.query) &&
-    this.search.equals(aSearchRes.search));
-}
+        boolean equals(SearchResult aSearchRes){
+            return ( this.results.containsAll(aSearchRes.results) &&
+                this.query.equals(aSearchRes.query) &&
+                this.search.equals(aSearchRes.search));
+    }
 
 }

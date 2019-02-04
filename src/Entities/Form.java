@@ -282,27 +282,27 @@ public class Form {
     //#######################################################################################################
     //                                  Helper Functions
 
-boolean equals (Form aform){
+    boolean equals(Form aform){
         return (this.repID.equals(aform.repID) &&
-    this.brewersPermit.equals(aform.brewersPermit) &&
-    this.source == aform.source &&
-    this.serialNumber.equals(aform.serialNumber) &&
-    this.alcoholType.equals(aform.alcoholType) &&
-    this.brandName.equals(aform.brandName) &&
-    this.fancifulName.equals(aform.fancifulName) &&
-    this.address.equals(aform.address) &&
-    this.mailingAddress.equals(aform.mailingAddress) &&
-    this.applicantName.equals(aform.applicantName) &&
-    this.formula.equals(aform.formula) &&
-    this.wineFormItems.equals(aform.wineFormItems) &&
-    this.phoneNumber.equals(aform.phoneNumber) &&
-    this.email.equals(aform.email) &&
-    this.blownBrandedEmbossedInfo.equals(aform.blownBrandedEmbossedInfo) &&
-    this.dateSubmitted.equals(aform.dateSubmitted) &&
-    this.ttbID == aform.ttbID &&
-    this.companyID == aform.companyID &&
-    this.approval.equals(aform.approval) &&
-    this.alcoholContent == aform.alcoholContent);
-}
+                this.brewersPermit.equals(aform.brewersPermit) &&
+                this.source == aform.source &&
+                this.serialNumber.equals(aform.serialNumber) &&
+                this.alcoholType.equals(aform.alcoholType) &&
+                this.brandName.equals(aform.brandName) &&
+                this.fancifulName.equals(aform.fancifulName) &&
+                this.address.equals(aform.address) &&
+                this.mailingAddress.equals(aform.mailingAddress) &&
+                this.applicantName.equals(aform.applicantName) &&
+                this.formula.equals(aform.formula) &&
+                this.wineFormItems.equals(aform.wineFormItems) &&
+                this.phoneNumber.equals(aform.phoneNumber) &&
+                this.email.equals(aform.email) &&
+                this.blownBrandedEmbossedInfo.equals(aform.blownBrandedEmbossedInfo) &&
+                this.dateSubmitted.equals(aform.dateSubmitted) &&
+                this.ttbID == aform.ttbID &&
+                this.companyID == aform.companyID &&
+                this.approval.equals(aform.approval) &&
+                this.alcoholContent == aform.alcoholContent);
+    }
 
 }

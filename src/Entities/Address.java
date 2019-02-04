@@ -57,13 +57,13 @@ public class Address {
         this.name = name;
     }
 
-boolean equals(Address anAddy) {
-    return (this.city.equals(anAddy.city) &&
-            this.state.equals(anAddy.state) &&
-            this.name.equals(anAddy.name) &&
-            this.street.equals(anAddy.street) &&
-            this.zip.equals(anAddy.zip));
-    }
+    boolean equals(Address anAddy) {
+        return (this.city.equals(anAddy.city) &&
+                this.state.equals(anAddy.state) &&
+                this.name.equals(anAddy.name) &&
+                this.street.equals(anAddy.street) &&
+                this.zip.equals(anAddy.zip));
+        }
 
 
 }

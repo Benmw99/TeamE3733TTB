@@ -112,10 +112,10 @@ public class Manufacturer implements IUser {
     }
 
     boolean equals(Manufacturer aMan){
-            return( this.manID == aMan.manID &&
-        this.manName.equals(aMan.manName) &&
-        this.login.equals(aMan.login) &&
-        this.password.equals(aMan.password));
+        return( this.manID == aMan.manID &&
+            this.manName.equals(aMan.manName) &&
+            this.login.equals(aMan.login) &&
+            this.password.equals(aMan.password));
     }
 
 
