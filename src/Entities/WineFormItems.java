@@ -51,15 +51,10 @@ public class WineFormItems {
         this.appellation = appellation;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        WineFormItems that = (WineFormItems) o;
-        return vintageYear == that.vintageYear &&
-                Float.compare(that.pH, pH) == 0 &&
-                Objects.equals(grapeVarietal, that.grapeVarietal) &&
-                Objects.equals(appellation, that.appellation);
+    boolean equals(WineFormItems aWine) {
+        return (this.vintageYear == aWine.vintageYear &&
+        this.pH == aWine.pH &&
+        this.grapeVarietal.equals(aWine.grapeVarietal) &&
+        this.appellation.equals(aWine.appellation));
     }
-
 }

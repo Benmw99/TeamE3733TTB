@@ -404,7 +404,7 @@ public class DBSelect extends DatabaseAbstract {
      * @param TTB_ID
      * @return
      */
-    public Form getFormByTTB_ID(int TTB_ID){
+    public Form getFormByTTB_ID( int TTB_ID){
         String selString = "SELECT * FROM FORM WHERE TTB_ID=?";
         String otherInfString = "SELECT * FROM OTHERINFO WHERE TTB_ID=?";
         String brewersPermit = "SELECT * FROM BREWERSPERMIT WHERE TTB_ID=?";
@@ -419,7 +419,7 @@ public class DBSelect extends DatabaseAbstract {
             PreparedStatement ps = connection.prepareStatement(selString);
             ps.setInt(1, TTB_ID);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+                 rs.next();
                 form.setFancifulName(rs.getString("Fanciful_Name"));
                 form.setBrandName(rs.getString("Brand_Name"));
                 form.setSource(rs.getBoolean("Source"));
@@ -449,7 +449,6 @@ public class DBSelect extends DatabaseAbstract {
                     form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
                 }
                 form.setApprovalStatus(stat);
-            }
             ps.close();
             /* OTHER INFO BLOCK */
             ps = connection.prepareStatement(otherInfString);
