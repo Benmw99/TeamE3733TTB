@@ -84,8 +84,11 @@ public class Agent implements IUser{
     void SendToAgent() {
 
     }
-void csvDownload(){
-
+boolean equals(Agent anAgent){
+    return (this.repID.equals(anAgent.repID)&&
+    this.login.equals(anAgent.login) &&
+    this.password.equals(anAgent.password) &&
+    this.name.equals(anAgent.name));
 }
 
 }

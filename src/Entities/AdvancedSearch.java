@@ -141,4 +141,21 @@ public class AdvancedSearch {
     public void setNumResults(int numResults) {
         this.numResults = numResults;
     }
+
+boolean equal(AdvancedSearch aSearch){
+
+        return(
+    this.serialNumber.equals(aSearch.serialNumber) &&
+            this.alcoholType.equals(aSearch.alcoholType) &&
+            this.brandName.equals(aSearch.brandName)
+            && this.fancifulName.equals(aSearch.fancifulName) &&
+   this.vintageYear == aSearch.vintageYear &&
+   this.pH == aSearch.pH &&
+            this.grapeVarietal.equals(aSearch.grapeVarietal) &&
+    this.appellation.equals(aSearch.appellation)&&
+    this.timestamp.equals(aSearch.timestamp) &&
+    this.ttbID == aSearch.ttbID &&
+    this.numResults == aSearch.numResults);
+}
+
 }
