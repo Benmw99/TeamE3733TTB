@@ -33,6 +33,8 @@ public class CivilController {
 
     //CivilAdvSearch
     @FXML
+    CheckBox ttbIDSearchcheckBox;
+    @FXML
     Label civilRepIDLabel;
 
     @FXML
