@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
    <children>
       <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
          <children>
@@ -316,13 +316,13 @@
             <Pane layoutX="310.0" layoutY="88.0" prefHeight="64.0" prefWidth="1051.0" style="-fx-background-color: #C4C4C4#C4C4C4;">
                <children>
                   <ToggleButton fx:id="commentAHToggle" layoutX="753.0" layoutY="17.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="125.0" text="Make Comments" />
-                  <Button fx:id="approveAHButton" layoutX="269.0" layoutY="19.0" mnemonicParsing="false" text="Approve" />
+                  <Button fx:id="approveAHButton" layoutX="361.0" layoutY="18.0" mnemonicParsing="false" text="Approve" />
                   <Button fx:id="checkFormAHButton" layoutX="883.0" layoutY="18.0" mnemonicParsing="false" text="Check Form" />
                   <Button fx:id="printAHButton" layoutX="986.0" layoutY="18.0" mnemonicParsing="false" text="Print" />
                   <ToggleButton fx:id="section1AHButton" layoutX="69.0" layoutY="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0" text="1" />
-                  <Button fx:id="rejectAHButton" layoutX="351.0" layoutY="18.0" mnemonicParsing="false" text="Reject" />
-                  <Button fx:id="sendToAgentAHButton" layoutX="419.0" layoutY="18.0" mnemonicParsing="false" text="Send to Agent" />
-                  <Button fx:id="feedbackAHButton" layoutX="536.0" layoutY="18.0" mnemonicParsing="false" text="Send Feedback" />
+                  <Button fx:id="rejectAHButton" layoutX="443.0" layoutY="17.0" mnemonicParsing="false" text="Reject" />
+                  <Button fx:id="sendToAgentAHButton" layoutX="511.0" layoutY="17.0" mnemonicParsing="false" text="Send to Agent" />
+                  <Button fx:id="feedbackAHButton" layoutX="628.0" layoutY="17.0" mnemonicParsing="false" text="Send Feedback" />
                   <Label layoutX="21.0" layoutY="26.0" text="Section">
                      <font>
                         <Font name="Palatino" size="13.0" />
@@ -330,6 +330,7 @@
                   </Label>
                   <ToggleButton fx:id="section2AHButton" layoutX="104.0" layoutY="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0" text="2" />
                   <ToggleButton fx:id="section3AHButton" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0" text="3" />
+                  <Button fx:id="getnewQueueButton" layoutX="215.0" layoutY="21.0" mnemonicParsing="false" onAction="#getNewQueue" text="Get New Queue" />
                </children>
             </Pane>
             <Pane layoutX="487.0" layoutY="153.0" prefHeight="606.0" prefWidth="576.0" style="-fx-background-color: #E7E7E7#E7E7E7;">

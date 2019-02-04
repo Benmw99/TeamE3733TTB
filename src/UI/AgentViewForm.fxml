@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -28,11 +29,14 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Rectangle>
-                  <Rectangle fill="#e7e7e7" height="585.0" stroke="TRANSPARENT" strokeType="INSIDE" width="700.0">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Rectangle>
+                  <TabPane prefHeight="585.0" prefWidth="605.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Section 1" />
+                      <Tab text="Section 2" />
+                        <Tab text="Section 3" />
+                        <Tab text="Section 4" />
+                    </tabs>
+                  </TabPane>
                   <TabPane prefHeight="585.0" prefWidth="586.0" tabClosingPolicy="UNAVAILABLE">
                      <tabs>
                         <Tab fx:id="rulesRegTab" text="Rules and Regulations">
@@ -52,7 +56,10 @@
                         </Tab>
                         <Tab fx:id="sendToAgentTab" text="Send to an Agent">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Pane prefHeight="553.0" prefWidth="591.0" />
+                                 </children></AnchorPane>
                            </content>
                         </Tab>
                      </tabs>
@@ -61,15 +68,7 @@
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="700.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="175.0">
-         <children>
-            <Label text="Submitted Form">
-               <font>
-                  <Font name="System Bold" size="48.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+      <HBox alignment="CENTER" prefHeight="583.0" prefWidth="605.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="175.0" />
       <HBox alignment="CENTER" layoutX="764.0" layoutY="175.0" prefHeight="580.0" prefWidth="590.0" AnchorPane.leftAnchor="764.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="175.0" />
       <VBox alignment="CENTER" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

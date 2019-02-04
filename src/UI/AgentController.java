@@ -487,11 +487,7 @@ public class AgentController {
     }
     */
 
-    @FXML
-    public void getNewQueue(ActionEvent event) throws IOException {
-        queue = this.currentAgent.getThreeForms();
-            //pageSwitch(event, "AgentHome.fxml", getnewQueueButton);
-    }
+
 
 
 
