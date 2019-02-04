@@ -43,7 +43,7 @@
                      <font>
                         <Font name="Palatino" size="18.0" />
                      </font></TextField>
-                  <Button fx:id="addAppButton" layoutX="269.0" layoutY="16.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 15;" text="+">
+                  <Button fx:id="addAppButton" layoutX="269.0" layoutY="16.0" mnemonicParsing="false" onAction="#getNewQueue" style="-fx-background-color: white; -fx-background-radius: 15;" text="+">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -59,17 +59,17 @@
                               <Label layoutX="13.0" layoutY="5.0" text="Application#" />
                               <Label layoutX="12.0" layoutY="22.0" text="ApplicationStatus:" />
                               <Label layoutX="13.0" layoutY="39.0" text="Review Status:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
+                              <Label fx:id="appNum1" layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
                                  <font>
                                     <Font name="Palatino" size="13.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
+                              <Label fx:id="appStat1" layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
                                  <font>
                                     <Font name="Palatino" size="13.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
+                              <Label fx:id="reviewStat1" layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
                                  <font>
                                     <Font name="Palatino" size="13.0" />
                                  </font>
@@ -84,17 +84,17 @@
                               <Label layoutX="13.0" layoutY="5.0" text="Application#" />
                               <Label layoutX="12.0" layoutY="22.0" text="ApplicationStatus:" />
                               <Label layoutX="13.0" layoutY="39.0" text="Review Status:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
+                              <Label fx:id="appNum2" layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
                                  <font>
                                     <Font name="Palatino" size="13.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
+                              <Label fx:id="appStat2" layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
                                  <font>
                                     <Font name="Palatino" size="13.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
+                              <Label fx:id="reviewStat2" layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
                                  <font>
                                     <Font name="Palatino" size="13.0" />
                                  </font>
@@ -110,17 +110,17 @@
                               <Label layoutX="13.0" layoutY="5.0" text="Application#" />
                               <Label layoutX="12.0" layoutY="22.0" text="ApplicationStatus:" />
                               <Label layoutX="13.0" layoutY="39.0" text="Review Status:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
+                              <Label fx:id="appNum3" layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
                                  <font>
                                     <Font name="Palatino" size="13.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
+                              <Label fx:id="appStat3" layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
                                  <font>
                                     <Font name="Palatino" size="13.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
+                              <Label fx:id="reviewStat3" layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
                                  <font>
                                     <Font name="Palatino" size="13.0" />
                                  </font>

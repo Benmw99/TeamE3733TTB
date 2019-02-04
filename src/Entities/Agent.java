@@ -122,9 +122,5 @@ public class Agent implements IUser{
                 Objects.equals(name, agent.name);
     }
 
-    public void getThreeForms() {
-        DB.Database db = DB.Database.getInstance();
-        db.dbSelect.getThreeForms();
-    }
 
 }
