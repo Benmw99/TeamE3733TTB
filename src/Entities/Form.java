@@ -1,6 +1,7 @@
 package Entities;
 
 
+import java.sql.Array;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -284,13 +285,13 @@ public class Form {
 
     boolean equals(Form aform){
         return (this.repID.equals(aform.repID) &&
-                this.brewersPermit.equals(aform.brewersPermit) &&
+                brewListEquals(aform.brewersPermit) &&
                 this.source == aform.source &&
                 this.serialNumber.equals(aform.serialNumber) &&
                 this.alcoholType.equals(aform.alcoholType) &&
                 this.brandName.equals(aform.brandName) &&
                 this.fancifulName.equals(aform.fancifulName) &&
-                this.address.equals(aform.address) &&
+                addressListEquals(aform.address) &&
                 this.mailingAddress.equals(aform.mailingAddress) &&
                 this.applicantName.equals(aform.applicantName) &&
                 this.formula.equals(aform.formula) &&
@@ -303,6 +304,30 @@ public class Form {
                 this.companyID == aform.companyID &&
                 this.approval.equals(aform.approval) &&
                 this.alcoholContent == aform.alcoholContent);
+    }
+
+    boolean brewListEquals(ArrayList<String> aList) {
+        ArrayList<String> resultList = new ArrayList<String>();
+        for (String s: aList) {
+            for (String t: this.brewersPermit) {
+                if (s.equals(t)) {
+                    resultList.add(s);
+                }
+            }
+        }
+        return(this.brewersPermit.size() == resultList.size());
+    }
+
+    boolean addressListEquals(ArrayList<Address> aList) {
+        ArrayList<Address> resultList = new ArrayList<Address>();
+        for (Address a: aList) {
+            for (Address s: this.address) {
+                if (a.equals(s)) {
+                    resultList.add(a);
+                }
+            }
+        }
+        return(this.brewersPermit.size() == resultList.size());
     }
 
 }
