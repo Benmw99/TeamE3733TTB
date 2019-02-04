@@ -74,9 +74,43 @@ public class CivilController {
     @FXML
     SplitMenuButton alcoholTypeSplitMenu;
 
+    @FXML
+    Button goUpPageButton;
+
+    @FXML
+    Button goDownPageButton;
+
+    //CivilSearchForm
+    @FXML
+    Button backToAdvSearch;
+
+    @FXML
+    Button printSearchResultsCSV;
+
+
 
     public void advSearch(ActionEvent event) throws IOException {
         pageSwitch(event,"CivilAdvSearch.fxml", advSearchButton);
+    }
+
+    public void goBackToSearch(ActionEvent event) throws IOException {
+        pageSwitch(event,"CivilAdvSearch.fxml", backToAdvSearch);
+    }
+
+    public void goToPage2(ActionEvent event) throws IOException {
+        pageSwitch(event,"CivilAdvSearch3.fxml", goUpPageButton);
+    }
+
+    public void goToPage1(ActionEvent event) throws IOException {
+        pageSwitch(event,"CivilAdvSearch.fxml", goDownPageButton);
+    }
+
+    public void goToPage3(ActionEvent event) throws IOException {
+        pageSwitch(event,"CivilAdvSearch3.fxml", goUpPageButton);
+    }
+
+    public void goDownToPage2(ActionEvent event) throws IOException {
+        pageSwitch(event,"CivilAdvSearch.fxml", goDownPageButton);
     }
 
     private void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{

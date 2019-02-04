@@ -73,7 +73,7 @@
                   <Pane prefHeight="200.0" prefWidth="1018.0" style="-fx-border-color: #3c3b3b;" />
                   <Pane prefHeight="200.0" prefWidth="1008.0" style="-fx-background-color: #c4c4c4#c4c4c4 #c4c4c4#c4c4c4;">
                      <children>
-                        <Button fx:id="goToPage2" layoutX="412.0" mnemonicParsing="false" onAction="#goToPage2" prefHeight="50.0" prefWidth="48.0" style="-fx-background-color: #4ba77c;" text="&gt;" textFill="#fcfcfc">
+                        <Button fx:id="goDownPageButton" layoutX="363.0" layoutY="1.0" mnemonicParsing="false" onAction="#goDownToPage2" prefHeight="50.0" prefWidth="48.0" rotate="180.0" style="-fx-background-color: #4ba77c;" text="&gt;" textFill="#fcfcfc">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

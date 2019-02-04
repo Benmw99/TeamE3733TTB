@@ -68,8 +68,8 @@
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="583.0" prefWidth="605.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="175.0" />
-      <HBox alignment="CENTER" layoutX="764.0" layoutY="175.0" prefHeight="580.0" prefWidth="590.0" AnchorPane.leftAnchor="764.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="175.0" />
+      <HBox alignment="CENTER" prefHeight="583.0" prefWidth="607.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="175.0" />
+      <HBox alignment="CENTER" layoutX="667.0" layoutY="175.0" prefHeight="580.0" prefWidth="687.0" AnchorPane.leftAnchor="667.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="175.0" />
       <VBox alignment="CENTER" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="View Form" textFill="WHITE">
@@ -105,37 +105,12 @@
             <Font size="26.0" />
          </font>
       </MenuButton>
-      <Label layoutX="39.0" layoutY="110.0" text="Section">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button fx:id="section1AVFButton" layoutX="100.0" layoutY="105.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="1" textAlignment="CENTER">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="section2AVFButton" layoutX="138.0" layoutY="105.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="2" textAlignment="CENTER">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="section3AVFButton" layoutX="177.0" layoutY="105.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="3" textAlignment="CENTER">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font>
-      </Button>
       <Button fx:id="printAVFButton" layoutX="1213.0" layoutY="122.0" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Print" textFill="WHITE">
          <font>
             <Font name="Georgia" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="section3AVFButton1" layoutX="216.0" layoutY="105.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="4" textAlignment="CENTER">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font>
-      </Button>
-      <Text layoutX="42.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark Section as:" />
-      <ChoiceBox layoutX="154.0" layoutY="140.0" prefWidth="150.0" />
+      <Text layoutX="70.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark Section as:" />
+      <ChoiceBox layoutX="182.0" layoutY="124.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
