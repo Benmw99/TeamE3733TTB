@@ -67,6 +67,8 @@ public class Representative implements IUser {
     void CheckProgress() {
 
     }
-
+boolean equals(Representative rep){
+    return(this.repID.equals(rep.repID) && this.login.equals(rep.login) && this.password.equals(rep.password));
+}
 
 }

@@ -130,5 +130,18 @@ public class Approval {
         java.sql.Timestamp expirationDate = new java.sql.Timestamp(expire.getTime());
         this.expDate = expirationDate;
 
-    }}
+    }
+boolean equals(Approval appr){
+        return ((this.approved == appr.approved) &&
+    this.timestamp.equals(appr.timestamp) &&
+    this.agentApprovalName.equals(appr.agentApprovalName) &&
+    this.expDate.equals(appr.expDate) &&
+    this.qualifications.equals(appr.qualifications) &&
+    this.page1.equals(appr.page1) &&
+    this.page1.equals(appr.page2) &&
+    this.page1.equals(appr.page3));
+}
+
+
+}
 
