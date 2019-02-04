@@ -75,8 +75,9 @@ public class Agent implements IUser{
 
     }
 
-    public SearchResult search() {
-        return null;
+    public SearchResult search(AdvancedSearch advancedSearch) {
+        DB.Database db = DB.Database.getInstance();
+        return db.dbSelect.searchBy(advancedSearch);
     }
 
     void approveForm(Form form, String qualifications) {
@@ -104,7 +105,9 @@ public class Agent implements IUser{
 
     }
 
-    void csvDownload(){
+    public void csvDownload(String query, AdvancedSearch advancedSearch){
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.downloadResults(query,advancedSearch);
 
     }
 
