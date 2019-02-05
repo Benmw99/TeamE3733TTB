@@ -31,7 +31,7 @@ public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
 
-    Manufacturer manufacturer;
+    static Manufacturer manufacturer;
     Entities.Form form;
     static Entities.Form newForm;
 
