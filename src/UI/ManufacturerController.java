@@ -339,6 +339,7 @@ public class ManufacturerController {
     @FXML
     public void newApp(ActionEvent event) throws IOException {
         this.currentForm = new Entities.Form();
+   //     this.newForm = new Form();
         pageSwitch(event, "ManApp1.fxml", backButton);
     }
 
