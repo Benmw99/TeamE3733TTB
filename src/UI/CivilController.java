@@ -118,7 +118,7 @@ public class CivilController {
     @FXML
     Label civilBrandLabel2;
     @FXML
-    Label civilBrandLabe3;
+    Label civilBrandLabel3;
     @FXML
     Label civilBrandLabel4;
     @FXML
@@ -152,7 +152,6 @@ public class CivilController {
     CheckBox ttbIDSearchcheckBox8;
     @FXML
     CheckBox ttbIDSearchcheckBox9;
-
 
 
     //CivilSearchForm
