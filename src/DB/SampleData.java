@@ -33,7 +33,7 @@ public class SampleData {
         onewine.setAppellation(" ");
         onewine.setGrapeVarietal("Chardonnay");
         onewine.setpH((float)7.7);
-        onewine.setVintageYear("2017");
+        onewine.setVintageYear(2017);
         one.setWineFormItems(onewine);
         one.setDateSubmitted(Timestamp.from(Instant.now()));
         one.setSerialNumber("180031");

@@ -42,19 +42,19 @@ public class CivilController {
 
     //CivilAdvSearch
     @FXML
-    CheckBox ttbIDSearchcheckBox;
+    Button goButton;
+
+    @FXML
+    Button newThirtyButton;
+
+    @FXML
+    Button prevThirtyButton;
 
     @FXML
     Label civilTTBLabel;
 
     @FXML
-    Label civilAlcTypeLabel;
-
-    @FXML
     Label civilManLabel;
-
-    @FXML
-    Label civilBrandLabel;
 
     @FXML
     Button menuASButton;
@@ -93,10 +93,120 @@ public class CivilController {
     ComboBox typeComboBox;
 
     @FXML
-    Button goUpPageButton;
+    Label civilAlcTypeLabel0;
+    @FXML
+    Label civilAlcTypeLabel1;
+    @FXML
+    Label civilAlcTypeLabel2;
+    @FXML
+    Label civilAlcTypeLabel3;
+    @FXML
+    Label civilAlcTypeLabel4;
+    @FXML
+    Label civilAlcTypeLabel5;
+    @FXML
+    Label civilAlcTypeLabel6;
+    @FXML
+    Label civilAlcTypeLabel7;
+    @FXML
+    Label civilAlcTypeLabel8;
+    @FXML
+    Label civilAlcTypeLabel9;
 
     @FXML
-    Button goDownPageButton;
+    Label civilBrandLabel0;
+    @FXML
+    Label civilBrandLabel1;
+    @FXML
+    Label civilBrandLabel2;
+    @FXML
+    Label civilBrandLabel3;
+    @FXML
+    Label civilBrandLabel4;
+    @FXML
+    Label civilBrandLabel5;
+    @FXML
+    Label civilBrandLabel6;
+    @FXML
+    Label civilBrandLabel7;
+    @FXML
+    Label civilBrandLabel8;
+    @FXML
+    Label civilBrandLabel9;
+
+    @FXML
+    CheckBox ttbIDSearchcheckBox0;
+    @FXML
+    CheckBox ttbIDSearchcheckBox1;
+    @FXML
+    CheckBox ttbIDSearchcheckBox2;
+    @FXML
+    CheckBox ttbIDSearchcheckBox3;
+    @FXML
+    CheckBox ttbIDSearchcheckBox4;
+    @FXML
+    CheckBox ttbIDSearchcheckBox5;
+    @FXML
+    CheckBox ttbIDSearchcheckBox6;
+    @FXML
+    CheckBox ttbIDSearchcheckBox7;
+    @FXML
+    CheckBox ttbIDSearchcheckBox8;
+    @FXML
+    CheckBox ttbIDSearchcheckBox9;
+
+    //Form Labels
+    @FXML
+    Label Civ1Label;
+    @FXML
+    Label Civ2Label;
+    @FXML
+    Label Civ3Label;
+    @FXML
+    Label CivReview4Label1;
+    @FXML
+    Label Civ4Label2;
+    @FXML
+    Label Civ5Label1;
+    @FXML
+    Label Civ5Label2;
+    @FXML
+    Label Civ5Label3;
+    @FXML
+    Label Civ6Label;
+    @FXML
+    Label Civ7Label;
+    @FXML
+    Label Civ8Label;
+    @FXML
+    Label Civ9Label;
+    @FXML
+    Label Civ10Label;
+    @FXML
+    Label Civ11Label;
+    @FXML
+    Label Civ12Label;
+    @FXML
+    Label Civ13Label;
+    @FXML
+    Label Civ14Label;
+    @FXML
+    Label Civ15Label1;
+    @FXML
+    Label Civ15Label2;
+    @FXML
+    Label Civ15Label3;
+    @FXML
+    Label Civ16Label1;
+    @FXML
+    Label Civ16Label2;
+    @FXML
+    Label Civ17Label;
+    @FXML
+    Label Civ18Label;
+    @FXML
+    Label Civ20Label;
+
 
     //CivilSearchForm
     @FXML
@@ -138,6 +248,7 @@ public class CivilController {
             int start, end;
             start = ( searchPage -1) *10;
             end = (searchPage) *10;
+            if(result.getResults().size() < end){ end = result.getResults().size(); }
             loadPage(event, result.getResults().subList(start,end));
         }
     }
@@ -151,28 +262,61 @@ public class CivilController {
 
     public void loadPage(ActionEvent event, List<Form> arr) throws IOException {
 
+        List<CheckBox> ttb = new ArrayList<CheckBox>();
+        ttb.add(ttbIDSearchcheckBox0);
+        ttb.add(ttbIDSearchcheckBox1);
+        ttb.add(ttbIDSearchcheckBox2);
+        ttb.add(ttbIDSearchcheckBox3);
+        ttb.add(ttbIDSearchcheckBox4);
+        ttb.add(ttbIDSearchcheckBox5);
+        ttb.add(ttbIDSearchcheckBox6);
+        ttb.add(ttbIDSearchcheckBox7);
+        ttb.add(ttbIDSearchcheckBox8);
+        ttb.add(ttbIDSearchcheckBox9);
+
+        List<Label> alc = new ArrayList<Label>();
+        alc.add(civilAlcTypeLabel0);
+        alc.add(civilAlcTypeLabel1);
+        alc.add(civilAlcTypeLabel2);
+        alc.add(civilAlcTypeLabel3);
+        alc.add(civilAlcTypeLabel4);
+        alc.add(civilAlcTypeLabel5);
+        alc.add(civilAlcTypeLabel6);
+        alc.add(civilAlcTypeLabel7);
+        alc.add(civilAlcTypeLabel8);
+        alc.add(civilAlcTypeLabel9);
+
+        List<Label> brand = new ArrayList<Label>();
+        brand.add(civilBrandLabel0);
+        brand.add(civilBrandLabel1);
+        brand.add(civilBrandLabel2);
+        brand.add(civilBrandLabel3);
+        brand.add(civilBrandLabel4);
+        brand.add(civilBrandLabel5);
+        brand.add(civilBrandLabel6);
+        brand.add(civilBrandLabel7);
+        brand.add(civilBrandLabel8);
+        brand.add(civilBrandLabel9);
+
+        for(int i =0; i < arr.size(); i++){
+            ttb.get(i).setText("" + arr.get(i).getTtbID());
+            alc.get(i).setText(arr.get(i).getAlcoholType().toString());
+            brand.get(i).setText(arr.get(i).getBrandName());
+        }
+        for(int i = arr.size(); i < 10; i++){
+            ttb.get(i).setText("");
+            alc.get(i).setText("");
+            brand.get(i).setText("");
+        }
+
+
 
     }
-
-
-
-
-
-
-
-
 
     public void goBackToSearch(ActionEvent event) throws IOException {
         pageSwitch(event,"CivilAdvSearch.fxml", backToAdvSearch);
     }
 
-    public void goToPage2(ActionEvent event) throws IOException {
-        pageSwitch(event,"CivilAdvSearch3.fxml", goUpPageButton);
-    }
-
-    public void goToPage1(ActionEvent event) throws IOException {
-        pageSwitch(event,"CivilAdvSearch.fxml", goDownPageButton);
-    }
 
 
     private void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{

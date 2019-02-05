@@ -371,8 +371,7 @@ public class ManufacturerController {
     @FXML
     public void correctLogin(ActionEvent event) throws IOException{
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
-        pageSwitch(event, "ManHome.fxml", loginButton);
-       /* if(this.manufacturer.authenticate()){
+        if(this.manufacturer.authenticate()){
             pageSwitch(event, "ManHome.fxml", loginButton);
         }
         else{
@@ -381,7 +380,7 @@ public class ManufacturerController {
             incorrectLogin.setTitle("Incorrect Login");
             incorrectLogin.setContentText("You have entered the incorrect login information. Please try again.");
             incorrectLogin.show();
-        }*/
+        }
     }
 
 

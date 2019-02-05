@@ -3,6 +3,11 @@ package Entities;
 public enum AlcoholType {
     Wine, DistilledLiquor, MaltBeverage;
 
+
+    public String toString(){
+        return this.name();
+    }
+
     public int toInt(){
         if(this == Wine){
             return 1;
