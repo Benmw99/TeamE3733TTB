@@ -29,7 +29,7 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="../../assets/TTB_logo.png" />
+                        <Image url="/assets/TTB_logo.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB">
