@@ -503,7 +503,7 @@ public class DBSelect extends DatabaseAbstract {
                 form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
                 form.setApplicantName(rs.getString("Applicant_Name"));
                 form.setPhoneNumber(rs.getString("Phone"));
-                if (rs.getInt("Alcohol_Type") == 1) {
+                if (rs.getInt("Alcohol_Type") == AlcoholType.Wine.toInt()) {
                     type = AlcoholType.Wine;
                     form.setWineFormItems(this.getWineBlock(TTB_ID));
                 } else if (rs.getInt("Alcohol_Type") == 2) {

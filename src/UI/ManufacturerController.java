@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import Entities.*;
 import org.apache.derby.iapi.util.StringUtil;
+import org.omg.CORBA.DATA_CONVERSION;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -386,6 +387,7 @@ public class ManufacturerController {
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
         if(this.manufacturer.authenticate()){
             pageSwitch(event, "ManHome.fxml", loginButton);
+            this.manufacturer = Database.getInstance().dbSelect.getManufacturer(this.manufacturer.getLogin());
         }
         else{
             //pageSwitch(event, "ManHome.fxml", loginButton);
