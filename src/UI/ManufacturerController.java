@@ -17,6 +17,8 @@ import org.apache.commons.lang3.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 import Entities.*;
 import org.apache.derby.iapi.util.StringUtil;
@@ -28,11 +30,9 @@ public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
 
-
-
-
     Manufacturer manufacturer;
     Entities.Form form;
+    Entities.Form newForm;
 
 
     //ManHome
@@ -126,18 +126,6 @@ public class ManufacturerController {
     MenuButton menuMA1MenuButton;
 
     @FXML
-    Button section1MA1Button;
-
-    @FXML
-    Button section2MA1Button;
-
-    @FXML
-    Button section3MA1Button;
-
-    @FXML
-    Button section4MA1Button;
-
-    @FXML
     TextField repIDField;
 
     @FXML
@@ -175,22 +163,6 @@ public class ManufacturerController {
 
     @FXML
     Button nextSectionMA1Button;
-
-    //ManApp2
-    @FXML
-    MenuButton menuMA2MenuButton;
-
-    @FXML
-    Button section1MA2Button;
-
-    @FXML
-    Button section2MA2Button;
-
-    @FXML
-    Button section3MA2Button;
-
-    @FXML
-    Button section4MA2Button;
 
     @FXML
     TextField fancifulField;
@@ -243,22 +215,6 @@ public class ManufacturerController {
     @FXML
     Button nextSectionMA2Button;
 
-    //ManApp3
-    @FXML
-    MenuButton menuMA3MenuButton;
-
-    @FXML
-    Button section1MA3Button;
-
-    @FXML
-    Button section2MA3Button;
-
-    @FXML
-    Button section3MA3Button;
-
-    @FXML
-    Button section4MA3Button;
-
     @FXML
     TextField phoneNumField;
 
@@ -303,18 +259,6 @@ public class ManufacturerController {
     MenuButton menuMA4MenuButton;
 
     @FXML
-    Button section1MA4Button;
-
-    @FXML
-    Button section2MA4Button;
-
-    @FXML
-    Button section3MA4Button;
-
-    @FXML
-    Button section4MA4Button;
-
-    @FXML
     TextField signatureField;
 
     @FXML
@@ -325,6 +269,7 @@ public class ManufacturerController {
 
     @FXML
     Button submitButton;
+
 
     @FXML
     protected void initialize(){
@@ -350,40 +295,10 @@ public class ManufacturerController {
         pageSwitch(event, "ManHome.fxml", backButton);
     }
 
-    // move up sections from ManApp1
-    @FXML
-    public void manApp2a(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp2.fxml", section2MA1Button);
-    }
-    @FXML
-    public void manApp2b(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp3.fxml", section3MA1Button);
-    }
-    @FXML
-    public void manApp2c(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp4.fxml", section4MA1Button);
-    }
-
     //move up pages by arrows from ManApp1
     @FXML
     public void manApp2d(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
-    }
-
-    // move up sections from ManApp2
-    @FXML
-    public void manApp3a(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp3.fxml", section3MA2Button);
-    }
-    @FXML
-    public void manApp3b(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp4.fxml", section4MA2Button);
-    }
-
-    // move down sections from ManApp2
-    @FXML
-    public void manApp3c(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp1.fxml", section1MA2Button);
     }
 
     //move up pages by arrows from ManApp2
@@ -397,19 +312,6 @@ public class ManufacturerController {
         pageSwitch(event, "ManApp1.fxml", prevSectionMA2Button);
     }
 
-    // move up sections from ManApp3
-    public void manApp4a(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp4.fxml", section4MA3Button);
-    }
-
-    // move down sections from ManApp3
-    public void manApp4b(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp2.fxml", section2MA3Button);
-    }
-    public void manApp4c(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp1.fxml", section1MA3Button);
-    }
-
     //move up pages by arrows from ManApp3
     @FXML
     public void manApp4d(ActionEvent event) throws IOException {
@@ -419,17 +321,6 @@ public class ManufacturerController {
     @FXML
     public void manApp4e(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp2.fxml", prevSectionMA3Button);
-    }
-
-    // move down sections from ManApp4
-    public void manApp5a(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp3.fxml", section3MA4Button);
-    }
-    public void manApp5b(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp2.fxml", section2MA4Button);
-    }
-    public void manApp5c(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManApp1.fxml", section1MA4Button);
     }
 
     //move down pages by arrows from ManApp3
@@ -506,12 +397,25 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the second page
     @FXML
     public void checkBlanksPage1(ActionEvent event) throws IOException{
-        this.form = new Form();
-        this.form.setRepID(repIDField.getText());
-        this.form.setSerialNumber(serialDigitsField.getText());
-        this.form.setBrandName(brandField.getText());
+        this.newForm = new Form();
+        this.newForm.setRepID(repIDField.getText());
+        this.newForm.getBrewersPermit().add(producerNumField.getText());
+        this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
+        this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
+        if(typeComboBox.getValue() == "Wine"){
+            newForm.setAlcoholType(AlcoholType.Wine);
+            WineFormItems wine = new WineFormItems();
+            wine.setVintageYear(Integer.valueOf(vintageYearField.getText()));
+            wine.setpH(Float.valueOf(phField.getText()));
+            newForm.setWineFormItems(wine);
+        } else if (typeComboBox.getValue() == "Distilled Spirits"){
+            newForm.setAlcoholType(AlcoholType.DistilledLiquor);
+        } else {
+            newForm.setAlcoholType(AlcoholType.MaltBeverage);
+        }
+        this.newForm.setBrandName(brandField.getText());
 
-        if(StringUtils.isBlank(this.form.getRepID())|| StringUtils.isBlank(this.form.getSerialNumber())|| StringUtils.isBlank(this.form.getBrandName())){
+        if(StringUtils.isBlank(this.newForm.getRepID())|| StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
             System.out.println("I'm stuck thinking things aren't filled in");
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
@@ -528,11 +432,19 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the third page
     @FXML
     public void checkBlanksPage2(ActionEvent event) throws IOException{
-        this.form = new Form();
-        this.form.setFancifulName(fancifulField.getText());
-        this.form.setFormula(formulaField.getText());
 
-        if(StringUtils.isBlank(this.form.getFancifulName()) || StringUtils.isBlank(this.form.getFormula())){
+        this.newForm.setFancifulName(fancifulField.getText());
+        Address address = new Address(city8Field.getText(), state8ComboBox.getValue(), zip8Field.getText(), address8Field.getText(), name8Field.getText());
+        this.newForm.getAddress().add(address);
+        Address address1 = new Address(city9Field.getText(), state9ComboBox.getValue(), zip9Field.getText(), address9Field.getText(), name9Field.getText());
+        this.newForm.setMailingAddress(address1);
+        this.newForm.setFormula(formulaField.getText());
+        if(this.newForm.getAlcoholType()== AlcoholType.Wine){
+            this.newForm.getWineFormItems().setGrapeVarietal(grapeVarField.getText());
+            this.newForm.getWineFormItems().setAppellation(wineAppField.getText());
+        }
+
+        if(StringUtils.isBlank(this.newForm.getFancifulName()) || StringUtils.isBlank(this.newForm.getFormula())){
             Alert missingTextFieldPage2 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage2.setTitle("Missing Text Field");
             missingTextFieldPage2.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
@@ -547,10 +459,17 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the fourth page
     @FXML
     public void checkBlanksPage3(ActionEvent event) throws IOException{
-        this.form = new Form();
-        this.form.setPhoneNumber(phoneNumField.getText());
-        this.form.setEmail(emailField.getText());
-        if(StringUtils.isBlank(this.form.getPhoneNumber()) || StringUtils.isBlank(this.form.getEmail())){
+
+        this.newForm.setPhoneNumber(phoneNumField.getText());
+        this.newForm.setEmail(emailField.getText());
+
+        //TODO
+        // Add types of applications in future iterations
+        //
+
+        this.newForm.setBlownBrandedEmbossedInfo(additionalInfoField.getText());
+        this.newForm.setDateSubmitted(Timestamp.from(Instant.now()));
+        if(StringUtils.isBlank(this.newForm.getPhoneNumber()) || StringUtils.isBlank(this.newForm.getEmail())){
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
             missingTextFieldPage1.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
@@ -560,6 +479,7 @@ public class ManufacturerController {
             pageSwitch(event, "ManApp4.fxml", nextSectionMA3Button);
         }
     }
+
 
     @FXML
     public void checkWine(ActionEvent event) throws IOException{
@@ -593,8 +513,9 @@ public class ManufacturerController {
         }
     }
     @FXML
-    public void submitForm(ActionEvent event ) throws IOException{
-            Database.getInstance().dbInsert.insertForm(currentForm, manufacturer);
+    public void checkAndSubmitForm(ActionEvent event ) throws IOException{
+            this.newForm.setAlcoholContent(float.valueOf(alcoholContentTextField.getText()));
+            Database.getInstance().dbInsert.insertForm(newForm, manufacturer);
 
     }
 
