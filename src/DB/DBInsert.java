@@ -299,6 +299,7 @@ public class DBInsert extends DatabaseAbstract {
             System.out.println(e.toString());
             e.printStackTrace();
         }
+        to_insert.setTtbID(TTB_ID);
         return TTB_ID;
     }
 

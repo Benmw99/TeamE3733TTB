@@ -248,6 +248,7 @@ public class CivilController {
             int start, end;
             start = ( searchPage -1) *10;
             end = (searchPage) *10;
+            if(result.getResults().size() < end){ end = result.getResults().size(); }
             loadPage(event, result.getResults().subList(start,end));
         }
     }
@@ -260,6 +261,54 @@ public class CivilController {
 
 
     public void loadPage(ActionEvent event, List<Form> arr) throws IOException {
+
+        List<CheckBox> ttb = new ArrayList<CheckBox>();
+        ttb.add(ttbIDSearchcheckBox0);
+        ttb.add(ttbIDSearchcheckBox1);
+        ttb.add(ttbIDSearchcheckBox2);
+        ttb.add(ttbIDSearchcheckBox3);
+        ttb.add(ttbIDSearchcheckBox4);
+        ttb.add(ttbIDSearchcheckBox5);
+        ttb.add(ttbIDSearchcheckBox6);
+        ttb.add(ttbIDSearchcheckBox7);
+        ttb.add(ttbIDSearchcheckBox8);
+        ttb.add(ttbIDSearchcheckBox9);
+
+        List<Label> alc = new ArrayList<Label>();
+        alc.add(civilAlcTypeLabel0);
+        alc.add(civilAlcTypeLabel1);
+        alc.add(civilAlcTypeLabel2);
+        alc.add(civilAlcTypeLabel3);
+        alc.add(civilAlcTypeLabel4);
+        alc.add(civilAlcTypeLabel5);
+        alc.add(civilAlcTypeLabel6);
+        alc.add(civilAlcTypeLabel7);
+        alc.add(civilAlcTypeLabel8);
+        alc.add(civilAlcTypeLabel9);
+
+        List<Label> brand = new ArrayList<Label>();
+        brand.add(civilBrandLabel0);
+        brand.add(civilBrandLabel1);
+        brand.add(civilBrandLabel2);
+        brand.add(civilBrandLabel3);
+        brand.add(civilBrandLabel4);
+        brand.add(civilBrandLabel5);
+        brand.add(civilBrandLabel6);
+        brand.add(civilBrandLabel7);
+        brand.add(civilBrandLabel8);
+        brand.add(civilBrandLabel9);
+
+        for(int i =0; i < arr.size(); i++){
+            ttb.get(i).setText("" + arr.get(i).getTtbID());
+            alc.get(i).setText(arr.get(i).getAlcoholType().toString());
+            brand.get(i).setText(arr.get(i).getBrandName());
+        }
+        for(int i = arr.size(); i < 10; i++){
+            ttb.get(i).setText("");
+            alc.get(i).setText("");
+            brand.get(i).setText("");
+        }
+
 
 
     }

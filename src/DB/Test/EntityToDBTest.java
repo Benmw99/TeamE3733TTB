@@ -2,12 +2,15 @@ package DB.Test;
 
 import DB.Database;
 import Entities.*;
+import com.sun.corba.se.impl.oa.poa.AOMEntry;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import java.sql.*;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class EntityToDBTest {
@@ -40,6 +43,18 @@ public class EntityToDBTest {
         assertEquals(one.getFancifulName(), same.getFancifulName());
         assertEquals(one.getRepID(), same.getRepID());
         assertEquals(one.getBrandName(), same.getBrandName());
+        assertEquals(ApprovalStatus.Incomplete.toInt(), same.getApprovalStatus().toInt());
+    }
+    @Test
+    public void getThreeFormTestOne(){
+        List<Form> lilf = db.dbSelect.getThreeForms();
+        Form same = lilf.get(0);
+        assertEquals(1, lilf.size());
+        assertEquals(lilf.get(0).getApprovalStatus(), ApprovalStatus.Incomplete);
+        assertEquals(one.getEmail(), same.getEmail());
+        assertEquals(one.getFancifulName(), same.getFancifulName());
+        assertEquals(one.getRepID(), same.getRepID());
+        assertEquals(one.getBrandName(), same.getBrandName());
     }
     @Test
     public void approvalTest(){
@@ -53,6 +68,10 @@ public class EntityToDBTest {
         assertEquals(one.getApproval().getTimestamp(), app.getApproval().getTimestamp());
         assertEquals(one.getApproval().getExpDate(), app.getApproval().getExpDate());
         assertEquals(one.getApprovalStatus(), app.getApprovalStatus());
+        assertEquals(ApprovalStatus.Complete, app.getApprovalStatus());
+        List<Form> lilf = db.dbSelect.getThreeForms();
+        Form same = db.dbSelect.getFormByTTB_ID(2);
+        assertEquals(0, lilf.size());
     }
 
 }

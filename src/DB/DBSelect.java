@@ -575,7 +575,7 @@ public class DBSelect extends DatabaseAbstract {
         List<Form> list_form = new ArrayList<Form>();
         try{
             PreparedStatement ps = connection.prepareStatement(selStr);
-            ps.setInt(1, 2);
+            ps.setInt(1, ApprovalStatus.Incomplete.toInt());
             ResultSet rs = ps.executeQuery();
             int i = 0;
             while(rs.next() && i < 3){
@@ -588,6 +588,7 @@ public class DBSelect extends DatabaseAbstract {
         }
         while(!list_ID.isEmpty()){
             list_form.add(this.getFormByTTB_ID(list_ID.get(0)));
+            System.out.println(list_ID.get(0));
             list_ID.remove(0);
         }
         return list_form;
@@ -602,17 +603,19 @@ public class DBSelect extends DatabaseAbstract {
      * @param approval the approval for the form
      */
     public void approveForm(Form form, Approval approval){
-        String selStr = "UPDATE FORM SET APPROVE=? WHERE TTB_ID=? ";
+        String selStr = "UPDATE FORM SET APPROVE = ? WHERE TTB_ID = ?";
+        System.out.println(form.getTtbID());
+        System.out.println(ApprovalStatus.Complete.toInt());
         try{
             PreparedStatement ps = connection.prepareStatement(selStr);
             ps.setInt(2, form.getTtbID());
-            if(!approval.isApproved()){
-                ps.setInt(1, 1);
-            } else if(approval.isApproved()){
-                ps.setInt(1,3);
-            }
-            ps.setInt(1, 1);
-            ps.execute();
+   //         if(!approval.isApproved()){
+     //           ps.setInt(1, ApprovalStatus.Complete.toInt());
+       //     } else if(approval.isApproved()){
+         //       ps.setInt(1,ApprovalStatus.Incorrect.toInt());
+           // }
+            ps.setInt(1, ApprovalStatus.Complete.toInt());
+            System.out.println(ps.executeUpdate());
             ps.close();
             Database.getInstance().dbInsert.insertApproval(approval, form.getTtbID());
     } catch (SQLException e){

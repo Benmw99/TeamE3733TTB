@@ -17,7 +17,7 @@
         </font></Text>
    <Rectangle fill="#4ba77a" height="260.0" layoutX="174.0" layoutY="301.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1393.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="290.0" />
    <TextField fx:id="searchField" alignment="CENTER" layoutX="453.0" layoutY="388.0" prefHeight="71.0" prefWidth="565.0" promptText="Search the Database" AnchorPane.leftAnchor="453.3" AnchorPane.rightAnchor="453.3" AnchorPane.topAnchor="350.0" />
-   <Button fx:id="advSearchButton" contentDisplay="CENTER" layoutX="614.0" layoutY="473.0" mnemonicParsing="false" text="Advanced Search" textAlignment="CENTER" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="473.0" />
+   <Button fx:id="advSearchButton" contentDisplay="CENTER" layoutX="614.0" layoutY="473.0" mnemonicParsing="false" onAction="#advSearch" text="Advanced Search" textAlignment="CENTER" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="473.0" />
    <ImageView fitHeight="155.0" fitWidth="142.0" layoutX="395.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="130.0">
       <image>
          <Image url="@../../../../Documents/TTBLogo.png" />
