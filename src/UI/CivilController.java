@@ -208,19 +208,20 @@ public class CivilController {
     Label Civ20Label;
 
     @FXML
-    TableView<FormMinimal> resultTable;
+    TableView<Form> resultTable;
 
     @FXML
-    TableColumn<FormMinimal, String> col1;
+    TableColumn<Form, Integer> col1;
 
     @FXML
-    TableColumn<FormMinimal, String> col2;
+    TableColumn<Form, AlcoholType> col2;
 
     @FXML
-    TableColumn<FormMinimal, String> col3;
+    TableColumn<Form, String> col3;
 
     @FXML
-    TableColumn<FormMinimal, String> col4;
+    TableColumn<Form, Integer> col4;
+
 
     //CivilSearchForm
     @FXML
@@ -250,10 +251,9 @@ public class CivilController {
             advancedSearch.setAlcoholType(MaltBeverage);
         }else if(typeComboBox.getValue().equals("Wines")){
             advancedSearch.setAlcoholType(Wine);
-        }
-        /*else if(typeComboBox.getValue().equals("Distelled Liquor")){
+        }else if(typeComboBox.getValue().equals("Distilled Liquor")){
             advancedSearch.setAlcoholType(DistilledLiquor);
-        }*/
+        }
         if (brandNameTextField.getText() != null && !brandNameTextField.getText().trim().equals("")) {
             advancedSearch.setBrandName(brandNameTextField.getText());
         }
@@ -261,7 +261,7 @@ public class CivilController {
             //Alcohol Content not in search yet
         //}
         //if (manField.getText() != "") {
-            //Manufacterer not in search yet
+            //Manufacturer not in search yet
         //}
         //if (stateField.getText() != "") {
             //State not in search yet
@@ -270,32 +270,22 @@ public class CivilController {
             //city not in search yet
         //}
         //if (manufactureDate.get) DATE NOT IMPLEMENTED YET
-        /*if (idField.getText() != "") {
+        if (idField.getText() != null && !idField.getText().trim().equals("")) {
             advancedSearch.setTtbID(Integer.parseInt(idField.getText()));
-        }*/
+        }
 
         DB.Database db = DB.Database.getInstance();
         result = db.dbSelect.searchBy(advancedSearch);
         System.out.println("It ran");
 
-        col1.setCellValueFactory(new PropertyValueFactory<>("ttbid"));
-        col2.setCellValueFactory(new PropertyValueFactory<>("alcType"));
+        col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("alcoholType"));
         col3.setCellValueFactory(new PropertyValueFactory<>("brandName"));
-        col4.setCellValueFactory(new PropertyValueFactory<>("manu"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("companyID"));
 
-        ArrayList<FormMinimal> FM = new ArrayList<>();
-
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
         for (int i = 0; i < result.getResults().size(); i++) {
-            String ttbid = "" + result.getResults().get(i).getTtbID();
-            String alcType = result.getResults().get(i).getAlcoholType().toString();
-            String brandName = result.getResults().get(i).getBrandName();
-            String manu = "" + result.getResults().get(i).getCompanyID();
-            FM.add(new FormMinimal(ttbid, alcType, brandName, manu));
-        }
-
-        ObservableList<FormMinimal> tableValues = FXCollections.observableArrayList();
-        for (int i = 0; i < result.getResults().size(); i++) {
-            tableValues.add(FM.get(i));
+            tableValues.add(result.getResults().get(i));
         }
         resultTable.setItems(tableValues);
     }

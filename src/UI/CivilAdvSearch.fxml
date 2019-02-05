@@ -64,6 +64,7 @@
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Wines" />
                   <String fx:value="Beers" />
+                  <String fx:value="Distilled Liquor" />
               </FXCollections>
           </items>
       </ComboBox>
