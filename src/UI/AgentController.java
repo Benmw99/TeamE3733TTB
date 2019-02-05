@@ -535,8 +535,8 @@ public class AgentController {
 
 
 
-    private Form currentForm;
-    private Agent currentAgent;
+    static private Form currentForm;
+    static private Agent currentAgent;
     private List<Form> queue;
 
     /*
@@ -561,17 +561,16 @@ public class AgentController {
 
     @FXML
     public void login(ActionEvent event) throws IOException {
-        this.currentAgent = new Agent(nameField.getText(),passField.getText());
-        pageSwitch(event, "AgentHome.fxml", loginButton);
-
-      /*  if(this.currentAgent.authenticate()) {
+        currentAgent = new Agent(nameField.getText(),passField.getText());
+        if(currentAgent.authenticate()) {
+            currentAgent.loadUser();
             pageSwitch(event, "AgentHome.fxml", loginButton);
         }
         else {
-            Alert ohNo = new Alert(Alert.AlertType.WARNING);
-            ohNo.setContentText("Invalid Password or Username my dude");
-            ohNo.showAndWait();
-        } */
+            Alert loginFailure = new Alert(Alert.AlertType.WARNING);
+            loginFailure.setContentText("Invalid Password or Username");
+            loginFailure.showAndWait();
+        }
     }
 
     @FXML
@@ -621,7 +620,7 @@ public class AgentController {
     public void getNewQueue(ActionEvent event) throws IOException{
         // Also need to figure out to clean this up in order to only
         // call one set of "set labels" each
-        queue = this.currentAgent.getThreeForms();
+        queue = currentAgent.getThreeForms();
         for(int i = 0; i < queue.size(); i++){
 
            // int tTBID = queue.get(i).getTtbID();
@@ -655,37 +654,37 @@ public class AgentController {
 
     @FXML
     public void setPage1(){
-        this.currentForm = new Form();
+        currentForm = new Form();
 
         // need to set all the values for the first page of the application
-        Agent1Label.setText(this.currentForm.getRepID());
-        ArrayList<String> arr = this.currentForm.getBrewersPermit();
+        Agent1Label.setText(currentForm.getRepID());
+        ArrayList<String> arr = currentForm.getBrewersPermit();
         arr.add(producerNumField.getText());
         Agent2Label.setText(arr.toString());
-        Agent3Label.setText("Is Domestic? " + this.currentForm.getSource());
-        AgentReview4Label1.setText(this.currentForm.getSerialNumber());
-        Agent5Label1.setText(this.currentForm.getAlcoholType().toString());
-        Agent6Label.setText(this.currentForm.getBrandName());
+        Agent3Label.setText("Is Domestic? " + currentForm.getSource());
+        AgentReview4Label1.setText(currentForm.getSerialNumber());
+        Agent5Label1.setText(currentForm.getAlcoholType().toString());
+        Agent6Label.setText(currentForm.getBrandName());
     }
 
     public void setPage2(){
-        Agent7Label.setText(this.currentForm.getFancifulName());
-        Agent8Label.setText(this.currentForm.getAddress().toString());
-        Agent9Label.setText(this.currentForm.getMailingAddress().toString());
-        Agent10Label.setText(this.currentForm.getFormula());
-        Agent11Label.setText(this.currentForm.getWineFormItems().getGrapeVarietal());
-        Agent12Label.setText(this.currentForm.getWineFormItems().getAppellation());
+        Agent7Label.setText(currentForm.getFancifulName());
+        Agent8Label.setText(currentForm.getAddress().toString());
+        Agent9Label.setText(currentForm.getMailingAddress().toString());
+        Agent10Label.setText(currentForm.getFormula());
+        Agent11Label.setText(currentForm.getWineFormItems().getGrapeVarietal());
+        Agent12Label.setText(currentForm.getWineFormItems().getAppellation());
     }
 
     public void setPage3(){
-        Agent13Label.setText(this.currentForm.getPhoneNumber());
-        Agent14Label.setText(this.currentForm.getEmail());
-        Agent16Label1.setText(this.currentForm.getBlownBrandedEmbossedInfo());
-        Agent16Label2.setText(this.currentForm.getDateSubmitted().toString());
+        Agent13Label.setText(currentForm.getPhoneNumber());
+        Agent14Label.setText(currentForm.getEmail());
+        Agent16Label1.setText(currentForm.getBlownBrandedEmbossedInfo());
+        Agent16Label2.setText(currentForm.getDateSubmitted().toString());
     }
 
     public void setPage4(){
-        Agent18Label.setText("" + this.currentForm.getAlcoholContent());
+        Agent18Label.setText("" + currentForm.getAlcoholContent());
     }
 
 }
