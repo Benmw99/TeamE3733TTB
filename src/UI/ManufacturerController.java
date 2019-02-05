@@ -292,6 +292,7 @@ public class ManufacturerController {
     public void manLogin(ActionEvent event) throws IOException {
         currentForm = new Form();
         newForm = new Form();
+
         pageSwitch(event, "ManLogin.fxml", backButton);
     }
     @FXML
@@ -403,11 +404,11 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the second page
     @FXML
     public void checkBlanksPage1(ActionEvent event) throws IOException{
-        this.newForm = new Form();
+        if(this.newForm == null) {
+            this.newForm = new Form();
+        }
         this.newForm.setRepID(repIDField.getText());
-        ArrayList<String> arr = new ArrayList<String>();
-        arr.add(producerNumField.getText());
-        this.newForm.setBrewersPermit(arr);
+        newForm.getBrewersPermit().add(producerNumField.getText());
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
         this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
         if(typeComboBox.getValue() == "Wine"){

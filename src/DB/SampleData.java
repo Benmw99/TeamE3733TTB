@@ -18,7 +18,7 @@ public class SampleData {
         Manufacturer man = new Manufacturer("WALT DISNEY", "1234");
         this.man = man;
     }
-    void insertWines(){
+    public void insertWines(){
         Form one = new Form();
         one.setBrandName("B");
         one.setFancifulName("");

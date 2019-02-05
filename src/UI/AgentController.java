@@ -537,7 +537,7 @@ public class AgentController {
 
     static private Form currentForm;
     static private Agent currentAgent;
-    private List<Form> queue;
+    static private List<Form> queue;
 
     /*
     Database db = Database.getInstance();
@@ -621,6 +621,7 @@ public class AgentController {
         // Also need to figure out to clean this up in order to only
         // call one set of "set labels" each
         queue = currentAgent.getThreeForms();
+        currentForm = queue.get(0);
         for(int i = 0; i < queue.size(); i++){
 
            // int tTBID = queue.get(i).getTtbID();
@@ -654,9 +655,7 @@ public class AgentController {
 
     @FXML
     public void setPage1(){
-        currentForm = new Form();
 
-        // need to set all the values for the first page of the application
         Agent1Label.setText(currentForm.getRepID());
         ArrayList<String> arr = currentForm.getBrewersPermit();
         arr.add(producerNumField.getText());

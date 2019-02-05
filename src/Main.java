@@ -1,3 +1,5 @@
+import DB.SampleData;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -6,6 +8,8 @@ public class Main {
             db.tableBuilder.resetDB();
             db.dbInsert.insertCompany(123, "Buddweiser", "User1", "Pass1");
             db.dbInsert.insertAgent("joe cool", 445, "User2", "Pass2");
+     //       SampleData sd = new SampleData(db);
+   //         sd.insertWines();
 
         }catch(Exception e){
             System.out.println(e.toString());
