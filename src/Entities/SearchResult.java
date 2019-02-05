@@ -92,21 +92,18 @@ public class SearchResult {
 
     boolean resultsEquals(ArrayList<Form> aList) {
         ArrayList<Form> resultList = new ArrayList<Form>();
-        for (Form f: aList) {
-            for (Form s: this.results) {
+        for (Form f : aList) {
+            for (Form s : this.results) {
                 if (f.equals(s)) {
                     resultList.add(f);
                 }
             }
         }
-        return(this.results.size() == resultList.size());
+        return (this.results.size() == resultList.size());
     }
 
-    public void getThreeForms() {
+    public void getThreeForms(){
         DB.Database db = DB.Database.getInstance();
         db.dbSelect.getThreeForms();
     }
-
-
-
 }

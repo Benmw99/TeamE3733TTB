@@ -92,11 +92,6 @@ public class CivilController {
     @FXML
     ComboBox typeComboBox;
 
-    @FXML
-    Button goUpPageButton;
-
-    @FXML
-    Button goDownPageButton;
 
     //CivilSearchForm
     @FXML
@@ -166,13 +161,6 @@ public class CivilController {
         pageSwitch(event,"CivilAdvSearch.fxml", backToAdvSearch);
     }
 
-    public void goToPage2(ActionEvent event) throws IOException {
-        pageSwitch(event,"CivilAdvSearch3.fxml", goUpPageButton);
-    }
-
-    public void goToPage1(ActionEvent event) throws IOException {
-        pageSwitch(event,"CivilAdvSearch.fxml", goDownPageButton);
-    }
 
 
     private void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{

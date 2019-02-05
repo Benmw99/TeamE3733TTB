@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sun.management.resources.agent;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import java.awt.*;
@@ -448,7 +449,10 @@ public class AgentController {
     Label  appStat1;
 
     @FXML
-    Label reviewStat1;
+    Label expirDate1;
+
+    @FXML
+    Label appDate1;
 
     @FXML
     Label appNum2;
@@ -457,7 +461,10 @@ public class AgentController {
     Label appStat2;
 
     @FXML
-    Label reviewStat2;
+    Label expirDate2;
+
+    @FXML
+    Label appDate2;
 
     @FXML
     Label appNum3;
@@ -466,7 +473,10 @@ public class AgentController {
     Label appStat3;
 
     @FXML
-    Label reviewStat3;
+    Label expirDate3;
+
+    @FXML
+    Label appDate3;
 
     private Form currentForm;
     private Agent currentAgent;
@@ -507,6 +517,7 @@ public class AgentController {
 //        this.currentForm.approve(this.currentAgent.getName());
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
+
     /* not needed for it. 1
     @FXML
     public void approveFormConditions(ActionEvent event) throws IOException {
@@ -519,11 +530,6 @@ public class AgentController {
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
     */
-
-
-
-
-
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
@@ -541,21 +547,30 @@ public class AgentController {
         // call one set of "set labels" each
         queue = this.currentAgent.getThreeForms();
         for(int i = 0; i < queue.size(); i++){
+
             int tTBID = queue.get(i).getTtbID();
-            if(i == 0){
-                appNum1.setText(Integer.toString(tTBID));
-                appStat1.setText("hehehehe");       // just need to know which attributes to print
-                reviewStat1.setText("It's being reviewed"); // same for this one
-            }
+            Timestamp approvalDate = queue.get(i).getDateSubmitted();
+            ApprovalStatus approvalStatus = queue.get(i).getApprovalStatus();
+            int twoYears = ((24*60)*(365*2));
+            Timestamp expirationDate = new Timestamp(approvalDate.getTime() + twoYears);
+
+            if(i == 0) {
+                appNum1.setText(Integer.toString(tTBID));       // Allows for us to print out the TTB ID number,
+                appStat1.setText(approvalDate.toString());      // the approval status, the date on which the
+                appDate1.setText(approvalStatus.toString());    // form was approved, and the expiration date
+                expirDate1.setText(expirationDate.toString());  // which we have decided is two years from the
+            }                                                   // approval date
             if(i == 1){
                 appNum2.setText(Integer.toString(tTBID));
-                appStat2.setText("hehehe");
-                reviewStat2.setText("Reviewed");
+                appStat2.setText(approvalDate.toString());
+                appDate2.setText(approvalStatus.toString());
+                expirDate2.setText(expirationDate.toString());
             }
             if(i == 2){
                 appNum3.setText(Integer.toString(tTBID));
-                appStat3.setText("hehe");
-                reviewStat3.setText("Idek");
+                appStat3.setText(approvalDate.toString());
+                appDate3.setText(approvalStatus.toString());
+                expirDate3.setText(expirationDate.toString());
             }
 
         }
