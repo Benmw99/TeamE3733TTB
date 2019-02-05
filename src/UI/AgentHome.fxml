@@ -8,19 +8,19 @@
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
    <children>
       <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
          <children>
@@ -42,7 +42,7 @@
                   </Text>
                </children>
             </Pane>
-            <Pane layoutX="-1.0" layoutY="87.0" prefHeight="676.0" prefWidth="311.0" style="-fx-background-color: #3C3B3B#3C3B3B;">
+            <Pane layoutX="-1.0" layoutY="87.0" prefHeight="676.0" prefWidth="355.0" style="-fx-background-color: #3C3B3B#3C3B3B;">
                <children>
                   <TextField fx:id="searchAHField" layoutX="14.0" layoutY="14.0" prefHeight="19.0" prefWidth="240.0" promptText="Search Applications">
                      <font>
@@ -53,242 +53,16 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <VBox layoutY="64.0" prefHeight="613.0" prefWidth="311.0">
-                     <children>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Expiration Date:" />
-                              <Label fx:id="appNum1" layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="appStat1" layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0" text="Approval">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="expirDate1" layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="appDate1" layoutX="227.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0" text="Date" />
-                           </children></Pane>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Expiration Date:" />
-                              <Label fx:id="appNum2" layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="appStat2" layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="expirDate2" layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="appDate2" layoutX="226.0" layoutY="23.0" text="Date" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Expiration Date:" />
-                              <Label fx:id="appNum3" layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="appStat3" layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="expirDate3" layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="appDate3" layoutX="226.0" layoutY="23.0" text="Date" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Expiration Date:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="222.0" layoutY="23.0" text="Date" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Expiration Date:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="224.0" layoutY="22.0" text="Date" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Expiration Date:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="222.0" layoutY="22.0" text="Date" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Expiration Date:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="219.0" layoutY="23.0" text="Date" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Expiration Date:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="218.0" layoutY="23.0" text="Date" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Expiration Date:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="215.0" layoutY="22.0" text="Date" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="302.0" style="-fx-background-color: #C4C4C4#C4C4C4; -fx-border-color: #3c3b3b#3c3b3b;">
-                           <children>
-                              <Label layoutX="13.0" layoutY="5.0" text="Application#:" />
-                              <Label layoutX="12.0" layoutY="22.0" text="Application Status:" />
-                              <Label layoutX="13.0" layoutY="39.0" text="Review Status:" />
-                              <Label layoutX="97.0" layoutY="5.0" prefHeight="17.0" prefWidth="90.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="129.0" layoutY="23.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="110.0" layoutY="39.0" prefHeight="17.0" prefWidth="77.0">
-                                 <font>
-                                    <Font name="Palatino" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="213.0" layoutY="23.0" text="Date" />
-                           </children>
-                        </Pane>
-                     </children>
-                  </VBox>
+                  <TableView layoutX="2.0" layoutY="63.0" prefHeight="610.0" prefWidth="352.0">
+                    <columns>
+                      <TableColumn prefWidth="110.0" text="TTB ID#" />
+                      <TableColumn prefWidth="125.0" text="Date Submitted" />
+                        <TableColumn prefWidth="100.0" text="Brand Name" />
+                    </columns>
+                  </TableView>
                </children>
             </Pane>
-            <Pane layoutX="310.0" layoutY="88.0" prefHeight="64.0" prefWidth="1051.0" style="-fx-background-color: #C4C4C4#C4C4C4;">
+            <Pane layoutX="355.0" layoutY="88.0" prefHeight="64.0" prefWidth="1006.0" style="-fx-background-color: #C4C4C4#C4C4C4;">
                <children>
                   <Button fx:id="approveAHButton" layoutX="424.0" layoutY="19.0" mnemonicParsing="false" text="Approve Form" />
                   <Button fx:id="printAHButton" layoutX="986.0" layoutY="18.0" mnemonicParsing="false" text="Print" />
