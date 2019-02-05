@@ -1,5 +1,6 @@
 package UI;
 
+import DB.Database;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,9 +16,10 @@ import org.apache.commons.lang3.*;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import Entities.*;
-import org.apache.*;
+import org.apache.derby.iapi.util.StringUtil;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -25,6 +27,9 @@ import static javafx.collections.FXCollections.observableArrayList;
 public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
+
+
+
 
     Manufacturer manufacturer;
     Entities.Form form;
@@ -121,6 +126,18 @@ public class ManufacturerController {
     MenuButton menuMA1MenuButton;
 
     @FXML
+    Button section1MA1Button;
+
+    @FXML
+    Button section2MA1Button;
+
+    @FXML
+    Button section3MA1Button;
+
+    @FXML
+    Button section4MA1Button;
+
+    @FXML
     TextField repIDField;
 
     @FXML
@@ -158,6 +175,22 @@ public class ManufacturerController {
 
     @FXML
     Button nextSectionMA1Button;
+
+    //ManApp2
+    @FXML
+    MenuButton menuMA2MenuButton;
+
+    @FXML
+    Button section1MA2Button;
+
+    @FXML
+    Button section2MA2Button;
+
+    @FXML
+    Button section3MA2Button;
+
+    @FXML
+    Button section4MA2Button;
 
     @FXML
     TextField fancifulField;
@@ -210,6 +243,22 @@ public class ManufacturerController {
     @FXML
     Button nextSectionMA2Button;
 
+    //ManApp3
+    @FXML
+    MenuButton menuMA3MenuButton;
+
+    @FXML
+    Button section1MA3Button;
+
+    @FXML
+    Button section2MA3Button;
+
+    @FXML
+    Button section3MA3Button;
+
+    @FXML
+    Button section4MA3Button;
+
     @FXML
     TextField phoneNumField;
 
@@ -254,6 +303,18 @@ public class ManufacturerController {
     MenuButton menuMA4MenuButton;
 
     @FXML
+    Button section1MA4Button;
+
+    @FXML
+    Button section2MA4Button;
+
+    @FXML
+    Button section3MA4Button;
+
+    @FXML
+    Button section4MA4Button;
+
+    @FXML
     TextField signatureField;
 
     @FXML
@@ -265,7 +326,10 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
-
+    @FXML
+    protected void initialize(){
+        this.currentForm = new Form();
+    }
     //new application
     @FXML
     public void manApp1(ActionEvent event) throws IOException {
@@ -286,10 +350,40 @@ public class ManufacturerController {
         pageSwitch(event, "ManHome.fxml", backButton);
     }
 
+    // move up sections from ManApp1
+    @FXML
+    public void manApp2a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section2MA1Button);
+    }
+    @FXML
+    public void manApp2b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", section3MA1Button);
+    }
+    @FXML
+    public void manApp2c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", section4MA1Button);
+    }
+
     //move up pages by arrows from ManApp1
     @FXML
     public void manApp2d(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
+    }
+
+    // move up sections from ManApp2
+    @FXML
+    public void manApp3a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", section3MA2Button);
+    }
+    @FXML
+    public void manApp3b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", section4MA2Button);
+    }
+
+    // move down sections from ManApp2
+    @FXML
+    public void manApp3c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", section1MA2Button);
     }
 
     //move up pages by arrows from ManApp2
@@ -303,6 +397,19 @@ public class ManufacturerController {
         pageSwitch(event, "ManApp1.fxml", prevSectionMA2Button);
     }
 
+    // move up sections from ManApp3
+    public void manApp4a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp4.fxml", section4MA3Button);
+    }
+
+    // move down sections from ManApp3
+    public void manApp4b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section2MA3Button);
+    }
+    public void manApp4c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", section1MA3Button);
+    }
+
     //move up pages by arrows from ManApp3
     @FXML
     public void manApp4d(ActionEvent event) throws IOException {
@@ -312,6 +419,17 @@ public class ManufacturerController {
     @FXML
     public void manApp4e(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp2.fxml", prevSectionMA3Button);
+    }
+
+    // move down sections from ManApp4
+    public void manApp5a(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp3.fxml", section3MA4Button);
+    }
+    public void manApp5b(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp2.fxml", section2MA4Button);
+    }
+    public void manApp5c(ActionEvent event) throws IOException {
+        pageSwitch(event, "ManApp1.fxml", section1MA4Button);
     }
 
     //move down pages by arrows from ManApp3
@@ -473,6 +591,11 @@ public class ManufacturerController {
             city9Field.disableProperty().setValue(false);
             zip9Field.disableProperty().setValue(false);
         }
+    }
+    @FXML
+    public void submitForm(ActionEvent event ) throws IOException{
+            Database.getInstance().dbInsert.insertForm(currentForm, manufacturer);
+
     }
 
 
