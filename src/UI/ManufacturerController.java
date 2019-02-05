@@ -289,6 +289,8 @@ public class ManufacturerController {
     }
     @FXML
     public void manLogin(ActionEvent event) throws IOException {
+        currentForm = new Form();
+        newForm = new Form();
         pageSwitch(event, "ManLogin.fxml", backButton);
     }
     @FXML
