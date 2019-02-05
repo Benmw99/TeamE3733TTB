@@ -497,16 +497,17 @@ public class DBSelect extends DatabaseAbstract {
                 form.setFancifulName(rs.getString("Fanciful_Name"));
                 form.setBrandName(rs.getString("Brand_Name"));
                 form.setSource(rs.getBoolean("Source"));
+                form.setCompanyID(rs.getInt("Company_ID"));
                 form.setRepID(rs.getString("Rep_ID"));
                 form.setTtbID(TTB_ID);
                 form.setEmail(rs.getString("Email"));
                 form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
                 form.setApplicantName(rs.getString("Applicant_Name"));
                 form.setPhoneNumber(rs.getString("Phone"));
-                if (rs.getInt("Alcohol_Type") == 1) {
+                if (rs.getInt("Alcohol_Type") == AlcoholType.Wine.toInt()) {
                     type = AlcoholType.Wine;
                     form.setWineFormItems(this.getWineBlock(TTB_ID));
-                } else if (rs.getInt("Alcohol_Type") == 2) {
+                } else if (rs.getInt("Alcohol_Type") == AlcoholType.MaltBeverage.toInt()) {
                     type = AlcoholType.MaltBeverage;
                 } else {
                     type = AlcoholType.DistilledLiquor;
