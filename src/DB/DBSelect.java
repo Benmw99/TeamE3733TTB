@@ -247,10 +247,11 @@ public class DBSelect extends DatabaseAbstract {
     public boolean downloadResults(String query, AdvancedSearch search) { //TODO GET RID OF DUPLICATE CODE
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY ("+ query +",?,?,?,?)";
+        String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY (?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(download);
-            int set = 1;
+            ps.setString(1, query.replaceFirst("TTB_ID", "TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Alcohol_Type, APV"));
+            int set = 2;
             if (search.source != null) {
                 ps.setBoolean(set, search.source);
                 set += 1;
@@ -357,7 +358,6 @@ public class DBSelect extends DatabaseAbstract {
         try {
             PreparedStatement statement = connection.prepareStatement(baseString);
 
-            //Manually sets those question marks
             int set = 1;
             if (as.source != null) {
                 statement.setBoolean(set, as.source);
