@@ -116,7 +116,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: # 71071D;" text="2*" textFill="WHITE">
@@ -144,7 +144,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="3*" textFill="WHITE">
@@ -172,7 +172,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="4*" textFill="WHITE">
@@ -209,7 +209,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="5*" textFill="WHITE">
@@ -260,7 +260,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="6*" textFill="WHITE">
@@ -299,7 +299,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="7" textFill="WHITE">
@@ -327,7 +327,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="8*" textFill="WHITE">
@@ -355,7 +355,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="9*" textFill="WHITE">
@@ -383,7 +383,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="10" textFill="WHITE">
@@ -411,7 +411,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="11" textFill="WHITE">
@@ -439,7 +439,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="12" textFill="WHITE">
@@ -478,7 +478,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="13" textFill="WHITE">
@@ -506,7 +506,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="14" textFill="WHITE">
@@ -534,7 +534,7 @@
                               <Pane prefHeight="200.0" prefWidth="400.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="15" textFill="WHITE">
@@ -582,7 +582,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="16" textFill="WHITE">
@@ -620,7 +620,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="17" textFill="WHITE">
@@ -648,7 +648,7 @@
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="18" textFill="WHITE">
@@ -687,7 +687,7 @@
                               <Pane maxHeight="80.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="19" textFill="WHITE">
@@ -708,7 +708,7 @@
                               <Pane>
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox>
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="20" textFill="WHITE">
