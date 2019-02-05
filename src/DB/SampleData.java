@@ -14,6 +14,6 @@ public class SampleData {
     }
     void insertWines(){
         Form one = new Form();
-        o
+        
     }
 }
