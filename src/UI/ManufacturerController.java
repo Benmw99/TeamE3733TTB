@@ -527,7 +527,6 @@ public class ManufacturerController {
     public void checkAndSubmitForm(ActionEvent event ) throws IOException{
         this.newForm.setAlcoholContent(Float.parseFloat(alcoholContentTextField.getText()));
 
-        this.manufacturer.loadUser();
         this.manufacturer.submitForm(this.newForm);
         System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
