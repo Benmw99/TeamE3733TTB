@@ -8,12 +8,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sun.management.resources.agent;
 
+import java.util.List;
+
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 import Entities.*;
 
@@ -334,6 +338,9 @@ public class AgentController {
     SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
+    Button getnewQueueButton;
+
+    @FXML
     TextField searchAHField;
 
     @FXML
@@ -433,21 +440,52 @@ public class AgentController {
 
     @FXML
     Button printAVLButton;
+
+    @FXML
+    Label appNum1;
+
+    @FXML
+    Label  appStat1;
+
+    @FXML
+    Label reviewStat1;
+
+    @FXML
+    Label appNum2;
+
+    @FXML
+    Label appStat2;
+
+    @FXML
+    Label reviewStat2;
+
+    @FXML
+    Label appNum3;
+
+    @FXML
+    Label appStat3;
+
+    @FXML
+    Label reviewStat3;
+
     private Form currentForm;
     private Agent currentAgent;
+    private List<Form> queue;
 
 
     @FXML
     public void login(ActionEvent event) throws IOException {
         this.currentAgent = new Agent(nameField.getText(),passField.getText());
-        if(this.currentAgent.authenticate()) {
+        pageSwitch(event, "AgentHome.fxml", loginButton);
+
+      /*  if(this.currentAgent.authenticate()) {
             pageSwitch(event, "AgentHome.fxml", loginButton);
         }
         else {
             Alert ohNo = new Alert(Alert.AlertType.WARNING);
             ohNo.setContentText("Invalid Password or Username my dude");
             ohNo.showAndWait();
-        }
+        } */
     }
 
     @FXML
@@ -485,6 +523,8 @@ public class AgentController {
 
 
 
+
+
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
         Stage stage;
@@ -493,6 +533,33 @@ public class AgentController {
         Scene scene = new Scene(root, 1360, 760);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void getNewQueue(ActionEvent event) throws IOException{
+        // Also need to figure out to clean this up in order to only
+        // call one set of "set labels" each
+        queue = this.currentAgent.getThreeForms();
+        for(int i = 0; i < queue.size(); i++){
+            int tTBID = queue.get(i).getTtbID();
+            if(i == 0){
+                appNum1.setText(Integer.toString(tTBID));
+                appStat1.setText("hehehehe");       // just need to know which attributes to print
+                reviewStat1.setText("It's being reviewed"); // same for this one
+            }
+            if(i == 1){
+                appNum2.setText(Integer.toString(tTBID));
+                appStat2.setText("hehehe");
+                reviewStat2.setText("Reviewed");
+            }
+            if(i == 2){
+                appNum3.setText(Integer.toString(tTBID));
+                appStat3.setText("hehe");
+                reviewStat3.setText("Idek");
+            }
+
+        }
+        //pageSwitch(event, "AgentHome.fxml:, getNewQueueButton)
     }
 
 }

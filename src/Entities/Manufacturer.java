@@ -96,7 +96,7 @@ public class Manufacturer implements IUser {
     public void submitForm(Form form) {
         try {
             DB.Database db = DB.Database.getInstance();
-            db.dbInsert.insertForm(form, this);
+            form.setTtbID(db.dbInsert.insertForm(form, this));
         }catch (Exception e){
             System.out.println(e.toString());
         }

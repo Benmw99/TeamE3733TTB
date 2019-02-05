@@ -100,11 +100,9 @@ public class SelectTest {
         assertEquals(SRType.getResults().size(), db.dbSelect.searchBy(ASType).getResults().size());
         assertEquals(SRBoth.getResults().size(), db.dbSelect.searchBy(ASBoth).getResults().size());
 
-        /* This shit doesn't work and I can't even get the tests to look correct
-        assertTrue(SRNone.getResults().contains(db.dbSelect.searchBy(ASNone).getResults()));
-        assertTrue(SRNone.getResults().contains(db.dbSelect.searchBy(ASNone).getResults()));
-        assertTrue(SRBrand.getResults().contains(db.dbSelect.searchBy(ASBrand).getResults()));
-        */
+
+        System.out.println(SRBrand.getResults().get(0).getBrandName());
+        System.out.println(db.dbSelect.searchBy(ASBrand).getResults().get(0).getBrandName());
     }
 
 
