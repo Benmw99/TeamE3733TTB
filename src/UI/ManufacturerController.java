@@ -1,5 +1,6 @@
 package UI;
 
+import DB.Database;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,9 +16,14 @@ import org.apache.commons.lang3.*;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.ArrayList;
 
 import Entities.*;
-import org.apache.*;
+import org.apache.derby.iapi.util.StringUtil;
+import org.omg.CORBA.DATA_CONVERSION;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -26,8 +32,9 @@ public class ManufacturerController {
     Entities.Form currentForm;
     private int currentFormPage;
 
-    Manufacturer manufacturer;
+    static Manufacturer manufacturer;
     Entities.Form form;
+    static Entities.Form newForm;
 
 
     //ManHome
@@ -266,6 +273,10 @@ public class ManufacturerController {
     Button submitButton;
 
 
+    @FXML
+    protected void initialize(){
+        this.currentForm = new Form();
+    }
     //new application
     @FXML
     public void manApp1(ActionEvent event) throws IOException {
@@ -279,6 +290,9 @@ public class ManufacturerController {
     }
     @FXML
     public void manLogin(ActionEvent event) throws IOException {
+        currentForm = new Form();
+        newForm = new Form();
+
         pageSwitch(event, "ManLogin.fxml", backButton);
     }
     @FXML
@@ -329,6 +343,7 @@ public class ManufacturerController {
     @FXML
     public void newApp(ActionEvent event) throws IOException {
         this.currentForm = new Entities.Form();
+   //     this.newForm = new Form();
         pageSwitch(event, "ManApp1.fxml", backButton);
     }
 
@@ -373,6 +388,7 @@ public class ManufacturerController {
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
         if(this.manufacturer.authenticate()){
             pageSwitch(event, "ManHome.fxml", loginButton);
+            this.manufacturer = Database.getInstance().dbSelect.getManufacturer(this.manufacturer.getLogin());
         }
         else{
             //pageSwitch(event, "ManHome.fxml", loginButton);
@@ -388,12 +404,27 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the second page
     @FXML
     public void checkBlanksPage1(ActionEvent event) throws IOException{
-        this.form = new Form();
-        this.form.setRepID(repIDField.getText());
-        this.form.setSerialNumber(serialDigitsField.getText());
-        this.form.setBrandName(brandField.getText());
+        if(this.newForm == null) {
+            this.newForm = new Form();
+        }
+        this.newForm.setRepID(repIDField.getText());
+        newForm.getBrewersPermit().add(producerNumField.getText());
+        this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
+        this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
+        if(typeComboBox.getValue() == "Wine"){
+            newForm.setAlcoholType(AlcoholType.Wine);
+            WineFormItems wine = new WineFormItems();
+            wine.setVintageYear(Integer.valueOf(vintageYearField.getText()));
+            wine.setpH(Float.valueOf(phField.getText()));
+            newForm.setWineFormItems(wine);
+        } else if (typeComboBox.getValue() == "Distilled Spirits"){
+            newForm.setAlcoholType(AlcoholType.DistilledLiquor);
+        } else {
+            newForm.setAlcoholType(AlcoholType.MaltBeverage);
+        }
+        this.newForm.setBrandName(brandField.getText());
 
-        if(StringUtils.isBlank(this.form.getRepID())|| StringUtils.isBlank(this.form.getSerialNumber())|| StringUtils.isBlank(this.form.getBrandName())){
+        if( StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
             System.out.println("I'm stuck thinking things aren't filled in");
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
@@ -410,11 +441,26 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the third page
     @FXML
     public void checkBlanksPage2(ActionEvent event) throws IOException{
-        this.form = new Form();
-        this.form.setFancifulName(fancifulField.getText());
-        this.form.setFormula(formulaField.getText());
 
-        if(StringUtils.isBlank(this.form.getFancifulName()) || StringUtils.isBlank(this.form.getFormula())){
+        this.newForm.setFancifulName(fancifulField.getText());
+
+        Address address = new Address(city8Field.getText(), state8ComboBox.getValue(), zip8Field.getText(), address8Field.getText(), name8Field.getText());
+        ArrayList<Address> arr = new ArrayList<Address>();
+        arr.add(address);
+        this.newForm.setAddress(arr);  //need more addresses option in ui
+        if(sameAddressRadioButton.isSelected()){
+            this.newForm.setMailingAddress(address);
+        }else {
+            Address address1 = new Address(city9Field.getText(), state9ComboBox.getValue(), zip9Field.getText(), address9Field.getText(), name9Field.getText());
+            this.newForm.setMailingAddress(address1);
+        }
+        this.newForm.setFormula(formulaField.getText());
+        if(this.newForm.getAlcoholType()== AlcoholType.Wine){
+            this.newForm.getWineFormItems().setGrapeVarietal(grapeVarField.getText());
+            this.newForm.getWineFormItems().setAppellation(wineAppField.getText());
+        }
+
+        if(StringUtils.isBlank(this.newForm.getFancifulName()) || StringUtils.isBlank(this.newForm.getFormula())){
             Alert missingTextFieldPage2 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage2.setTitle("Missing Text Field");
             missingTextFieldPage2.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
@@ -429,10 +475,17 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the fourth page
     @FXML
     public void checkBlanksPage3(ActionEvent event) throws IOException{
-        this.form = new Form();
-        this.form.setPhoneNumber(phoneNumField.getText());
-        this.form.setEmail(emailField.getText());
-        if(StringUtils.isBlank(this.form.getPhoneNumber()) || StringUtils.isBlank(this.form.getEmail())){
+
+        this.newForm.setPhoneNumber(phoneNumField.getText());
+        this.newForm.setEmail(emailField.getText());
+
+        //TODO
+        // Add types of applications in future iterations
+        //
+
+        this.newForm.setBlownBrandedEmbossedInfo(additionalInfoField.getText());
+        this.newForm.setDateSubmitted(Timestamp.from(Instant.now()));
+        if(StringUtils.isBlank(this.newForm.getPhoneNumber()) || StringUtils.isBlank(this.newForm.getEmail())){
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
             missingTextFieldPage1.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
@@ -442,6 +495,7 @@ public class ManufacturerController {
             pageSwitch(event, "ManApp4.fxml", nextSectionMA3Button);
         }
     }
+
 
     @FXML
     public void checkWine(ActionEvent event) throws IOException{
@@ -474,7 +528,16 @@ public class ManufacturerController {
             zip9Field.disableProperty().setValue(false);
         }
     }
+    @FXML
+    public void checkAndSubmitForm(ActionEvent event ) throws IOException{
+        this.newForm.setAlcoholContent(Float.parseFloat(alcoholContentTextField.getText()));
 
+        this.manufacturer.submitForm(this.newForm);
+        System.out.println("Form Submitted");
+        pageSwitch(event, "ManHome.fxml", submitButton);
+
+
+    }
 
 
 }

@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import sun.management.resources.agent;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import java.awt.*;
@@ -21,6 +22,8 @@ import java.io.IOException;
 import java.util.List;
 
 import Entities.*;
+
+import DB.*;
 
 public class AgentController {
     //AgentSearch
@@ -530,6 +533,15 @@ public class AgentController {
     @FXML
     Label Agent20Label;
 
+    @FXML
+    TableView<Form> formTable;
+    @FXML
+    TableColumn<Form, Integer> tTBIDColumn;
+    @FXML
+    TableColumn<Form, Timestamp> dateSubmittedColumn;
+    @FXML
+    TableColumn<Form, String> brandNameColumn;
+
 
 
     private Form currentForm;
@@ -539,17 +551,16 @@ public class AgentController {
 
     @FXML
     public void login(ActionEvent event) throws IOException {
-        this.currentAgent = new Agent(nameField.getText(),passField.getText());
-        pageSwitch(event, "AgentHome.fxml", loginButton);
-
-      /*  if(this.currentAgent.authenticate()) {
+        currentAgent = new Agent(nameField.getText(),passField.getText());
+        if(currentAgent.authenticate()) {
+            currentAgent.loadUser();
             pageSwitch(event, "AgentHome.fxml", loginButton);
         }
         else {
-            Alert ohNo = new Alert(Alert.AlertType.WARNING);
-            ohNo.setContentText("Invalid Password or Username my dude");
-            ohNo.showAndWait();
-        } */
+            Alert loginFailure = new Alert(Alert.AlertType.WARNING);
+            loginFailure.setContentText("Invalid Password or Username");
+            loginFailure.showAndWait();
+        }
     }
 
     @FXML
@@ -597,38 +608,43 @@ public class AgentController {
 
     @FXML
     public void getNewQueue(ActionEvent event) throws IOException{
-        // Also need to figure out to clean this up in order to only
-        // call one set of "set labels" each
+        DB.Database db = DB.Database.getInstance();
+
         queue = this.currentAgent.getThreeForms();
-        for(int i = 0; i < queue.size(); i++){
 
-            int tTBID = queue.get(i).getTtbID();
-            Timestamp approvalDate = queue.get(i).getDateSubmitted();
-            ApprovalStatus approvalStatus = queue.get(i).getApprovalStatus();
-            int twoYears = ((24*60)*(365*2));
-            Timestamp expirationDate = new Timestamp(approvalDate.getTime() + twoYears);
+    }
 
-            if(i == 0) {
-                appNum1.setText(Integer.toString(tTBID));       // Allows for us to print out the TTB ID number,
-                appStat1.setText(approvalDate.toString());      // the approval status, the date on which the
-                appDate1.setText(approvalStatus.toString());    // form was approved, and the expiration date
-                expirDate1.setText(expirationDate.toString());  // which we have decided is two years from the
-            }                                                   // approval date
-            if(i == 1){
-                appNum2.setText(Integer.toString(tTBID));
-                appStat2.setText(approvalDate.toString());
-                appDate2.setText(approvalStatus.toString());
-                expirDate2.setText(expirationDate.toString());
-            }
-            if(i == 2){
-                appNum3.setText(Integer.toString(tTBID));
-                appStat3.setText(approvalDate.toString());
-                appDate3.setText(approvalStatus.toString());
-                expirDate3.setText(expirationDate.toString());
-            }
+    @FXML
+    public void setPage1(){
 
-        }
-        //pageSwitch(event, "AgentHome.fxml:, getNewQueueButton)
+        Agent1Label.setText(currentForm.getRepID());
+        ArrayList<String> arr = currentForm.getBrewersPermit();
+        arr.add(producerNumField.getText());
+        Agent2Label.setText(arr.toString());
+        Agent3Label.setText("Is Domestic? " + currentForm.getSource());
+        AgentReview4Label1.setText(currentForm.getSerialNumber());
+        Agent5Label1.setText(currentForm.getAlcoholType().toString());
+        Agent6Label.setText(currentForm.getBrandName());
+    }
+
+    public void setPage2(){
+        Agent7Label.setText(currentForm.getFancifulName());
+        Agent8Label.setText(currentForm.getAddress().toString());
+        Agent9Label.setText(currentForm.getMailingAddress().toString());
+        Agent10Label.setText(currentForm.getFormula());
+        Agent11Label.setText(currentForm.getWineFormItems().getGrapeVarietal());
+        Agent12Label.setText(currentForm.getWineFormItems().getAppellation());
+    }
+
+    public void setPage3(){
+        Agent13Label.setText(currentForm.getPhoneNumber());
+        Agent14Label.setText(currentForm.getEmail());
+        Agent16Label1.setText(currentForm.getBlownBrandedEmbossedInfo());
+        Agent16Label2.setText(currentForm.getDateSubmitted().toString());
+    }
+
+    public void setPage4(){
+        Agent18Label.setText("" + currentForm.getAlcoholContent());
     }
 
 }

@@ -40,13 +40,13 @@ public class Form {
 
     public Form(){
         this.repID = null;
-        this.brewersPermit = null;
+        this.brewersPermit = new ArrayList<String>();
         this.source = true;
         this.serialNumber = null;
         this.alcoholType = null;
         this.brandName = null;
         this.fancifulName = null;
-        this.address = null;
+        this.address = new ArrayList<Address>();
         this.mailingAddress = null;
         this.applicantName = null;
         this.formula = null;
@@ -229,6 +229,10 @@ public class Form {
 
     public void setBlownBrandedEmbossedInfo(String blownBrandedEmbossedInfo) {
         this.blownBrandedEmbossedInfo = blownBrandedEmbossedInfo;
+    }
+
+    public void setBlown(String blown){
+        this.blownBrandedEmbossedInfo = blown;
     }
 
     public Timestamp getDateSubmitted() {
