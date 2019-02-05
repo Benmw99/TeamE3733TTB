@@ -282,6 +282,13 @@ public class Form {
     //#######################################################################################################
     //                                  Helper Functions
 
+    // updates the status of the form
+    void updateFormStatus( Form aForm, ApprovalStatus newStatus){
+        aForm.setApprovalStatus(newStatus);
+    }
+
+
+
     boolean equals(Form aform){
         return (this.repID.equals(aform.repID) &&
                 this.brewersPermit.equals(aform.brewersPermit) &&
