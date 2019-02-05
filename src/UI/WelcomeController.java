@@ -63,19 +63,15 @@ public class WelcomeController {
         pageSwitch(event, "AgentLogin.fxml", agentButton);
     }
 
-
     @FXML
     public void civilSearch(ActionEvent event) throws IOException{
         pageSwitch(event, "CivilSearch.fxml", civilButton);
     }
 
-
     @FXML
     public void manufacturerLogin(ActionEvent event) throws IOException {
         pageSwitch(event, "ManLogin.fxml", manButton);
     }
-
-
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;

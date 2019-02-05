@@ -51,10 +51,10 @@ public class SelectTest {
     public void retrieveList_TTBIDTest() {
         Manufacturer man = new Manufacturer(123, null, null, null);
         Manufacturer man2 = new Manufacturer(456, null, null, null);
-        List<Integer> list = db.dbSelect.getTUB_IDblManufacturer(man);
+        List<Integer> list = db.dbSelect.getTTB_IDbyManufacturer(man);
         assertEquals(4, list.size());
         assertTrue(list.get(0) == 1);
-        List<Integer> list2 = db.dbSelect.getTUB_IDblManufacturer(man2);
+        List<Integer> list2 = db.dbSelect.getTTB_IDbyManufacturer(man2);
         assertTrue(list2.size() == 0);
     }
     @Test

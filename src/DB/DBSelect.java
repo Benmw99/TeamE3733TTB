@@ -413,7 +413,7 @@ public class DBSelect extends DatabaseAbstract {
      * @param man The manufacturer who has logged in to look at their forms
      * @return A list of Ints representing their TTB_ID's
      */
-    public List<Integer> getTUB_IDblManufacturer(Manufacturer man){
+    public List<Integer> getTTB_IDbyManufacturer(Manufacturer man){
         String selString = "SELECT TTB_ID FROM FORM WHERE Company_ID=? ";
         int comp_id = man.manID;
         List<Integer> list_of_ids= new ArrayList<Integer>();
