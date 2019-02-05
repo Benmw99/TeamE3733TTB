@@ -1,6 +1,7 @@
 package Entities;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 public class AdvancedSearch {
     //Gotta be a Boolean so it can be null
@@ -141,4 +142,20 @@ public class AdvancedSearch {
     public void setNumResults(int numResults) {
         this.numResults = numResults;
     }
+
+    boolean equals(AdvancedSearch aSearch){
+        return(
+            this.serialNumber.equals(aSearch.serialNumber) &&
+            this.alcoholType.equals(aSearch.alcoholType) &&
+            this.brandName.equals(aSearch.brandName) &&
+            this.fancifulName.equals(aSearch.fancifulName) &&
+            this.vintageYear == aSearch.vintageYear &&
+            this.pH == aSearch.pH &&
+            this.grapeVarietal.equals(aSearch.grapeVarietal) &&
+            this.appellation.equals(aSearch.appellation)&&
+            this.timestamp.equals(aSearch.timestamp) &&
+            this.ttbID == aSearch.ttbID &&
+            this.numResults == aSearch.numResults);
+    }
+
 }

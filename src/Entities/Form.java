@@ -1,8 +1,10 @@
 package Entities;
 
 
+import java.sql.Array;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Form {
 
@@ -30,7 +32,8 @@ public class Form {
     private int ttbID;
     private int companyID;
     private Approval approval;
-    private float alcoholContent; //in percent
+    private float alcoholContent;
+    private ApprovalStatus approvalStatus = ApprovalStatus.Incomplete; //in percent
 
     //#######################################################################################################
     //                                  constructors
@@ -266,10 +269,11 @@ public class Form {
         return alcoholContent;
     }
 
-    public void setAlcoholContent(float alcoholContent) {
-        this.alcoholContent = alcoholContent;
-    }
+    public void setAlcoholContent(float alcoholContent) { this.alcoholContent = alcoholContent; }
 
+    public void setApprovalStatus(ApprovalStatus approvalStatus){ this.approvalStatus = approvalStatus;}
+
+    public ApprovalStatus getApprovalStatus(){ return this.approvalStatus;}
     //#######################################################################################################
     //                                  UI API (to be implemented)
     public void approve(String agentName){//TODO: Implement
@@ -279,6 +283,51 @@ public class Form {
     //#######################################################################################################
     //                                  Helper Functions
 
+    boolean equals(Form aform){
+        return (this.repID.equals(aform.repID) &&
+                brewListEquals(aform.brewersPermit) &&
+                this.source == aform.source &&
+                this.serialNumber.equals(aform.serialNumber) &&
+                this.alcoholType.equals(aform.alcoholType) &&
+                this.brandName.equals(aform.brandName) &&
+                this.fancifulName.equals(aform.fancifulName) &&
+                addressListEquals(aform.address) &&
+                this.mailingAddress.equals(aform.mailingAddress) &&
+                this.applicantName.equals(aform.applicantName) &&
+                this.formula.equals(aform.formula) &&
+                this.wineFormItems.equals(aform.wineFormItems) &&
+                this.phoneNumber.equals(aform.phoneNumber) &&
+                this.email.equals(aform.email) &&
+                this.blownBrandedEmbossedInfo.equals(aform.blownBrandedEmbossedInfo) &&
+                this.dateSubmitted.equals(aform.dateSubmitted) &&
+                this.ttbID == aform.ttbID &&
+                this.companyID == aform.companyID &&
+                this.approval.equals(aform.approval) &&
+                this.alcoholContent == aform.alcoholContent);
+    }
 
+    boolean brewListEquals(ArrayList<String> aList) {
+        ArrayList<String> resultList = new ArrayList<String>();
+        for (String s: aList) {
+            for (String t: this.brewersPermit) {
+                if (s.equals(t)) {
+                    resultList.add(s);
+                }
+            }
+        }
+        return(this.brewersPermit.size() == resultList.size());
+    }
+
+    boolean addressListEquals(ArrayList<Address> aList) {
+        ArrayList<Address> resultList = new ArrayList<Address>();
+        for (Address a: aList) {
+            for (Address s: this.address) {
+                if (a.equals(s)) {
+                    resultList.add(a);
+                }
+            }
+        }
+        return(this.brewersPermit.size() == resultList.size());
+    }
 
 }

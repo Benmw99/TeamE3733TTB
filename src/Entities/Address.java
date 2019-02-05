@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.Objects;
+
 public class Address {
     private String city;
     private String state;
@@ -54,4 +56,14 @@ public class Address {
     public void setName(String name) {
         this.name = name;
     }
+
+    boolean equals(Address anAddy) {
+        return (this.city.equals(anAddy.city) &&
+                this.state.equals(anAddy.state) &&
+                this.name.equals(anAddy.name) &&
+                this.street.equals(anAddy.street) &&
+                this.zip.equals(anAddy.zip));
+        }
+
+
 }

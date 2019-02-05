@@ -8,12 +8,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sun.management.resources.agent;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 import Entities.*;
 
@@ -334,6 +339,9 @@ public class AgentController {
     SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
+    Button getnewQueueButton;
+
+    @FXML
     TextField searchAHField;
 
     @FXML
@@ -433,26 +441,119 @@ public class AgentController {
 
     @FXML
     Button printAVLButton;
+
+    @FXML
+    Label appNum1;
+
+    @FXML
+    Label  appStat1;
+
+    @FXML
+    Label expirDate1;
+
+    @FXML
+    Label appDate1;
+
+    @FXML
+    Label appNum2;
+
+    @FXML
+    Label appStat2;
+
+    @FXML
+    Label expirDate2;
+
+    @FXML
+    Label appDate2;
+
+    @FXML
+    Label appNum3;
+
+    @FXML
+    Label appStat3;
+
+    @FXML
+    Label expirDate3;
+
+    @FXML
+    Label appDate3;
+
+    //Form Labels
+    @FXML
+    Label Agent1Label;
+    @FXML
+    Label Agent2Label;
+    @FXML
+    Label Agent3Label;
+    @FXML
+    Label AgentReview4Label1;
+    @FXML
+    Label Agent4Label2;
+    @FXML
+    Label Agent5Label1;
+    @FXML
+    Label Agent5Label2;
+    @FXML
+    Label Agent5Label3;
+    @FXML
+    Label Agent6Label;
+    @FXML
+    Label Agent7Label;
+    @FXML
+    Label Agent8Label;
+    @FXML
+    Label Agent9Label;
+    @FXML
+    Label Agent10Label;
+    @FXML
+    Label Agent11Label;
+    @FXML
+    Label Agent12Label;
+    @FXML
+    Label Agent13Label;
+    @FXML
+    Label Agent14Label;
+    @FXML
+    Label Agent15Label1;
+    @FXML
+    Label Agent15Label2;
+    @FXML
+    Label Agent15Label3;
+    @FXML
+    Label Agent16Label1;
+    @FXML
+    Label Agent16Label2;
+    @FXML
+    Label Agent17Label;
+    @FXML
+    Label Agent18Label;
+    @FXML
+    Label Agent20Label;
+
+
+
     private Form currentForm;
     private Agent currentAgent;
+    private List<Form> queue;
 
 
     @FXML
     public void login(ActionEvent event) throws IOException {
         this.currentAgent = new Agent(nameField.getText(),passField.getText());
-        if(this.currentAgent.authenticate()) {
+        pageSwitch(event, "AgentHome.fxml", loginButton);
+
+      /*  if(this.currentAgent.authenticate()) {
             pageSwitch(event, "AgentHome.fxml", loginButton);
         }
         else {
             Alert ohNo = new Alert(Alert.AlertType.WARNING);
             ohNo.setContentText("Invalid Password or Username my dude");
             ohNo.showAndWait();
-        }
+        } */
     }
 
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
-        if(this.currentAgent.authenticate())
         pageSwitch(event, "WelcomePage.fxml", backButton);
     }
     @FXML
@@ -462,14 +563,15 @@ public class AgentController {
     }
     @FXML
     public void rejectForm(ActionEvent event) throws IOException {
-        this.currentForm.reject(this.currentAgent.getName());
+//        this.currentForm.reject(this.currentAgent.getName());
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
-        this.currentForm.approve(this.currentAgent.getName());
+//        this.currentForm.approve(this.currentAgent.getName());
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
+
     /* not needed for it. 1
     @FXML
     public void approveFormConditions(ActionEvent event) throws IOException {
@@ -483,9 +585,6 @@ public class AgentController {
     }
     */
 
-
-
-
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
         Stage stage;
@@ -494,6 +593,42 @@ public class AgentController {
         Scene scene = new Scene(root, 1360, 760);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void getNewQueue(ActionEvent event) throws IOException{
+        // Also need to figure out to clean this up in order to only
+        // call one set of "set labels" each
+        queue = this.currentAgent.getThreeForms();
+        for(int i = 0; i < queue.size(); i++){
+
+            int tTBID = queue.get(i).getTtbID();
+            Timestamp approvalDate = queue.get(i).getDateSubmitted();
+            ApprovalStatus approvalStatus = queue.get(i).getApprovalStatus();
+            int twoYears = ((24*60)*(365*2));
+            Timestamp expirationDate = new Timestamp(approvalDate.getTime() + twoYears);
+
+            if(i == 0) {
+                appNum1.setText(Integer.toString(tTBID));       // Allows for us to print out the TTB ID number,
+                appStat1.setText(approvalDate.toString());      // the approval status, the date on which the
+                appDate1.setText(approvalStatus.toString());    // form was approved, and the expiration date
+                expirDate1.setText(expirationDate.toString());  // which we have decided is two years from the
+            }                                                   // approval date
+            if(i == 1){
+                appNum2.setText(Integer.toString(tTBID));
+                appStat2.setText(approvalDate.toString());
+                appDate2.setText(approvalStatus.toString());
+                expirDate2.setText(expirationDate.toString());
+            }
+            if(i == 2){
+                appNum3.setText(Integer.toString(tTBID));
+                appStat3.setText(approvalDate.toString());
+                appDate3.setText(approvalStatus.toString());
+                expirDate3.setText(expirationDate.toString());
+            }
+
+        }
+        //pageSwitch(event, "AgentHome.fxml:, getNewQueueButton)
     }
 
 }

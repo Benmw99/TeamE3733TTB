@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.Objects;
+
 public class WineFormItems {
     private int vintageYear;
     private float pH;
@@ -47,5 +49,12 @@ public class WineFormItems {
 
     public void setAppellation(String appellation) {
         this.appellation = appellation;
+    }
+
+    boolean equals(WineFormItems aWine) {
+        return (this.vintageYear == aWine.vintageYear &&
+        this.pH == aWine.pH &&
+        this.grapeVarietal.equals(aWine.grapeVarietal) &&
+        this.appellation.equals(aWine.appellation));
     }
 }

@@ -12,9 +12,6 @@ public class MainUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Scene scene1;
-        Database db = Database.getInstance();
-        db.tableBuilder.resetDB();
-        db.dbInsert.insertCompany(123, "Buddweiser","User", "Pass");
         Parent root = FXMLLoader.load(getClass().getResource("WelcomePage.fxml"));
         primaryStage.setTitle("TTB Application");
         scene1 = new Scene(root, 1360, 760);

@@ -3,12 +3,14 @@ package Entities;
 import java.lang.*;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class Approval {
 
     private ApprovalStatus page1;
     private ApprovalStatus page2;
     private ApprovalStatus page3;
+    private ApprovalStatus page4;
 
     private boolean approved;
     private Timestamp timestamp;
@@ -25,12 +27,22 @@ public class Approval {
         this.page1 = null;
         this.page2 = null;
         this.page3 = null;
+        this.page4 = null;
     }
 
-    public Approval(ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
+    public ApprovalStatus getPage4() {
+        return page4;
+    }
+
+    public void setPage4(ApprovalStatus page4) {
+        this.page4 = page4;
+    }
+
+    public Approval(ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, ApprovalStatus page4, boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
         this.page1 = page1;
         this.page2 = page2;
         this.page3 = page3;
+        this.page4 = page4;
         this.approved = approved;
         this.timestamp = timestamp;
         this.agentApprovalName = agentApprovalName;
@@ -44,9 +56,10 @@ public class Approval {
         this.agentApprovalName = null;
         this.expDate = null;
         this.qualifications = null;
-        this.page1 = null;
-        this.page2 = null;
-        this.page3 = null;
+        this.page1 = ApprovalStatus.Incomplete;
+        this.page2 = ApprovalStatus.Incomplete;;
+        this.page3 = ApprovalStatus.Incomplete;;
+        this.page4 = ApprovalStatus.Incomplete;;
     }
 
     public ApprovalStatus getPage1() {
@@ -130,5 +143,18 @@ public class Approval {
         java.sql.Timestamp expirationDate = new java.sql.Timestamp(expire.getTime());
         this.expDate = expirationDate;
 
-    }}
+    }
+    boolean equals(Approval appr){
+        return ((this.approved == appr.approved) &&
+            this.timestamp.equals(appr.timestamp) &&
+            this.agentApprovalName.equals(appr.agentApprovalName) &&
+            this.expDate.equals(appr.expDate) &&
+            this.qualifications.equals(appr.qualifications) &&
+            this.page1.equals(appr.page1) &&
+            this.page1.equals(appr.page2) &&
+            this.page1.equals(appr.page3));
+    }
+
+
+}
 
