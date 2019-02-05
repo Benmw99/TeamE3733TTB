@@ -514,7 +514,7 @@ public class ManufacturerController {
     }
     @FXML
     public void checkAndSubmitForm(ActionEvent event ) throws IOException{
-            this.newForm.setAlcoholContent(float.valueOf(alcoholContentTextField.getText()));
+            this.newForm.setAlcoholContent(float.valueOf(alcoholContentTextField.getText())); // .class expected???
             Database.getInstance().dbInsert.insertForm(newForm, manufacturer);
 
     }

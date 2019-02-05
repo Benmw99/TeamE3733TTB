@@ -652,4 +652,37 @@ public class AgentController {
         //pageSwitch(event, "AgentHome.fxml:, getNewQueueButton)
     }
 
+    @FXML
+    public void setPage1(){
+        this.currentForm = new Form();
+
+        // need to set all the values for the first page of the application
+        Agent1Label.setText(this.currentForm.getRepID());
+        Agent2Label.setText(this.currentForm.getBrewersPermit().add(producerNumField.toString())); // how to fix this?
+        Agent3Label.setText(this.currentForm.getSource().toString()); // need to fix the .toString()
+        AgentReview4Label1.setText(this.currentForm.getSerialNumber());
+        Agent5Label1.setText(this.currentForm.getAlcoholType().toString());
+        Agent6Label.setText(this.currentForm.getBrandName());
+    }
+
+    public void setPage2(){
+        Agent7Label.setText(this.currentForm.getFancifulName());
+        Agent8Label.setText(this.currentForm.getAddress().toString());
+        Agent9Label.setText(this.currentForm.getMailingAddress().toString());
+        Agent10Label.setText(this.currentForm.getFormula());
+        Agent11Label.setText(this.currentForm.getWineFormItems().getGrapeVarietal());
+        Agent12Label.setText(this.currentForm.getWineFormItems().getAppellation());
+    }
+
+    public void setPage3(){
+        Agent13Label.setText(this.currentForm.getPhoneNumber());
+        Agent14Label.setText(this.currentForm.getEmail());
+        Agent16Label1.setText(this.currentForm.getBlownBrandedEmbossedInfo());
+        Agent16Label2.setText(this.currentForm.getDateSubmitted().toString());
+    }
+
+    public void setPage4(){
+        Agent18Label.setText(this.currentForm.getAlcoholContent().toString); // need to fix .toString()
+    }
+
 }
