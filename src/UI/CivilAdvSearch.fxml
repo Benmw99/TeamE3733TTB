@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -31,12 +31,12 @@
                   <Pane prefHeight="200.0" prefWidth="1018.0" style="-fx-border-color: #3c3b3b;">
                      <children>
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
-                        <Label fx:id="civilRepIDLabel" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilTTBIDLabel1" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel0" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilBrandLabel" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilBrandLabel0" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBox1" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                      </children>
@@ -46,10 +46,10 @@
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
                         <Label fx:id="civilRepIDLabel1" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel1" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilBrandLabel" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilBrandLabel1" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBox1" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                      </children>
@@ -59,10 +59,10 @@
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
                         <Label fx:id="civilRepIDLabel11" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel2" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilBrandLabel" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilBrandLabel2" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBox2" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                      </children>
@@ -72,10 +72,10 @@
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
                         <Label fx:id="civilRepIDLabel12" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel3" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilBrandLabel" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilBrandLabel3" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBox3" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                      </children>
@@ -85,10 +85,10 @@
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
                         <Label fx:id="civilRepIDLabel13" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel4" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilBrandLabel" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilBrandLabel4" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBox4" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                      </children>
@@ -98,10 +98,10 @@
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
                         <Label fx:id="civilRepIDLabel14" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel5" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilBrandLabel" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilBrandLabel5" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBox5" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                      </children>
@@ -111,10 +111,10 @@
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
                         <Label fx:id="civilRepIDLabel15" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel6" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilBrandLabel" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilBrandLabel6" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBox6" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                      </children>
@@ -124,10 +124,10 @@
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
                         <Label fx:id="civilRepIDLabel16" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel7" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilManLabel11" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilManLabel7" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBo7" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                         <Label fx:id="civilBrandLabel" layoutX="571.0" layoutY="26.0" prefHeight="17.0" prefWidth="112.0" />
@@ -138,10 +138,10 @@
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
                         <Label fx:id="civilRepIDLabel17" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel8" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilBrandLabel" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilBrandLabe8" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBox8" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                      </children>
@@ -151,17 +151,17 @@
                         <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB Id#" />
                         <Label fx:id="civilRepIDLabel151" layoutX="93.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="283.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-                        <Label fx:id="civilAlcTypeLabel" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <Label fx:id="civilAlcTypeLabel9" layoutX="320.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
                         <Text layoutX="473.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand Name:" />
-                        <Label fx:id="civilBrandLabel" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
-                        <CheckBox fx:id="ttbIDSearchcheckBox" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
+                        <Label fx:id="civilBrandLabel9" layoutX="561.0" layoutY="16.0" prefHeight="17.0" prefWidth="112.0" />
+                        <CheckBox fx:id="ttbIDSearchcheckBox9" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" text="123456" />
                         <Text layoutX="717.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer:" />
                         <Label fx:id="civilManLabel" layoutX="805.0" layoutY="13.0" prefHeight="17.0" prefWidth="112.0" />
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="1008.0" style="-fx-background-color: #c4c4c4#c4c4c4 #c4c4c4#c4c4c4;">
                      <children>
-                        <Button layoutX="412.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="48.0" style="-fx-background-color: #4ba77c;" text="&gt;" textFill="#fcfcfc">
+                        <Button fx:id="newThirtyButton" layoutX="412.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="48.0" style="-fx-background-color: #4ba77c;" text="&gt;" textFill="#fcfcfc">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -171,7 +171,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="361.0" layoutY="1.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="48.0" rotate="180.0" style="-fx-background-color: #4ba77c;" text="&gt;" textFill="#fcfcfc">
+                        <Button fx:id="prevThirtyButton" layoutX="361.0" layoutY="1.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="48.0" rotate="180.0" style="-fx-background-color: #4ba77c;" text="&gt;" textFill="#fcfcfc">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -205,11 +205,11 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="406.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="456.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="556.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
-      <ComboBox fx:id="typeComboBox" layoutX="152.0" layoutY="213.0" prefWidth="150.0" promptText="Type" >
+      <ComboBox fx:id="typeComboBox" layoutX="152.0" layoutY="213.0" prefWidth="150.0" promptText="Type">
           <items>
               <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="Beers" />
                   <String fx:value="Wines" />
+                  <String fx:value="Beers" />
               </FXCollections>
           </items>
       </ComboBox>
