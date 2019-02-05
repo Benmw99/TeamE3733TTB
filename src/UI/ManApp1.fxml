@@ -163,7 +163,7 @@
       <MenuButton fx:id="menuMA1MenuButton" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
         <items>
           <MenuItem disable="true" mnemonicParsing="false" text="Submit Application" />
-          <MenuItem mnemonicParsing="false" onAction="#goHome" text="Go Home" />
+          <MenuItem mnemonicParsing="false" onAction="#manHome" text="Go Home" />
         </items>
          <font>
             <Font size="26.0" />

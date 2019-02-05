@@ -262,7 +262,7 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button fx:id="submitButton" mnemonicParsing="false" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #71071D;" text="Submit" textFill="WHITE">
+            <Button fx:id="submitButton" mnemonicParsing="false" onAction="#checkAndSubmitForm" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #71071D;" text="Submit" textFill="WHITE">
                <HBox.margin>
                   <Insets right="80.0" />
                </HBox.margin>

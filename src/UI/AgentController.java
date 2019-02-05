@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import sun.management.resources.agent;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import java.awt.*;
@@ -658,8 +659,10 @@ public class AgentController {
 
         // need to set all the values for the first page of the application
         Agent1Label.setText(this.currentForm.getRepID());
-        Agent2Label.setText(this.currentForm.getBrewersPermit().add(producerNumField.toString())); // how to fix this?
-        Agent3Label.setText(this.currentForm.getSource().toString()); // need to fix the .toString()
+        ArrayList<String> arr = this.currentForm.getBrewersPermit();
+        arr.add(producerNumField.getText());
+        Agent2Label.setText(arr.toString());
+        Agent3Label.setText("Is Domestic? " + this.currentForm.getSource());
         AgentReview4Label1.setText(this.currentForm.getSerialNumber());
         Agent5Label1.setText(this.currentForm.getAlcoholType().toString());
         Agent6Label.setText(this.currentForm.getBrandName());
@@ -682,7 +685,7 @@ public class AgentController {
     }
 
     public void setPage4(){
-        Agent18Label.setText(this.currentForm.getAlcoholContent().toString); // need to fix .toString()
+        Agent18Label.setText("" + this.currentForm.getAlcoholContent());
     }
 
 }

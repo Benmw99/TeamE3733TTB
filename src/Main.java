@@ -6,6 +6,7 @@ public class Main {
             db.tableBuilder.resetDB();
             db.dbInsert.insertCompany(123, "Buddweiser", "User", "Pass");
             db.dbInsert.insertAgent("joe cool", 445, "JoeCool", "L33t");
+
         }catch(Exception e){
             System.out.println(e.toString());
         }
