@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.ArrayList;
 
 import Entities.*;
 import org.apache.derby.iapi.util.StringUtil;
@@ -399,7 +400,9 @@ public class ManufacturerController {
     public void checkBlanksPage1(ActionEvent event) throws IOException{
         this.newForm = new Form();
         this.newForm.setRepID(repIDField.getText());
-        this.newForm.getBrewersPermit().add(producerNumField.getText());
+        ArrayList<String> arr = new ArrayList<String>();
+        arr.add(producerNumField.getText());
+        this.newForm.setBrewersPermit(arr);
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
         this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
         if(typeComboBox.getValue() == "Wine"){
