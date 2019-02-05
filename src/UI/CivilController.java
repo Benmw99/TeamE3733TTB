@@ -41,20 +41,18 @@ public class CivilController {
     Button advSearchButton;
 
     //CivilAdvSearch
+
     @FXML
-    CheckBox ttbIDSearchcheckBox;
+    Button newThirtyButton;
+
+    @FXML
+    Button prevThirtyButton;
 
     @FXML
     Label civilTTBLabel;
 
     @FXML
-    Label civilAlcTypeLabel;
-
-    @FXML
     Label civilManLabel;
-
-    @FXML
-    Label civilBrandLabel;
 
     @FXML
     Button menuASButton;
@@ -91,6 +89,70 @@ public class CivilController {
 
     @FXML
     ComboBox typeComboBox;
+
+    @FXML
+    Label civilAlcTypeLabel0;
+    @FXML
+    Label civilAlcTypeLabel1;
+    @FXML
+    Label civilAlcTypeLabel2;
+    @FXML
+    Label civilAlcTypeLabel3;
+    @FXML
+    Label civilAlcTypeLabel4;
+    @FXML
+    Label civilAlcTypeLabel5;
+    @FXML
+    Label civilAlcTypeLabel6;
+    @FXML
+    Label civilAlcTypeLabel7;
+    @FXML
+    Label civilAlcTypeLabel8;
+    @FXML
+    Label civilAlcTypeLabel9;
+
+    @FXML
+    Label civilBrandLabel0;
+    @FXML
+    Label civilBrandLabel1;
+    @FXML
+    Label civilBrandLabel2;
+    @FXML
+    Label civilBrandLabe3;
+    @FXML
+    Label civilBrandLabel4;
+    @FXML
+    Label civilBrandLabel5;
+    @FXML
+    Label civilBrandLabel6;
+    @FXML
+    Label civilBrandLabel7;
+    @FXML
+    Label civilBrandLabel8;
+    @FXML
+    Label civilBrandLabel9;
+
+    @FXML
+    CheckBox ttbIDSearchcheckBox0;
+    @FXML
+    CheckBox ttbIDSearchcheckBox1;
+    @FXML
+    CheckBox ttbIDSearchcheckBox2;
+    @FXML
+    CheckBox ttbIDSearchcheckBox3;
+    @FXML
+    CheckBox ttbIDSearchcheckBox4;
+    @FXML
+    CheckBox ttbIDSearchcheckBox5;
+    @FXML
+    CheckBox ttbIDSearchcheckBox6;
+    @FXML
+    CheckBox ttbIDSearchcheckBox7;
+    @FXML
+    CheckBox ttbIDSearchcheckBox8;
+    @FXML
+    CheckBox ttbIDSearchcheckBox9;
+
 
 
     //CivilSearchForm
@@ -148,14 +210,6 @@ public class CivilController {
 
 
     }
-
-
-
-
-
-
-
-
 
     public void goBackToSearch(ActionEvent event) throws IOException {
         pageSwitch(event,"CivilAdvSearch.fxml", backToAdvSearch);
