@@ -245,7 +245,6 @@ public class CivilController {
 
     public void searchAdvanced(ActionEvent event) throws IOException {
         Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
-        //Actually make sure these are fully empty later
 
         if(typeComboBox.getValue().equals("Beers")){
             advancedSearch.setAlcoholType(MaltBeverage);
@@ -275,7 +274,7 @@ public class CivilController {
         }
 
         DB.Database db = DB.Database.getInstance();
-        result = db.dbSelect.searchBy(advancedSearch);
+        results = db.dbSelect.searchBy(advancedSearch);
         System.out.println("It ran");
 
         col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
@@ -284,10 +283,15 @@ public class CivilController {
         col4.setCellValueFactory(new PropertyValueFactory<>("companyID"));
 
         ObservableList<Form> tableValues = FXCollections.observableArrayList();
-        for (int i = 0; i < result.getResults().size(); i++) {
-            tableValues.add(result.getResults().get(i));
+        for (int i = 0; i < results.getResults().size(); i++) {
+            tableValues.add(results.getResults().get(i));
         }
         resultTable.setItems(tableValues);
+        printSearchResultsCSV.setDisable(false);
+    }
+
+    public void printResults(ActionEvent event) throws IOException {
+        results.printResults();
     }
 
     public void nextPage(ActionEvent event) throws IOException {
