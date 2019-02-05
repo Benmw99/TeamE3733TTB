@@ -11,6 +11,11 @@ public class TableBuilder extends DatabaseAbstract {
        super(path);
     }
 
+    /**
+     * Gets the one instance of the class making it a singleton
+     * @author Jordan
+     * @return The current instance of DBSelect
+     */
     static TableBuilder getInstance() {
         if (tableBuilder_instance == null) {
             tableBuilder_instance = new TableBuilder("./ttb.db");

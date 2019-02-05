@@ -15,6 +15,11 @@ public class DBInsert extends DatabaseAbstract {
         super(path);
     }
 
+    /**
+     * Gets the one instance of the class making it a singleton
+     * @author Jordan
+     * @return The current instance of DBSelect
+     */
     static DBInsert getInstance() {
         if (dbInsert_instance == null) {
             dbInsert_instance = new DBInsert("./ttb.db");
@@ -171,8 +176,6 @@ public class DBInsert extends DatabaseAbstract {
         statement.execute();
 
     }
-
-
 
 
 
