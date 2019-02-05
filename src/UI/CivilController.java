@@ -41,6 +41,8 @@ public class CivilController {
     Button advSearchButton;
 
     //CivilAdvSearch
+    @FXML
+    Button goButton;
 
     @FXML
     Button newThirtyButton;
@@ -152,6 +154,58 @@ public class CivilController {
     CheckBox ttbIDSearchcheckBox8;
     @FXML
     CheckBox ttbIDSearchcheckBox9;
+
+    //Form Labels
+    @FXML
+    Label Civ1Label;
+    @FXML
+    Label Civ2Label;
+    @FXML
+    Label Civ3Label;
+    @FXML
+    Label CivReview4Label1;
+    @FXML
+    Label Civ4Label2;
+    @FXML
+    Label Civ5Label1;
+    @FXML
+    Label Civ5Label2;
+    @FXML
+    Label Civ5Label3;
+    @FXML
+    Label Civ6Label;
+    @FXML
+    Label Civ7Label;
+    @FXML
+    Label Civ8Label;
+    @FXML
+    Label Civ9Label;
+    @FXML
+    Label Civ10Label;
+    @FXML
+    Label Civ11Label;
+    @FXML
+    Label Civ12Label;
+    @FXML
+    Label Civ13Label;
+    @FXML
+    Label Civ14Label;
+    @FXML
+    Label Civ15Label1;
+    @FXML
+    Label Civ15Label2;
+    @FXML
+    Label Civ15Label3;
+    @FXML
+    Label Civ16Label1;
+    @FXML
+    Label Civ16Label2;
+    @FXML
+    Label Civ17Label;
+    @FXML
+    Label Civ18Label;
+    @FXML
+    Label Civ20Label;
 
 
     //CivilSearchForm

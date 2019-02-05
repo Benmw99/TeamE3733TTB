@@ -478,6 +478,60 @@ public class AgentController {
     @FXML
     Label appDate3;
 
+    //Form Labels
+    @FXML
+    Label Agent1Label;
+    @FXML
+    Label Agent2Label;
+    @FXML
+    Label Agent3Label;
+    @FXML
+    Label AgentReview4Label1;
+    @FXML
+    Label Agent4Label2;
+    @FXML
+    Label Agent5Label1;
+    @FXML
+    Label Agent5Label2;
+    @FXML
+    Label Agent5Label3;
+    @FXML
+    Label Agent6Label;
+    @FXML
+    Label Agent7Label;
+    @FXML
+    Label Agent8Label;
+    @FXML
+    Label Agent9Label;
+    @FXML
+    Label Agent10Label;
+    @FXML
+    Label Agent11Label;
+    @FXML
+    Label Agent12Label;
+    @FXML
+    Label Agent13Label;
+    @FXML
+    Label Agent14Label;
+    @FXML
+    Label Agent15Label1;
+    @FXML
+    Label Agent15Label2;
+    @FXML
+    Label Agent15Label3;
+    @FXML
+    Label Agent16Label1;
+    @FXML
+    Label Agent16Label2;
+    @FXML
+    Label Agent17Label;
+    @FXML
+    Label Agent18Label;
+    @FXML
+    Label Agent20Label;
+
+
+
     private Form currentForm;
     private Agent currentAgent;
     private List<Form> queue;
