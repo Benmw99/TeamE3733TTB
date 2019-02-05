@@ -73,12 +73,5 @@ public class EntityToDBTest {
         Form same = db.dbSelect.getFormByTTB_ID(2);
         assertEquals(0, lilf.size());
     }
-    @Test
-    public void doesntGetApprovedForm(){
-
-
-    //    assertEquals(ApprovalStatus.Complete, same.getApprovalStatus());
-
-    }
 
 }
