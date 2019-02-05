@@ -58,7 +58,7 @@
                         <Insets left="30.0" right="15.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="section1MA4Button" mnemonicParsing="false" onAction="#manApp5c" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -66,7 +66,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section2MA4Button" mnemonicParsing="false" onAction="#manApp5b" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -74,7 +74,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="section3MA4Button" mnemonicParsing="false" onAction="#manApp5a" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -82,7 +82,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="section4MA4Button" mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="4" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="4" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -154,7 +154,7 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="19" textFill="WHITE">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="20" textFill="WHITE">
                      <font>
                         <Font size="28.0" />
                      </font>

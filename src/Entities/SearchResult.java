@@ -102,4 +102,11 @@ public class SearchResult {
         return(this.results.size() == resultList.size());
     }
 
+    public void getThreeForms() {
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.getThreeForms();
+    }
+
+
+
 }
