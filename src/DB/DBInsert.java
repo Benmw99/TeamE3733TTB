@@ -222,6 +222,7 @@ public class DBInsert extends DatabaseAbstract {
      * @param qualification Any special qualification the agent writes in
      * @throws SQLException
      */
+    @Deprecated
     public void insertApproval(String appovingAgent, int TTB_ID, Timestamp date, Timestamp expiration, String qualification) throws SQLException {
         String insertString = "INSERT INTO APPROVAL VALUES (?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
@@ -235,17 +236,18 @@ public class DBInsert extends DatabaseAbstract {
     }
 
     public void insertApproval(String approvingAgent, int TTB_ID, Timestamp date, Timestamp expiration, String qualification, ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, ApprovalStatus page4) throws SQLException {
-        String insertString = "INSERT INTO APPROVAL VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertString = "INSERT INTO APPROVAL (Approving_Agent, TTB_ID, Date, Expiration, Page_1, Page_2, Page_3, Page_4, Qualification) VALUES" +
+                " (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, approvingAgent);
         statement.setInt(2, TTB_ID);
         statement.setTimestamp(3, date);
         statement.setTimestamp(4, expiration);
-        statement.setString(5, qualification);
-        statement.setInt(6, page1.toInt());
-        statement.setInt(7, page2.toInt());
-        statement.setInt(8, page3.toInt());
-        statement.setInt(9, page4.toInt());
+        statement.setInt(5, page1.toInt());
+        statement.setInt(6, page2.toInt());
+        statement.setInt(7, page3.toInt());
+        statement.setInt(8, page4.toInt());
+        statement.setString(9, qualification);
         statement.execute();
         statement.close();
     }

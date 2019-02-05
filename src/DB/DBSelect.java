@@ -602,7 +602,7 @@ public class DBSelect extends DatabaseAbstract {
      * @param approval the approval for the form
      */
     public void approveForm(Form form, Approval approval){
-        String selStr = "UPDATE FORM SET APPROVAL=? WHERE ID=? ";
+        String selStr = "UPDATE FORM SET APPROVE=? WHERE TTB_ID=? ";
         try{
             PreparedStatement ps = connection.prepareStatement(selStr);
             ps.setInt(2, form.getTtbID());
@@ -617,6 +617,7 @@ public class DBSelect extends DatabaseAbstract {
             Database.getInstance().dbInsert.insertApproval(approval, form.getTtbID());
     } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
     }
 
@@ -705,7 +706,7 @@ public class DBSelect extends DatabaseAbstract {
             rs.next();
             app.setAgentApprovalName(rs.getString("APPROVING_AGENT"));
             app.setExpDate(rs.getTimestamp("Expiration"));
-            app.setTimestamp(rs.getTimestamp("Timestamp"));
+            app.setTimestamp(rs.getTimestamp("Date"));
             app.setPage1(ApprovalStatus.fromInt(rs.getInt("Page_1")));
             app.setPage2(ApprovalStatus.fromInt(rs.getInt("Page_2")));
             app.setPage3(ApprovalStatus.fromInt(rs.getInt("Page_3")));
