@@ -324,7 +324,10 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
-
+    @FXML
+    protected void initialize(){
+        this.currentForm = new Form();
+    }
     //new application
     @FXML
     public void manApp1(ActionEvent event) throws IOException {
