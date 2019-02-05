@@ -33,7 +33,7 @@ public class ManufacturerController {
 
     Manufacturer manufacturer;
     Entities.Form form;
-    Entities.Form newForm;
+    static Entities.Form newForm;
 
 
     //ManHome
@@ -418,7 +418,7 @@ public class ManufacturerController {
         }
         this.newForm.setBrandName(brandField.getText());
 
-        if(StringUtils.isBlank(this.newForm.getRepID())|| StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
+        if( StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
             System.out.println("I'm stuck thinking things aren't filled in");
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
@@ -437,10 +437,17 @@ public class ManufacturerController {
     public void checkBlanksPage2(ActionEvent event) throws IOException{
 
         this.newForm.setFancifulName(fancifulField.getText());
+
         Address address = new Address(city8Field.getText(), state8ComboBox.getValue(), zip8Field.getText(), address8Field.getText(), name8Field.getText());
-        this.newForm.getAddress().add(address);
-        Address address1 = new Address(city9Field.getText(), state9ComboBox.getValue(), zip9Field.getText(), address9Field.getText(), name9Field.getText());
-        this.newForm.setMailingAddress(address1);
+        ArrayList<Address> arr = new ArrayList<Address>();
+        arr.add(address);
+        this.newForm.setAddress(arr);  //need more addresses option in ui
+        if(sameAddressRadioButton.isSelected()){
+            this.newForm.setMailingAddress(address);
+        }else {
+            Address address1 = new Address(city9Field.getText(), state9ComboBox.getValue(), zip9Field.getText(), address9Field.getText(), name9Field.getText());
+            this.newForm.setMailingAddress(address1);
+        }
         this.newForm.setFormula(formulaField.getText());
         if(this.newForm.getAlcoholType()== AlcoholType.Wine){
             this.newForm.getWineFormItems().setGrapeVarietal(grapeVarField.getText());
@@ -517,12 +524,13 @@ public class ManufacturerController {
     }
     @FXML
     public void checkAndSubmitForm(ActionEvent event ) throws IOException{
-            this.newForm.setAlcoholContent(Float.parseFloat(alcoholContentTextField.getText()));
+        this.newForm.setAlcoholContent(Float.parseFloat(alcoholContentTextField.getText()));
 
-            this.manufacturer.loadUser();
-            this.manufacturer.submitForm(this.newForm);
-
+        this.manufacturer.loadUser();
+        this.manufacturer.submitForm(this.newForm);
+        System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
+
 
     }
 
