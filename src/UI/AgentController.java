@@ -22,6 +22,8 @@ import java.util.List;
 
 import Entities.*;
 
+import DB.*;
+
 public class AgentController {
     //AgentSearch
     @FXML
@@ -443,7 +445,7 @@ public class AgentController {
     Button printAVLButton;
 
     @FXML
-    Label appNum1;
+    CheckBox ttbIDcheckBox1;
 
     @FXML
     Label  appStat1;
@@ -455,7 +457,7 @@ public class AgentController {
     Label appDate1;
 
     @FXML
-    Label appNum2;
+    CheckBox ttbIDcheckBox2;
 
     @FXML
     Label appStat2;
@@ -467,7 +469,7 @@ public class AgentController {
     Label appDate2;
 
     @FXML
-    Label appNum3;
+    CheckBox ttbIDcheckBox3;
 
     @FXML
     Label appStat3;
@@ -536,6 +538,25 @@ public class AgentController {
     private Agent currentAgent;
     private List<Form> queue;
 
+    /*
+    Database db = Database.getInstance();
+
+
+    db.tableBuilder.resetDB();
+
+    one = new Form(AlcoholType.DistilledLiquor,"BUDDY", (float) 5.6);
+       one.setPhoneNumber("6035026034");
+       one.setEmail("Jim@jimmail.com");
+    Manufacturer man = new Manufacturer("sysadmin@swollenjams.com", "PASS");
+       man.setManID(123);
+       try {
+             db.dbInsert.insertCompany(123, "Buddweiser", "User", "Pass");
+             ID_ONE = db.dbInsert.insertForm(one, man);
+             one.setTtbID(ID_ONE);
+        } catch (SQLException e){
+            System.out.println(e.toString());
+        }*/
+
 
     @FXML
     public void login(ActionEvent event) throws IOException {
@@ -602,26 +623,26 @@ public class AgentController {
         queue = this.currentAgent.getThreeForms();
         for(int i = 0; i < queue.size(); i++){
 
-            int tTBID = queue.get(i).getTtbID();
+           // int tTBID = queue.get(i).getTtbID();
             Timestamp approvalDate = queue.get(i).getDateSubmitted();
             ApprovalStatus approvalStatus = queue.get(i).getApprovalStatus();
-            int twoYears = ((24*60)*(365*2));
+            int twoYears = ((24*60)*(365*2)); // length of a year in minutes
             Timestamp expirationDate = new Timestamp(approvalDate.getTime() + twoYears);
 
             if(i == 0) {
-                appNum1.setText(Integer.toString(tTBID));       // Allows for us to print out the TTB ID number,
+               // appNum1.setText(Integer.toString(tTBID));       // Allows for us to print out the TTB ID number,
                 appStat1.setText(approvalDate.toString());      // the approval status, the date on which the
                 appDate1.setText(approvalStatus.toString());    // form was approved, and the expiration date
                 expirDate1.setText(expirationDate.toString());  // which we have decided is two years from the
             }                                                   // approval date
             if(i == 1){
-                appNum2.setText(Integer.toString(tTBID));
+               // appNum2.setText(Integer.toString(tTBID));
                 appStat2.setText(approvalDate.toString());
                 appDate2.setText(approvalStatus.toString());
                 expirDate2.setText(expirationDate.toString());
             }
             if(i == 2){
-                appNum3.setText(Integer.toString(tTBID));
+               // appNum3.setText(Integer.toString(tTBID));
                 appStat3.setText(approvalDate.toString());
                 appDate3.setText(approvalStatus.toString());
                 expirDate3.setText(expirationDate.toString());
