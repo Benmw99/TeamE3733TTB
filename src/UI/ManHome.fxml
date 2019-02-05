@@ -74,9 +74,9 @@
             <Pane layoutX="558.0" layoutY="88.0" prefHeight="64.0" prefWidth="803.0" style="-fx-background-color: #C4C4C4#C4C4C4;">
                <children>
                   <ToggleButton fx:id="editToggle" layoutX="196.0" layoutY="16.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="62.0" text="Edit" />
-                  <Button fx:id="downloadButton" layoutX="437.0" layoutY="16.0" mnemonicParsing="false" text="Download" />
-                  <Button fx:id="commentsButton" layoutX="575.0" layoutY="14.0" mnemonicParsing="false" text="Agent Comments" />
-                  <Button fx:id="printButton" layoutX="981.0" layoutY="18.0" mnemonicParsing="false" text="Print" />
+                  <Button fx:id="downloadButton" layoutX="424.0" layoutY="16.0" mnemonicParsing="false" text="Download" />
+                  <Button fx:id="commentsButton" layoutX="533.0" layoutY="14.0" mnemonicParsing="false" text="View Agent Comments" />
+                  <Button fx:id="printButton" layoutX="717.0" layoutY="16.0" mnemonicParsing="false" text="Print" />
                </children>
             </Pane>
             <TabPane layoutX="693.0" layoutY="154.0" prefHeight="610.0" prefWidth="582.0" tabClosingPolicy="UNAVAILABLE">

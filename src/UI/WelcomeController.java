@@ -65,7 +65,7 @@ public class WelcomeController {
 
     @FXML
     public void civilSearch(ActionEvent event) throws IOException{
-        pageSwitch(event, "CivilSearch.fxml", civilButton);
+        pageSwitch(event, "CivilAdvSearch.fxml", civilButton);
     }
 
     @FXML
