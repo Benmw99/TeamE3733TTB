@@ -27,7 +27,7 @@ public class EntityToDBTest {
         try {
             db.dbInsert.insertCompany(123, "Buddweiser", "User", "Pass");
             ID_ONE = db.dbInsert.insertForm(one, man);
-            System.out.println(ID_ONE);
+            one.setTtbID(ID_ONE);
         } catch (SQLException e){
             System.out.println(e.toString());
         }
@@ -36,11 +36,23 @@ public class EntityToDBTest {
     @Test
     public void getFormTest(){
         Form same = db.dbSelect.getFormByTTB_ID(ID_ONE);
-      //  assertEquals(one.getTtbID(), same.getTtbID());
         assertEquals(one.getEmail(), same.getEmail());
         assertEquals(one.getFancifulName(), same.getFancifulName());
         assertEquals(one.getRepID(), same.getRepID());
         assertEquals(one.getBrandName(), same.getBrandName());
+    }
+    @Test
+    public void approvalTest(){
+        Approval approve = new Approval();
+        approve.approve("Jimmy", "NONE");
+        one.setApproval(approve);
+        one.setApprovalStatus(ApprovalStatus.Complete);
+        db.dbSelect.approveForm(one, one.getApproval());
+        Form app = db.dbSelect.getFormByTTB_ID(one.getTtbID());
+        assertEquals("Jimmy", app.getApproval().getAgentApprovalName());
+        assertEquals(one.getApproval().getTimestamp(), app.getApproval().getTimestamp());
+        assertEquals(one.getApproval().getExpDate(), app.getApproval().getExpDate());
+        assertEquals(one.getApprovalStatus(), app.getApprovalStatus());
     }
 
 }
