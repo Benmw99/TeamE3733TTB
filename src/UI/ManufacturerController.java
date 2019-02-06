@@ -42,6 +42,7 @@ public class ManufacturerController {
     Entities.Form form;
     static Entities.Form newForm;
 
+    static Form view;
     //ManHome
     @FXML
     SplitMenuButton menuSplitButton;
@@ -327,7 +328,7 @@ public class ManufacturerController {
                     int row = pos.getRow();
                     int col = pos.getColumn();
                     int ID = col1.getCellData(row);
-                    System.out.println(ID);
+                    displayForm(Database.getInstance().dbSelect.getFormByTTB_ID(ID));
                     @SuppressWarnings("rawtypes")
                     TableColumn column = pos.getTableColumn();
                     String val = column.getCellData(row).toString(); System.out.println("Selected Value, " + val + ", Column: " + col + ", Row: " + row);
@@ -342,8 +343,69 @@ public class ManufacturerController {
 
     }
 
-    protected void displayForm(){
+    protected void displayForm(Form form){
+        Man1Label.setText(form.getRepID());
+        if(!form.getBrewersPermit().isEmpty()){
+            Man2Label.setText(form.getBrewersPermit().get(0));
+        }
+        String dom;
+            if(form.getSource()){
+                dom = "IMPORTED";
+            } else {
+                dom = "DOMESTIC";
+            }
+        Man3Label.setText(dom);
+            if(form.getSerialNumber() != null) {
+                ManReview4Label1.setText(form.getSerialNumber().substring(0, 2)); //First 2
+                Man4Label2.setText(form.getSerialNumber().substring(2, 6)); //Rest
+            }
+            if(form.getAlcoholType() != null) {
+                Man5Label1.setText(form.getAlcoholType().toString()); //Type of Product
+            }
+            if(form.getWineFormItems() != null) {
+                Man5Label2.setText("" + form.getWineFormItems().getVintageYear()); //Vintage year
+                Man5Label3.setText(String.valueOf(form.getWineFormItems().getpH()));
+                if(form.getWineFormItems().getGrapeVarietal() != null){
+                    Man11Label.setText(form.getWineFormItems().getGrapeVarietal());
+                }
+                if(form.getWineFormItems().getAppellation() != null){
+                    Man12Label.setText(form.getWineFormItems().getAppellation());
+                }
+            }
+            if(form.getBrandName() != null) {
+                Man6Label.setText(form.getBrandName());
+            }
+            if(form.getFancifulName() != null) {
+                Man7Label.setText(form.getFancifulName());
+            }
+            if(form.getMailingAddress() != null) {
+                Man8Label.setText(form.getMailingAddress().getName());
+                Address add = form.getMailingAddress();
+                String addy = add.getName() + "\n" + add.getStreet() + "\n" + add.getCity() +
+                        "\n" + add.getState() + "\n" + add.getZip();
+                Man9Label.setText(addy);
+            }
+            if(form.getFormula() != null) {
+                Man10Label.setText(form.getFormula());
+            }
 
+            if(form.getPhoneNumber() != null) {
+                Man13Label.setText(form.getPhoneNumber());
+            }
+            if(form.getEmail() != null) {
+                Man14Label.setText(form.getEmail());
+            }
+//        Man15Label1.setText(); //TODO TYPE OF APPLICATION
+//        Man15Label2.setText();
+//        Man15Label3.setText(); //END TODO
+        if(form.getBlownBrandedEmbossedInfo() != null) {
+            Man16Label1.setText(form.getBlownBrandedEmbossedInfo());
+        }
+//        Man16Label2.setText(); //TODO TRANSLATION
+        if(form.getDateSubmitted() != null) {
+            Man17Label.setText(form.getDateSubmitted().toString());
+        }
+            Man20Label.setText(String.valueOf(form.getAlcoholContent()));
     }
 
     //FORM labels
