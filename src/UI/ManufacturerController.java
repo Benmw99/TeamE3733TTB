@@ -2,6 +2,7 @@ package UI;
 
 import DB.Database;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.*;
 
@@ -20,11 +22,13 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
 import Entities.*;
 import org.apache.derby.iapi.util.StringUtil;
 import org.omg.CORBA.DATA_CONVERSION;
 
+import static Entities.AlcoholType.*;
 import static javafx.collections.FXCollections.observableArrayList;
 
 
@@ -272,6 +276,9 @@ public class ManufacturerController {
     Button submitButton;
 
     @FXML
+    Button refresh;
+
+    @FXML
     TableView<Form> tableViewMan;
 
     @FXML
@@ -292,6 +299,25 @@ public class ManufacturerController {
     @FXML
     TableColumn<Form, String> col6;
 
+    public void tableView()  {
+        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
+        List<Form> forms = manufacturer.loadForms();
+
+
+        col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("approvalStatus"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("approval.timestamp"));
+        col5.setCellValueFactory(new PropertyValueFactory<>("approval.expDate"));
+        col6.setCellValueFactory(new PropertyValueFactory<>("approval.agentApprovalName"));
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        for (int i = 0; i < forms.size(); i++) {
+            tableValues.add(forms.get(i));
+        }
+        tableViewMan.setItems(tableValues);
+
+    }
 
 
 
@@ -570,6 +596,7 @@ public class ManufacturerController {
         this.manufacturer.submitForm(this.newForm);
         System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
+        tableView();
 
 
     }
