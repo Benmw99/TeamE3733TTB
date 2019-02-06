@@ -1,6 +1,6 @@
 package UI;
 
-import DB.Database;
+import DB.*;
 import javafx.collections.FXCollections;
 import javafx.collections.SetChangeListener;
 import javafx.event.ActionEvent;
@@ -628,7 +628,6 @@ public class ManufacturerController {
      * @throws IOException will throw exception if you try call in a scene that's not loaded
      */
     public void onlyNums(TextField field) throws IOException {
-
         field.getProperties().put("vkType", "numeric");
         field.setTextFormatter(new TextFormatter<>(c -> {
             if (c.isContentChange()) {
