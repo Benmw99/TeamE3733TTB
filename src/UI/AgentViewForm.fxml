@@ -10,6 +10,8 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -696,7 +698,7 @@
                            <content>
                               <AnchorPane>
                                  <children>
-                                    <ScrollPane pannable="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ScrollPane pannable="true" prefHeight="630.0" prefWidth="754.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <content>
                                         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="552.0" prefWidth="586.0">
                                              <children>
@@ -842,7 +844,15 @@
                         </Tab>
                         <Tab fx:id="commentTab" text="Comment">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView layoutX="6.0" layoutY="-4.0" prefHeight="560.0" prefWidth="749.0">
+                                      <columns>
+                                        <TableColumn prefWidth="150.0" text="Number" />
+                                        <TableColumn prefWidth="596.0" text="Comment" />
+                                      </columns>
+                                    </TableView>
+                                 </children></AnchorPane>
                            </content>
                         </Tab>
                         <Tab fx:id="feedbackTab" text="Give Form Feedback">
@@ -896,7 +906,6 @@
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="32.0" layoutY="176.0" prefHeight="582.0" prefWidth="635.0" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="176.0" />
       <VBox alignment="CENTER" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Form Reviewing Tools" textFill="WHITE">
