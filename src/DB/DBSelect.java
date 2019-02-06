@@ -558,7 +558,6 @@ public class DBSelect extends DatabaseAbstract {
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
             while(rs.next()){
-                System.out.println("BING");
                 if(rs.getBoolean("isMailing")){
                    Address mailing = new Address(rs.getString("City"), rs.getString("State"),
                            rs.getString("Zip_Code"), rs.getString("Street"), "NAME");

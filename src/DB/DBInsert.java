@@ -89,10 +89,10 @@ public class DBInsert extends DatabaseAbstract {
      * @param isPrimary True if and only if this is the primary permit entry for the associated form
      * @throws SQLException
      */
-    public void insertBrewersPermit(int Permit_No, int TTB_ID, Boolean isPrimary) throws SQLException{
+    public void insertBrewersPermit(String Permit_No, int TTB_ID, Boolean isPrimary) throws SQLException{
         String insertString = "INSERT INTO BREWERSPERMIT (Brewers_No, TTB_ID, isPrimary) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
-        statement.setInt(1, Permit_No);
+        statement.setString(1, Permit_No);
         statement.setInt(2, TTB_ID);
         statement.setBoolean(3, isPrimary);
         statement.execute();
@@ -287,6 +287,7 @@ public class DBInsert extends DatabaseAbstract {
         if(to_insert.getAlcoholType() == AlcoholType.Wine && to_insert.getWineFormItems() != null) {
             insertWine(TTB_ID, to_insert.getWineFormItems());
         }
+        insertBrewersPermit(to_insert.getBrewersPermit().get(0), TTB_ID, true);
             insertOtherInfo(TTB_ID, to_insert.getBlownBrandedEmbossedInfo());
         if(to_insert.getMailingAddress() != null) {
             insertMailingAddress(TTB_ID, to_insert.getMailingAddress());

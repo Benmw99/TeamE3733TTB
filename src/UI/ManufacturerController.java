@@ -632,7 +632,7 @@ public class ManufacturerController {
         this.newForm.getBrewersPermit().add(producerNumField.getText());
         ArrayList<String> los = new ArrayList<String>();
         los.add(producerNumField.getText());
-        form.setBrewersPermit(los);
+        newForm.setBrewersPermit(los);
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
         this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
         if(typeComboBox.getValue() == "Wine"){
