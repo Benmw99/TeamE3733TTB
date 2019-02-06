@@ -1,7 +1,11 @@
 package Entities;
 
 import DB.Database;
+import com.sun.tools.corba.se.idl.constExpr.Times;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -81,8 +85,11 @@ public class Agent implements IUser{
     }
 
     void approveForm(Form form, String qualifications) {
+        Approval app = new Approval();
+        form.setApproval(app);
         form.getApproval().approve(name, qualifications);
         form.setApprovalStatus(Complete);
+        form.getApproval().setAgentApprovalName(this.getName());
         DB.Database db = DB.Database.getInstance();
         db.dbSelect.approveForm(form,form.getApproval());
 
@@ -91,6 +98,13 @@ public class Agent implements IUser{
     void rejectForm(Form form) {
         form.setApprovalStatus(Incomplete);
         DB.Database db = DB.Database.getInstance();
+        Approval app = new Approval();
+        app.setPage1(Incomplete);
+        app.setPage2(Incomplete);
+        app.setPage3(Incomplete);
+        app.setPage4(Incomplete);
+        app.setAgentApprovalName(this.getName());
+        form.setApproval(app);
         db.dbSelect.approveForm(form, form.getApproval());
 
     }
