@@ -1,4 +1,3 @@
-import DB.SampleData;
 
 public class Main {
 
