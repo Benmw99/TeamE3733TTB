@@ -261,7 +261,6 @@ public class DBInsert extends DatabaseAbstract {
     //TODO APPROVE FORM --> Make UPDATE
 
     public int insertForm(Form to_insert, Manufacturer inserting) { //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
-        int type_num = 0;
         int TTB_ID = -1;
         try{
             String selstr =  "VALUES (NEXT VALUE FOR FORM_ID)";
@@ -282,7 +281,8 @@ public class DBInsert extends DatabaseAbstract {
                 Timestamp.from(Instant.now()),
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
-                type_num, to_insert.getAlcoholContent());
+                to_insert.getAlcoholType().toInt(),
+                to_insert.getAlcoholContent());
         if(to_insert.getAlcoholType() == AlcoholType.Wine && to_insert.getWineFormItems() != null) {
             insertWine(TTB_ID, to_insert.getWineFormItems());
         }
