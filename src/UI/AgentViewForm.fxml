@@ -866,7 +866,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Text>
-                                          <TextField layoutX="38.0" layoutY="53.0" prefHeight="481.0" prefWidth="513.0" />
+                                          <TextField alignment="TOP_LEFT" layoutX="38.0" layoutY="53.0" prefHeight="481.0" prefWidth="513.0" />
                                        </children>
                                     </Pane>
                                  </children></AnchorPane>
@@ -895,7 +895,7 @@
                                           </Text>
                                           <TextField layoutX="154.0" layoutY="52.0" prefHeight="27.0" prefWidth="241.0" />
                                           <TextField layoutX="154.0" layoutY="105.0" prefHeight="27.0" prefWidth="243.0" />
-                                          <TextField layoutX="155.0" layoutY="161.0" prefHeight="348.0" prefWidth="428.0" />
+                                          <TextField alignment="TOP_LEFT" layoutX="155.0" layoutY="161.0" prefHeight="348.0" prefWidth="428.0" />
                                        </children></Pane>
                                  </children></AnchorPane>
                            </content>
