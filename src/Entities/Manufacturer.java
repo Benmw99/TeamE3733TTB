@@ -3,6 +3,7 @@ package Entities;
 import DB.Database;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -87,7 +88,7 @@ public class Manufacturer implements IUser {
     }
 
     /**
-     *
+     * @author Michael
      * @return A List of forms corresponding to this manufacturer.
      */
     public List<Form> loadForms(){
@@ -100,6 +101,23 @@ public class Manufacturer implements IUser {
         return lof;
     }
 
+    /**
+     *  Commits a manufacturer to the database. Make sure the manufacturer is well-formed
+     *  with all fields initilized.
+     *  @author Michael
+     * @return true for a success, false for a failure
+     */
+    public  boolean registerCompany(){
+        DB.Database db = DB.Database.getInstance();
+        try {
+            db.dbInsert.insertCompany(manID, manName, login, password);
+        } catch (SQLException e){
+            e.printStackTrace();
+            System.out.println(e.toString());
+            return false;
+        }
+        return true;
+    }
 
 
     public SearchResult search(AdvancedSearch advancedSearch) {
