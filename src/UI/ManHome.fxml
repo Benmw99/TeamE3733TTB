@@ -550,7 +550,7 @@
                                                 <Insets left="15.0" right="15.0" />
                                              </HBox.margin>
                                           </Separator>
-                                          <Label fx:id="Agent15Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                          <Label fx:id="Man15Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
