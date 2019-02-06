@@ -626,25 +626,7 @@ public class AgentController {
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
 
-    public void tableView()  {
-        formTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            /**
-             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
-             */
-            public void handle(MouseEvent click) {
-                if (click.getClickCount() == 2) {
-                    @SuppressWarnings("rawtypes")
-                    TablePosition pos = formTable.getSelectionModel().getSelectedCells().get(0);
-                    int row = pos.getRow();
-                    int col = pos.getColumn();
-                    int ID = tTBIDColumn.getCellData(row);
-                }
-            }
-        });
-        ObservableList<Form> tableValues = FXCollections.observableArrayList();
 
-    }
 
     protected void displayForm(Form form){
         Agent1Label.setText("N/A");
@@ -779,8 +761,30 @@ public class AgentController {
     }
 
 
+    public void tableView()  {
+        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
+        formTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            /**
+             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
+             */
+            public void handle(MouseEvent click) {
+                if (click.getClickCount() == 2) {
+                    @SuppressWarnings("rawtypes")
+                    TablePosition pos = formTable.getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    int col = pos.getColumn();
+                    int ID = tTBIDColumn.getCellData(row);
+                    displayForm(Database.getInstance().dbSelect.getFormByTTB_ID(ID));
+                    currentForm = Database.getInstance().dbSelect.getFormByTTB_ID(ID);
+                    @SuppressWarnings("rawtypes")
+                    TableColumn column = pos.getTableColumn();
+                    String val = column.getCellData(row).toString(); System.out.println("Selected Value, " + val + ", Column: " + col + ", Row: " + row);
+                }
+            }
+        });
 
-
+    }
 
 
 
