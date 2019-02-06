@@ -89,10 +89,10 @@ public class DBInsert extends DatabaseAbstract {
      * @param isPrimary True if and only if this is the primary permit entry for the associated form
      * @throws SQLException
      */
-    public void insertBrewersPermit(int Permit_No, int TTB_ID, Boolean isPrimary) throws SQLException{
+    public void insertBrewersPermit(String Permit_No, int TTB_ID, Boolean isPrimary) throws SQLException{
         String insertString = "INSERT INTO BREWERSPERMIT (Brewers_No, TTB_ID, isPrimary) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
-        statement.setInt(1, Permit_No);
+        statement.setString(1, Permit_No);
         statement.setInt(2, TTB_ID);
         statement.setBoolean(3, isPrimary);
         statement.execute();
@@ -175,9 +175,36 @@ public class DBInsert extends DatabaseAbstract {
         statement.setInt(12, Alcohol_Type);
         statement.setFloat(13, (float)APV);
         statement.execute();
-
     }
 
+
+    public void insertForm(String Serial_Number, String Fanciful_Name, String Brand_Name, Boolean Source,
+                           Boolean Approve, String Rep_ID, String email, int Company_ID, Timestamp submitted, String name,
+                           String phone, int Alcohol_Type, double APV, String formula) throws SQLException {
+        String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
+                " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type, APV, Formula) " +
+                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //TODO MAKE REP ID AND FORMULA OPTIONAL
+        PreparedStatement statement = connection.prepareStatement(insertString);
+        statement.setString(1, Serial_Number);
+        statement.setString(2, Fanciful_Name);
+        statement.setString(3, Brand_Name);
+        statement.setBoolean(4, Source);
+        if(Approve == true){
+            statement.setInt(5,1);
+        } else {
+            statement.setInt(5, 2);
+        }
+        statement.setString(6, Rep_ID);
+        statement.setString(7, email);
+        statement.setInt(8, Company_ID);
+        statement.setTimestamp(9, submitted);
+        statement.setString(10, name);
+        statement.setString(11, phone);
+        statement.setInt(12, Alcohol_Type);
+        statement.setFloat(13, (float)APV);
+        statement.setString(14, formula);
+        statement.execute();
+    }
 
 
     /**
@@ -283,7 +310,8 @@ public class DBInsert extends DatabaseAbstract {
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
                 to_insert.getAlcoholType().toInt(),
-                to_insert.getAlcoholContent());
+                to_insert.getAlcoholContent(),
+                to_insert.getFormula());
         if(to_insert.getAlcoholType() == AlcoholType.Wine && to_insert.getWineFormItems() != null) {
             insertWine(TTB_ID, to_insert.getWineFormItems());
         }
@@ -295,6 +323,12 @@ public class DBInsert extends DatabaseAbstract {
             for (Address a : to_insert.getAddress()) {
                 insertOtherAddress(TTB_ID, a);
             }
+        }
+        if(to_insert.getBrewersPermit() != null) {
+            for (int i = 0; i < to_insert.getBrewersPermit().size(); i++) {
+                insertBrewersPermit(to_insert.getBrewersPermit().get(i), TTB_ID, false);
+            }
+
         }
         } catch (SQLException e ){
             System.out.println(e.toString());

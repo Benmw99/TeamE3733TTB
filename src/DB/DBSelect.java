@@ -510,6 +510,7 @@ public class DBSelect extends DatabaseAbstract {
                 form.setCompanyID(rs.getInt("Company_ID"));
                 form.setRepID(rs.getString("Rep_ID"));
                 form.setTtbID(TTB_ID);
+                form.setFormula(rs.getString("Formula"));
                 form.setAlcoholContent(rs.getFloat("APV"));
                 form.setEmail(rs.getString("Email"));
                 form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
@@ -558,7 +559,6 @@ public class DBSelect extends DatabaseAbstract {
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
             while(rs.next()){
-                System.out.println("BING");
                 if(rs.getBoolean("isMailing")){
                    Address mailing = new Address(rs.getString("City"), rs.getString("State"),
                            rs.getString("Zip_Code"), rs.getString("Street"), "NAME");
