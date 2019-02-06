@@ -58,7 +58,7 @@
             </Pane>
             <Pane layoutX="355.0" layoutY="88.0" prefHeight="64.0" prefWidth="1006.0" style="-fx-background-color: #C4C4C4#C4C4C4;">
                <children>
-                  <Button fx:id="approveAHButton" layoutX="289.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: #1F2020 #1F2020;" onAction="#approveForm" text="Approve Form" textFill="WHITE">
+                  <Button fx:id="approveAHButton" layoutX="289.0" layoutY="17.0" mnemonicParsing="false" onAction="#approveForm" style="-fx-background-color: #1F2020 #1F2020;" text="Approve Form" textFill="WHITE">
                      <font>
                         <Font name="Georgia" size="18.0" />
                      </font></Button>
@@ -66,7 +66,7 @@
                      <font>
                         <Font name="Georgia" size="18.0" />
                      </font></Button>
-                  <Button fx:id="rejectAHButton" layoutX="438.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: #1F2020 #1F2020;" onAction="#rejectForm" text="Reject Form" textFill="WHITE">
+                  <Button fx:id="rejectAHButton" layoutX="438.0" layoutY="17.0" mnemonicParsing="false" onAction="#rejectForm" style="-fx-background-color: #1F2020 #1F2020;" text="Reject Form" textFill="WHITE">
                      <font>
                         <Font name="Georgia" size="18.0" />
                      </font></Button>

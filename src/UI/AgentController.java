@@ -4,6 +4,7 @@ package UI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sun.management.resources.agent;
 
@@ -568,10 +570,12 @@ public class AgentController {
         if(currentAgent.authenticate()) {
             currentAgent.loadUser();
             pageSwitch(event, "AgentHome.fxml", loginButton);
+
             queue = currentAgent.getThreeForms();
 
             System.out.println(queue.size());
             currentForm = queue.get(0);
+
         }
         else {
             Alert loginFailure = new Alert(Alert.AlertType.WARNING);
@@ -580,11 +584,15 @@ public class AgentController {
         }
     }
 
-
+    @FXML
+    public void selectForm(ActionEvent event) throws IOException {
+        pageSwitch(event, "AgentHome.fxml", backButton);
+    }
 
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", backButton);
+
     }
 
     @FXML
@@ -612,10 +620,13 @@ public class AgentController {
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
+
         currentAgent.approveForm(currentForm, " ");
         queue.remove(currentForm);
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
+
+
 
     /* not needed for it. 1
     @FXML
@@ -649,6 +660,7 @@ public class AgentController {
         dateSubmittedColumn.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
         brandNameColumn.setCellValueFactory(new PropertyValueFactory<>("brandName"));
 
+        tableView();
 
         ObservableList<Form> tableValues = FXCollections.observableArrayList();
         for (int i = 0; i < queue.size(); i++) {
@@ -657,6 +669,34 @@ public class AgentController {
         formTable.setItems(tableValues);
         printAHButton.setDisable(false);
     }
+
+
+    public void tableView()  {
+        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
+        formTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            /**
+             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
+             */
+            public void handle(MouseEvent click) {
+                if (click.getClickCount() == 2) {
+                    @SuppressWarnings("rawtypes")
+                    TablePosition pos = formTable.getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    int col = pos.getColumn();
+                    int ID = tTBIDColumn.getCellData(row);
+//                    displayForm(Database.getInstance().dbSelect.getFormByTTB_ID(ID));
+                    currentForm = Database.getInstance().dbSelect.getFormByTTB_ID(ID);
+                    @SuppressWarnings("rawtypes")
+                    TableColumn column = pos.getTableColumn();
+                    String val = column.getCellData(row).toString(); System.out.println("Selected Value, " + val + ", Column: " + col + ", Row: " + row);
+                }
+            }
+        });
+
+    }
+
+
 
     @FXML
     public void setPage1(){

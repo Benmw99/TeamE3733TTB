@@ -71,13 +71,14 @@ public class DBInsert extends DatabaseAbstract {
      * @param Wine_Appellation The wine appellation field for the entry
      * @throws SQLException
      */
-    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH) throws SQLException{
-        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH) VALUES (?,?, ?, ?)";
+    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH, int Vintage) throws SQLException{
+        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH, Vintage) VALUES (?,?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setInt(1, TTB_ID);
         statement.setString(2, Grape_Varietals);
         statement.setString(3, Wine_Appellation);
         statement.setFloat(4, pH);
+        statement.setInt(5, Vintage);
         statement.execute();
     }
 
@@ -88,10 +89,10 @@ public class DBInsert extends DatabaseAbstract {
      * @param isPrimary True if and only if this is the primary permit entry for the associated form
      * @throws SQLException
      */
-    public void insertBrewersPermit(int Permit_No, int TTB_ID, Boolean isPrimary) throws SQLException{
+    public void insertBrewersPermit(String Permit_No, int TTB_ID, Boolean isPrimary) throws SQLException{
         String insertString = "INSERT INTO BREWERSPERMIT (Brewers_No, TTB_ID, isPrimary) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
-        statement.setInt(1, Permit_No);
+        statement.setString(1, Permit_No);
         statement.setInt(2, TTB_ID);
         statement.setBoolean(3, isPrimary);
         statement.execute();
@@ -286,6 +287,7 @@ public class DBInsert extends DatabaseAbstract {
         if(to_insert.getAlcoholType() == AlcoholType.Wine && to_insert.getWineFormItems() != null) {
             insertWine(TTB_ID, to_insert.getWineFormItems());
         }
+        insertBrewersPermit(to_insert.getBrewersPermit().get(0), TTB_ID, true);
             insertOtherInfo(TTB_ID, to_insert.getBlownBrandedEmbossedInfo());
         if(to_insert.getMailingAddress() != null) {
             insertMailingAddress(TTB_ID, to_insert.getMailingAddress());
@@ -304,7 +306,7 @@ public class DBInsert extends DatabaseAbstract {
     }
 
     public void insertWine(int TTB_ID, WineFormItems wine) throws SQLException{
-        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH());
+        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH(), wine.getVintageYear());
     }
 
     public void insertMailingAddress(int TTB_ID, Address to_insert) throws SQLException {

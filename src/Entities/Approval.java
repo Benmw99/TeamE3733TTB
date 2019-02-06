@@ -144,6 +144,7 @@ public class Approval {
         this.expDate = expirationDate;
 
     }
+
     boolean equals(Approval appr){
         return ((this.approved == appr.approved) &&
             this.timestamp.equals(appr.timestamp) &&
