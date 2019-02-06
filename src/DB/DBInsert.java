@@ -71,13 +71,14 @@ public class DBInsert extends DatabaseAbstract {
      * @param Wine_Appellation The wine appellation field for the entry
      * @throws SQLException
      */
-    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH) throws SQLException{
-        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH) VALUES (?,?, ?, ?)";
+    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH, int Vintage) throws SQLException{
+        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH, Vintage) VALUES (?,?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setInt(1, TTB_ID);
         statement.setString(2, Grape_Varietals);
         statement.setString(3, Wine_Appellation);
         statement.setFloat(4, pH);
+        statement.setInt(5, Vintage);
         statement.execute();
     }
 
@@ -261,7 +262,6 @@ public class DBInsert extends DatabaseAbstract {
     //TODO APPROVE FORM --> Make UPDATE
 
     public int insertForm(Form to_insert, Manufacturer inserting) { //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
-        int type_num = 0;
         int TTB_ID = -1;
         try{
             String selstr =  "VALUES (NEXT VALUE FOR FORM_ID)";
@@ -282,7 +282,8 @@ public class DBInsert extends DatabaseAbstract {
                 Timestamp.from(Instant.now()),
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
-                type_num, to_insert.getAlcoholContent());
+                to_insert.getAlcoholType().toInt(),
+                to_insert.getAlcoholContent());
         if(to_insert.getAlcoholType() == AlcoholType.Wine && to_insert.getWineFormItems() != null) {
             insertWine(TTB_ID, to_insert.getWineFormItems());
         }
@@ -304,7 +305,7 @@ public class DBInsert extends DatabaseAbstract {
     }
 
     public void insertWine(int TTB_ID, WineFormItems wine) throws SQLException{
-        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH());
+        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH(), wine.getVintageYear());
     }
 
     public void insertMailingAddress(int TTB_ID, Address to_insert) throws SQLException {

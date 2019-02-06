@@ -48,6 +48,7 @@ public class DBSelect extends DatabaseAbstract {
             rs = ps.executeQuery();
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return rs;
     }
@@ -120,6 +121,7 @@ public class DBSelect extends DatabaseAbstract {
             rset = statement.executeQuery();
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return rset;
     }
@@ -137,6 +139,7 @@ public class DBSelect extends DatabaseAbstract {
             man.setLogin(login);
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return man;
     }
@@ -154,6 +157,7 @@ public class DBSelect extends DatabaseAbstract {
             agent.setRepID(String.valueOf(rs.getInt("Agent_ID")));
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return agent;
     }
@@ -170,6 +174,7 @@ public class DBSelect extends DatabaseAbstract {
             rep.setRepID(String.valueOf(rs.getInt("Agent_ID")));
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return rep;
     }
@@ -297,6 +302,7 @@ public class DBSelect extends DatabaseAbstract {
             return true;
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
             return false;
         }
     }
@@ -403,6 +409,7 @@ public class DBSelect extends DatabaseAbstract {
             rs.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return result;
     }
@@ -427,6 +434,7 @@ public class DBSelect extends DatabaseAbstract {
             }
         }catch (SQLException e){
                 System.out.println(e.toString());
+                e.printStackTrace();
             }
         return list_of_ids;
         }
@@ -468,6 +476,7 @@ public class DBSelect extends DatabaseAbstract {
             }
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return form;
     }
@@ -497,6 +506,7 @@ public class DBSelect extends DatabaseAbstract {
                 form.setFancifulName(rs.getString("Fanciful_Name"));
                 form.setBrandName(rs.getString("Brand_Name"));
                 form.setSource(rs.getBoolean("Source"));
+                form.setSerialNumber(rs.getString("Serial_Number"));
                 form.setCompanyID(rs.getInt("Company_ID"));
                 form.setRepID(rs.getString("Rep_ID"));
                 form.setTtbID(TTB_ID);
@@ -548,9 +558,11 @@ public class DBSelect extends DatabaseAbstract {
             ps.setInt(1, TTB_ID);
             rs = ps.executeQuery();
             while(rs.next()){
+                System.out.println("BING");
                 if(rs.getBoolean("isMailing")){
                    Address mailing = new Address(rs.getString("City"), rs.getString("State"),
                            rs.getString("Zip_Code"), rs.getString("Street"), "NAME");
+                   form.setMailingAddress(mailing);
                    //TODO RESOLVE PROBLEMS WITH NAME
                 } else {
                     addresses.add(new Address(rs.getString("City"), rs.getString("State"),
@@ -562,6 +574,7 @@ public class DBSelect extends DatabaseAbstract {
 
         }catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return form;
     }
@@ -587,6 +600,7 @@ public class DBSelect extends DatabaseAbstract {
             ps.close();
     } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         while(!list_ID.isEmpty()){
             list_form.add(this.getFormByTTB_ID(list_ID.get(0)));
@@ -623,6 +637,7 @@ public class DBSelect extends DatabaseAbstract {
     } catch (SQLException e){
             System.out.println(e.toString());
             e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -654,6 +669,7 @@ public class DBSelect extends DatabaseAbstract {
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return results;
     }
@@ -677,6 +693,7 @@ public class DBSelect extends DatabaseAbstract {
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return results;
     }
@@ -697,6 +714,7 @@ public class DBSelect extends DatabaseAbstract {
             rs.close();
     } catch(SQLException e ){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return wine;
     }
@@ -708,18 +726,20 @@ public class DBSelect extends DatabaseAbstract {
             PreparedStatement ps = connection.prepareStatement(selStr);
             ps.setInt(1, TTB_ID);
             ResultSet rs = ps.executeQuery();
-            rs.next();
-            app.setAgentApprovalName(rs.getString("APPROVING_AGENT"));
-            app.setExpDate(rs.getTimestamp("Expiration"));
-            app.setTimestamp(rs.getTimestamp("Date"));
-            app.setPage1(ApprovalStatus.fromInt(rs.getInt("Page_1")));
-            app.setPage2(ApprovalStatus.fromInt(rs.getInt("Page_2")));
-            app.setPage3(ApprovalStatus.fromInt(rs.getInt("Page_3")));
-            app.setPage4(ApprovalStatus.fromInt(rs.getInt("Page_4")));
+            if(rs.next()) {
+                app.setAgentApprovalName(rs.getString("Approving_Agent"));
+                app.setExpDate(rs.getTimestamp("Expiration"));
+                app.setTimestamp(rs.getTimestamp("Date"));
+                app.setPage1(ApprovalStatus.fromInt(rs.getInt("Page_1")));
+                app.setPage2(ApprovalStatus.fromInt(rs.getInt("Page_2")));
+                app.setPage3(ApprovalStatus.fromInt(rs.getInt("Page_3")));
+                app.setPage4(ApprovalStatus.fromInt(rs.getInt("Page_4")));
+            }
             rs.close();
 
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
             System.out.println(e.getStackTrace());
         }
         return app;
@@ -763,6 +783,7 @@ public class DBSelect extends DatabaseAbstract {
             rs.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return results;
     }
