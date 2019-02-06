@@ -4,6 +4,7 @@ import DB.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.*;
 
@@ -272,6 +274,7 @@ public class ManufacturerController {
     @FXML
     Button uploadLabelButton;
 
+
     @FXML
     Button prevSectionMA4Button;
 
@@ -306,14 +309,31 @@ public class ManufacturerController {
         Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
         List<Form> forms = manufacturer.loadForms();
 
-
         col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
         col2.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
         col3.setCellValueFactory(new PropertyValueFactory<>("approvalStatus"));
         col4.setCellValueFactory(new PropertyValueFactory<>("approval.timestamp"));
         col5.setCellValueFactory(new PropertyValueFactory<>("approval.expDate"));
         col6.setCellValueFactory(new PropertyValueFactory<>("approval.agentApprovalName"));
-
+        tableViewMan.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            /**
+             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
+             */
+            public void handle(MouseEvent click) {
+                if (click.getClickCount() == 2) {
+                    @SuppressWarnings("rawtypes")
+                    TablePosition pos = tableViewMan.getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    int col = pos.getColumn();
+                    int ID = col1.getCellData(row);
+                    System.out.println(ID);
+                    @SuppressWarnings("rawtypes")
+                    TableColumn column = pos.getTableColumn();
+                    String val = column.getCellData(row).toString(); System.out.println("Selected Value, " + val + ", Column: " + col + ", Row: " + row);
+                }
+            }
+        });
         ObservableList<Form> tableValues = FXCollections.observableArrayList();
         for (int i = 0; i < forms.size(); i++) {
             tableValues.add(forms.get(i));
@@ -322,7 +342,9 @@ public class ManufacturerController {
 
     }
 
+    protected void displayForm(){
 
+    }
 
     //FORM labels
     @FXML
@@ -405,7 +427,6 @@ public class ManufacturerController {
     }
     @FXML
     public void manLogin(ActionEvent event) throws IOException {
-        currentForm = new Form();
         newForm = new Form();
 
         pageSwitch(event, "ManLogin.fxml", backButton);
