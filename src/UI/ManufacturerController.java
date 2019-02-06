@@ -2,7 +2,7 @@ package UI;
 
 import DB.Database;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.SetChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,10 +13,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import org.apache.commons.lang3.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
+import javafx.scene.input.MouseEvent;
 
 
 import java.io.IOException;
@@ -24,6 +29,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.function.UnaryOperator;
 import java.util.List;
 
 import Entities.*;
@@ -489,7 +495,6 @@ public class ManufacturerController {
     @FXML
     public void manLogin(ActionEvent event) throws IOException {
         newForm = new Form();
-
         pageSwitch(event, "ManLogin.fxml", backButton);
     }
     @FXML
@@ -570,6 +575,13 @@ public class ManufacturerController {
         stage.show();
     }
 
+    /**
+     *
+     * @param event still not used
+     * @param filename name of FXML file you wish to load
+     * @param b button
+     * @throws IOException
+     */
     public void menuSwitch(ActionEvent event, String filename, MenuButton b) throws IOException{
         Parent root;
         Stage stage;
@@ -686,7 +698,6 @@ public class ManufacturerController {
         //TODO
         // Add types of applications in future iterations
         //
-
         this.newForm.setBlownBrandedEmbossedInfo(additionalInfoField.getText());
         this.newForm.setDateSubmitted(Timestamp.from(Instant.now()));
         if(StringUtils.isBlank(this.newForm.getPhoneNumber()) || StringUtils.isBlank(this.newForm.getEmail())){
@@ -701,49 +712,142 @@ public class ManufacturerController {
         }
     }
 
-
+    /**
+     * Checks if the combobox is on wine and displays the appropriate text fields
+     *
+     * @throws IOException
+     */
     @FXML
-    public void checkWine(ActionEvent event) throws IOException{
+    public void checkWine() throws IOException{
         if (typeComboBox.getValue().equals("Wine")){
             vintageYearField.disableProperty().setValue(false);
             phField.disableProperty().setValue(false);
 
-            //System.out.println("GotHERE");
         }
         else{
             vintageYearField.disableProperty().setValue(true);
+            vintageYearField.setText("");
             phField.disableProperty().setValue(true);
+            phField.setText("");
         }
     }
 
+    /**
+     * Will disable and reset fields is they select the button "same as question 8"
+     *
+     * @throws IOException someone help me here, it throws errors, but works anyways
+     */
     @FXML
-    public void checkMail(ActionEvent event) throws IOException{
-        if (sameAddressRadioButton.selectedProperty().equals(true)){
-            name9Field.disableProperty().setValue(true);
-            state9ComboBox.disableProperty().setValue(true);
-            address9Field.disableProperty().setValue(true);
-            city9Field.disableProperty().setValue(true);
-            zip9Field.disableProperty().setValue(true);
+    public void checkMail() throws IOException{
+        if (sameAddressRadioButton.isSelected()){
+            name9Field.setEditable(false);
+            name9Field.setDisable(true);
+            name9Field.setText("");
+            state9ComboBox.setDisable(true);
+            state9ComboBox.setPromptText("State");
+            address9Field.setEditable(false);
+            address9Field.setText("");
+            address9Field.setDisable(true);
+            city9Field.setEditable(false);
+            city9Field.setText("");
+            city9Field.setDisable(true);
+            zip9Field.setEditable(false);
+            zip9Field.setText("");
+            zip9Field.setDisable(true);
         }
+
         else{
-            name9Field.disableProperty().setValue(false);
-            state9ComboBox.disableProperty().setValue(false);
-            address9Field.disableProperty().setValue(false);
-            city9Field.disableProperty().setValue(false);
-            zip9Field.disableProperty().setValue(false);
+            name9Field.setEditable(true);
+            name9Field.setDisable(false);
+            state9ComboBox.setDisable(false);
+            state9ComboBox.setPromptText("State");
+            address9Field.setEditable(true);
+            address9Field.setDisable(false);
+            city9Field.setEditable(true);
+            city9Field.setDisable(false);
+            zip9Field.setEditable(true);
+            zip9Field.setDisable(false);
         }
     }
+
     @FXML
     public void checkAndSubmitForm(ActionEvent event ) throws IOException{
         this.newForm.setAlcoholContent(Float.parseFloat(alcoholContentTextField.getText()));
-
         this.manufacturer.submitForm(this.newForm);
         System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
+    }
         tableView();
 
-
+    /**
+     * Sets the listener for each fx:id. Note, the listener only starts once an action occurs on one of the textfields.
+     * After the initial action, it should begin listening for all buttons
+     *
+     * @throws IOException
+     */
+    @FXML
+    public void limitManFieldsNum1() throws IOException{
+        onlyNums(repIDField);
+        onlyNums(producerNumField);
+        onlyNums(serialYearField);
+        onlyNums(serialDigitsField);
+        onlyNums(vintageYearField);
+        onlyNums(phField);
+    }
+    @FXML
+    public void limitManFieldsNum2() throws IOException{
+        checkZip(zip8Field);
+        checkZip(zip9Field);
     }
 
+    /**
+     * Begins a listener for a textfield that will make it impossible to enter letters
+     *
+     * @param field this is the fx:id for the textfield that you wish to only accept nums
+     * @throws IOException will throw exception if you try call in a scene that's not loaded
+     */
+    public void onlyNums(TextField field) throws IOException {
+        field.getProperties().put("vkType", "numeric");
+        field.setTextFormatter(new TextFormatter<>(c -> {
+            if (c.isContentChange()) {
+                if (c.getControlNewText().length() == 0) {
+                    return c;
+                }
+                try {
+                    Integer.parseInt(c.getControlNewText());
+                    return c;
+                } catch (NumberFormatException e) {
+                }
+                return null;
+            }
+            return c;
+        }));
+    }
 
+    /**
+     * Begins a listener for a textfield that will make it impossible to enter letters and numbers more than
+     *
+     * @param field this is the fx:id for the textfield that you wish to only accept nums
+     * @throws IOException someone help me here, it throws errors, but works anyways
+     */
+    public void checkZip(TextField field) throws IOException {
+
+        field.getProperties().put("vkType", "numeric");
+        field.setTextFormatter(new TextFormatter<>(c -> {
+            if (c.isContentChange()) {
+                if (c.getControlNewText().length() == 0) {
+                    return c;
+                }
+                try {
+                    Integer.parseInt(c.getControlNewText());
+                    if((c.getControlNewText().length()) < 10)
+                    return c;
+                } catch (NumberFormatException e) {
+                }
+
+                return null;
+            }
+            return c;
+        }));
+    }
 }

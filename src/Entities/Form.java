@@ -1,6 +1,6 @@
 package Entities;
 
-
+import Entities.*;
 import java.sql.Array;
 import java.sql.Timestamp;
 import java.util.ArrayList;
