@@ -88,7 +88,6 @@ public class Agent implements IUser{
         form.setApproval(app);
         form.getApproval().approve(name, qualifications);
         form.setApprovalStatus(Complete);
-        form.getApproval().setAgentApprovalName(this.getName());
         DB.Database db = DB.Database.getInstance();
         db.dbSelect.approveForm(form,form.getApproval());
 

@@ -307,7 +307,6 @@ public class ManufacturerController {
     TableColumn<Form, String> col6;
 
     public void tableView()  {
-        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
         List<Form> forms = manufacturer.loadForms();
 
         col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
