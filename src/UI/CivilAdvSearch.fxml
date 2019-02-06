@@ -30,7 +30,7 @@
                 <TableColumn fx:id="col1" prefWidth="100.0" text="TTB ID#" />
                 <TableColumn fx:id="col2" prefWidth="100.0" text="Type" />
                 <TableColumn fx:id="col3" prefWidth="100.0" text="Brand Name" />
-                <TableColumn fx:id="col4" prefWidth="100.0" text="Manufacturer" />
+                <TableColumn fx:id="col4" prefWidth="100.0" text="Serial Number" />
               </columns>
             </TableView>
          </children>
