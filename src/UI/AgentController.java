@@ -612,6 +612,7 @@ public class AgentController {
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
+
         currentAgent.approveForm(currentForm, " ");
         queue.remove(currentForm);
         pageSwitch(event, "AgentHome.fxml", backButton);

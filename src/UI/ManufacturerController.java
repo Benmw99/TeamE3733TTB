@@ -51,7 +51,7 @@ public class ManufacturerController {
     SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
-    TextField searchMHField;
+    static TextField searchMHField;
 
     @FXML
     Button logOutButton;
@@ -275,7 +275,6 @@ public class ManufacturerController {
     @FXML
     Button uploadLabelButton;
 
-
     @FXML
     Button prevSectionMA4Button;
 
@@ -307,7 +306,6 @@ public class ManufacturerController {
     TableColumn<Form, String> col6;
 
     public void tableView()  {
-        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
         List<Form> forms = manufacturer.loadForms();
 
         col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
@@ -606,7 +604,6 @@ public class ManufacturerController {
         if(this.newForm == null) {
             this.newForm = new Form();
         }
-
         this.newForm.setRepID(repIDField.getText());
         this.newForm.getBrewersPermit().add(producerNumField.getText());
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
@@ -634,8 +631,7 @@ public class ManufacturerController {
             currentFormPage = 2;
             pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
         }
-
-        }
+    }
 
 
     // Checks through the second page of the full TTB application to see if any of the text fields are blank.

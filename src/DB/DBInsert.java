@@ -71,13 +71,14 @@ public class DBInsert extends DatabaseAbstract {
      * @param Wine_Appellation The wine appellation field for the entry
      * @throws SQLException
      */
-    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH) throws SQLException{
-        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH) VALUES (?,?, ?, ?)";
+    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH, int Vintage) throws SQLException{
+        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH, Vintage) VALUES (?,?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setInt(1, TTB_ID);
         statement.setString(2, Grape_Varietals);
         statement.setString(3, Wine_Appellation);
         statement.setFloat(4, pH);
+        statement.setInt(5, Vintage);
         statement.execute();
     }
 
@@ -304,7 +305,7 @@ public class DBInsert extends DatabaseAbstract {
     }
 
     public void insertWine(int TTB_ID, WineFormItems wine) throws SQLException{
-        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH());
+        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH(), wine.getVintageYear());
     }
 
     public void insertMailingAddress(int TTB_ID, Address to_insert) throws SQLException {
