@@ -495,7 +495,6 @@ public class ManufacturerController {
         //TODO
         // Add types of applications in future iterations
         //
-
         this.newForm.setBlownBrandedEmbossedInfo(additionalInfoField.getText());
         this.newForm.setDateSubmitted(Timestamp.from(Instant.now()));
         if(StringUtils.isBlank(this.newForm.getPhoneNumber()) || StringUtils.isBlank(this.newForm.getEmail())){
@@ -552,6 +551,7 @@ public class ManufacturerController {
             zip9Field.setText("");
             zip9Field.setDisable(true);
         }
+
         else{
             name9Field.setEditable(true);
             name9Field.setDisable(false);
@@ -646,5 +646,4 @@ public class ManufacturerController {
             return c;
         }));
     }
-
 }
