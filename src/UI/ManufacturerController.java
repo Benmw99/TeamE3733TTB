@@ -30,6 +30,7 @@ import java.util.function.UnaryOperator;
 
 import Entities.*;
 import org.apache.derby.iapi.util.StringUtil;
+import org.omg.CORBA.DATA_CONVERSION;
 
 import javax.xml.soap.Text;
 
@@ -280,6 +281,29 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
+    @FXML
+    TableView<Form> tableViewMan;
+
+    @FXML
+    TableColumn<Form, Integer> col1;
+
+    @FXML
+    TableColumn<Form, Timestamp> col2;
+
+    @FXML
+    TableColumn<Form, String> col3;
+
+    @FXML
+    TableColumn<Form, ApprovalStatus> col4;
+
+    @FXML
+    TableColumn<Form, Timestamp> col5;
+
+    @FXML
+    TableColumn<Form, String> col6;
+
+
+
 
     @FXML
     protected void initialize(){
@@ -402,6 +426,7 @@ public class ManufacturerController {
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
         if(this.manufacturer.authenticate()){
             pageSwitch(event, "ManHome.fxml", loginButton);
+            this.manufacturer = Database.getInstance().dbSelect.getManufacturer(this.manufacturer.getLogin());
         }
         else{
             //pageSwitch(event, "ManHome.fxml", loginButton);
@@ -417,27 +442,28 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the second page
     @FXML
     public void checkBlanksPage1(ActionEvent event) throws IOException{
+        // THIS STILL RETURNS NULL POINTERS. JUST WANT TO PUSH *ENTER* BUTTON FUNCTIONALITY
         this.newForm = new Form();
+        //if(this.newForm == null) {
+        //    this.newForm = new Form();
+        //}
         this.newForm.setRepID(repIDField.getText());
-        ArrayList<String> arr = new ArrayList<String>();
-        arr.add(producerNumField.getText());
-        this.newForm.setBrewersPermit(arr);
+        this.newForm.getBrewersPermit().add(producerNumField.getText());
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
         this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
         if(typeComboBox.getValue() == "Wine"){
-            newForm.setAlcoholType(AlcoholType.Wine);
+            this.newForm.setAlcoholType(AlcoholType.Wine);
             WineFormItems wine = new WineFormItems();
             wine.setVintageYear(Integer.valueOf(vintageYearField.getText()));
             wine.setpH(Float.valueOf(phField.getText()));
-            newForm.setWineFormItems(wine);
+            this.newForm.setWineFormItems(wine);
         } else if (typeComboBox.getValue() == "Distilled Spirits"){
-            newForm.setAlcoholType(AlcoholType.DistilledLiquor);
+            this.newForm.setAlcoholType(AlcoholType.DistilledLiquor);
         } else {
-            newForm.setAlcoholType(AlcoholType.MaltBeverage);
+            this.newForm.setAlcoholType(AlcoholType.MaltBeverage);
         }
         this.newForm.setBrandName(brandField.getText());
-
-        if( StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
+        if(StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
             System.out.println("I'm stuck thinking things aren't filled in");
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
@@ -445,7 +471,7 @@ public class ManufacturerController {
             missingTextFieldPage1.show();
         }
         else{
-            //System.out.println("I need to go to the second page");
+            System.out.println("I need to go to the second page");
             pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
         }
     }

@@ -247,10 +247,11 @@ public class DBSelect extends DatabaseAbstract {
     public boolean downloadResults(String query, AdvancedSearch search) { //TODO GET RID OF DUPLICATE CODE
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY ("+ query +",?,?,?,?)";
+        String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY (?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(download);
-            int set = 1;
+            ps.setString(1, query.replaceFirst("TTB_ID", "TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Alcohol_Type, APV"));
+            int set = 2;
             if (search.source != null) {
                 ps.setBoolean(set, search.source);
                 set += 1;
@@ -357,7 +358,6 @@ public class DBSelect extends DatabaseAbstract {
         try {
             PreparedStatement statement = connection.prepareStatement(baseString);
 
-            //Manually sets those question marks
             int set = 1;
             if (as.source != null) {
                 statement.setBoolean(set, as.source);
@@ -413,7 +413,7 @@ public class DBSelect extends DatabaseAbstract {
      * @param man The manufacturer who has logged in to look at their forms
      * @return A list of Ints representing their TTB_ID's
      */
-    public List<Integer> getTUB_IDblManufacturer(Manufacturer man){
+    public List<Integer> getTTB_IDbyManufacturer(Manufacturer man){
         String selString = "SELECT TTB_ID FROM FORM WHERE Company_ID=? ";
         int comp_id = man.manID;
         List<Integer> list_of_ids= new ArrayList<Integer>();
@@ -497,16 +497,17 @@ public class DBSelect extends DatabaseAbstract {
                 form.setFancifulName(rs.getString("Fanciful_Name"));
                 form.setBrandName(rs.getString("Brand_Name"));
                 form.setSource(rs.getBoolean("Source"));
+                form.setCompanyID(rs.getInt("Company_ID"));
                 form.setRepID(rs.getString("Rep_ID"));
                 form.setTtbID(TTB_ID);
                 form.setEmail(rs.getString("Email"));
                 form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
                 form.setApplicantName(rs.getString("Applicant_Name"));
                 form.setPhoneNumber(rs.getString("Phone"));
-                if (rs.getInt("Alcohol_Type") == 1) {
+                if (rs.getInt("Alcohol_Type") == AlcoholType.Wine.toInt()) {
                     type = AlcoholType.Wine;
                     form.setWineFormItems(this.getWineBlock(TTB_ID));
-                } else if (rs.getInt("Alcohol_Type") == 2) {
+                } else if (rs.getInt("Alcohol_Type") == AlcoholType.MaltBeverage.toInt()) {
                     type = AlcoholType.MaltBeverage;
                 } else {
                     type = AlcoholType.DistilledLiquor;

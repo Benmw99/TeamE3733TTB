@@ -446,7 +446,7 @@ public class AgentController {
     Button printAVLButton;
 
     @FXML
-    CheckBox ttbIDcheckBox1;
+    Label appNum1;
 
     @FXML
     Label  appStat1;
@@ -458,7 +458,7 @@ public class AgentController {
     Label appDate1;
 
     @FXML
-    CheckBox ttbIDcheckBox2;
+    Label appNum2;
 
     @FXML
     Label appStat2;
@@ -470,7 +470,7 @@ public class AgentController {
     Label appDate2;
 
     @FXML
-    CheckBox ttbIDcheckBox3;
+    Label appNum3;
 
     @FXML
     Label appStat3;
@@ -533,30 +533,20 @@ public class AgentController {
     @FXML
     Label Agent20Label;
 
+    @FXML
+    TableView<Form> formTable;
+    @FXML
+    TableColumn<Form, Integer> tTBIDColumn;
+    @FXML
+    TableColumn<Form, Timestamp> dateSubmittedColumn;
+    @FXML
+    TableColumn<Form, String> brandNameColumn;
 
 
-    static private Form currentForm;
-    static private Agent currentAgent;
+
+    private Form currentForm;
+    private Agent currentAgent;
     private List<Form> queue;
-
-    /*
-    Database db = Database.getInstance();
-
-
-    db.tableBuilder.resetDB();
-
-    one = new Form(AlcoholType.DistilledLiquor,"BUDDY", (float) 5.6);
-       one.setPhoneNumber("6035026034");
-       one.setEmail("Jim@jimmail.com");
-    Manufacturer man = new Manufacturer("sysadmin@swollenjams.com", "PASS");
-       man.setManID(123);
-       try {
-             db.dbInsert.insertCompany(123, "Buddweiser", "User", "Pass");
-             ID_ONE = db.dbInsert.insertForm(one, man);
-             one.setTtbID(ID_ONE);
-        } catch (SQLException e){
-            System.out.println(e.toString());
-        }*/
 
 
     @FXML
@@ -618,45 +608,15 @@ public class AgentController {
 
     @FXML
     public void getNewQueue(ActionEvent event) throws IOException{
-        // Also need to figure out to clean this up in order to only
-        // call one set of "set labels" each
-        queue = currentAgent.getThreeForms();
-        for(int i = 0; i < queue.size(); i++){
+        DB.Database db = DB.Database.getInstance();
 
-           // int tTBID = queue.get(i).getTtbID();
-            Timestamp approvalDate = queue.get(i).getDateSubmitted();
-            ApprovalStatus approvalStatus = queue.get(i).getApprovalStatus();
-            int twoYears = ((24*60)*(365*2)); // length of a year in minutes
-            Timestamp expirationDate = new Timestamp(approvalDate.getTime() + twoYears);
+        queue = this.currentAgent.getThreeForms();
 
-            if(i == 0) {
-               // appNum1.setText(Integer.toString(tTBID));       // Allows for us to print out the TTB ID number,
-                appStat1.setText(approvalDate.toString());      // the approval status, the date on which the
-                appDate1.setText(approvalStatus.toString());    // form was approved, and the expiration date
-                expirDate1.setText(expirationDate.toString());  // which we have decided is two years from the
-            }                                                   // approval date
-            if(i == 1){
-               // appNum2.setText(Integer.toString(tTBID));
-                appStat2.setText(approvalDate.toString());
-                appDate2.setText(approvalStatus.toString());
-                expirDate2.setText(expirationDate.toString());
-            }
-            if(i == 2){
-               // appNum3.setText(Integer.toString(tTBID));
-                appStat3.setText(approvalDate.toString());
-                appDate3.setText(approvalStatus.toString());
-                expirDate3.setText(expirationDate.toString());
-            }
-
-        }
-        //pageSwitch(event, "AgentHome.fxml:, getNewQueueButton)
     }
 
     @FXML
     public void setPage1(){
-        currentForm = new Form();
 
-        // need to set all the values for the first page of the application
         Agent1Label.setText(currentForm.getRepID());
         ArrayList<String> arr = currentForm.getBrewersPermit();
         arr.add(producerNumField.getText());
