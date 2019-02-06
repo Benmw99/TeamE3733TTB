@@ -574,7 +574,7 @@ public class AgentController {
             queue = currentAgent.getThreeForms();
 
             System.out.println(queue.size());
-            currentForm = queue.get(0);
+         //   currentForm = queue.get(0);
 
         }
         else {
@@ -626,7 +626,29 @@ public class AgentController {
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
 
+    public void tableView()  {
+        formTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            /**
+             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
+             */
+            public void handle(MouseEvent click) {
+                if (click.getClickCount() == 2) {
+                    @SuppressWarnings("rawtypes")
+                    TablePosition pos = formTable.getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    int col = pos.getColumn();
+                    int ID = tTBIDColumn.getCellData(row);
+                    System.out.println(ID);
+                    currentForm = Database.getInstance().dbSelect.getFormByTTB_ID(ID);
+                    displayForm(currentForm);
 
+                }
+            }
+        });
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+
+    }
 
     protected void displayForm(Form form){
         Agent1Label.setText("N/A");
@@ -647,11 +669,14 @@ public class AgentController {
         Agent13Label.setText("N/A");
         Agent14Label.setText("N/A");
         Agent15Label1.setText("N/A");
+        Agent15Label2.setText("N/A");
         Agent16Label1.setText("N/A");
         Agent16Label2.setText("N/A");
         Agent17Label.setText("N/A");
         Agent20Label.setText("N/A");
         Agent1Label.setText(form.getRepID());
+        System.out.println(form.getBrandName());
+        System.out.println(form.getEmail());
         if(!form.getBrewersPermit().isEmpty()){
             Agent2Label.setText(form.getBrewersPermit().get(0));
         }
@@ -761,36 +786,14 @@ public class AgentController {
     }
 
 
-    public void tableView()  {
-        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
-        formTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            /**
-             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
-             */
-            public void handle(MouseEvent click) {
-                if (click.getClickCount() == 2) {
-                    @SuppressWarnings("rawtypes")
-                    TablePosition pos = formTable.getSelectionModel().getSelectedCells().get(0);
-                    int row = pos.getRow();
-                    int col = pos.getColumn();
-                    int ID = tTBIDColumn.getCellData(row);
-                    displayForm(Database.getInstance().dbSelect.getFormByTTB_ID(ID));
-                    currentForm = Database.getInstance().dbSelect.getFormByTTB_ID(ID);
-                    @SuppressWarnings("rawtypes")
-                    TableColumn column = pos.getTableColumn();
-                    String val = column.getCellData(row).toString(); System.out.println("Selected Value, " + val + ", Column: " + col + ", Row: " + row);
-                }
-            }
-        });
 
-    }
+
 
 
 
     @FXML
     public void setPage1(){
-
+/*
         Agent1Label.setText(currentForm.getRepID());
         ArrayList<String> arr = currentForm.getBrewersPermit();
         arr.add(producerNumField.getText());
@@ -799,26 +802,26 @@ public class AgentController {
         AgentReview4Label1.setText(currentForm.getSerialNumber());
         Agent5Label1.setText(currentForm.getAlcoholType().toString());
         Agent6Label.setText(currentForm.getBrandName());
-    }
+   */ }
 
     public void setPage2(){
-        Agent7Label.setText(currentForm.getFancifulName());
+/*        Agent7Label.setText(currentForm.getFancifulName());
         Agent8Label.setText(currentForm.getAddress().toString());
         Agent9Label.setText(currentForm.getMailingAddress().toString());
         Agent10Label.setText(currentForm.getFormula());
         Agent11Label.setText(currentForm.getWineFormItems().getGrapeVarietal());
         Agent12Label.setText(currentForm.getWineFormItems().getAppellation());
-    }
+  */  }
 
     public void setPage3(){
-        Agent13Label.setText(currentForm.getPhoneNumber());
+    /*    Agent13Label.setText(currentForm.getPhoneNumber());
         Agent14Label.setText(currentForm.getEmail());
         Agent16Label1.setText(currentForm.getBlownBrandedEmbossedInfo());
         Agent16Label2.setText(currentForm.getDateSubmitted().toString());
-    }
+*/    }
 
     public void setPage4(){
-        Agent18Label.setText("" + currentForm.getAlcoholContent());
+  //      Agent18Label.setText("" + currentForm.getAlcoholContent());
     }
 
 }
