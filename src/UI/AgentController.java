@@ -544,9 +544,10 @@ public class AgentController {
 
 
 
-    private Form currentForm;
-    private Agent currentAgent;
-    private List<Form> queue;
+    static private Form currentForm;
+    static private Agent currentAgent;
+    static private List<Form> queue;
+    static private int queueIndex;
 
 
     @FXML
@@ -570,16 +571,22 @@ public class AgentController {
     @FXML
     public void agentViewForm(ActionEvent event) throws IOException {
         //TODO:have to load selected form somehow
-        pageSwitch(event, "AgentViewForm.fxml", backButton);
+
     }
     @FXML
     public void rejectForm(ActionEvent event) throws IOException {
-//        this.currentForm.reject(this.currentAgent.getName());
+        this.currentAgent.rejectForm(this.currentForm);
+        this.queue.remove(this.currentForm);
+//        this.queue.remove(this.queueIndex);
+        //TODO: update current list
         pageSwitch(event, "AgentHome.fxml", backButton);
+
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
-//        this.currentForm.approve(this.currentAgent.getName());
+
+        this.currentAgent.approveForm(this.currentForm, " "); //TODO: this.thetextfromthenotyetimplementedqualificationsfield);
+        this.queue.remove(this.currentForm);
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
 
