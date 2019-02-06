@@ -701,7 +701,6 @@ public class ManufacturerController {
             this.newForm.getWineFormItems().setGrapeVarietal(grapeVarField.getText());
             this.newForm.getWineFormItems().setAppellation(wineAppField.getText());
         }
-
         if(StringUtils.isBlank(this.newForm.getFancifulName()) || StringUtils.isBlank(this.newForm.getFormula())){
             Alert missingTextFieldPage2 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage2.setTitle("Missing Text Field");
