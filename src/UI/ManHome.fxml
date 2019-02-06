@@ -3,9 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -27,23 +25,14 @@
          <children>
             <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="89.0" prefWidth="1367.0" style="-fx-background-color: #B5072C#B5072C;">
                <children>
-                  <SplitMenuButton fx:id="menuSplitButton" layoutX="76.0" layoutY="14.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="116.0" style="-fx-background-color: #B5072C#B5072C;" text="Menu">
-                    <items>
-                      <MenuItem mnemonicParsing="false" onAction="#manApp1" text="Submit Application" />
-                      <MenuItem mnemonicParsing="false" text="Exit to Welcome Page" />
-                    </items>
-                     <font>
-                        <Font name="Palatino" size="18.0" />
-                     </font>
-                  </SplitMenuButton>
                   <Text fill="WHITE" layoutX="547.0" layoutY="53.0" strokeWidth="0.0" text="My Applications">
                      <font>
                         <Font name="Palatino" size="36.0" />
                      </font>
                   </Text>
-                  <Button fx:id="backButton" layoutX="4.0" layoutY="-2.0" mnemonicParsing="false" onAction="#manLogin" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #B5072C#B5072C #B5072C#B5072C;" text="&lt;" textFill="WHITE">
+                  <Button fx:id="logOutButton" layoutX="27.0" layoutY="28.0" mnemonicParsing="false" onAction="#logOut" prefWidth="99.0" text="Log Out">
                      <font>
-                        <Font name="Palatino" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Button>
                </children>
@@ -74,9 +63,9 @@
             </Pane>
             <Pane layoutX="558.0" layoutY="88.0" prefHeight="64.0" prefWidth="803.0" style="-fx-background-color: #C4C4C4#C4C4C4;">
                <children>
-                  <ToggleButton fx:id="editToggle" layoutX="196.0" layoutY="16.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="62.0" text="Edit" />
-                  <Button fx:id="downloadButton" layoutX="424.0" layoutY="16.0" mnemonicParsing="false" text="Download" />
-                  <Button fx:id="commentsButton" layoutX="533.0" layoutY="14.0" mnemonicParsing="false" text="View Agent Comments" />
+                  <ToggleButton fx:id="editToggle" disable="true" layoutX="196.0" layoutY="16.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="62.0" text="Edit" />
+                  <Button fx:id="downloadButton" disable="true" layoutX="425.0" layoutY="18.0" mnemonicParsing="false" text="Download" />
+                  <Button fx:id="commentsButton" disable="true" layoutX="533.0" layoutY="18.0" mnemonicParsing="false" text="View Agent Comments" />
                   <Button fx:id="printButton" layoutX="717.0" layoutY="16.0" mnemonicParsing="false" text="Print" />
                </children>
             </Pane>

@@ -51,6 +51,9 @@ public class ManufacturerController {
     TextField searchMHField;
 
     @FXML
+    Button logOutButton;
+
+    @FXML
     Button addAppButton;
 
     @FXML
@@ -321,6 +324,60 @@ public class ManufacturerController {
 
 
 
+    //FORM labels
+    @FXML
+    Label Man1Label;
+    @FXML
+    Label Man2Label;
+    @FXML
+    Label Man3Label;
+    @FXML
+    Label ManReview4Label1;
+    @FXML
+    Label Man4Label2;
+    @FXML
+    Label Man5Label1;
+    @FXML
+    Label Man5Label2;
+    @FXML
+    Label Man5Label3;
+    @FXML
+    Label Man6Label;
+    @FXML
+    Label Man7Label;
+    @FXML
+    Label Man8Label;
+    @FXML
+    Label Man9Label;
+    @FXML
+    Label Man10Label;
+    @FXML
+    Label Man11Label;
+    @FXML
+    Label Man12Label;
+    @FXML
+    Label Man13Label;
+    @FXML
+    Label Man14Label;
+    @FXML
+    Label Man15Label1;
+    @FXML
+    Label Man15Label2;
+    @FXML
+    Label Man15Label3;
+    @FXML
+    Label Man16Label1;
+    @FXML
+    Label Man16Label2;
+    @FXML
+    Label Man17Label;
+    @FXML
+    Label Man18Label;
+    @FXML
+    Label Man20Label;
+
+
+
     @FXML
     protected void initialize(){
         if(this.currentFormPage == 1){
@@ -329,6 +386,11 @@ public class ManufacturerController {
     }
 
 
+    @FXML
+    public void logOut(ActionEvent event) throws IOException {
+        pageSwitch(event, "WelcomePage.fxml", logOutButton);
+        currentFormPage = 1;
+    }
 
     @FXML
     public void manApp1(ActionEvent event) throws IOException {
