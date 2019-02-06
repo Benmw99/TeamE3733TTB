@@ -188,10 +188,10 @@ public class CivilController {
                 Civ11Label.setText(selectedForm.getWineFormItems().getGrapeVarietal());
                 Civ12Label.setText(selectedForm.getWineFormItems().getAppellation());
             } else {
-                Civ5Label2.setText("NA");
-                Civ5Label3.setText("NA");
-                Civ11Label.setText("NA");
-                Civ12Label.setText("NA");
+                Civ5Label2.setText("N/A");
+                Civ5Label3.setText("N/A");
+                Civ11Label.setText("N/A");
+                Civ12Label.setText("N/A");
             }
             Civ6Label.setText(selectedForm.getBrandName());
             Civ7Label.setText(selectedForm.getFancifulName());
