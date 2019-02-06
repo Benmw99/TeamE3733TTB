@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.ArrayList;
 
 public class SampleData {
     Database db;
@@ -25,17 +26,21 @@ public class SampleData {
         Form one = new Form();
         one.setCompanyID(123);
         one.setBrandName("B");
-        one.setFancifulName("");
+        one.setFancifulName("Wines Real");
         one.setAlcoholType(AlcoholType.Wine);
         one.setAlcoholContent((float)9.99);
         Address addy = new Address("NICE", "CA", "94564", "4900 BARTLETT SPRINGS RD", "NICE WINE COMPANY, INC.");
         one.setMailingAddress(addy);
-        one.getBrewersPermit().add("BWN-CA-21173");
+        ArrayList<String> brew = one.getBrewersPermit();
+        brew.add("BWN-CA-21173");
+        one.setBrewersPermit(brew);
         one.setEmail("nomail@nomail.com");
         one.setBlownBrandedEmbossedInfo("NONE");
+        one.setPhoneNumber("111-111-1111");
         one.setSource(false);
+        one.setFormula("213ABA");
         WineFormItems onewine = new WineFormItems();
-        onewine.setAppellation(" ");
+        onewine.setAppellation("London");
         onewine.setGrapeVarietal("Chardonnay");
         onewine.setpH((float)7.7);
         onewine.setVintageYear(2017);
@@ -73,7 +78,7 @@ public class SampleData {
         three.setAlcoholType(AlcoholType.Wine);
         three.setAlcoholContent((float)9.99);
         addy = new Address("NAPA", "CA", "94559", "1443 MAIN ST SUITE 122 ", "GRATEFUL PALATE, PETIT HAMEAU, LLC");
-                three.setMailingAddress(addy);
+        three.setMailingAddress(addy);
         three.getBrewersPermit().add("CA-I-16739");
         three.setEmail("slomail@nomail.com");
         three.setBlownBrandedEmbossedInfo("Nada");
@@ -82,7 +87,7 @@ public class SampleData {
         WineFormItems threewine = new WineFormItems();
         threewine.setAppellation(" ");
         threewine.setGrapeVarietal(" ");
-                threewine.setpH((float)4.7);
+        threewine.setpH((float)4.7);
         threewine.setVintageYear(2018);
         three.setWineFormItems(threewine);
         three.setDateSubmitted(Timestamp.from(Instant.now()));
