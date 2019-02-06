@@ -747,7 +747,10 @@
                                                                         <Font name="Georgia" size="36.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indicate the source of the product by checking the appropriate box." wrappingWidth="451.8836669921875" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indicate the source of the product by checking the appropriate box." wrappingWidth="451.8836669921875">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="13.0" />
+                                                                     </font></Text>
                                                                </children>
                                                             </HBox>
                                                          </children>
@@ -763,7 +766,10 @@
                                                                         <Font name="Georgia" size="36.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You must assign a sequential serial number beginning with the last two digits of the current calendar year to each application and its duplicate, not to exceed 6 characters; e.g., 12-1, 12-2, etc." wrappingWidth="451.8836669921875" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You must assign a sequential serial number beginning with the last two digits of the current calendar year to each application and its duplicate, not to exceed 6 characters; e.g., 12-1, 12-2, etc." wrappingWidth="451.8836669921875">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="13.0" />
+                                                                     </font></Text>
                                                                </children>
                                                             </HBox>
                                                          </children>
@@ -779,7 +785,10 @@
                                                                         <Font name="Georgia" size="36.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indicate the type of product by checking the appropriate box. For Sake, check the &quot;wine&quot; box." wrappingWidth="451.8836669921875" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indicate the type of product by checking the appropriate box. For Sake, check the &quot;wine&quot; box." wrappingWidth="451.8836669921875">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="13.0" />
+                                                                     </font></Text>
                                                                </children>
                                                             </HBox>
                                                          </children>
@@ -795,7 +804,10 @@
                                                                         <Font name="Georgia" size="36.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="13.0" />
+                                                                     </font></Text>
                                                                </children>
                                                             </HBox>
                                                          </children>
@@ -811,7 +823,10 @@
                                                                         <Font name="Georgia" size="36.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="13.0" />
+                                                                     </font></Text>
                                                                </children>
                                                             </HBox>
                                                          </children>
