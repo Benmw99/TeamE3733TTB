@@ -315,6 +315,7 @@ public class DBInsert extends DatabaseAbstract {
         if(to_insert.getAlcoholType() == AlcoholType.Wine && to_insert.getWineFormItems() != null) {
             insertWine(TTB_ID, to_insert.getWineFormItems());
         }
+        insertBrewersPermit(to_insert.getBrewersPermit().get(0), TTB_ID, true);
             insertOtherInfo(TTB_ID, to_insert.getBlownBrandedEmbossedInfo());
         if(to_insert.getMailingAddress() != null) {
             insertMailingAddress(TTB_ID, to_insert.getMailingAddress());

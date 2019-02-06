@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
    <children>
       <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
          <children>
@@ -316,21 +316,21 @@
                               </Pane>
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="115.0" layoutY="-16.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                    <HBox>
+                                    <HBox layoutY="-14.0" prefHeight="108.0" prefWidth="584.0">
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="8*" textFill="WHITE">
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="118.0" prefWidth="100.0" text="8*" textFill="WHITE">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
                                           </Label>
-                                          <Label contentDisplay="CENTER" prefHeight="80.0" text=" Name and Address" textFill="WHITE">
+                                          <Label contentDisplay="CENTER" prefHeight="117.0" prefWidth="167.0" text=" Name and Address" textFill="WHITE">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Man8Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                          <Label fx:id="Man8Label" contentDisplay="CENTER" prefHeight="108.0" prefWidth="300.0" text="Address">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -344,21 +344,21 @@
                               </Pane>
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="120.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                    <HBox>
+                                    <HBox prefHeight="120.0" prefWidth="584.0">
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="9*" textFill="WHITE">
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="81.0" prefWidth="100.0" text="9*" textFill="WHITE">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
                                           </Label>
-                                          <Label contentDisplay="CENTER" prefHeight="80.0" text=" Mailing Adress" textFill="WHITE">
+                                          <Label contentDisplay="CENTER" prefHeight="121.0" prefWidth="130.0" text=" Mailing Adress" textFill="WHITE">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Man9Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                          <Label fx:id="Man9Label" contentDisplay="CENTER" prefHeight="120.0" prefWidth="338.0" text="Address">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -370,13 +370,13 @@
                                     </HBox>
                                  </children>
                               </Pane>
-                              <Pane prefHeight="200.0" prefWidth="200.0">
+                              <Pane prefHeight="200.0" prefWidth="582.0">
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                    <HBox>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="106.0" layoutX="-2.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" layoutY="26.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <HBox layoutY="26.0" prefHeight="83.0" prefWidth="584.0">
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="10" textFill="WHITE">
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="98.0" prefWidth="100.0" text="10" textFill="WHITE">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
@@ -400,9 +400,9 @@
                               </Pane>
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                    <HBox>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                    <HBox layoutY="14.0" prefHeight="82.0" prefWidth="584.0">
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="11" textFill="WHITE">
                                              <font>
