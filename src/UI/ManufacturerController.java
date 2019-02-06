@@ -2,7 +2,9 @@ package UI;
 
 import DB.Database;
 import javafx.collections.FXCollections;
+import javafx.collections.SetChangeListener;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +13,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import org.apache.commons.lang3.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 
 import java.io.IOException;
@@ -20,9 +26,12 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.function.UnaryOperator;
 
 import Entities.*;
 import org.apache.derby.iapi.util.StringUtil;
+
+import javax.xml.soap.Text;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -429,7 +438,7 @@ public class ManufacturerController {
             missingTextFieldPage1.show();
         }
         else{
-            System.out.println("I need to go to the second page");
+            //System.out.println("I need to go to the second page");
             pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
         }
     }
@@ -493,7 +502,6 @@ public class ManufacturerController {
         }
     }
 
-
     @FXML
     public void checkWine(ActionEvent event) throws IOException{
         if (typeComboBox.getValue().equals("Wine")){
@@ -511,18 +519,18 @@ public class ManufacturerController {
     @FXML
     public void checkMail(ActionEvent event) throws IOException{
         if (sameAddressRadioButton.selectedProperty().equals(true)){
-            name9Field.disableProperty().setValue(true);
-            state9ComboBox.disableProperty().setValue(true);
-            address9Field.disableProperty().setValue(true);
-            city9Field.disableProperty().setValue(true);
-            zip9Field.disableProperty().setValue(true);
+            name9Field.setDisable(true);
+            state9ComboBox.setDisable(true);
+            address9Field.setDisable(true);
+            city9Field.setDisable(true);
+            zip9Field.setDisable(true);
         }
         else{
             name9Field.disableProperty().setValue(false);
-            state9ComboBox.disableProperty().setValue(false);
-            address9Field.disableProperty().setValue(false);
-            city9Field.disableProperty().setValue(false);
-            zip9Field.disableProperty().setValue(false);
+            state9ComboBox.setDisable(false);
+            address9Field.setDisable(false);
+            city9Field.setDisable(false);
+            zip9Field.setDisable(false);
         }
     }
     @FXML
@@ -532,10 +540,75 @@ public class ManufacturerController {
         this.manufacturer.submitForm(this.newForm);
         System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
-
-
     }
 
+    /**
+     * Sets the listener for each fx:id. Note, the listener only starts once an action occurs on one of the textfields.
+     * After the initial action, it should begin listening for all buttons
+     *
+     * @throws IOException
+     */
+    @FXML
+    public void limitManFieldsNum1() throws IOException{
+        onlyNums(repIDField);
+        onlyNums(producerNumField);
+        onlyNums(serialYearField);
+        onlyNums(serialDigitsField);
+        onlyNums(vintageYearField);
+        onlyNums(phField);
+    }
+    @FXML
+    public void limitManFieldsNum2() throws IOException{
+        checkZip(zip8Field);
+        checkZip(zip9Field);
+    }
 
+    /**
+     * Begins a listener for a textfield that will make it impossible to enter letters
+     *
+     * @param field this is the fx:id for the textfield that you wish to only accept nums
+     * @throws IOException someone help me here, it throws errors, but works anyways
+     */
+    public void onlyNums(TextField field) throws IOException {
+
+        field.getProperties().put("vkType", "numeric");
+        field.setTextFormatter(new TextFormatter<>(c -> {
+            if (c.isContentChange()) {
+                if (c.getControlNewText().length() == 0) {
+                    return c;
+                }
+                try {
+                    Integer.parseInt(c.getControlNewText());
+                    return c;
+                } catch (NumberFormatException e) {
+                }
+                return null;
+            }
+            return c;
+        }));
+    }
+
+    public void checkZip(TextField field) throws IOException {
+
+        field.getProperties().put("vkType", "numeric");
+        field.setTextFormatter(new TextFormatter<>(c -> {
+            if (c.isContentChange()) {
+                if (c.getControlNewText().length() == 0) {
+                    return c;
+                }
+                try {
+                    Integer.parseInt(c.getControlNewText());
+                    if((c.getControlNewText().length()) < 10
+                    return c;
+                } catch (NumberFormatException e) {
+                }
+
+                return null;
+            }
+            return c;
+        }));
+    }
 
 }
+
+//if((Integer.parseInt(c.getControlText())) < 10)

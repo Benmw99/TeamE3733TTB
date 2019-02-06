@@ -347,7 +347,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField fx:id="zip8Field" prefHeight="41.0" prefWidth="122.0" promptText="Zip Code">
+                        <TextField fx:id="zip8Field" onAction="#limitManFieldsNum2" prefHeight="41.0" prefWidth="122.0" promptText="Zip Code">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -473,7 +473,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField fx:id="zip9Field" prefHeight="41.0" prefWidth="122.0" promptText="Zip Code">
+                        <TextField fx:id="zip9Field" onAction="#limitManFieldsNum2" prefHeight="41.0" prefWidth="122.0" promptText="Zip Code">
                            <font>
                               <Font size="21.0" />
                            </font>

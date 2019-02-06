@@ -33,7 +33,7 @@
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="loginButton" layoutX="57.0" layoutY="458.0" mnemonicParsing="false" onAction="#correctLogin" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #60071A#60071A; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
+                  <Button fx:id="loginButton" defaultButton="true" layoutX="57.0" layoutY="458.0" mnemonicParsing="false" onAction="#correctLogin" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #60071A#60071A; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
@@ -43,7 +43,7 @@
                         <Font name="Palatino" size="48.0" />
                      </font>
                   </Text>
-                  <Button fx:id="manRegisterButton" layoutX="58.0" layoutY="535.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #BF0A30 #BF0A30; -fx-background-radius: 10; -fx-border-radius: 10;" text="Register!" textFill="WHITE">
+                  <Button fx:id="manRegisterButton" disable="true" layoutX="58.0" layoutY="535.0" mnemonicParsing="false" opacity="0.0" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #BF0A30 #BF0A30; -fx-background-radius: 10; -fx-border-radius: 10;" text="Register!" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
