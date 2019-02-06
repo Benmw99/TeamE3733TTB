@@ -272,6 +272,29 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
+    @FXML
+    TableView<Form> tableViewMan;
+
+    @FXML
+    TableColumn<Form, Integer> col1;
+
+    @FXML
+    TableColumn<Form, Timestamp> col2;
+
+    @FXML
+    TableColumn<Form, String> col3;
+
+    @FXML
+    TableColumn<Form, ApprovalStatus> col4;
+
+    @FXML
+    TableColumn<Form, Timestamp> col5;
+
+    @FXML
+    TableColumn<Form, String> col6;
+
+
+
 
     @FXML
     protected void initialize(){

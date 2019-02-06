@@ -59,14 +59,14 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <TableView layoutX="-2.0" layoutY="67.0" prefHeight="607.0" prefWidth="558.0">
+                  <TableView layoutX="-2.0" layoutY="67.0" prefHeight="607.0" prefWidth="558.0" fx:id="tableViewMan">
                     <columns>
-                      <TableColumn prefWidth="100.0" text="TTB ID#" />
-                      <TableColumn prefWidth="100.0" text="Date Submitted" />
-                        <TableColumn prefWidth="75.0" text="Satus" />
-                        <TableColumn prefWidth="100.0" text="Status Date" />
-                        <TableColumn prefWidth="75.0" text="Exp Date" />
-                        <TableColumn prefWidth="100.0" text="Agent Name" />
+                      <TableColumn prefWidth="100.0" text="TTB ID#" fx:id="col1"/>
+                      <TableColumn prefWidth="100.0" text="Date Submitted" fx:id="col2"/>
+                        <TableColumn prefWidth="75.0" text="Satus" fx:id="col3"/>
+                        <TableColumn prefWidth="100.0" text="Status Date" fx:id="col4"/>
+                        <TableColumn prefWidth="75.0" text="Exp Date" fx:id="col5"/>
+                        <TableColumn prefWidth="100.0" text="Agent Name" fx:id="col6"/>
                     </columns>
                   </TableView>
                </children>
