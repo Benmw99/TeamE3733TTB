@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="760.0" maxWidth="1360.0" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
+<AnchorPane maxHeight="760.0" maxWidth="1360.0" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -694,135 +694,230 @@
                      <tabs>
                         <Tab fx:id="rulesRegTab" text="Rules and Regulations">
                            <content>
-                              <AnchorPane>
-                                 <children>
-                                    <ScrollPane pannable="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <content>
-                                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="552.0" prefWidth="586.0">
+                              <ScrollPane fitToWidth="true" hmax="0.0" maxHeight="1.7976931348623157E308" vmax="3000.0" vvalue="3000.0">
+                                 <content>
+                                    <VBox accessibleRole="NODE">
+                                       <children>
+                                          <Pane VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="552.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-153.0" AnchorPane.topAnchor="0.0">
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
                                                    <children>
-                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="126.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
-                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="126.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                                      <HBox alignment="CENTER" prefHeight="128.0" prefWidth="569.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="132.0" prefWidth="100.0" text="1" textFill="WHITE">
-                                                               <font>
-                                                                  <Font name="Georgia" size="36.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" wrappingWidth="451.8836669921875">
-                                                               <font>
-                                                                  <Font name="Georgia" size="13.0" />
-                                                               </font></Text>
-                                                         </children>
-                                                      </HBox>
-                                                      <Pane layoutY="125.0" prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="200.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="200.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                                            <HBox alignment="CENTER" prefHeight="128.0" prefWidth="569.0">
-                                                               <children>
-                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="189.0" prefWidth="100.0" text="2" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Georgia" size="36.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="For bonded wine cellars, taxpaid wine bottline houses, and distilled spirits plants, enter the applicable registry number (BW- or TPWBH- or DSP- number). Importers must enter the TTB basic permit number and brewers must enter the brewer's notice number. Wholesalers applying to relabel must enter teh wholesaler's basic permis number. If you intend to botle this product at more than one of your locations (distilled spirits and malt beverages only), show the registry number/brewer's notic number of each location where the product will be bottled. In this instance, Item 8 should reflect your principal place of business. You may also use Item 8a to reflect additional registry/brewer's notice numbers if the space provided in item 2 is insufficient. In this instance, cross out the words &quot;Mailing address, if different&quot;" wrappingWidth="451.8836669921875">
-                                                                     <font>
-                                                                        <Font name="Georgia" size="13.0" />
-                                                                     </font></Text>
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </Pane>
-                                                      <Pane layoutY="324.0" prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="41.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                                            <HBox alignment="CENTER" prefHeight="41.0" prefWidth="569.0">
-                                                               <children>
-                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="3" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Georgia" size="36.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indicate the source of the product by checking the appropriate box." wrappingWidth="451.8836669921875" />
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </Pane>
-                                                      <Pane layoutY="364.0" prefHeight="200.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
-                                                               <children>
-                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="4" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Georgia" size="36.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You must assign a sequential serial number beginning with the last two digits of the current calendar year to each application and its duplicate, not to exceed 6 characters; e.g., 12-1, 12-2, etc." wrappingWidth="451.8836669921875" />
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </Pane>
-                                                      <Pane layoutY="417.0" prefHeight="54.0" prefWidth="571.0">
-                                                         <children>
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
-                                                               <children>
-                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="5" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Georgia" size="36.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indicate the type of product by checking the appropriate box. For Sake, check the &quot;wine&quot; box." wrappingWidth="451.8836669921875" />
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </Pane>
-                                                      <Pane layoutY="469.0" prefHeight="54.0" prefWidth="571.0">
-                                                         <children>
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
-                                                               <children>
-                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="6" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Georgia" size="36.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875" />
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </Pane>
-                                                      <Pane layoutY="522.0" prefHeight="54.0" prefWidth="571.0">
-                                                         <children>
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
-                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
-                                                               <children>
-                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="7" textFill="WHITE">
-                                                                     <font>
-                                                                        <Font name="Georgia" size="36.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875" />
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </Pane>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="150.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="150.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                                    </children>
-                                                </Pane>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="737.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Georgia" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label contentDisplay="TOP" prefHeight="150.0" prefWidth="654.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
                                              </children>
-                                          </AnchorPane>
-                                      </content>
-                                    </ScrollPane>
-                                 </children></AnchorPane>
+                                          </Pane>
+                                          <Pane>
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="150.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="150.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="737.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Georgia" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label contentDisplay="TOP" prefHeight="150.0" prefWidth="654.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </Pane>
+                                          <Pane>
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="150.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="150.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="737.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Georgia" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label contentDisplay="TOP" prefHeight="150.0" prefWidth="654.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </Pane>
+                                          <Pane>
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="150.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="150.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="737.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Georgia" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label contentDisplay="TOP" prefHeight="150.0" prefWidth="654.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </Pane>
+                                          <Pane>
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="150.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="150.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="737.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Georgia" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label contentDisplay="TOP" prefHeight="150.0" prefWidth="654.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </Pane>
+                                          <Pane>
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="150.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="150.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="737.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Georgia" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label contentDisplay="TOP" prefHeight="150.0" prefWidth="654.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </Pane>
+                                          <Pane>
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="150.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="150.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="737.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Georgia" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label contentDisplay="TOP" prefHeight="150.0" prefWidth="654.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </Pane>
+                                          <Pane>
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="150.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="150.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="737.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Georgia" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label contentDisplay="TOP" prefHeight="150.0" prefWidth="654.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" textFill="WHITE" wrapText="true">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
                            </content>
                         </Tab>
                         <Tab fx:id="commentTab" text="Comment">
@@ -881,7 +976,6 @@
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="32.0" layoutY="176.0" prefHeight="582.0" prefWidth="635.0" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="176.0" />
       <VBox alignment="CENTER" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Form Reviewing Tools" textFill="WHITE">
