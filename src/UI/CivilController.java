@@ -89,6 +89,9 @@ public class CivilController {
     Button printResults;
 
     @FXML
+    Button backToWelcomeButton;
+
+    @FXML
     ComboBox typeComboBox;
 
     @FXML
@@ -358,13 +361,14 @@ public class CivilController {
             alc.get(i).setText("");
             brand.get(i).setText("");
         }
-
-
-
     }
 
-    public void goBackToSearch(ActionEvent event) throws IOException {
+    public void goBackToAdvSearch(ActionEvent event) throws IOException {
         pageSwitch(event,"CivilAdvSearch.fxml", backToAdvSearch);
+    }
+
+    public void goBackToWelcome(ActionEvent event) throws IOException {
+        pageSwitch(event,"WelcomePage.fxml", backToWelcomeButton);
     }
 
 
