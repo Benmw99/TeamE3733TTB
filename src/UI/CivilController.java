@@ -1,15 +1,14 @@
 package UI;
 
-import DB.Database;
 import Entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -236,10 +235,10 @@ public class CivilController {
     int searchPage;
 
 
-    public void advSearch(ActionEvent event) throws IOException {
+    /*public void advSearch(ActionEvent event) throws IOException {
         pageSwitch(event,"CivilAdvSearch.fxml", advSearchButton);
     }
-
+*/
     //#################################################################################################################################
     //                                   advanced search
 
