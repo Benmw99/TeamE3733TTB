@@ -51,7 +51,7 @@ public class ManufacturerController {
     SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
-    TextField searchMHField;
+    static TextField searchMHField;
 
     @FXML
     Button logOutButton;
@@ -274,7 +274,6 @@ public class ManufacturerController {
 
     @FXML
     Button uploadLabelButton;
-
 
     @FXML
     Button prevSectionMA4Button;
