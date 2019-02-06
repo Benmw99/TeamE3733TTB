@@ -4,6 +4,7 @@ import DB.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.*;
 
@@ -49,6 +51,9 @@ public class ManufacturerController {
 
     @FXML
     TextField searchMHField;
+
+    @FXML
+    Button logOutButton;
 
     @FXML
     Button addAppButton;
@@ -269,6 +274,7 @@ public class ManufacturerController {
     @FXML
     Button uploadLabelButton;
 
+
     @FXML
     Button prevSectionMA4Button;
 
@@ -303,14 +309,31 @@ public class ManufacturerController {
         Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
         List<Form> forms = manufacturer.loadForms();
 
-
         col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
         col2.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
         col3.setCellValueFactory(new PropertyValueFactory<>("approvalStatus"));
         col4.setCellValueFactory(new PropertyValueFactory<>("approval.timestamp"));
         col5.setCellValueFactory(new PropertyValueFactory<>("approval.expDate"));
         col6.setCellValueFactory(new PropertyValueFactory<>("approval.agentApprovalName"));
-
+        tableViewMan.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            /**
+             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
+             */
+            public void handle(MouseEvent click) {
+                if (click.getClickCount() == 2) {
+                    @SuppressWarnings("rawtypes")
+                    TablePosition pos = tableViewMan.getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    int col = pos.getColumn();
+                    int ID = col1.getCellData(row);
+                    System.out.println(ID);
+                    @SuppressWarnings("rawtypes")
+                    TableColumn column = pos.getTableColumn();
+                    String val = column.getCellData(row).toString(); System.out.println("Selected Value, " + val + ", Column: " + col + ", Row: " + row);
+                }
+            }
+        });
         ObservableList<Form> tableValues = FXCollections.observableArrayList();
         for (int i = 0; i < forms.size(); i++) {
             tableValues.add(forms.get(i));
@@ -318,6 +341,62 @@ public class ManufacturerController {
         tableViewMan.setItems(tableValues);
 
     }
+
+    protected void displayForm(){
+
+    }
+
+    //FORM labels
+    @FXML
+    Label Man1Label;
+    @FXML
+    Label Man2Label;
+    @FXML
+    Label Man3Label;
+    @FXML
+    Label ManReview4Label1;
+    @FXML
+    Label Man4Label2;
+    @FXML
+    Label Man5Label1;
+    @FXML
+    Label Man5Label2;
+    @FXML
+    Label Man5Label3;
+    @FXML
+    Label Man6Label;
+    @FXML
+    Label Man7Label;
+    @FXML
+    Label Man8Label;
+    @FXML
+    Label Man9Label;
+    @FXML
+    Label Man10Label;
+    @FXML
+    Label Man11Label;
+    @FXML
+    Label Man12Label;
+    @FXML
+    Label Man13Label;
+    @FXML
+    Label Man14Label;
+    @FXML
+    Label Man15Label1;
+    @FXML
+    Label Man15Label2;
+    @FXML
+    Label Man15Label3;
+    @FXML
+    Label Man16Label1;
+    @FXML
+    Label Man16Label2;
+    @FXML
+    Label Man17Label;
+    @FXML
+    Label Man18Label;
+    @FXML
+    Label Man20Label;
 
 
 
@@ -329,6 +408,11 @@ public class ManufacturerController {
     }
 
 
+    @FXML
+    public void logOut(ActionEvent event) throws IOException {
+        pageSwitch(event, "WelcomePage.fxml", logOutButton);
+        currentFormPage = 1;
+    }
 
     @FXML
     public void manApp1(ActionEvent event) throws IOException {
@@ -343,7 +427,6 @@ public class ManufacturerController {
     }
     @FXML
     public void manLogin(ActionEvent event) throws IOException {
-        currentForm = new Form();
         newForm = new Form();
 
         pageSwitch(event, "ManLogin.fxml", backButton);

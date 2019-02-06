@@ -105,9 +105,9 @@ public class Manufacturer implements IUser {
      *  Commits a manufacturer to the database. Make sure the manufacturer is well-formed
      *  with all fields initilized.
      *  @author Michael
-     * @return true for a success, false for a failure
+     *  @return true for a success, false for a failure
      */
-    public  boolean registerCompany(){
+    public boolean registerCompany(){
         DB.Database db = DB.Database.getInstance();
         try {
             db.dbInsert.insertCompany(manID, manName, login, password);

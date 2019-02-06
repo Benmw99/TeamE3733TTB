@@ -62,7 +62,7 @@
                   <Button fx:id="printAHButton" layoutX="914.0" layoutY="17.0" mnemonicParsing="false" text="Print" />
                   <Button fx:id="rejectAHButton" layoutX="410.0" layoutY="17.0" mnemonicParsing="false" onAction="#rejectForm" text="Reject Form" />
                   <Button fx:id="getnewQueueButton" layoutX="34.0" layoutY="17.0" mnemonicParsing="false" onAction="#getNewQueue" text="Get New Queue" />
-                  <Button fx:id="reviewToolButton" layoutX="729.0" layoutY="17.0" mnemonicParsing="false" onAction="#reviewTool" text="Use Reviewing Tools" />
+                  <Button fx:id="reviewToolButton" disable="true" layoutX="729.0" layoutY="17.0" mnemonicParsing="false" onAction="#reviewTool" text="Use Reviewing Tools" />
                </children>
             </Pane>
             <Pane layoutX="487.0" layoutY="153.0" prefHeight="606.0" prefWidth="576.0" style="-fx-background-color: #E7E7E7#E7E7E7;">

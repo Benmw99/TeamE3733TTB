@@ -500,6 +500,7 @@ public class DBSelect extends DatabaseAbstract {
                 form.setCompanyID(rs.getInt("Company_ID"));
                 form.setRepID(rs.getString("Rep_ID"));
                 form.setTtbID(TTB_ID);
+                form.setAlcoholContent(rs.getFloat("APV"));
                 form.setEmail(rs.getString("Email"));
                 form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
                 form.setApplicantName(rs.getString("Applicant_Name"));
