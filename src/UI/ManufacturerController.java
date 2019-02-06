@@ -1,6 +1,6 @@
 package UI;
 
-import DB.*;
+import DB.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.SetChangeListener;
 import javafx.event.ActionEvent;
@@ -14,11 +14,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import org.apache.commons.lang3.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
+import javafx.scene.input.MouseEvent;
 
 
 import java.io.IOException;
@@ -27,13 +30,13 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.function.UnaryOperator;
+import java.util.List;
 
 import Entities.*;
 import org.apache.derby.iapi.util.StringUtil;
 import org.omg.CORBA.DATA_CONVERSION;
 
-import javax.xml.soap.Text;
-
+import static Entities.AlcoholType.*;
 import static javafx.collections.FXCollections.observableArrayList;
 
 
@@ -45,7 +48,6 @@ public class ManufacturerController {
     Entities.Form form;
     static Entities.Form newForm;
 
-
     //ManHome
     @FXML
     SplitMenuButton menuSplitButton;
@@ -55,6 +57,9 @@ public class ManufacturerController {
 
     @FXML
     TextField searchMHField;
+
+    @FXML
+    Button logOutButton;
 
     @FXML
     Button addAppButton;
@@ -275,11 +280,15 @@ public class ManufacturerController {
     @FXML
     Button uploadLabelButton;
 
+
     @FXML
     Button prevSectionMA4Button;
 
     @FXML
     Button submitButton;
+
+    @FXML
+    Button refresh;
 
     @FXML
     TableView<Form> tableViewMan;
@@ -302,17 +311,119 @@ public class ManufacturerController {
     @FXML
     TableColumn<Form, String> col6;
 
+    public void tableView()  {
+        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
+        List<Form> forms = manufacturer.loadForms();
+
+        col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("approvalStatus"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("approval.timestamp"));
+        col5.setCellValueFactory(new PropertyValueFactory<>("approval.expDate"));
+        col6.setCellValueFactory(new PropertyValueFactory<>("approval.agentApprovalName"));
+        tableViewMan.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            /**
+             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
+             */
+            public void handle(MouseEvent click) {
+                if (click.getClickCount() == 2) {
+                    @SuppressWarnings("rawtypes")
+                    TablePosition pos = tableViewMan.getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    int col = pos.getColumn();
+                    int ID = col1.getCellData(row);
+                    System.out.println(ID);
+                    @SuppressWarnings("rawtypes")
+                    TableColumn column = pos.getTableColumn();
+                    String val = column.getCellData(row).toString(); System.out.println("Selected Value, " + val + ", Column: " + col + ", Row: " + row);
+                }
+            }
+        });
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        for (int i = 0; i < forms.size(); i++) {
+            tableValues.add(forms.get(i));
+        }
+        tableViewMan.setItems(tableValues);
+
+    }
+
+    protected void displayForm(){
+
+    }
+
+    //FORM labels
+    @FXML
+    Label Man1Label;
+    @FXML
+    Label Man2Label;
+    @FXML
+    Label Man3Label;
+    @FXML
+    Label ManReview4Label1;
+    @FXML
+    Label Man4Label2;
+    @FXML
+    Label Man5Label1;
+    @FXML
+    Label Man5Label2;
+    @FXML
+    Label Man5Label3;
+    @FXML
+    Label Man6Label;
+    @FXML
+    Label Man7Label;
+    @FXML
+    Label Man8Label;
+    @FXML
+    Label Man9Label;
+    @FXML
+    Label Man10Label;
+    @FXML
+    Label Man11Label;
+    @FXML
+    Label Man12Label;
+    @FXML
+    Label Man13Label;
+    @FXML
+    Label Man14Label;
+    @FXML
+    Label Man15Label1;
+    @FXML
+    Label Man15Label2;
+    @FXML
+    Label Man15Label3;
+    @FXML
+    Label Man16Label1;
+    @FXML
+    Label Man16Label2;
+    @FXML
+    Label Man17Label;
+    @FXML
+    Label Man18Label;
+    @FXML
+    Label Man20Label;
 
 
 
     @FXML
     protected void initialize(){
-        this.currentForm = new Form();
+        if(this.currentFormPage == 1){
+
+        }
     }
-    //new application
+
+
+    @FXML
+    public void logOut(ActionEvent event) throws IOException {
+        pageSwitch(event, "WelcomePage.fxml", logOutButton);
+        currentFormPage = 1;
+    }
+
     @FXML
     public void manApp1(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp1.fxml", addAppButton);
+        currentFormPage = 1;
     }
 
     //back buttons
@@ -322,7 +433,6 @@ public class ManufacturerController {
     }
     @FXML
     public void manLogin(ActionEvent event) throws IOException {
-        currentForm = new Form();
         newForm = new Form();
         pageSwitch(event, "ManLogin.fxml", backButton);
     }
@@ -335,6 +445,7 @@ public class ManufacturerController {
     @FXML
     public void manApp2d(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
+        currentFormPage = 2;
     }
 
     //move up pages by arrows from ManApp2
@@ -442,11 +553,9 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the second page
     @FXML
     public void checkBlanksPage1(ActionEvent event) throws IOException{
-        // THIS STILL RETURNS NULL POINTERS. JUST WANT TO PUSH *ENTER* BUTTON FUNCTIONALITY
-        this.newForm = new Form();
-        //if(this.newForm == null) {
-        //    this.newForm = new Form();
-        //}
+        if(this.newForm == null) {
+            this.newForm = new Form();
+        }
         this.newForm.setRepID(repIDField.getText());
         this.newForm.getBrewersPermit().add(producerNumField.getText());
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
@@ -471,10 +580,11 @@ public class ManufacturerController {
             missingTextFieldPage1.show();
         }
         else{
-            System.out.println("I need to go to the second page");
+            currentFormPage = 2;
             pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
         }
     }
+
 
     // Checks through the second page of the full TTB application to see if any of the text fields are blank.
     // If they are all filled, then the user can move on to the third page
@@ -482,7 +592,12 @@ public class ManufacturerController {
     public void checkBlanksPage2(ActionEvent event) throws IOException{
 
         this.newForm.setFancifulName(fancifulField.getText());
-
+        if(zip9Field.getText().length() > 5 || zip8Field.getText().length() > 5){
+            Alert missingTextFieldPage2 = new Alert(Alert.AlertType.WARNING);
+            missingTextFieldPage2.setTitle("Missing Text Field");
+            missingTextFieldPage2.setContentText("A Zip Code can only be five digits.");
+            missingTextFieldPage2.show();
+        }
         Address address = new Address(city8Field.getText(), state8ComboBox.getValue(), zip8Field.getText(), address8Field.getText(), name8Field.getText());
         ArrayList<Address> arr = new ArrayList<Address>();
         arr.add(address);
@@ -506,6 +621,7 @@ public class ManufacturerController {
             missingTextFieldPage2.show();
         }
         else{
+            currentFormPage = 3;
             pageSwitch(event, "ManApp3.fxml", nextSectionMA2Button);
         }
     }
@@ -530,6 +646,7 @@ public class ManufacturerController {
             missingTextFieldPage1.show();
         }
         else{
+            currentFormPage = 4;
             pageSwitch(event, "ManApp4.fxml", nextSectionMA3Button);
         }
     }
@@ -599,6 +716,7 @@ public class ManufacturerController {
         System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
     }
+        tableView();
 
     /**
      * Sets the listener for each fx:id. Note, the listener only starts once an action occurs on one of the textfields.

@@ -1,6 +1,8 @@
 package UI;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sun.management.resources.agent;
 
@@ -384,6 +387,13 @@ public class AgentController {
     Button printAHButton;
 
     //AgentViewForm
+
+    @FXML
+    Button reviewToolButton;
+
+    @FXML
+    ComboBox sectionMarkComboBox;
+
     @FXML
     MenuButton menuAVFMenuButton;
 
@@ -392,6 +402,9 @@ public class AgentController {
 
     @FXML
     Button section1AVFButton;
+
+    @FXML
+    Button agentBackToHomeButton;
 
     @FXML
     Button section2AVFButton;
@@ -545,7 +558,7 @@ public class AgentController {
 
 
     private Form currentForm;
-    private Agent currentAgent;
+    private static Agent currentAgent;
     private List<Form> queue;
 
 
@@ -567,6 +580,18 @@ public class AgentController {
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", backButton);
     }
+
+    @FXML
+    public void goBackToAgentHome(ActionEvent event) throws IOException {
+        pageSwitch(event, "AgentHome.fxml", agentBackToHomeButton);
+    }
+
+
+    @FXML
+    public void reviewTool(ActionEvent event) throws IOException {
+        pageSwitch(event, "AgentViewForm.fxml", reviewToolButton);
+    }
+
     @FXML
     public void agentViewForm(ActionEvent event) throws IOException {
         //TODO:have to load selected form somehow
@@ -610,8 +635,18 @@ public class AgentController {
     public void getNewQueue(ActionEvent event) throws IOException{
         DB.Database db = DB.Database.getInstance();
 
-        queue = this.currentAgent.getThreeForms();
+        queue = currentAgent.getThreeForms();
+        tTBIDColumn.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        dateSubmittedColumn.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        brandNameColumn.setCellValueFactory(new PropertyValueFactory<>("brandName"));
 
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        for (int i = 0; i < queue.size(); i++) {
+            tableValues.add(queue.get(i));
+        }
+        formTable.setItems(tableValues);
+        printAHButton.setDisable(false);
     }
 
     @FXML
