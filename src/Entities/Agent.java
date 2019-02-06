@@ -1,7 +1,6 @@
 package Entities;
 
 import DB.Database;
-import com.sun.tools.corba.se.idl.constExpr.Times;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -84,7 +83,7 @@ public class Agent implements IUser{
         return db.dbSelect.searchBy(advancedSearch);
     }
 
-    void approveForm(Form form, String qualifications) {
+    public void approveForm(Form form, String qualifications) {
         Approval app = new Approval();
         form.setApproval(app);
         form.getApproval().approve(name, qualifications);
@@ -95,7 +94,7 @@ public class Agent implements IUser{
 
     }
 
-    void rejectForm(Form form) {
+    public void rejectForm(Form form) {
         form.setApprovalStatus(Incomplete);
         DB.Database db = DB.Database.getInstance();
         Approval app = new Approval();
