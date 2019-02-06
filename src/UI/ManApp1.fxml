@@ -436,15 +436,15 @@
       </HBox>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button fx:id="prevSectionMA1Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
-               <font>
-                  <Font name="System Bold" size="33.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="30.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="nextSectionMA1Button" mnemonicParsing="false" onAction="#checkBlanksPage1" onMouseClicked="#appNext" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
+            <!--<Button fx:id="prevSectionMA1Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">-->
+               <!--<font>-->
+                  <!--<Font name="System Bold" size="33.0" />-->
+               <!--</font>-->
+               <!--<HBox.margin>-->
+                  <!--<Insets right="30.0" />-->
+               <!--</HBox.margin>-->
+            <!--</Button>-->
+            <Button fx:id="nextSectionMA1Button" defaultButton="true" mnemonicParsing="false" onAction="#checkBlanksPage1" onMouseClicked="#appNext" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>

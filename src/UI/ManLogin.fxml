@@ -19,8 +19,6 @@
                   <Font name="Palatino" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="faqButton" layoutX="59.0" layoutY="689.0" mnemonicParsing="false" text="FAQ" />
-            <Button fx:id="searchButton" layoutX="130.0" layoutY="688.0" mnemonicParsing="false" text="Search" />
             <Pane layoutX="736.0" layoutY="71.0" prefHeight="622.0" prefWidth="494.0" style="-fx-background-color: #BF0A30; -fx-background-radius: 20;">
                <children>
                   <TextField fx:id="nameField" layoutX="57.0" layoutY="202.0" prefHeight="49.0" prefWidth="377.0" promptText="Email" style="-fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #BF0A30 #BF0A30;">
@@ -33,7 +31,7 @@
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="loginButton" layoutX="57.0" layoutY="458.0" mnemonicParsing="false" onAction="#correctLogin" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #60071A#60071A; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
+                  <Button fx:id="loginButton" defaultButton="true" layoutX="57.0" layoutY="458.0" mnemonicParsing="false" onAction="#correctLogin" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #60071A#60071A; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>

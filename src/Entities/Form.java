@@ -14,7 +14,7 @@ public class Form {
 
     private String repID;
     private ArrayList<String> brewersPermit;
-    private boolean source;  //true for domestic, false for imported
+    private boolean source;  //false for domestic, true for imported
     private String serialNumber;
     private AlcoholType alcoholType;
     public String brandName;

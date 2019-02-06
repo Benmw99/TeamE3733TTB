@@ -2,6 +2,7 @@ package UI;
 
 import DB.Database;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.*;
 
@@ -20,11 +22,13 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
 import Entities.*;
 import org.apache.derby.iapi.util.StringUtil;
 import org.omg.CORBA.DATA_CONVERSION;
 
+import static Entities.AlcoholType.*;
 import static javafx.collections.FXCollections.observableArrayList;
 
 
@@ -271,6 +275,51 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
+    @FXML
+    Button refresh;
+
+    @FXML
+    TableView<Form> tableViewMan;
+
+    @FXML
+    TableColumn<Form, Integer> col1;
+
+    @FXML
+    TableColumn<Form, Timestamp> col2;
+
+    @FXML
+    TableColumn<Form, String> col3;
+
+    @FXML
+    TableColumn<Form, ApprovalStatus> col4;
+
+    @FXML
+    TableColumn<Form, Timestamp> col5;
+
+    @FXML
+    TableColumn<Form, String> col6;
+
+    public void tableView()  {
+        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
+        List<Form> forms = manufacturer.loadForms();
+
+
+        col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("approvalStatus"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("approval.timestamp"));
+        col5.setCellValueFactory(new PropertyValueFactory<>("approval.expDate"));
+        col6.setCellValueFactory(new PropertyValueFactory<>("approval.agentApprovalName"));
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        for (int i = 0; i < forms.size(); i++) {
+            tableValues.add(forms.get(i));
+        }
+        tableViewMan.setItems(tableValues);
+
+    }
+
+
 
     @FXML
     protected void initialize(){
@@ -414,23 +463,22 @@ public class ManufacturerController {
         }
 
         this.newForm.setRepID(repIDField.getText());
-        newForm.getBrewersPermit().add(producerNumField.getText());
+        this.newForm.getBrewersPermit().add(producerNumField.getText());
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
         this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
         if(typeComboBox.getValue() == "Wine"){
-            newForm.setAlcoholType(AlcoholType.Wine);
+            this.newForm.setAlcoholType(AlcoholType.Wine);
             WineFormItems wine = new WineFormItems();
             wine.setVintageYear(Integer.valueOf(vintageYearField.getText()));
             wine.setpH(Float.valueOf(phField.getText()));
-            newForm.setWineFormItems(wine);
+            this.newForm.setWineFormItems(wine);
         } else if (typeComboBox.getValue() == "Distilled Spirits"){
-            newForm.setAlcoholType(AlcoholType.DistilledLiquor);
+            this.newForm.setAlcoholType(AlcoholType.DistilledLiquor);
         } else {
-            newForm.setAlcoholType(AlcoholType.MaltBeverage);
+            this.newForm.setAlcoholType(AlcoholType.MaltBeverage);
         }
         this.newForm.setBrandName(brandField.getText());
-
-        if( StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
+        if(StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
             System.out.println("I'm stuck thinking things aren't filled in");
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
@@ -550,6 +598,7 @@ public class ManufacturerController {
         this.manufacturer.submitForm(this.newForm);
         System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
+        tableView();
 
 
     }
