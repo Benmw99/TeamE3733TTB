@@ -771,13 +771,13 @@ public class ManufacturerController {
     }
 
     @FXML
-    public void checkAndSubmitForm(ActionEvent event ) throws IOException{
+    public void checkAndSubmitForm(ActionEvent event ) throws IOException {
         this.newForm.setAlcoholContent(Float.parseFloat(alcoholContentTextField.getText()));
         this.manufacturer.submitForm(this.newForm);
         System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
-    }
         tableView();
+    }
 
     /**
      * Sets the listener for each fx:id. Note, the listener only starts once an action occurs on one of the textfields.
