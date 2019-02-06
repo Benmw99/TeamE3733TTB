@@ -166,6 +166,9 @@ public class CivilController {
     SearchResult result;
     int searchPage;
 
+    //Brewers Permit
+    //Mailing address
+
     @FXML
     protected void initialize() {
         if (initStuff == 1) {
