@@ -379,6 +379,13 @@ public class ManufacturerController {
         stage.show();
     }
 
+    /**
+     *
+     * @param event still not used
+     * @param filename name of FXML file you wish to load
+     * @param b button
+     * @throws IOException
+     */
     public void menuSwitch(ActionEvent event, String filename, MenuButton b) throws IOException{
         Parent root;
         Stage stage;
@@ -502,41 +509,66 @@ public class ManufacturerController {
         }
     }
 
+    /**
+     * Checks if the combobox is on wine and displays the appropriate text fields
+     *
+     * @throws IOException
+     */
     @FXML
-    public void checkWine(ActionEvent event) throws IOException{
+    public void checkWine() throws IOException{
         if (typeComboBox.getValue().equals("Wine")){
             vintageYearField.disableProperty().setValue(false);
             phField.disableProperty().setValue(false);
 
-            //System.out.println("GotHERE");
         }
         else{
             vintageYearField.disableProperty().setValue(true);
+            vintageYearField.setText("");
             phField.disableProperty().setValue(true);
+            phField.setText("");
         }
     }
 
+    /**
+     * Will disable and reset fields is they select the button "same as question 8"
+     *
+     * @throws IOException someone help me here, it throws errors, but works anyways
+     */
     @FXML
-    public void checkMail(ActionEvent event) throws IOException{
-        if (sameAddressRadioButton.selectedProperty().equals(true)){
+    public void checkMail() throws IOException{
+        if (sameAddressRadioButton.isSelected()){
+            name9Field.setEditable(false);
             name9Field.setDisable(true);
+            name9Field.setText("");
             state9ComboBox.setDisable(true);
+            state9ComboBox.setPromptText("State");
+            address9Field.setEditable(false);
+            address9Field.setText("");
             address9Field.setDisable(true);
+            city9Field.setEditable(false);
+            city9Field.setText("");
             city9Field.setDisable(true);
+            zip9Field.setEditable(false);
+            zip9Field.setText("");
             zip9Field.setDisable(true);
         }
         else{
-            name9Field.disableProperty().setValue(false);
+            name9Field.setEditable(true);
+            name9Field.setDisable(false);
             state9ComboBox.setDisable(false);
+            state9ComboBox.setPromptText("State");
+            address9Field.setEditable(true);
             address9Field.setDisable(false);
+            city9Field.setEditable(true);
             city9Field.setDisable(false);
+            zip9Field.setEditable(true);
             zip9Field.setDisable(false);
         }
     }
+
     @FXML
     public void checkAndSubmitForm(ActionEvent event ) throws IOException{
         this.newForm.setAlcoholContent(Float.parseFloat(alcoholContentTextField.getText()));
-
         this.manufacturer.submitForm(this.newForm);
         System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
@@ -567,7 +599,7 @@ public class ManufacturerController {
      * Begins a listener for a textfield that will make it impossible to enter letters
      *
      * @param field this is the fx:id for the textfield that you wish to only accept nums
-     * @throws IOException someone help me here, it throws errors, but works anyways
+     * @throws IOException will throw exception if you try call in a scene that's not loaded
      */
     public void onlyNums(TextField field) throws IOException {
 
@@ -588,6 +620,12 @@ public class ManufacturerController {
         }));
     }
 
+    /**
+     * Begins a listener for a textfield that will make it impossible to enter letters and numbers more than
+     *
+     * @param field this is the fx:id for the textfield that you wish to only accept nums
+     * @throws IOException someone help me here, it throws errors, but works anyways
+     */
     public void checkZip(TextField field) throws IOException {
 
         field.getProperties().put("vkType", "numeric");
@@ -598,7 +636,7 @@ public class ManufacturerController {
                 }
                 try {
                     Integer.parseInt(c.getControlNewText());
-                    if((c.getControlNewText().length()) < 10
+                    if((c.getControlNewText().length()) < 10)
                     return c;
                 } catch (NumberFormatException e) {
                 }
@@ -610,5 +648,3 @@ public class ManufacturerController {
     }
 
 }
-
-//if((Integer.parseInt(c.getControlText())) < 10)
