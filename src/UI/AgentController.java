@@ -15,6 +15,7 @@ import sun.management.resources.agent;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import java.awt.*;
@@ -544,10 +545,10 @@ public class AgentController {
 
 
 
-    static private Form currentForm;
     static private Agent currentAgent;
     static private List<Form> queue;
-    static private int queueIndex;
+    static private Form currentForm;
+    static private int queueIndex = 1;
 
 
     @FXML
@@ -556,6 +557,10 @@ public class AgentController {
         if(currentAgent.authenticate()) {
             currentAgent.loadUser();
             pageSwitch(event, "AgentHome.fxml", loginButton);
+            queue = currentAgent.getThreeForms();
+            System.out.println( Integer.toString(this.queue.size()));
+//            currentForm = queue.get(0);
+            currentForm = new Form(AlcoholType.MaltBeverage, "wheat", 1);
         }
         else {
             Alert loginFailure = new Alert(Alert.AlertType.WARNING);
@@ -581,13 +586,17 @@ public class AgentController {
         //TODO: update current list
         pageSwitch(event, "AgentHome.fxml", backButton);
 
+        System.out.println( Integer.toString(this.queue.size()));
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
 
-        this.currentAgent.approveForm(this.currentForm, " "); //TODO: this.thetextfromthenotyetimplementedqualificationsfield);
-        this.queue.remove(this.currentForm);
+        currentAgent.approveForm(currentForm, " "); //TODO: this.thetextfromthenotyetimplementedqualificationsfield);
+        queue.remove(currentForm);
+        System.out.println( Integer.toString(this.queue.size()));
         pageSwitch(event, "AgentHome.fxml", backButton);
+
+        System.out.println( Integer.toString(this.queue.size()));
     }
 
     /* not needed for it. 1
