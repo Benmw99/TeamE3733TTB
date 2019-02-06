@@ -65,6 +65,7 @@
                   <String fx:value="Wines" />
                   <String fx:value="Beers" />
                   <String fx:value="Distilled Liquor" />
+                  <String fx:value="All" />
               </FXCollections>
           </items>
       </ComboBox>

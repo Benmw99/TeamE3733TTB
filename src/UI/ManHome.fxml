@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
    <children>
       <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
          <children>
@@ -91,7 +91,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent1Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man1Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -119,7 +119,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent2Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man2Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -147,7 +147,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent3Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man3Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -175,7 +175,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="AgentReview4Label1" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="ManReview4Label1" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -184,7 +184,7 @@
                                              </HBox.margin>
                                           </Label>
                                           <Separator orientation="VERTICAL" style="-fx-background-color: black;" />
-                                          <Label fx:id="Agent4Label2" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man4Label2" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -212,7 +212,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent5Label1" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man5Label1" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -225,7 +225,7 @@
                                                 <Insets left="15.0" right="15.0" />
                                              </HBox.margin>
                                           </Separator>
-                                          <Label fx:id="Agent5Label2" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man5Label2" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -235,7 +235,7 @@
                                                 <Insets left="15.0" right="15.0" />
                                              </HBox.margin>
                                           </Separator>
-                                          <Label fx:id="Agent5Label3" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man5Label3" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -263,7 +263,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent6Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man6Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -302,7 +302,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent7Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man7Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -330,7 +330,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent8Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                          <Label fx:id="Man8Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -358,7 +358,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent9Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                          <Label fx:id="Man9Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -386,7 +386,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent10Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                          <Label fx:id="Man10Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -414,7 +414,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent11Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                          <Label fx:id="Man11Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -442,7 +442,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent11Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                          <Label fx:id="Man12Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -481,7 +481,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent13Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man13Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -509,7 +509,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent14Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                          <Label fx:id="Man14Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -537,7 +537,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent15Label1" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                          <Label fx:id="Man15Label1" contentDisplay="CENTER" prefHeight="80.0" text="String">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -560,7 +560,7 @@
                                                 <Insets left="15.0" right="15.0" />
                                              </HBox.margin>
                                           </Separator>
-                                          <Label fx:id="Agent15Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                          <Label fx:id="Man15Label3" contentDisplay="CENTER" prefHeight="80.0" text="String">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -585,7 +585,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent16Label1" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                          <Label fx:id="Man16Label1" contentDisplay="CENTER" prefHeight="80.0" text="String">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -598,7 +598,7 @@
                                                 <Insets left="15.0" right="15.0" />
                                              </HBox.margin>
                                           </Separator>
-                                          <Label fx:id="Agent16Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                          <Label fx:id="Man16Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -623,7 +623,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent17Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                          <Label fx:id="Man17Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -651,7 +651,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent18Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                          <Label fx:id="Man18Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -711,7 +711,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="Agent20Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                          <Label fx:id="Man20Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>

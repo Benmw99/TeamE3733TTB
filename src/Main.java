@@ -1,3 +1,4 @@
+import DB.SampleData;
 import Entities.AlcoholType;
 import Entities.Form;
 import Entities.Manufacturer;
@@ -18,6 +19,8 @@ public class Main {
                     "jim@jimmail.com", 12345, Timestamp.from(Instant.now()), "Jimmy", "6035026034", AlcoholType.MaltBeverage.toInt(), 2.3);
             db.dbInsert.insertForm("23ff", "ColaBooze", "ColB", false, true, null,
                     "tom@jimmail.com", 12345, Timestamp.from(Instant.now()), "Tom", "8918918991", AlcoholType.DistilledLiquor.toInt(), 40.0);
+
+            DB.SampleData s = new SampleData(db);
         }catch(Exception e){
             System.out.println(e.toString());
         }
