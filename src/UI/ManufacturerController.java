@@ -16,6 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import jdk.internal.org.objectweb.asm.tree.MultiANewArrayInsnNode;
 import org.apache.commons.lang3.*;
 
 
@@ -327,10 +328,8 @@ public class ManufacturerController {
                     int row = pos.getRow();
                     int col = pos.getColumn();
                     int ID = col1.getCellData(row);
+                    System.out.println(ID);
                     displayForm(Database.getInstance().dbSelect.getFormByTTB_ID(ID));
-                    @SuppressWarnings("rawtypes")
-                    TableColumn column = pos.getTableColumn();
-                    String val = column.getCellData(row).toString(); System.out.println("Selected Value, " + val + ", Column: " + col + ", Row: " + row);
                 }
             }
         });
@@ -343,6 +342,28 @@ public class ManufacturerController {
     }
 
     protected void displayForm(Form form){
+        Man1Label.setText("N/A");
+        Man2Label.setText("N/A");
+        Man3Label.setText("N/A");
+        ManReview4Label1.setText("N/A");
+        Man4Label2.setText("N/A");
+        Man5Label1.setText("N/A");
+        Man5Label2.setText("N/A");
+        Man5Label3.setText("N/A");
+        Man6Label.setText("N/A");
+        Man7Label.setText("N/A");
+        Man8Label.setText("N/A");
+        Man9Label.setText("N/A");
+        Man10Label.setText("N/A");
+        Man11Label.setText("N/A");
+        Man12Label.setText("N/A");
+        Man13Label.setText("N/A");
+        Man14Label.setText("N/A");
+        Man15Label1.setText("N/A");
+        Man16Label1.setText("N/A");
+        Man16Label2.setText("N/A");
+        Man17Label.setText("N/A");
+        Man20Label.setText("N/A");
         Man1Label.setText(form.getRepID());
         if(!form.getBrewersPermit().isEmpty()){
             Man2Label.setText(form.getBrewersPermit().get(0));
@@ -356,7 +377,7 @@ public class ManufacturerController {
         Man3Label.setText(dom);
             if(form.getSerialNumber() != null) {
                 ManReview4Label1.setText(form.getSerialNumber().substring(0, 2)); //First 2
-                Man4Label2.setText(form.getSerialNumber().substring(2, 6)); //Rest
+                Man4Label2.setText(form.getSerialNumber().substring(2)); //Rest
             }
             if(form.getAlcoholType() != null) {
                 Man5Label1.setText(form.getAlcoholType().toString()); //Type of Product
@@ -373,6 +394,8 @@ public class ManufacturerController {
             }
             if(form.getBrandName() != null) {
                 Man6Label.setText(form.getBrandName());
+            } else {
+                Man6Label.setText("N/A");
             }
             if(form.getFancifulName() != null) {
                 Man7Label.setText(form.getFancifulName());
@@ -607,6 +630,9 @@ public class ManufacturerController {
         }
         this.newForm.setRepID(repIDField.getText());
         this.newForm.getBrewersPermit().add(producerNumField.getText());
+        ArrayList<String> los = new ArrayList<String>();
+        los.add(producerNumField.getText());
+        form.setBrewersPermit(los);
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
         this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
         if(typeComboBox.getValue() == "Wine"){
