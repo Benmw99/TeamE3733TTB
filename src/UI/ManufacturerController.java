@@ -36,7 +36,6 @@ public class ManufacturerController {
     Entities.Form form;
     static Entities.Form newForm;
 
-
     //ManHome
     @FXML
     SplitMenuButton menuSplitButton;
@@ -298,12 +297,17 @@ public class ManufacturerController {
 
     @FXML
     protected void initialize(){
-        this.currentForm = new Form();
+        if(this.currentFormPage == 1){
+
+        }
     }
-    //new application
+
+
+
     @FXML
     public void manApp1(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp1.fxml", addAppButton);
+        currentFormPage = 1;
     }
 
     //back buttons
@@ -327,6 +331,7 @@ public class ManufacturerController {
     @FXML
     public void manApp2d(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
+        currentFormPage = 2;
     }
 
     //move up pages by arrows from ManApp2
@@ -427,11 +432,10 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the second page
     @FXML
     public void checkBlanksPage1(ActionEvent event) throws IOException{
-        // THIS STILL RETURNS NULL POINTERS. JUST WANT TO PUSH *ENTER* BUTTON FUNCTIONALITY
-        this.newForm = new Form();
-        //if(this.newForm == null) {
-        //    this.newForm = new Form();
-        //}
+        if(this.newForm == null) {
+            this.newForm = new Form();
+        }
+
         this.newForm.setRepID(repIDField.getText());
         this.newForm.getBrewersPermit().add(producerNumField.getText());
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
@@ -456,10 +460,12 @@ public class ManufacturerController {
             missingTextFieldPage1.show();
         }
         else{
-            System.out.println("I need to go to the second page");
+            currentFormPage = 2;
             pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
         }
-    }
+
+        }
+
 
     // Checks through the second page of the full TTB application to see if any of the text fields are blank.
     // If they are all filled, then the user can move on to the third page
@@ -467,7 +473,12 @@ public class ManufacturerController {
     public void checkBlanksPage2(ActionEvent event) throws IOException{
 
         this.newForm.setFancifulName(fancifulField.getText());
-
+        if(zip9Field.getText().length() > 5 || zip8Field.getText().length() > 5){
+            Alert missingTextFieldPage2 = new Alert(Alert.AlertType.WARNING);
+            missingTextFieldPage2.setTitle("Missing Text Field");
+            missingTextFieldPage2.setContentText("A Zip Code can only be five digits.");
+            missingTextFieldPage2.show();
+        }
         Address address = new Address(city8Field.getText(), state8ComboBox.getValue(), zip8Field.getText(), address8Field.getText(), name8Field.getText());
         ArrayList<Address> arr = new ArrayList<Address>();
         arr.add(address);
@@ -491,6 +502,7 @@ public class ManufacturerController {
             missingTextFieldPage2.show();
         }
         else{
+            currentFormPage = 3;
             pageSwitch(event, "ManApp3.fxml", nextSectionMA2Button);
         }
     }
@@ -516,6 +528,7 @@ public class ManufacturerController {
             missingTextFieldPage1.show();
         }
         else{
+            currentFormPage = 4;
             pageSwitch(event, "ManApp4.fxml", nextSectionMA3Button);
         }
     }
