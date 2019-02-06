@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
    <children>
       <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
          <children>
@@ -26,12 +26,12 @@
                <children>
                   <Text fill="WHITE" layoutX="549.0" layoutY="53.0" strokeWidth="0.0" text="My Current Queue">
                      <font>
-                        <Font name="Palatino" size="36.0" />
+                        <Font name="Georgia" size="36.0" />
                      </font>
                   </Text>
-                  <Button fx:id="backButton" layoutX="89.0" layoutY="31.0" mnemonicParsing="false" onAction="#welcomePage" text="Log Out">
+                  <Button fx:id="backButton" layoutX="89.0" layoutY="31.0" mnemonicParsing="false" onAction="#welcomePage" style="-fx-background-color: #1F2020 #1F2020;" text="Log Out" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Georgia" size="18.0" />
                      </font>
                   </Button>
                </children>
@@ -58,11 +58,26 @@
             </Pane>
             <Pane layoutX="355.0" layoutY="88.0" prefHeight="64.0" prefWidth="1006.0" style="-fx-background-color: #C4C4C4#C4C4C4;">
                <children>
-                  <Button fx:id="approveAHButton" layoutX="289.0" layoutY="17.0" mnemonicParsing="false" onAction="#approveForm" text="Approve Form" />
-                  <Button fx:id="printAHButton" layoutX="914.0" layoutY="17.0" mnemonicParsing="false" text="Print" />
-                  <Button fx:id="rejectAHButton" layoutX="410.0" layoutY="17.0" mnemonicParsing="false" onAction="#rejectForm" text="Reject Form" />
-                  <Button fx:id="getnewQueueButton" layoutX="34.0" layoutY="17.0" mnemonicParsing="false" onAction="#getNewQueue" text="Get New Queue" />
-                  <Button fx:id="reviewToolButton" disable="true" layoutX="729.0" layoutY="17.0" mnemonicParsing="false" onAction="#reviewTool" text="Use Reviewing Tools" />
+                  <Button fx:id="approveAHButton" layoutX="289.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: #1F2020 #1F2020;" text="Approve Form" textFill="WHITE">
+                     <font>
+                        <Font name="Georgia" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="printAHButton" layoutX="914.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: #1F2020 #1F2020;" text="Print" textFill="WHITE">
+                     <font>
+                        <Font name="Georgia" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="rejectAHButton" layoutX="438.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: #1F2020 #1F2020;" text="Reject Form" textFill="WHITE">
+                     <font>
+                        <Font name="Georgia" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="getnewQueueButton" layoutX="34.0" layoutY="17.0" mnemonicParsing="false" onAction="#getNewQueue" style="-fx-background-color: #1F2020;" text="Get New Queue" textFill="WHITE">
+                     <font>
+                        <Font name="Georgia" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="reviewToolButton" layoutX="663.0" layoutY="17.0" mnemonicParsing="false" onAction="#reviewTool" style="-fx-background-color: #1F2020 #1F2020;" text="Use Reviewing Tools" textFill="WHITE">
+                     <font>
+                        <Font name="Georgia" size="18.0" />
+                     </font></Button>
                </children>
             </Pane>
             <Pane layoutX="487.0" layoutY="153.0" prefHeight="606.0" prefWidth="576.0" style="-fx-background-color: #E7E7E7#E7E7E7;">
