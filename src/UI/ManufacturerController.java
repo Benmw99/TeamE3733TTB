@@ -648,13 +648,13 @@ public class ManufacturerController {
         newForm.setBrewersPermit(los);
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
         this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
-        if(typeComboBox.getValue() == "Wine"){
+        if(typeComboBox.getValue().equals("Wine")){
             this.newForm.setAlcoholType(AlcoholType.Wine);
             WineFormItems wine = new WineFormItems();
             wine.setVintageYear(Integer.valueOf(vintageYearField.getText()));
             wine.setpH(Float.valueOf(phField.getText()));
             this.newForm.setWineFormItems(wine);
-        } else if (typeComboBox.getValue() == "Distilled Spirits"){
+        } else if (typeComboBox.getValue().equals("Distilled Spirits")){
             this.newForm.setAlcoholType(AlcoholType.DistilledLiquor);
         } else {
             this.newForm.setAlcoholType(AlcoholType.MaltBeverage);
@@ -701,7 +701,7 @@ public class ManufacturerController {
             this.newForm.getWineFormItems().setGrapeVarietal(grapeVarField.getText());
             this.newForm.getWineFormItems().setAppellation(wineAppField.getText());
         }
-        if(StringUtils.isBlank(this.newForm.getFancifulName()) || StringUtils.isBlank(this.newForm.getFormula())){
+        if(StringUtils.isBlank(this.newForm.getFancifulName())){
             Alert missingTextFieldPage2 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage2.setTitle("Missing Text Field");
             missingTextFieldPage2.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
@@ -798,11 +798,18 @@ public class ManufacturerController {
 
     @FXML
     public void checkAndSubmitForm(ActionEvent event ) throws IOException {
-        this.newForm.setAlcoholContent(Float.parseFloat(alcoholContentTextField.getText()));
-        this.manufacturer.submitForm(this.newForm);
-        System.out.println("Form Submitted");
-        pageSwitch(event, "ManHome.fxml", submitButton);
-        tableView();
+        if(alcoholContentTextField.getText() != null && !alcoholContentTextField.getText().trim().equals("") && alcoholContentTextField.getText().length() > 0) {
+            this.newForm.setAlcoholContent(Float.parseFloat(alcoholContentTextField.getText()));
+            this.manufacturer.submitForm(this.newForm);
+            System.out.println("Form Submitted");
+            pageSwitch(event, "ManHome.fxml", submitButton);
+            //tableView();
+        } else {
+            Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
+            missingTextFieldPage1.setTitle("Missing Text Field");
+            missingTextFieldPage1.setContentText("You have forgotten to fill out a text field. Please do so before moving on.");
+            missingTextFieldPage1.show();
+        }
     }
 
     /**

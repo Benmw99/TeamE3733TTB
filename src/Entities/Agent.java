@@ -94,13 +94,13 @@ public class Agent implements IUser{
     }
 
     public void rejectForm(Form form) {
-        form.setApprovalStatus(Incomplete);
+        form.setApprovalStatus(Incorrect);
         DB.Database db = DB.Database.getInstance();
         Approval app = new Approval();
-        app.setPage1(Incomplete);
-        app.setPage2(Incomplete);
-        app.setPage3(Incomplete);
-        app.setPage4(Incomplete);
+        app.setPage1(Incorrect);
+        app.setPage2(Incorrect);
+        app.setPage3(Incorrect);
+        app.setPage4(Incorrect);
         app.setAgentApprovalName(this.getName());
         form.setApproval(app);
         db.dbSelect.approveForm(form, form.getApproval());
