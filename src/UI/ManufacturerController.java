@@ -396,6 +396,9 @@ public class ManufacturerController {
                     Man12Label.setText(form.getWineFormItems().getAppellation());
                 }
             }
+            if(form.getBrewersPermit() != null){
+
+            }
             if(form.getBrandName() != null) {
                 Man6Label.setText(form.getBrandName());
             } else {
