@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="760.0" maxWidth="1360.0" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
+<AnchorPane maxHeight="760.0" maxWidth="1360.0" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -252,15 +252,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="7" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Fanciful Name" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview7Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview7Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -280,15 +280,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="8*" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Name and Address" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview8Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                                <Label fx:id="AgentReview8Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -308,15 +308,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="9*" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Mailing Adress" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview9Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                                <Label fx:id="AgentReview9Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -336,15 +336,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="10" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Formula" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview10Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                                <Label fx:id="AgentReview10Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -364,15 +364,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="11" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Grape Varietal(s)" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview11Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                                <Label fx:id="AgentReview11Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -392,15 +392,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="12" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Wine Appellation" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview11Label" contentDisplay="CENTER" prefHeight="80.0" text="Address">
+                                                <Label fx:id="AgentReview11Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -430,15 +430,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="13" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Phone Number" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview13Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview13Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -458,15 +458,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="14" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Email Address" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview14Label1" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                                <Label fx:id="AgentReview14Label1" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -486,15 +486,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="15" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Type of Application" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview15Label1" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                                <Label fx:id="AgentReview15Label1" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -507,7 +507,7 @@
                                                       <Insets left="15.0" right="15.0" />
                                                    </HBox.margin>
                                                 </Separator>
-                                                <Label fx:id="AgentReview15Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                                <Label fx:id="AgentReview15Label2" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -520,7 +520,7 @@
                                                       <Insets left="15.0" right="15.0" />
                                                    </HBox.margin>
                                                 </Separator>
-                                                <Label fx:id="AgentReview15Label3" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                                <Label fx:id="AgentReview15Label3" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -537,15 +537,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="16" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Additional Information" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview16Label1" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                                <Label fx:id="AgentReview16Label1" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -558,7 +558,7 @@
                                                       <Insets left="15.0" right="15.0" />
                                                    </HBox.margin>
                                                 </Separator>
-                                                <Label fx:id="AgentReview16Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                                <Label fx:id="AgentReview16Label2" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -575,15 +575,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="17" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Date of Application" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview17Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                                <Label fx:id="AgentReview17Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -603,15 +603,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="18" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Signature of Applicant" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview18Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
+                                                <Label fx:id="AgentReview18Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -641,12 +641,12 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="19" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Label Submitted" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -662,15 +662,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="20" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Alcohol Content" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview20Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview20Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
