@@ -118,6 +118,7 @@ public class SampleData {
         db.dbInsert.insertForm(four, man);
 
         Form five = new Form();
+        five.setCompanyID(123);
         five.setBrandName("BESTOWER");
         five.setFancifulName(" ");
         five.setAlcoholType(AlcoholType.Wine);
