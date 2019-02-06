@@ -80,7 +80,7 @@ public class Agent implements IUser{
         return db.dbSelect.searchBy(advancedSearch);
     }
 
-    void approveForm(Form form, String qualifications) {
+    public void approveForm(Form form, String qualifications) {
         form.getApproval().approve(name, qualifications);
         form.setApprovalStatus(Complete);
         DB.Database db = DB.Database.getInstance();
@@ -88,7 +88,7 @@ public class Agent implements IUser{
 
     }
 
-    void rejectForm(Form form) {
+    public void rejectForm(Form form) {
         form.setApprovalStatus(Incomplete);
         DB.Database db = DB.Database.getInstance();
         db.dbSelect.approveForm(form, form.getApproval());

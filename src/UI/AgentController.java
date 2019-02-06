@@ -557,9 +557,9 @@ public class AgentController {
 
 
 
-    private Form currentForm;
+    static private Form currentForm;
     private static Agent currentAgent;
-    private List<Form> queue;
+    static private List<Form> queue;
 
 
     @FXML
@@ -568,6 +568,10 @@ public class AgentController {
         if(currentAgent.authenticate()) {
             currentAgent.loadUser();
             pageSwitch(event, "AgentHome.fxml", loginButton);
+            queue = currentAgent.getThreeForms();
+
+            System.out.println(queue.size());
+            currentForm = queue.get(0);
         }
         else {
             Alert loginFailure = new Alert(Alert.AlertType.WARNING);
@@ -599,12 +603,16 @@ public class AgentController {
     }
     @FXML
     public void rejectForm(ActionEvent event) throws IOException {
-//        this.currentForm.reject(this.currentAgent.getName());
+        currentAgent.rejectForm(currentForm);
+        queue.remove(currentForm);
         pageSwitch(event, "AgentHome.fxml", backButton);
+
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
-//        this.currentForm.approve(this.currentAgent.getName());
+//        System.out.println(queue.size());
+        currentAgent.approveForm(currentForm, " ");
+        queue.remove(currentForm);
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
 
