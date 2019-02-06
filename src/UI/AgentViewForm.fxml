@@ -1284,12 +1284,12 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Button fx:id="approveAVFButton" disable="true" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Approve Form" textFill="WHITE">
+            <Button fx:id="approveAVFButton" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Approve Form" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="rejectAVFButton" disable="true" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Reject Form" textFill="WHITE">
+            <Button fx:id="rejectAVFButton" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Reject Form" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
