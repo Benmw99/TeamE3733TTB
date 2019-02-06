@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
    <children>
       <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
          <children>
@@ -59,16 +59,17 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <TableView layoutX="-2.0" layoutY="67.0" prefHeight="607.0" prefWidth="558.0">
+                  <TableView fx:id="tableViewMan" layoutX="-2.0" layoutY="67.0" prefHeight="607.0" prefWidth="558.0">
                     <columns>
-                      <TableColumn prefWidth="100.0" text="TTB ID#" />
-                      <TableColumn prefWidth="100.0" text="Date Submitted" />
-                        <TableColumn prefWidth="75.0" text="Satus" />
-                        <TableColumn prefWidth="100.0" text="Status Date" />
-                        <TableColumn prefWidth="75.0" text="Exp Date" />
-                        <TableColumn prefWidth="100.0" text="Agent Name" />
+                      <TableColumn fx:id="col1" prefWidth="100.0" text="TTB ID#" />
+                      <TableColumn fx:id="col2" prefWidth="100.0" text="Date Submitted" />
+                        <TableColumn fx:id="col3" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="col4" prefWidth="100.0" text="Status Date" />
+                        <TableColumn fx:id="col5" prefWidth="75.0" text="Exp Date" />
+                        <TableColumn fx:id="col6" prefWidth="100.0" text="Agent Name" />
                     </columns>
                   </TableView>
+                  <Button fx:id="refresh" layoutX="347.0" layoutY="18.0" mnemonicParsing="false" onAction="#tableView" text="Refresh" />
                </children>
             </Pane>
             <Pane layoutX="558.0" layoutY="88.0" prefHeight="64.0" prefWidth="803.0" style="-fx-background-color: #C4C4C4#C4C4C4;">

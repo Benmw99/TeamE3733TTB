@@ -41,7 +41,7 @@
                         <Font name="Palatino" size="48.0" />
                      </font>
                   </Text>
-                  <Button fx:id="agentRegisterButton" layoutX="49.0" layoutY="534.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #007bb0 #007bb0; -fx-background-radius: 10; -fx-border-radius: 10;" text="Register!" textFill="WHITE">
+                  <Button fx:id="agentRegisterButton" layoutX="49.0" layoutY="534.0" mnemonicParsing="false" opacity="0.0" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #007bb0 #007bb0; -fx-background-radius: 10; -fx-border-radius: 10;" text="Register!" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>

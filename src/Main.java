@@ -1,4 +1,6 @@
 import Entities.AlcoholType;
+import Entities.Form;
+import Entities.Manufacturer;
 
 import java.sql.Timestamp;
 import java.time.Instant;

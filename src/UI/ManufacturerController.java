@@ -2,6 +2,7 @@ package UI;
 
 import DB.Database;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.*;
 
@@ -20,11 +22,13 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
 import Entities.*;
 import org.apache.derby.iapi.util.StringUtil;
 import org.omg.CORBA.DATA_CONVERSION;
 
+import static Entities.AlcoholType.*;
 import static javafx.collections.FXCollections.observableArrayList;
 
 
@@ -35,7 +39,6 @@ public class ManufacturerController {
     static Manufacturer manufacturer;
     Entities.Form form;
     static Entities.Form newForm;
-
 
     //ManHome
     @FXML
@@ -272,15 +275,65 @@ public class ManufacturerController {
     @FXML
     Button submitButton;
 
+    @FXML
+    Button refresh;
+
+    @FXML
+    TableView<Form> tableViewMan;
+
+    @FXML
+    TableColumn<Form, Integer> col1;
+
+    @FXML
+    TableColumn<Form, Timestamp> col2;
+
+    @FXML
+    TableColumn<Form, String> col3;
+
+    @FXML
+    TableColumn<Form, ApprovalStatus> col4;
+
+    @FXML
+    TableColumn<Form, Timestamp> col5;
+
+    @FXML
+    TableColumn<Form, String> col6;
+
+    public void tableView()  {
+        Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
+        List<Form> forms = manufacturer.loadForms();
+
+
+        col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("approvalStatus"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("approval.timestamp"));
+        col5.setCellValueFactory(new PropertyValueFactory<>("approval.expDate"));
+        col6.setCellValueFactory(new PropertyValueFactory<>("approval.agentApprovalName"));
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        for (int i = 0; i < forms.size(); i++) {
+            tableValues.add(forms.get(i));
+        }
+        tableViewMan.setItems(tableValues);
+
+    }
+
+
 
     @FXML
     protected void initialize(){
-        this.currentForm = new Form();
+        if(this.currentFormPage == 1){
+
+        }
     }
-    //new application
+
+
+
     @FXML
     public void manApp1(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp1.fxml", addAppButton);
+        currentFormPage = 1;
     }
 
     //back buttons
@@ -304,6 +357,7 @@ public class ManufacturerController {
     @FXML
     public void manApp2d(ActionEvent event) throws IOException {
         pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
+        currentFormPage = 2;
     }
 
     //move up pages by arrows from ManApp2
@@ -407,24 +461,24 @@ public class ManufacturerController {
         if(this.newForm == null) {
             this.newForm = new Form();
         }
+
         this.newForm.setRepID(repIDField.getText());
-        newForm.getBrewersPermit().add(producerNumField.getText());
+        this.newForm.getBrewersPermit().add(producerNumField.getText());
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
         this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
         if(typeComboBox.getValue() == "Wine"){
-            newForm.setAlcoholType(AlcoholType.Wine);
+            this.newForm.setAlcoholType(AlcoholType.Wine);
             WineFormItems wine = new WineFormItems();
             wine.setVintageYear(Integer.valueOf(vintageYearField.getText()));
             wine.setpH(Float.valueOf(phField.getText()));
-            newForm.setWineFormItems(wine);
+            this.newForm.setWineFormItems(wine);
         } else if (typeComboBox.getValue() == "Distilled Spirits"){
-            newForm.setAlcoholType(AlcoholType.DistilledLiquor);
+            this.newForm.setAlcoholType(AlcoholType.DistilledLiquor);
         } else {
-            newForm.setAlcoholType(AlcoholType.MaltBeverage);
+            this.newForm.setAlcoholType(AlcoholType.MaltBeverage);
         }
         this.newForm.setBrandName(brandField.getText());
-
-        if( StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
+        if(StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
             System.out.println("I'm stuck thinking things aren't filled in");
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
@@ -432,10 +486,12 @@ public class ManufacturerController {
             missingTextFieldPage1.show();
         }
         else{
-            System.out.println("I need to go to the second page");
+            currentFormPage = 2;
             pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
         }
-    }
+
+        }
+
 
     // Checks through the second page of the full TTB application to see if any of the text fields are blank.
     // If they are all filled, then the user can move on to the third page
@@ -443,7 +499,12 @@ public class ManufacturerController {
     public void checkBlanksPage2(ActionEvent event) throws IOException{
 
         this.newForm.setFancifulName(fancifulField.getText());
-
+        if(zip9Field.getText().length() > 5 || zip8Field.getText().length() > 5){
+            Alert missingTextFieldPage2 = new Alert(Alert.AlertType.WARNING);
+            missingTextFieldPage2.setTitle("Missing Text Field");
+            missingTextFieldPage2.setContentText("A Zip Code can only be five digits.");
+            missingTextFieldPage2.show();
+        }
         Address address = new Address(city8Field.getText(), state8ComboBox.getValue(), zip8Field.getText(), address8Field.getText(), name8Field.getText());
         ArrayList<Address> arr = new ArrayList<Address>();
         arr.add(address);
@@ -467,6 +528,7 @@ public class ManufacturerController {
             missingTextFieldPage2.show();
         }
         else{
+            currentFormPage = 3;
             pageSwitch(event, "ManApp3.fxml", nextSectionMA2Button);
         }
     }
@@ -492,6 +554,7 @@ public class ManufacturerController {
             missingTextFieldPage1.show();
         }
         else{
+            currentFormPage = 4;
             pageSwitch(event, "ManApp4.fxml", nextSectionMA3Button);
         }
     }
@@ -535,6 +598,7 @@ public class ManufacturerController {
         this.manufacturer.submitForm(this.newForm);
         System.out.println("Form Submitted");
         pageSwitch(event, "ManHome.fxml", submitButton);
+        tableView();
 
 
     }

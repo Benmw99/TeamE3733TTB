@@ -250,19 +250,19 @@
       </HBox>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button fx:id="prevSectionMA4Button" mnemonicParsing="false" onAction="#manApp5d" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
-               <font>
-                  <Font name="System Bold" size="33.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="30.0" />
-               </HBox.margin>
-            </Button>
+            <!--<Button fx:id="prevSectionMA4Button" mnemonicParsing="false" onAction="#manApp5d" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">-->
+               <!--<font>-->
+                  <!--<Font name="System Bold" size="33.0" />-->
+               <!--</font>-->
+               <!--<HBox.margin>-->
+                  <!--<Insets right="30.0" />-->
+               <!--</HBox.margin>-->
+            <!--</Button>-->
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button fx:id="submitButton" mnemonicParsing="false" onAction="#checkAndSubmitForm" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #71071D;" text="Submit" textFill="WHITE">
+            <Button fx:id="submitButton" defaultButton="true" mnemonicParsing="false" onAction="#checkAndSubmitForm" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #71071D;" text="Submit" textFill="WHITE">
                <HBox.margin>
                   <Insets right="80.0" />
                </HBox.margin>

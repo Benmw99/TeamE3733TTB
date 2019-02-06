@@ -93,6 +93,9 @@ public class CivilController {
     Button printResults;
 
     @FXML
+    Button backToWelcomeButton;
+
+    @FXML
     ComboBox typeComboBox;
 
     /*
@@ -424,6 +427,11 @@ public class CivilController {
     public void goBackToSearch(ActionEvent event) throws IOException {
         initStuff = 0;
         pageSwitch(event,"CivilAdvSearch.fxml", backToAdvSearch);
+    }
+
+    @FXML
+    public void goBackToWelcome(ActionEvent event) throws IOException {
+        pageSwitch(event,"WelcomePage.fxml", backToWelcomeButton);
     }
 
 
