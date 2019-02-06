@@ -580,6 +580,8 @@ public class AgentController {
         }
     }
 
+
+
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", backButton);
@@ -603,15 +605,14 @@ public class AgentController {
     }
     @FXML
     public void rejectForm(ActionEvent event) throws IOException {
-//        currentAgent.rejectForm(currentForm); //TODO: uncomment this when agent.getThreeForms is fixed
+        currentAgent.rejectForm(currentForm);
         queue.remove(currentForm);
         pageSwitch(event, "AgentHome.fxml", backButton);
 
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
-        //TODO: agent.getThreeForms returns forms without valid Approval instance
-//        currentAgent.approveForm(currentForm, " ");  //TODO: uncomment this when agent.getThreeForms is fixed
+        currentAgent.approveForm(currentForm, " ");
         queue.remove(currentForm);
         pageSwitch(event, "AgentHome.fxml", backButton);
     }
