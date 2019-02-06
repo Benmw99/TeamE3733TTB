@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -8,6 +10,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,11 +28,6 @@
             <Rectangle fill="#c4c4c4" height="75.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1360.0" />
             <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Rectangle fill="#1f2020" height="585.0" stroke="TRANSPARENT" strokeType="INSIDE" width="50.0">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Rectangle>
                   <TabPane prefHeight="585.0" prefWidth="605.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Section 1">
@@ -44,15 +42,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="1" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Representative ID #" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview1Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview1Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -72,15 +70,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="2*" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Plant Registry/Basic Permit Brewer's #" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview2Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview2Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -100,15 +98,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="3*" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Source of Product" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview3Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview3Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -128,15 +126,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="4*" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Seriel Number" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview4Label1" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview4Label1" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -145,7 +143,7 @@
                                                    </HBox.margin>
                                                 </Label>
                                                 <Separator orientation="VERTICAL" style="-fx-background-color: black;" />
-                                                <Label fx:id="AgentReview4Label2" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview4Label2" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -165,15 +163,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="5*" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Type of Product" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview5Label1" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview5Label1" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -186,7 +184,7 @@
                                                       <Insets left="15.0" right="15.0" />
                                                    </HBox.margin>
                                                 </Separator>
-                                                <Label fx:id="AgentReview5Label2" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview5Label2" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -196,7 +194,7 @@
                                                       <Insets left="15.0" right="15.0" />
                                                    </HBox.margin>
                                                 </Separator>
-                                                <Label fx:id="AgentReview5Label3" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview5Label3" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -216,15 +214,15 @@
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="6*" textFill="WHITE">
                                                    <font>
-                                                      <Font size="28.0" />
+                                                      <Font name="Georgia" size="24.0" />
                                                    </font>
                                                 </Label>
                                                 <Label contentDisplay="CENTER" prefHeight="80.0" text=" Brand Name" textFill="WHITE">
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font name="Georgia" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="AgentReview6Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                                <Label fx:id="AgentReview6Label" contentDisplay="CENTER" prefHeight="80.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -692,30 +690,132 @@
                            </content></Tab>
                     </tabs>
                   </TabPane>
-                  <TabPane prefHeight="585.0" prefWidth="586.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane prefHeight="585.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
                      <tabs>
                         <Tab fx:id="rulesRegTab" text="Rules and Regulations">
                            <content>
                               <AnchorPane>
                                  <children>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ScrollPane pannable="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <content>
                                         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="552.0" prefWidth="586.0">
                                              <children>
-                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="552.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-153.0" AnchorPane.topAnchor="0.0">
                                                    <children>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="I am Here">
-                                                         <font>
-                                                            <Font size="48.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                                                      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="1" textFill="WHITE">
-                                                         <font>
-                                                            <Font size="28.0" />
-                                                         </font>
-                                                      </Label>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="126.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="126.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                      <HBox alignment="CENTER" prefHeight="128.0" prefWidth="569.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="132.0" prefWidth="100.0" text="1" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="Georgia" size="36.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Include a third party representative ID number if your application will be submitted by a third party representative, and if you consent to the disclosure of information abou tthe applciation to thiis representative, as well as the return of the processed application to this representative. Third party filers who do not already have a Representative ID Number, please contact TTB to obtain one (See section IV for contact information)" wrappingWidth="451.8836669921875">
+                                                               <font>
+                                                                  <Font name="Georgia" size="13.0" />
+                                                               </font></Text>
+                                                         </children>
+                                                      </HBox>
+                                                      <Pane layoutY="125.0" prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="200.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="200.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                            <HBox alignment="CENTER" prefHeight="128.0" prefWidth="569.0">
+                                                               <children>
+                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="189.0" prefWidth="100.0" text="2" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="36.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="For bonded wine cellars, taxpaid wine bottline houses, and distilled spirits plants, enter the applicable registry number (BW- or TPWBH- or DSP- number). Importers must enter the TTB basic permit number and brewers must enter the brewer's notice number. Wholesalers applying to relabel must enter teh wholesaler's basic permis number. If you intend to botle this product at more than one of your locations (distilled spirits and malt beverages only), show the registry number/brewer's notic number of each location where the product will be bottled. In this instance, Item 8 should reflect your principal place of business. You may also use Item 8a to reflect additional registry/brewer's notice numbers if the space provided in item 2 is insufficient. In this instance, cross out the words &quot;Mailing address, if different&quot;" wrappingWidth="451.8836669921875">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="13.0" />
+                                                                     </font></Text>
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </Pane>
+                                                      <Pane layoutY="324.0" prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="41.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                            <HBox alignment="CENTER" prefHeight="41.0" prefWidth="569.0">
+                                                               <children>
+                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="3" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="36.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indicate the source of the product by checking the appropriate box." wrappingWidth="451.8836669921875" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </Pane>
+                                                      <Pane layoutY="364.0" prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
+                                                               <children>
+                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="4" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="36.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You must assign a sequential serial number beginning with the last two digits of the current calendar year to each application and its duplicate, not to exceed 6 characters; e.g., 12-1, 12-2, etc." wrappingWidth="451.8836669921875" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </Pane>
+                                                      <Pane layoutY="417.0" prefHeight="54.0" prefWidth="571.0">
+                                                         <children>
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
+                                                               <children>
+                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="5" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="36.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indicate the type of product by checking the appropriate box. For Sake, check the &quot;wine&quot; box." wrappingWidth="451.8836669921875" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </Pane>
+                                                      <Pane layoutY="469.0" prefHeight="54.0" prefWidth="571.0">
+                                                         <children>
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
+                                                               <children>
+                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="6" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="36.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </Pane>
+                                                      <Pane layoutY="522.0" prefHeight="54.0" prefWidth="571.0">
+                                                         <children>
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
+                                                               <children>
+                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="7" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Georgia" size="36.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </Pane>
                                                    </children>
                                                 </Pane>
                                              </children>
@@ -732,14 +832,46 @@
                         </Tab>
                         <Tab fx:id="feedbackTab" text="Give Form Feedback">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Pane prefHeight="553.0" prefWidth="588.0">
+                                       <children>
+                                          <Text layoutX="38.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Feedback Message">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField layoutX="38.0" layoutY="53.0" prefHeight="481.0" prefWidth="513.0" />
+                                       </children>
+                                    </Pane>
+                                 </children></AnchorPane>
                            </content>
                         </Tab>
                         <Tab fx:id="sendToAgentTab" text="Send to an Agent">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <Pane prefHeight="553.0" prefWidth="591.0" />
+                                    <Pane prefHeight="553.0" prefWidth="591.0">
+                                       <children>
+                                          <Text layoutX="35.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agent Email">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="38.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="35.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TTB ID # ">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField layoutX="154.0" layoutY="52.0" prefHeight="27.0" prefWidth="241.0" />
+                                          <TextField layoutX="154.0" layoutY="105.0" prefHeight="27.0" prefWidth="243.0" />
+                                          <TextField layoutX="155.0" layoutY="161.0" prefHeight="348.0" prefWidth="428.0" />
+                                       </children></Pane>
                                  </children></AnchorPane>
                            </content>
                         </Tab>
@@ -749,8 +881,7 @@
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="583.0" prefWidth="607.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="175.0" />
-      <HBox alignment="CENTER" layoutX="667.0" layoutY="175.0" prefHeight="580.0" prefWidth="687.0" AnchorPane.leftAnchor="667.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="175.0" />
+      <HBox alignment="CENTER" layoutX="32.0" layoutY="176.0" prefHeight="582.0" prefWidth="635.0" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="176.0" />
       <VBox alignment="CENTER" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Form Reviewing Tools" textFill="WHITE">
@@ -782,11 +913,22 @@
             <Font name="Georgia" size="18.0" />
          </font>
       </Button>
-      <Text layoutX="70.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark Section as:" />
+      <Text layoutX="70.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark Section as:">
+         <font>
+            <Font name="Georgia" size="18.0" />
+         </font></Text>
       <Button fx:id="agentBackToHomeButton" layoutX="61.0" layoutY="34.0" mnemonicParsing="false" onAction="#goBackToAgentHome" style="-fx-background-color: #1F2020;" text="Back to Home" textFill="WHITE">
          <font>
             <Font name="Georgia" size="18.0" />
          </font></Button>
-      <ComboBox fx:id="sectionMarkComboBox" layoutX="190.0" layoutY="124.0" prefWidth="150.0" />
+      <ComboBox fx:id="sectionMarkComboBox" layoutX="213.0" layoutY="124.0" prefWidth="150.0" style="-fx-background-color: #fffff;">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Correct" />
+                  <String fx:value="Incorrect" />
+                  <String fx:value="Incomplete" />
+              </FXCollections>
+          </items>
+      </ComboBox>
    </children>
 </AnchorPane>

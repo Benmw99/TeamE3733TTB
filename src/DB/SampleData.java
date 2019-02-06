@@ -90,6 +90,7 @@ public class SampleData {
         db.dbInsert.insertForm(three, man);
 
         Form four = new Form();
+        four.setCompanyID(123);
         four.setBrandName("REKLAIMED VINES");
         four.setFancifulName("HONEY BADGER");
         four.setAlcoholType(AlcoholType.Wine);
