@@ -35,7 +35,7 @@
             </TableView>
          </children>
       </Pane>
-    <Button fx:id="menuASButton" layoutX="58.0" layoutY="52.0" mnemonicParsing="false" text="Return to Menu" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" />
+    <Button fx:id="menuASButton" onAction="#goBackToWelcome" layoutX="58.0" layoutY="52.0" mnemonicParsing="false" text="Return to Menu" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" />
     <TextField fx:id="searchASField" disable="true" alignment="CENTER" layoutX="349.0" layoutY="151.0" prefHeight="26.0" prefWidth="708.0" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="316.0" />
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="506.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="506.0" />
     <Text layoutX="22.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Manufactured">

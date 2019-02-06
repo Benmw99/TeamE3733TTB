@@ -24,7 +24,7 @@
             </font></Text>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="62.0" layoutX="72.0" layoutY="141.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="136.0" />
       <Button fx:id="printSearchResultsCSV" disable="true" layoutX="1039.0" layoutY="154.0" mnemonicParsing="false" opacity="0.0" text="Save Search Results to .CSV" />
-      <Button fx:id="backToAdvSearch" layoutX="88.0" layoutY="154.0" mnemonicParsing="false" onAction="#goBackToWelcome" style="-fx-background-color: #174930;" text="Back to Advanced Search" textFill="WHITE">
+      <Button fx:id="backToAdvSearch" layoutX="88.0" layoutY="154.0" mnemonicParsing="false" onAction="#goBackToSearch" style="-fx-background-color: #174930;" text="Back to Advanced Search" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Button>

@@ -431,7 +431,7 @@ public class CivilController {
 
     @FXML
     public void goBackToWelcome(ActionEvent event) throws IOException {
-        pageSwitch(event,"WelcomePage.fxml", backToWelcomeButton);
+        pageSwitch(event,"WelcomePage.fxml", menuASButton);
     }
 
 
