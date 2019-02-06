@@ -115,7 +115,6 @@ public class TableBuilder extends DatabaseAbstract {
                 "Zip_Code VARCHAR(8), " +
                 "isMailing BOOLEAN, " +
                 "City VARCHAR(32), " +
-                "APV REAL," +
                 "TTB_ID BIGINT, " +
                 "State VARCHAR(2), " +
                 "Street VARCHAR(32), " +
