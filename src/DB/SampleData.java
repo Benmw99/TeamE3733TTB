@@ -122,6 +122,6 @@ public class SampleData {
         sixteen.setSerialNumber("050003");
         db.dbInsert.insertForm(sixteen, man);
 
-        
+
     }
 }
