@@ -634,6 +634,8 @@ public class AgentController {
         }
         formTable.setItems(tableValues);
         printAHButton.setDisable(false);
+        Mailer mail = new Mailer();
+        mail.sendMail(currentForm);
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
@@ -654,6 +656,8 @@ public class AgentController {
         }
         formTable.setItems(tableValues);
         printAHButton.setDisable(false);
+        Mailer mail = new Mailer();
+        mail.sendMail(currentForm);
     }
 
     public void tableView()  {
