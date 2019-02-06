@@ -320,7 +320,7 @@
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox layoutY="-14.0" prefHeight="108.0" prefWidth="584.0">
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="103.0" prefWidth="100.0" text="8*" textFill="WHITE">
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="118.0" prefWidth="100.0" text="8*" textFill="WHITE">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
@@ -348,7 +348,7 @@
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#71071d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                                     <HBox prefHeight="120.0" prefWidth="584.0">
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="125.0" prefWidth="100.0" text="9*" textFill="WHITE">
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="81.0" prefWidth="100.0" text="9*" textFill="WHITE">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
