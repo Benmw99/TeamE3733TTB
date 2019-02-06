@@ -647,8 +647,6 @@ public class AgentController {
         }
         formTable.setItems(tableValues);
         printAHButton.setDisable(false);
-        System.out.println("3 Forms Gotten");
-
     }
 
     @FXML
