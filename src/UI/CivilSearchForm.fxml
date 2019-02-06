@@ -23,7 +23,7 @@
                 <Font name="Georgia" size="48.0" />
             </font></Text>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="62.0" layoutX="72.0" layoutY="141.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="136.0" />
-      <Button fx:id="printSearchResultsCSV" layoutX="1039.0" layoutY="154.0" mnemonicParsing="false" text="Save Search Results to .CSV" />
+      <Button fx:id="printSearchResultsCSV" disable="true" layoutX="1039.0" layoutY="154.0" mnemonicParsing="false" opacity="0.0" text="Save Search Results to .CSV" />
       <Button fx:id="backToAdvSearch" layoutX="88.0" layoutY="154.0" mnemonicParsing="false" onAction="#goBackToSearch" text="Back to Advanced Search" />
       <TabPane layoutX="401.0" layoutY="192.0" prefHeight="610.0" prefWidth="582.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>

@@ -394,6 +394,9 @@ public class AgentController {
     Button section1AVFButton;
 
     @FXML
+    Button agentBackToHomeButton;
+
+    @FXML
     Button section2AVFButton;
 
     @FXML
@@ -576,6 +579,11 @@ public class AgentController {
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", backButton);
+    }
+
+    @FXML
+    public void goBackToAgentHome(ActionEvent event) throws IOException {
+        pageSwitch(event, "WelcomePage.fxml", agentBackToHomeButton);
     }
     @FXML
     public void agentViewForm(ActionEvent event) throws IOException {
