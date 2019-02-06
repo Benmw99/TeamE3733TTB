@@ -630,7 +630,7 @@ public class DBSelect extends DatabaseAbstract {
        //     } else if(approval.isApproved()){
          //       ps.setInt(1,ApprovalStatus.Incorrect.toInt());
            // }
-            ps.setInt(1, ApprovalStatus.Complete.toInt());
+            ps.setInt(1, form.getApprovalStatus().toInt());
             System.out.println(ps.executeUpdate());
             ps.close();
             Database.getInstance().dbInsert.insertApproval(approval, form.getTtbID());
