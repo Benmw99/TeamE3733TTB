@@ -699,7 +699,7 @@
                            <content>
                               <AnchorPane>
                                  <children>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ScrollPane pannable="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <content>
                                         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="552.0" prefWidth="586.0">
                                              <children>
@@ -777,6 +777,38 @@
                                                                      </font>
                                                                   </Label>
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indicate the type of product by checking the appropriate box. For Sake, check the &quot;wine&quot; box." wrappingWidth="451.8836669921875" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </Pane>
+                                                      <Pane layoutY="469.0" prefHeight="54.0" prefWidth="571.0">
+                                                         <children>
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
+                                                               <children>
+                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="6" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font size="28.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </Pane>
+                                                      <Pane layoutY="522.0" prefHeight="54.0" prefWidth="571.0">
+                                                         <children>
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="54.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+                                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="54.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                                                            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="569.0">
+                                                               <children>
+                                                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="100.0" text="6" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font size="28.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A brand name is a name under which the product is sold. If the product is not sold under a brand name, enter the name of the bottler, packer, or importer, as applicable." wrappingWidth="451.8836669921875" />
                                                                </children>
                                                             </HBox>
                                                          </children>
@@ -878,11 +910,14 @@
             <Font name="Georgia" size="18.0" />
          </font>
       </Button>
-      <Text layoutX="70.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark Section as:" />
+      <Text layoutX="70.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark Section as:">
+         <font>
+            <Font name="Georgia" size="18.0" />
+         </font></Text>
       <Button fx:id="agentBackToHomeButton" layoutX="61.0" layoutY="34.0" mnemonicParsing="false" onAction="#goBackToAgentHome" style="-fx-background-color: #1F2020;" text="Back to Home" textFill="WHITE">
          <font>
             <Font name="Georgia" size="18.0" />
          </font></Button>
-      <ComboBox fx:id="sectionMarkComboBox" layoutX="190.0" layoutY="124.0" prefWidth="150.0" />
+      <ComboBox fx:id="sectionMarkComboBox" layoutX="213.0" layoutY="124.0" prefWidth="150.0" style="-fx-background-color: #1F2020;" />
    </children>
 </AnchorPane>
