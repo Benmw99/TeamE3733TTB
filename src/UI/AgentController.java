@@ -563,6 +563,12 @@ public class AgentController {
     private static Agent currentAgent;
     static private List<Form> queue;
 
+    @FXML
+    protected void initialize(){
+        if(currentForm != null) {
+            displayForm(currentForm);
+        }
+    }
 
     @FXML
     public void login(ActionEvent event) throws IOException {
@@ -615,15 +621,39 @@ public class AgentController {
     public void rejectForm(ActionEvent event) throws IOException {
         currentAgent.rejectForm(currentForm);
         queue.remove(currentForm);
-        pageSwitch(event, "AgentHome.fxml", backButton);
+  //      pageSwitch(event, "AgentHome.fxml", backButton);
+        tTBIDColumn.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        dateSubmittedColumn.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        brandNameColumn.setCellValueFactory(new PropertyValueFactory<>("brandName"));
 
+        tableView();
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        for (int i = 0; i < queue.size(); i++) {
+            tableValues.add(queue.get(i));
+        }
+        formTable.setItems(tableValues);
+        printAHButton.setDisable(false);
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
 
         currentAgent.approveForm(currentForm, " ");
         queue.remove(currentForm);
-        pageSwitch(event, "AgentHome.fxml", backButton);
+    //    pageSwitch(event, "AgentHome.fxml", backButton);
+        tTBIDColumn.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        dateSubmittedColumn.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        brandNameColumn.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+
+        tableView();
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        tableValues.remove(currentForm);
+        for (int i = 0; i < queue.size(); i++) {
+            tableValues.add(queue.get(i));
+        }
+        formTable.setItems(tableValues);
+        printAHButton.setDisable(false);
     }
 
     public void tableView()  {
@@ -646,7 +676,7 @@ public class AgentController {
                 }
             }
         });
-        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+    //    ObservableList<Form> tableValues = FXCollections.observableArrayList();
 
     }
 
