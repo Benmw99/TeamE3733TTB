@@ -149,7 +149,7 @@ public class TableBuilder extends DatabaseAbstract {
 
     private void buildBrewersPermit(){
         String buildString = "CREATE TABLE BREWERSPERMIT (" +
-                "Brewers_No BIGINT," +
+                "Brewers_No VARCHAR(32)," +
                 "TTB_ID BIGINT," +
                 "isPrimary BOOLEAN, " +
                 "Constraint BrewersPermit_PK Primary Key (TTB_ID, Brewers_No), " +
@@ -197,10 +197,10 @@ public class TableBuilder extends DatabaseAbstract {
                 "Email VARCHAR(256)," +
                 "Date_Submitted TIMESTAMP," +
                 "Applicant_Name VARCHAR(32)," +
-                "Phone VARCHAR(12)," +
+                "Phone VARCHAR(16)," +
                 "Alcohol_Type SMALLINT," +
                 "APV REAL, " +
-                "Formula BIGINT DEFAULT NULL," +
+                "Formula VARCHAR(16) DEFAULT NULL," +
                 "Rep_ID VARCHAR(16) DEFAULT NULL," +
                 "Company_ID BIGINT," +
                 "Constraint Form_PK Primary Key (TTB_ID), " +

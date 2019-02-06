@@ -151,7 +151,7 @@ public class CivilController {
     TableColumn<Form, String> col3;
 
     @FXML
-    TableColumn<Form, Integer> col4;
+    TableColumn<Form, String> col4;
 
 
     //CivilSearchForm
@@ -165,6 +165,9 @@ public class CivilController {
 
     SearchResult result;
     int searchPage;
+
+    //Brewers Permit
+    //Mailing address
 
     @FXML
     protected void initialize() {
@@ -259,7 +262,7 @@ public class CivilController {
         col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
         col2.setCellValueFactory(new PropertyValueFactory<>("alcoholType"));
         col3.setCellValueFactory(new PropertyValueFactory<>("brandName"));
-        col4.setCellValueFactory(new PropertyValueFactory<>("companyID"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
 
         ObservableList<Form> tableValues = FXCollections.observableArrayList();
         for (int i = 0; i < results.getResults().size(); i++) {
