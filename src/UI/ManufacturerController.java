@@ -606,7 +606,6 @@ public class ManufacturerController {
         if(this.newForm == null) {
             this.newForm = new Form();
         }
-
         this.newForm.setRepID(repIDField.getText());
         this.newForm.getBrewersPermit().add(producerNumField.getText());
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
@@ -634,8 +633,7 @@ public class ManufacturerController {
             currentFormPage = 2;
             pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
         }
-
-        }
+    }
 
 
     // Checks through the second page of the full TTB application to see if any of the text fields are blank.
