@@ -639,6 +639,9 @@ public class AgentController {
                     int row = pos.getRow();
                     int col = pos.getColumn();
                     int ID = tTBIDColumn.getCellData(row);
+                    System.out.println(ID);
+                    currentForm = Database.getInstance().dbSelect.getFormByTTB_ID(ID);
+                    displayForm(currentForm);
 
                 }
             }
@@ -666,11 +669,14 @@ public class AgentController {
         Agent13Label.setText("N/A");
         Agent14Label.setText("N/A");
         Agent15Label1.setText("N/A");
+        Agent15Label2.setText("N/A");
         Agent16Label1.setText("N/A");
         Agent16Label2.setText("N/A");
         Agent17Label.setText("N/A");
         Agent20Label.setText("N/A");
         Agent1Label.setText(form.getRepID());
+        System.out.println(form.getBrandName());
+        System.out.println(form.getEmail());
         if(!form.getBrewersPermit().isEmpty()){
             Agent2Label.setText(form.getBrewersPermit().get(0));
         }
