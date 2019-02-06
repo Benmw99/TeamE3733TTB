@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +22,8 @@ import static Entities.AlcoholType.*;
 
 public class CivilController {
     private Entities.SearchResult results;
+    static private Entities.Form selectedForm;
+    static private int initStuff = 0;
 
     //not added because no button to go back from civilsearch to welcome screen
     /*
@@ -91,6 +95,7 @@ public class CivilController {
     @FXML
     ComboBox typeComboBox;
 
+    /*
     @FXML
     Label civilAlcTypeLabel0;
     @FXML
@@ -153,6 +158,7 @@ public class CivilController {
     CheckBox ttbIDSearchcheckBox8;
     @FXML
     CheckBox ttbIDSearchcheckBox9;
+*/
 
     //Form Labels
     @FXML
@@ -186,25 +192,13 @@ public class CivilController {
     @FXML
     Label Civ12Label;
     @FXML
-    Label Civ13Label;
-    @FXML
     Label Civ14Label;
     @FXML
-    Label Civ15Label1;
+    Label Civ15Label;
     @FXML
-    Label Civ15Label2;
+    Label Civ16Label;
     @FXML
-    Label Civ15Label3;
-    @FXML
-    Label Civ16Label1;
-    @FXML
-    Label Civ16Label2;
-    @FXML
-    Label Civ17Label;
-    @FXML
-    Label Civ18Label;
-    @FXML
-    Label Civ20Label;
+    ImageView Agent13Image;
 
     @FXML
     TableView<Form> resultTable;
@@ -234,22 +228,71 @@ public class CivilController {
     SearchResult result;
     int searchPage;
 
+    @FXML
+    protected void initialize() {
+        if (initStuff == 1) {
+            Civ1Label.setText(selectedForm.getRepID());
+            String fullPermit = "";
+            for (int i = 0; i < selectedForm.getBrewersPermit().size(); i++) {
+                fullPermit += selectedForm.getBrewersPermit().get(i) + "\n";
+            }
+            Civ2Label.setText(fullPermit);
+            if (selectedForm.getSource()) {
+                Civ3Label.setText("Domestic");
+            } else {
+                Civ3Label.setText("Imported");
+            }
+            CivReview4Label1.setText(selectedForm.getSerialNumber());
+            Civ5Label1.setText(selectedForm.getAlcoholType().toString());
+            if (selectedForm.getAlcoholType().toInt() == Wine.toInt()) {
+                Civ5Label2.setText("" + selectedForm.getWineFormItems().getpH());
+                Civ5Label3.setText("" + selectedForm.getWineFormItems().getVintageYear());
+                Civ11Label.setText(selectedForm.getWineFormItems().getGrapeVarietal());
+                Civ12Label.setText(selectedForm.getWineFormItems().getAppellation());
+            } else {
+                Civ5Label2.setText("NA");
+                Civ5Label3.setText("NA");
+                Civ11Label.setText("NA");
+                Civ12Label.setText("NA");
+            }
+            Civ6Label.setText(selectedForm.getBrandName());
+            Civ7Label.setText(selectedForm.getFancifulName());
 
-    /*public void advSearch(ActionEvent event) throws IOException {
-        pageSwitch(event,"CivilAdvSearch.fxml", advSearchButton);
+            String fullAddress = "";
+            for (int i = 0; i < selectedForm.getAddress().size(); i++) {
+                fullAddress += selectedForm.getAddress().get(i).getName() + "\n"; //NAME MIGHT NOT BE STORED OR RETRIEVED CORRECTLY
+                fullAddress += selectedForm.getAddress().get(i).getStreet() + ", " + selectedForm.getAddress().get(i).getCity() + ", " + selectedForm.getAddress().get(i).getState();
+                fullAddress += ", " + selectedForm.getAddress().get(i).getZip() + "\n";
+            }
+            Civ8Label.setText(fullAddress);
+            if (selectedForm.getMailingAddress() != null) {
+                String mailingAddress = "";
+                mailingAddress += selectedForm.getMailingAddress().getStreet() + ", " + selectedForm.getMailingAddress().getCity() + ", " + selectedForm.getMailingAddress().getState() + ", " + selectedForm.getMailingAddress().getZip();
+                Civ9Label.setText(mailingAddress);
+            } else {
+                Civ9Label.setText("");
+            }
+            Civ10Label.setText(selectedForm.getFormula());
+            Civ14Label.setText("" + selectedForm.getAlcoholContent());
+            Civ15Label.setText(selectedForm.getEmail());
+            Civ16Label.setText(selectedForm.getPhoneNumber());
+
+        }
     }
-*/
     //#################################################################################################################################
     //                                   advanced search
 
     public void searchAdvanced(ActionEvent event) throws IOException {
+        printSearchResultsCSV.setDisable(false);
+        printSearchResultsCSV.setText("Print Results");
+
         Entities.AdvancedSearch advancedSearch = new AdvancedSearch();
 
-        if(typeComboBox.getValue().equals("Beers")){
+        if(typeComboBox.getValue() != null && typeComboBox.getValue().equals("Beers")){
             advancedSearch.setAlcoholType(MaltBeverage);
-        }else if(typeComboBox.getValue().equals("Wines")){
+        }else if(typeComboBox.getValue() != null && typeComboBox.getValue().equals("Wines")){
             advancedSearch.setAlcoholType(Wine);
-        }else if(typeComboBox.getValue().equals("Distilled Liquor")){
+        }else if(typeComboBox.getValue() != null && typeComboBox.getValue().equals("Distilled Liquor")){
             advancedSearch.setAlcoholType(DistilledLiquor);
         }
         if (brandNameTextField.getText() != null && !brandNameTextField.getText().trim().equals("")) {
@@ -274,7 +317,6 @@ public class CivilController {
 
         DB.Database db = DB.Database.getInstance();
         results = db.dbSelect.searchBy(advancedSearch);
-        System.out.println("It ran");
 
         col1.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
         col2.setCellValueFactory(new PropertyValueFactory<>("alcoholType"));
@@ -289,11 +331,30 @@ public class CivilController {
         printSearchResultsCSV.setDisable(false);
     }
 
-    public void printResults(ActionEvent event) throws IOException {
-        results.printResults();
+    @FXML
+    public void clickItem(MouseEvent event) throws IOException
+    {
+        if (event.getClickCount() == 2) //Checking double click kinda, just click quick enough
+        {
+            selectedForm = resultTable.getSelectionModel().getSelectedItem();
+            initStuff = 1;
+            Parent root;
+            Stage stage;
+            stage=(Stage) resultTable.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("CivilSearchForm.fxml"));
+            Scene scene = new Scene(root, 1360, 820);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
-    public void nextPage(ActionEvent event) throws IOException {
+    public void printResults(ActionEvent event) throws IOException {
+        results.printResults();
+        printSearchResultsCSV.setDisable(true);
+        printSearchResultsCSV.setText("Printed");
+    }
+
+    /*public void nextPage(ActionEvent event) throws IOException {
         if(searchPage != 3){
             int start, end;
             start = ( searchPage -1) *10;
@@ -301,16 +362,16 @@ public class CivilController {
             if(result.getResults().size() < end){ end = result.getResults().size(); }
             loadPage(event, result.getResults().subList(start,end));
         }
-    }
+    }*/
 
-    public void prevPage(ActionEvent event) throws IOException {
+    /*public void prevPage(ActionEvent event) throws IOException {
         if(searchPage != 1){
 
         }
-    }
+    }*/
 
 
-    public void loadPage(ActionEvent event, List<Form> arr) throws IOException {
+    /*public void loadPage(ActionEvent event, List<Form> arr) throws IOException {
 
         List<CheckBox> ttb = new ArrayList<CheckBox>();
         ttb.add(ttbIDSearchcheckBox0);
@@ -358,12 +419,10 @@ public class CivilController {
             alc.get(i).setText("");
             brand.get(i).setText("");
         }
-
-
-
-    }
+    }*/
 
     public void goBackToSearch(ActionEvent event) throws IOException {
+        initStuff = 0;
         pageSwitch(event,"CivilAdvSearch.fxml", backToAdvSearch);
     }
 

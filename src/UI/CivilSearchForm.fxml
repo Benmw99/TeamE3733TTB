@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CivilController">
     <children>
         <Rectangle fill="#4BA77A" height="136.0" layoutX="-14.0" layoutY="21.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <Text fill="WHITE" layoutX="626.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="147.62400909650722">
@@ -137,15 +137,6 @@
                                        </font>
                                        <HBox.margin>
                                           <Insets left="25.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Separator orientation="VERTICAL" style="-fx-background-color: black;" />
-                                    <Label fx:id="Civ4Label2" contentDisplay="CENTER" prefHeight="80.0" text="Number">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="15.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -419,215 +410,6 @@
             </Tab>
             <Tab text="Section 3">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                              <HBox>
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="13" textFill="WHITE">
-                                       <font>
-                                          <Font size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label contentDisplay="CENTER" prefHeight="80.0" text=" Phone Number" textFill="WHITE">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="Civ13Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="25.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                              <HBox>
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="14" textFill="WHITE">
-                                       <font>
-                                          <Font size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label contentDisplay="CENTER" prefHeight="80.0" text=" Email Address" textFill="WHITE">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="Civ14Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="25.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="400.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                              <HBox>
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="15" textFill="WHITE">
-                                       <font>
-                                          <Font size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label contentDisplay="CENTER" prefHeight="80.0" text=" Type of Application" textFill="WHITE">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="Civ15Label1" contentDisplay="CENTER" prefHeight="80.0" text="String">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="25.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Separator orientation="VERTICAL" style="-fx-background-color: black;">
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Separator>
-                                    <Label fx:id="Civ15Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Separator orientation="VERTICAL" style="-fx-background-color: black;">
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Separator>
-                                    <Label fx:id="Civ15Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                              <HBox>
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="16" textFill="WHITE">
-                                       <font>
-                                          <Font size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label contentDisplay="CENTER" prefHeight="80.0" text=" Additional Information" textFill="WHITE">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="Civ16Label1" contentDisplay="CENTER" prefHeight="80.0" text="String">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="25.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Separator orientation="VERTICAL" style="-fx-background-color: black;">
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Separator>
-                                    <Label fx:id="Civ16Label2" contentDisplay="CENTER" prefHeight="80.0" text="String">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                              <HBox>
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="17" textFill="WHITE">
-                                       <font>
-                                          <Font size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label contentDisplay="CENTER" prefHeight="80.0" text=" Date of Application" textFill="WHITE">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="Civ17Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="25.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                              <HBox>
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="18" textFill="WHITE">
-                                       <font>
-                                          <Font size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label contentDisplay="CENTER" prefHeight="80.0" text=" Signature of Applicant" textFill="WHITE">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="Civ18Label" contentDisplay="CENTER" prefHeight="80.0" text="String">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="25.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                     </children>
-                     <padding>
-                        <Insets top="5.0" />
-                     </padding>
-                  </VBox>
-               </content>
-            </Tab>
-            <Tab text="Section 4">
-               <content>
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Pane maxHeight="80.0" VBox.vgrow="ALWAYS">
@@ -636,7 +418,7 @@
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                               <HBox>
                                  <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="19" textFill="WHITE">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="13" textFill="WHITE">
                                        <font>
                                           <Font size="28.0" />
                                        </font>
@@ -650,14 +432,14 @@
                               </HBox>
                            </children>
                         </Pane>
-                        <ImageView fx:id="Agent19Image" fitHeight="350.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="Agent13Image" fitHeight="245.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
                         <Pane>
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                               <HBox>
                                  <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="20" textFill="WHITE">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="14" textFill="WHITE">
                                        <font>
                                           <Font size="28.0" />
                                        </font>
@@ -667,7 +449,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="Civ20Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                    <Label fx:id="Civ14Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -678,6 +460,71 @@
                                  </children>
                               </HBox>
                            </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="340.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                              <HBox>
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="15" textFill="WHITE">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label contentDisplay="CENTER" prefHeight="80.0" text=" Email" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="Civ15Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="430.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="80.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012b3d" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                              <HBox>
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" style="-fx-background-color: #4ba77a;" text="16" textFill="WHITE">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label contentDisplay="CENTER" prefHeight="80.0" text=" Phone" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="Civ16Label" contentDisplay="CENTER" prefHeight="80.0" text="Number">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
                         </Pane>
                      </children>
                      <padding>
