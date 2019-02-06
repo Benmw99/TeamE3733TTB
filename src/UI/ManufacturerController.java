@@ -427,27 +427,28 @@ public class ManufacturerController {
     // If they are all filled, then the user can move on to the second page
     @FXML
     public void checkBlanksPage1(ActionEvent event) throws IOException{
-        if(this.newForm == null) {
-            this.newForm = new Form();
-        }
+        // THIS STILL RETURNS NULL POINTERS. JUST WANT TO PUSH *ENTER* BUTTON FUNCTIONALITY
+        this.newForm = new Form();
+        //if(this.newForm == null) {
+        //    this.newForm = new Form();
+        //}
         this.newForm.setRepID(repIDField.getText());
-        newForm.getBrewersPermit().add(producerNumField.getText());
+        this.newForm.getBrewersPermit().add(producerNumField.getText());
         this.newForm.setSource(sourceComboBox.getValue().equals("Imported"));
         this.newForm.setSerialNumber(serialYearField.getText() + serialDigitsField.getText());
         if(typeComboBox.getValue() == "Wine"){
-            newForm.setAlcoholType(AlcoholType.Wine);
+            this.newForm.setAlcoholType(AlcoholType.Wine);
             WineFormItems wine = new WineFormItems();
             wine.setVintageYear(Integer.valueOf(vintageYearField.getText()));
             wine.setpH(Float.valueOf(phField.getText()));
-            newForm.setWineFormItems(wine);
+            this.newForm.setWineFormItems(wine);
         } else if (typeComboBox.getValue() == "Distilled Spirits"){
-            newForm.setAlcoholType(AlcoholType.DistilledLiquor);
+            this.newForm.setAlcoholType(AlcoholType.DistilledLiquor);
         } else {
-            newForm.setAlcoholType(AlcoholType.MaltBeverage);
+            this.newForm.setAlcoholType(AlcoholType.MaltBeverage);
         }
         this.newForm.setBrandName(brandField.getText());
-
-        if( StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
+        if(StringUtils.isBlank(this.newForm.getSerialNumber())|| StringUtils.isBlank(this.newForm.getBrandName())){
             System.out.println("I'm stuck thinking things aren't filled in");
             Alert missingTextFieldPage1 = new Alert(Alert.AlertType.WARNING);
             missingTextFieldPage1.setTitle("Missing Text Field");
@@ -561,7 +562,6 @@ public class ManufacturerController {
 
 
     }
-
 
 
 }

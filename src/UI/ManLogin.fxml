@@ -31,7 +31,7 @@
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="loginButton" layoutX="57.0" layoutY="458.0" mnemonicParsing="false" onAction="#correctLogin" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #60071A#60071A; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
+                  <Button fx:id="loginButton" defaultButton="true" layoutX="57.0" layoutY="458.0" mnemonicParsing="false" onAction="#correctLogin" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #60071A#60071A; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
