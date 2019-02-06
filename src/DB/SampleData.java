@@ -2,6 +2,7 @@ package DB;
 
 import Entities.*;
 
+import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -11,15 +12,18 @@ public class SampleData {
     Manufacturer man;
     public SampleData(Database db){
         this.db = db;
-        this.insertWines();
+        try {
+            db.dbInsert.insertCompany(123,"Brewers Inc.", "USER", "12345");
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        this.man = new Manufacturer(123, "Brewers Inc.", "USER", "12345");
+        this.insertBooze();
     }
 
-    void insertMan(){
-        Manufacturer man = new Manufacturer("WALT DISNEY", "1234");
-        this.man = man;
-    }
-    public void insertWines(){
+    public void insertBooze(){
         Form one = new Form();
+        one.setCompanyID(123);
         one.setBrandName("B");
         one.setFancifulName("");
         one.setAlcoholType(AlcoholType.Wine);
@@ -41,6 +45,7 @@ public class SampleData {
         db.dbInsert.insertForm(one, man);
 
         Form two = new Form();
+        two.setCompanyID(123);
         two.setBrandName("21ST AMENDMENT BREWERY");
         two.setFancifulName("TASTY");
         two.setAlcoholType(AlcoholType.Wine);
@@ -62,6 +67,7 @@ public class SampleData {
         db.dbInsert.insertForm(two, man);
 
         Form three = new Form();
+        three.setCompanyID(123);
         three.setBrandName("BITCH BUBBLY");
         three.setFancifulName(" ");
         three.setAlcoholType(AlcoholType.Wine);
@@ -72,7 +78,7 @@ public class SampleData {
         three.setEmail("slomail@nomail.com");
         three.setBlownBrandedEmbossedInfo("Nada");
         three.setSource(false);
-        three.setPhoneNumber("(916) 483-2791");
+        three.setPhoneNumber("916-483-2791");
         WineFormItems threewine = new WineFormItems();
         threewine.setAppellation(" ");
         threewine.setGrapeVarietal(" ");
@@ -94,7 +100,7 @@ public class SampleData {
         four.setEmail("bozomail@nomail.com");
         four.setBlownBrandedEmbossedInfo("Nada");
         four.setSource(false);
-        four.setPhoneNumber("(717) 250-1027");
+        four.setPhoneNumber("717-250-1027");
         WineFormItems fourwine = new WineFormItems();
         fourwine.setAppellation(" ");
         fourwine.setGrapeVarietal("N/A");
@@ -104,6 +110,24 @@ public class SampleData {
         four.setDateSubmitted(Timestamp.from(Instant.now()));
         four.setSerialNumber("180012");
         db.dbInsert.insertForm(four, man);
+
+        Form sixteen = new Form();
+        sixteen.setCompanyID(123);
+        sixteen.setBrandName("Alaskan Amber");
+        sixteen.setFancifulName("");
+        sixteen.setAlcoholType(AlcoholType.MaltBeverage);
+        sixteen.setAlcoholContent((float)14.1);
+        addy = new Address("Juneau", "AK", "99801", "5429 SHAUNE DR", "ALASKAN BREWING CO., ALASKAN BREWING, LLC");
+        sixteen.setMailingAddress(addy);
+        sixteen.getBrewersPermit().add("BR-AK-ALB-1");
+        sixteen.setEmail("fake@email.com");
+        sixteen.setBlownBrandedEmbossedInfo("embossed");
+        sixteen.setSource(true);
+        sixteen.setPhoneNumber("907-780-4514");
+        sixteen.setDateSubmitted(Timestamp.from(Instant.now()));
+        sixteen.setSerialNumber("050003");
+        db.dbInsert.insertForm(sixteen, man);
+
 
     }
 }
