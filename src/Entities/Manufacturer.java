@@ -3,6 +3,8 @@ package Entities;
 import DB.Database;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Manufacturer implements IUser {
@@ -84,7 +86,19 @@ public class Manufacturer implements IUser {
         this.manName = man.getManName();
     }
 
-
+    /**
+     *
+     * @return A List of forms corresponding to this manufacturer.
+     */
+    public List<Form> loadForms(){
+        DB.Database db = DB.Database.getInstance();
+        List<Form> lof = new ArrayList<Form>();
+        List<Integer> loi = db.dbSelect.getTTB_IDbyManufacturer(this);
+        for(int i : loi){
+            lof.add(db.dbSelect.getFormByTTB_ID(i));
+        }
+        return lof;
+    }
 
 
 
