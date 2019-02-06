@@ -14,28 +14,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CivilController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CivilController">
 <children>
     <Rectangle fill="#4BA77A" height="136.0" layoutX="-14.0" layoutY="21.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <Text fill="WHITE" layoutX="473.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced Search" wrappingWidth="429.9218606590072">
         <font>
             <Font name="Georgia" size="48.0" />
         </font></Text>
-    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3b3b" height="563.0" layoutX="1.0" layoutY="136.0" stroke="TRANSPARENT" strokeType="INSIDE" width="332.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="1.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3b3b" height="563.0" layoutX="1.0" layoutY="138.0" stroke="TRANSPARENT" strokeType="INSIDE" width="332.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="1.0" />
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="62.0" layoutX="72.0" layoutY="141.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="136.0" />
-      <Pane layoutX="337.0" layoutY="201.0" prefHeight="548.0" prefWidth="1024.0">
+      <Pane layoutX="337.0" layoutY="201.0" prefHeight="548.0" prefWidth="1024.0" AnchorPane.bottomAnchor="2.0" AnchorPane.topAnchor="201.0">
          <children>
-            <TableView fx:id="resultTable" layoutX="150.0" layoutY="-3.0" prefHeight="550.0" prefWidth="449.0">
+            <TableView fx:id="resultTable" layoutX="-1.0" layoutY="-3.0" prefHeight="550.0" prefWidth="746.0">
               <columns>
-                <TableColumn fx:id="col1" prefWidth="100.0" text="TTB ID#" />
-                <TableColumn fx:id="col2" prefWidth="100.0" text="Type" />
-                <TableColumn fx:id="col3" prefWidth="100.0" text="Brand Name" />
-                <TableColumn fx:id="col4" prefWidth="100.0" text="Manufacturer" />
+                <TableColumn fx:id="col1" prefWidth="200.0" text="TTB ID#" />
+                <TableColumn fx:id="col2" prefWidth="150.0" text="Type" />
+                <TableColumn fx:id="col3" prefWidth="200.0" text="Brand Name" />
+                <TableColumn fx:id="col4" prefWidth="200.0" text="Manufacturer" />
               </columns>
             </TableView>
          </children>
       </Pane>
-    <Button fx:id="menuASButton" layoutX="58.0" layoutY="52.0" mnemonicParsing="false" text="Return to Menu" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" />
+    <Button fx:id="backToWelcome" layoutX="51.0" layoutY="52.0" mnemonicParsing="false" onAction="#goBackToWelcome" text="Return to Welcome" textAlignment="CENTER" AnchorPane.leftAnchor="51.0" />
     <TextField fx:id="searchASField" alignment="CENTER" layoutX="349.0" layoutY="151.0" prefHeight="26.0" prefWidth="708.0" promptText="Brand Name/Fanciful Name/TTB ID Number" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="316.0" />
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="506.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="506.0" />
     <Text layoutX="22.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Manufactured">
@@ -48,7 +48,7 @@
             <Font name="Georgia" size="36.0" />
         </font>
     </Text>
-    <Button fx:id="printSearchResultsCSV" onAction="#printResults" disable="true" layoutX="1166.0" layoutY="156.0" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Print Results" textFill="WHITE">
+    <Button fx:id="printSearchResultsCSV" disable="true" layoutX="1166.0" layoutY="156.0" mnemonicParsing="false" onAction="#printResults" style="-fx-background-color: #3c3b3b;" text="Print Results" textFill="WHITE">
         <font>
             <Font name="Georgia" size="12.0" />
         </font>
