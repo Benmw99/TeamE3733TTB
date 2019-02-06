@@ -35,7 +35,10 @@
             </TableView>
          </children>
       </Pane>
-    <Button fx:id="backToWelcome" layoutX="51.0" layoutY="52.0" mnemonicParsing="false" onAction="#goBackToWelcome" text="Return to Welcome" textAlignment="CENTER" AnchorPane.leftAnchor="51.0" />
+    <Button fx:id="backToWelcomeButton" layoutX="51.0" layoutY="52.0" mnemonicParsing="false" onAction="#goBackToWelcome" style="-fx-background-color: #174930 #174930;" text="Return to Welcome" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="51.0">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
     <TextField fx:id="searchASField" alignment="CENTER" layoutX="349.0" layoutY="151.0" prefHeight="26.0" prefWidth="708.0" promptText="Brand Name/Fanciful Name/TTB ID Number" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="316.0" />
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="506.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="506.0" />
     <Text layoutX="22.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Manufactured">

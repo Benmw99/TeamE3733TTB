@@ -384,6 +384,13 @@ public class AgentController {
     Button printAHButton;
 
     //AgentViewForm
+
+    @FXML
+    Button reviewToolButton;
+
+    @FXML
+    ComboBox sectionMarkComboBox;
+
     @FXML
     MenuButton menuAVFMenuButton;
 
@@ -573,8 +580,15 @@ public class AgentController {
 
     @FXML
     public void goBackToAgentHome(ActionEvent event) throws IOException {
-        pageSwitch(event, "WelcomePage.fxml", agentBackToHomeButton);
+        pageSwitch(event, "AgentHome.fxml", agentBackToHomeButton);
     }
+
+
+    @FXML
+    public void reviewTool(ActionEvent event) throws IOException {
+        pageSwitch(event, "AgentViewForm.fxml", reviewToolButton);
+    }
+
     @FXML
     public void agentViewForm(ActionEvent event) throws IOException {
         //TODO:have to load selected form somehow

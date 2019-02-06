@@ -361,12 +361,9 @@ public class CivilController {
             alc.get(i).setText("");
             brand.get(i).setText("");
         }
-
-
-
     }
 
-    public void goBackToSearch(ActionEvent event) throws IOException {
+    public void goBackToAdvSearch(ActionEvent event) throws IOException {
         pageSwitch(event,"CivilAdvSearch.fxml", backToAdvSearch);
     }
 
