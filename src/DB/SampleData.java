@@ -18,6 +18,7 @@ public class SampleData {
         Manufacturer man = new Manufacturer("WALT DISNEY", "1234");
         this.man = man;
     }
+
     public void insertWines(){
         Form one = new Form();
         one.setBrandName("B");
@@ -105,5 +106,22 @@ public class SampleData {
         four.setSerialNumber("180012");
         db.dbInsert.insertForm(four, man);
 
+        Form sixteen = new Form();
+        sixteen.setBrandName("Alaskan Amber");
+        sixteen.setFancifulName("");
+        sixteen.setAlcoholType(AlcoholType.MaltBeverage);
+        sixteen.setAlcoholContent((float)14.1);
+        addy = new Address("Juneau", "AK", "99801", "5429 SHAUNE DR", "ALASKAN BREWING CO., ALASKAN BREWING, LLC");
+        sixteen.setMailingAddress(addy);
+        sixteen.getBrewersPermit().add("BR-AK-ALB-1");
+        sixteen.setEmail("fake@email.com");
+        sixteen.setBlownBrandedEmbossedInfo("embossed");
+        sixteen.setSource(true);
+        sixteen.setPhoneNumber("(907) 780-4514");
+        sixteen.setDateSubmitted(Timestamp.from(Instant.now()));
+        sixteen.setSerialNumber("050003");
+        db.dbInsert.insertForm(sixteen, man);
+
+        
     }
 }
