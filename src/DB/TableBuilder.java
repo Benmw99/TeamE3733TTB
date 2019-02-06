@@ -197,7 +197,7 @@ public class TableBuilder extends DatabaseAbstract {
                 "Email VARCHAR(256)," +
                 "Date_Submitted TIMESTAMP," +
                 "Applicant_Name VARCHAR(32)," +
-                "Phone VARCHAR(12)," +
+                "Phone VARCHAR(16)," +
                 "Alcohol_Type SMALLINT," +
                 "APV REAL, " +
                 "Formula BIGINT DEFAULT NULL," +
