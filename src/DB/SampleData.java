@@ -14,7 +14,7 @@ public class SampleData {
     public SampleData(Database db){
         this.db = db;
         try {
-            db.dbInsert.insertCompany(123,"Brewers Inc.", "USER", "12345");
+            db.dbInsert.insertCompany(123,"Brewers Inc.", "TestCompany", "1234");
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
