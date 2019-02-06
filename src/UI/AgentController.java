@@ -1,6 +1,7 @@
 package UI;
 
 
+import com.sun.jndi.toolkit.url.Uri;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,9 +16,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import sun.management.resources.agent;
 
+import java.io.File;
+import java.net.URI;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +34,8 @@ import java.util.List;
 import Entities.*;
 
 import DB.*;
+
+import javax.print.attribute.standard.Media;
 
 public class AgentController {
     //AgentSearch
@@ -636,6 +643,9 @@ public class AgentController {
         printAHButton.setDisable(false);
         Mailer mail = new Mailer();
         mail.sendMail(currentForm);
+        File acc = new File("assets/reject.mp3");
+        AudioClip ac = new AudioClip(acc.toURI().toString());
+        ac.play();
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
@@ -658,6 +668,9 @@ public class AgentController {
         printAHButton.setDisable(false);
         Mailer mail = new Mailer();
         mail.sendMail(currentForm);
+        File acc = new File("assets/accept.mp3");
+        AudioClip ac = new AudioClip(acc.toURI().toString());
+        ac.play();
     }
 
     public void tableView()  {
