@@ -4,23 +4,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class Controller2 extends PageController{
+public class Controller2 extends PageController implements iSubmit{
     Form currentForm;
     User currentUser;
-    @FXML
-    Button buttonDouble;
-    @FXML
-    Button buttonLeave;
-    @FXML
-    Label label1;
+
+    //@FXML
+    //Label label1;
 
     @Override
-    AttributeContainer onLeave() {
+    public AttributeContainer onLeave() {
         AttributeContainer c = new AttributeContainer();
         c.setForm(this.currentForm);
         c.setUser(this.currentUser);
         return c;
     }
+
     @Override
     void  onLoad(AttributeContainer c) {
         this.currentForm = c.getForm();
@@ -34,9 +32,12 @@ public class Controller2 extends PageController{
         this.label1.setText(Integer.toString(currentForm.getField2()));
 
     }
+
     @FXML
     public void goBack() {
+        this.label1.setText(Integer.toString(currentForm.getField2()));
         this.goToPage("Page1.fxml");
+        System.out.println("Label value is: " + this.label1);
     }
 
 

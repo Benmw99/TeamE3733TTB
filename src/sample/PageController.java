@@ -2,7 +2,6 @@ package sample;
 
 
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 abstract public class PageController {
@@ -20,7 +19,7 @@ abstract public class PageController {
      * @return AttributeContainer
      */
 
-    abstract AttributeContainer onLeave();
+    protected abstract AttributeContainer onLeave();
 
     /** onLoad() runs when a page is first loaded, and gets an AttributeContainer
      * holding data saved by the previous page
@@ -32,7 +31,7 @@ abstract public class PageController {
     abstract void onLoad(AttributeContainer attributeContainer);
 
     /**
-     * This is a helper function. basiscally it helps store the stage so goToPage doesnt need to take a button
+     * This is a helper function. basically it helps store the stage so goToPage doesnt need to take a button
      * @param stage the stage, duh
      */
     public void setStage_DontTouch(Stage stage) {

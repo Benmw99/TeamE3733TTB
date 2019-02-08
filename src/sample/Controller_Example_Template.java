@@ -48,7 +48,7 @@ public class Controller_Example_Template extends PageController {
     }
 
     @Override
-    AttributeContainer onLeave() {
+    public AttributeContainer onLeave() {
         /*set all the stuff here for what your next page needs*/
         AttributeContainer c = new AttributeContainer();
         c.setForm(this.form1);

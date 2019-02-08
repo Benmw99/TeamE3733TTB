@@ -3,29 +3,40 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
-public class Controller1 extends PageController {
+public class Controller1 extends PageController implements iSubmit {
     Form currentForm;
     User currentUser;
+    /*
     @FXML
     Button buttonAdd;
     @FXML
     Button buttonLeave;
-    @FXML
-    Label label1;
+    */
+    //@FXML
+    //Label label1;
+    //label1.
 
     @Override
-    AttributeContainer onLeave() {
+    public AttributeContainer onLeave() {
         AttributeContainer c = new AttributeContainer();
         c.setForm(this.currentForm);
         c.setUser(this.currentUser);
         return c;
     }
+
     @Override
     void  onLoad(AttributeContainer c) {
         this.currentForm = c.getForm();
         this.currentUser = c.getUser();
         this.label1.setText(Integer.toString(currentForm.getField2()));
+    }
+
+    @FXML
+    @Override
+    public void setStage_DontTouch(Stage stage) {
+        this.stage_DontTouch = stage;
     }
 
     @FXML
@@ -37,6 +48,9 @@ public class Controller1 extends PageController {
     @FXML
     public void goBack() {
         this.goToPage("Page2.fxml");
+        System.out.println("Label memory address: " + this.label1);
     }
+
+
 
 }
