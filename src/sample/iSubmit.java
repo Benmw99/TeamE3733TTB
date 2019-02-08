@@ -163,12 +163,14 @@ public interface iSubmit {
     //@FXML
     //static Label label1 = new Label();
     //String text = "";
+  //  @FXML
+  //  Button buttonLeave();
+    //@FXML
+  //  Button buttonDouble();
     @FXML
-    Button buttonLeave = new Button();
-    @FXML
-    Button buttonDouble = new Button();
-    @FXML
-    Label label1 = new Label();
+    Label label1();
+
+
 
 
 

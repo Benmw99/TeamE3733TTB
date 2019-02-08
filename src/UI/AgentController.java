@@ -569,12 +569,18 @@ public class AgentController {
     static private Form currentForm;
     private static Agent currentAgent;
     static private List<Form> queue;
+    static AudioClip reject;
+    static AudioClip accept;
 
     @FXML
     protected void initialize(){
         if(currentForm != null) {
             displayForm(currentForm);
         }
+        File rej = new File("assets/reject.mp3");
+        reject = new AudioClip(rej.toURI().toString());
+        File acc = new File("assets/accept.mp3");
+        accept = new AudioClip(acc.toURI().toString());
     }
 
     @FXML
@@ -643,9 +649,8 @@ public class AgentController {
         printAHButton.setDisable(false);
         Mailer mail = new Mailer();
         mail.sendMail(currentForm);
-        File acc = new File("assets/reject.mp3");
-        AudioClip ac = new AudioClip(acc.toURI().toString());
-        ac.play();
+
+        reject.play();
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
@@ -668,9 +673,7 @@ public class AgentController {
         printAHButton.setDisable(false);
         Mailer mail = new Mailer();
         mail.sendMail(currentForm);
-        File acc = new File("assets/accept.mp3");
-        AudioClip ac = new AudioClip(acc.toURI().toString());
-        ac.play();
+        accept.play();
     }
 
     public void tableView()  {

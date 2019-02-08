@@ -14,8 +14,12 @@ public class Controller1 extends PageController implements iSubmit {
     @FXML
     Button buttonLeave;
     */
-    //@FXML
-    //Label label1;
+    @FXML
+    Label label1;
+
+    public Label label1(){
+        return label1;
+    }
     //label1.
 
     @Override
