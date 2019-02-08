@@ -1,6 +1,8 @@
 package Entities;
 
 import Entities.*;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.sql.Array;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -106,6 +108,33 @@ public class Form {
         this.companyID = companyID;
         this.approval = approval;
         this.alcoholContent = alcoholContent;
+    }
+
+    public Form(String repID, ArrayList<String> brewersPermit, boolean source, String serialNumber, AlcoholType alcoholType,
+                String brandName, String fancifulName, ArrayList<Address> address, Address mailingAddress, String applicantName,
+                String formula, WineFormItems wineFormItems, String phoneNumber, String email, String blownBrandedEmbossedInfo,
+                Timestamp dateSubmitted, int ttbID, int companyID, Approval approval, float alcoholContent, ApprovalStatus approvalStatus) {
+        this.repID = repID;
+        this.brewersPermit = brewersPermit;
+        this.source = source;
+        this.serialNumber = serialNumber;
+        this.alcoholType = alcoholType;
+        this.brandName = brandName;
+        this.fancifulName = fancifulName;
+        this.address = address;
+        this.mailingAddress = mailingAddress;
+        this.applicantName = applicantName;
+        this.formula = formula;
+        this.wineFormItems = wineFormItems;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.blownBrandedEmbossedInfo = blownBrandedEmbossedInfo;
+        this.dateSubmitted = dateSubmitted;
+        this.ttbID = ttbID;
+        this.companyID = companyID;
+        this.approval = approval;
+        this.alcoholContent = alcoholContent;
+        this.approvalStatus = approvalStatus;
     }
 
     //#######################################################################################################
@@ -307,7 +336,8 @@ public class Form {
                 this.ttbID == aform.ttbID &&
                 this.companyID == aform.companyID &&
                 this.approval.equals(aform.approval) &&
-                this.alcoholContent == aform.alcoholContent);
+                this.alcoholContent == aform.alcoholContent &&
+                this.approvalStatus.equals(aform.approvalStatus));
     }
 
     boolean brewListEquals(ArrayList<String> aList) {
@@ -331,7 +361,7 @@ public class Form {
                 }
             }
         }
-        return(this.brewersPermit.size() == resultList.size());
+        return(this.address.size() == resultList.size());
     }
 
 }

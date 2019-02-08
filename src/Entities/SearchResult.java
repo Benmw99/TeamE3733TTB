@@ -33,6 +33,12 @@ public class SearchResult {
         this.query = query;
     }
 
+    public SearchResult(ArrayList<Form> results, String query, AdvancedSearch search) {
+        this.results = results;
+        this.query = query;
+        this.search = search;
+    }
+
     public ArrayList<Form> getResults() {
         return results;
     }

@@ -38,6 +38,24 @@ public class AdvancedSearch {
         this.numResults = 0;
     }
 
+    public AdvancedSearch(Boolean source, String serialNumber, AlcoholType alcoholType, String brandName,
+                          String fancifulName, int vintageYear, float pH, String grapeVarietal, String appellation,
+                          Timestamp timestamp, int ttbID, int numResults, int type) {
+        this.source = source;
+        this.serialNumber = serialNumber;
+        this.alcoholType = alcoholType;
+        this.brandName = brandName;
+        this.fancifulName = fancifulName;
+        this.vintageYear = vintageYear;
+        this.pH = pH;
+        this.grapeVarietal = grapeVarietal;
+        this.appellation = appellation;
+        this.timestamp = timestamp;
+        this.ttbID = ttbID;
+        this.numResults = numResults;
+        this.type = type;
+    }
+
     public Boolean isSource() {
         return source;
     }

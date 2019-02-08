@@ -38,7 +38,8 @@ public class Approval {
         this.page4 = page4;
     }
 
-    public Approval(ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, ApprovalStatus page4, boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
+    public Approval(ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, ApprovalStatus page4,
+                    boolean approved, Timestamp timestamp, String agentApprovalName, Timestamp expDate, String qualifications) {
         this.page1 = page1;
         this.page2 = page2;
         this.page3 = page3;
@@ -152,8 +153,9 @@ public class Approval {
             this.expDate.equals(appr.expDate) &&
             this.qualifications.equals(appr.qualifications) &&
             this.page1.equals(appr.page1) &&
-            this.page1.equals(appr.page2) &&
-            this.page1.equals(appr.page3));
+            this.page2.equals(appr.page2) &&
+            this.page3.equals(appr.page3) &&
+            this.page4.equals(appr.page4));
     }
 
 

@@ -18,6 +18,13 @@ public class Agent implements IUser{
     private String password;
     private String name;
 
+    public Agent(String repID, String login, String password, String name) {
+        this.repID = repID;
+        this.login = login;
+        this.password = password;
+        this.name = name;
+    }
+
     public Agent(String repID, String login, String password) {
         this.repID = repID;
         this.login = login;
