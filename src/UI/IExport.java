@@ -2,11 +2,11 @@ package UI;
 
 public interface IExport {
 
-    Button printButton();
+    Button getprintButton();
 
-    Button saveToCSVButton();
+    Button getsaveToCSVButton();
 
-    Button asciiDelimitedFileButton();
+    Button getasciiDelimitedFileButton();
 
 
 }
