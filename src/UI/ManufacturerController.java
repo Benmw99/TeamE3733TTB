@@ -41,7 +41,7 @@ import static Entities.AlcoholType.*;
 import static javafx.collections.FXCollections.observableArrayList;
 
 
-public class ManufacturerController {
+public class ManufacturerController{
     Entities.Form currentForm;
     private int currentFormPage;
 
@@ -312,6 +312,8 @@ public class ManufacturerController {
     @FXML
     TableColumn<Form, String> col6;
 
+
+
     public void tableView()  {
         List<Form> forms = manufacturer.loadForms();
 
@@ -581,13 +583,13 @@ public class ManufacturerController {
         String page = "ManApp"+Integer.toString(this.currentFormPage)+".fxml";
         pageSwitch(event, page, backButton);
     }
+
     @FXML
     public void appBack(ActionEvent event) throws IOException {
         if(this.currentFormPage>1) this.currentFormPage--;
         String page = "ManApp"+Integer.toString(this.currentFormPage)+".fxml";
         pageSwitch(event, page, backButton);
     }
-
 
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
@@ -616,7 +618,6 @@ public class ManufacturerController {
         stage.show();
     }
 
-
     @FXML
     public void correctLogin(ActionEvent event) throws IOException{
         this.manufacturer = new Manufacturer(nameField.getText(), passField.getText());
@@ -632,7 +633,6 @@ public class ManufacturerController {
             incorrectLogin.show();
         }
     }
-
 
     // Checks through the first page of the full TTB application to see if any of the text fields are blank.
     // If they are all filled, then the user can move on to the second page
@@ -672,7 +672,6 @@ public class ManufacturerController {
             pageSwitch(event, "ManApp2.fxml", nextSectionMA1Button);
         }
     }
-
 
     // Checks through the second page of the full TTB application to see if any of the text fields are blank.
     // If they are all filled, then the user can move on to the third page
