@@ -1,18 +1,20 @@
 package UI;
 
+import java.awt.*;
+
 public interface IRegister {
 
-    TextField getRegisterUserFirstName();
+    TextField getRegisterUserFirstNameTextField();
 
-    TextField getRegisterUserLastName();
+    TextField getRegisterUserLastNameTextField();
 
-    TextField getRegisterUserUsername();
+    TextField getRegisterUserUsernameTextField();
 
-    TextField getRegisterUserEmail();
+    TextField getRegisterUserEmailTextField();
 
-    TextField getRegisterUserPassword();
+    TextField getRegisterUserPasswordTextField();
 
-    TextField getRegisterUserPasswordCheck();
+    TextField getRegisterUserPasswordCheckTextField();
 
     Button getsubmitRegistrationButton();
 

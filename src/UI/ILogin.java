@@ -1,8 +1,10 @@
 package UI;
 
+import java.awt.*;
+
 public interface ILogin {
 
-    Label getLoginUserUsername();
+    TextField getLoginUserUsernameTextField();
 
     Label getLoginUserPassword();
 

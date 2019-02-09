@@ -1,6 +1,9 @@
 package UI;
 
-public interface ISearch {
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
+public interface ISearch extends ITableView {
 
     TextField getSearchSource();
 

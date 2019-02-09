@@ -713,6 +713,7 @@ public class AgentController implements IFormDisplay {
         reject = new AudioClip(rej.toURI().toString());
         File acc = new File("assets/accept.mp3");
         accept = new AudioClip(acc.toURI().toString());
+        this.setHelper(new FormDisplayHelper(this));
     }
 
     @FXML
