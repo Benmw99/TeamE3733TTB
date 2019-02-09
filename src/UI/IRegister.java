@@ -14,6 +14,6 @@ public interface IRegister {
 
     Label getRegisterUserPasswordCheck();
 
-    Button submitRegistration();
+    Button submitRegistrationButton();
 
 }
