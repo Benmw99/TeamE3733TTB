@@ -56,5 +56,4 @@ public interface IFormDisplay {
     Label getDisplay18Label();
 
     Label getDisplay20Label();
-
 }
