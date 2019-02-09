@@ -1,9 +1,6 @@
 package UI;
 
-import Entities.Address;
-import Entities.AlcoholType;
-import Entities.Form;
-import Entities.WineFormItems;
+import Entities.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -23,7 +20,7 @@ public class SubmitHelper {
         this.controller = controller;
     }
 
-    void getForm(){
+    void getForm(Manufacturer man){
         Form working = new Form();
         working.setBrandName(controller.getBrandField().getText());
         working.setSerialNumber(controller.getSerialYearField().getText()
@@ -72,7 +69,7 @@ public class SubmitHelper {
             addy.setStreet(controller.getAddress9Field().getText());
             addy.setZip(controller.getZip9Field().getText());
         }
-
+        man.submitForm(working);
 
     }
 
