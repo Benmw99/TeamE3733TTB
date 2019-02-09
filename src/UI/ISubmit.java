@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.util.OptionalInt;
 
 
-public interface iSubmit {
+public interface ISubmit {
+
+        void setSubmitHelper(SubmitHelper helper);
 
         TextField getRepIDField();
 

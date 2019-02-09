@@ -8,10 +8,13 @@ public class FormDisplayHelper {
 
     public FormDisplayHelper(IFormDisplay controller){
         this.controller = controller;
-        controller.setHelper(this);
+        controller.setFormDisplayHelper(this);
     }
 
-    protected void displayForm(Form form){
+    /**
+     * This is the piece of code that cleans out the form and displays it as blank.
+     */
+    protected void wipeForm(){
         controller.getDisplay1Label().setText("N/A");
         controller.getDisplay2Label().setText("N/A");
         controller.getDisplay3Label().setText("N/A");
@@ -35,6 +38,16 @@ public class FormDisplayHelper {
         controller.getDisplay16Label2().setText("N/A");
         controller.getDisplay17Label().setText("N/A");
         controller.getDisplay20Label().setText("N/A");
+    }
+    /**
+     * This is the function to display a form in the Form Display area of any given Scene
+     * whose controller properly implements the IDisplayForm Interface.
+     * This will be evoked by accessing the FormDisplayHelper on the Controller
+     * and then passing in the form that needs to be displayed.
+     * @param form The form which needs to be displayed
+     */
+    protected void displayForm(Form form){
+        this.wipeForm();
         controller.getDisplay1Label().setText(form.getRepID());
         System.out.println(form.getBrandName());
         System.out.println(form.getEmail());
