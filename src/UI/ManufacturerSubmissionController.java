@@ -3,6 +3,9 @@ package UI;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.PageController;
+import Entities.*;
+
+import java.io.IOException;
 
 public class ManufacturerSubmissionController extends PageControllerUI implements iSubmit {
 
@@ -479,6 +482,65 @@ public class ManufacturerSubmissionController extends PageControllerUI implement
 
     @Override
     protected void onLoad(){}
+
+
+    /**
+     * Checks if the combobox is on wine and displays the appropriate text fields
+     *
+     * @throws IOException
+     */
+    @FXML
+    public void checkWine() throws IOException{
+        if (getTypeComboBox().getValue().equals("Wine")){
+            getVintageYearField().disableProperty().setValue(false);
+            getPhField().disableProperty().setValue(false);
+
+        }
+        else{
+            getVintageYearField().disableProperty().setValue(true);
+            getVintageYearField().setText("");
+            getPhField().disableProperty().setValue(true);
+            getPhField().setText("");
+        }
+    }
+
+    /**
+     * Will disable and reset fields is they select the button "same as question 8"
+     *
+     * @throws IOException someone help me here, it throws errors, but works anyways
+     */
+    @FXML
+    public void checkMail() throws IOException{
+        if (getSameAddressRadioButton().isSelected()){
+            getName9Field().setEditable(false);
+            getName9Field().setDisable(true);
+            getName9Field().setText("");
+            getState9ComboBox().setDisable(true);
+            getState9ComboBox().setPromptText("State");
+            getAddress9Field().setEditable(false);
+            getAddress9Field().setText("");
+            getAddress9Field().setDisable(true);
+            getCity9Field().setEditable(false);
+            getCity9Field().setText("");
+            getCity9Field().setDisable(true);
+            getZip9Field().setEditable(false);
+            getZip9Field().setText("");
+            getZip9Field().setDisable(true);
+        }
+
+        else{
+            getName9Field().setEditable(true);
+            getName9Field().setDisable(false);
+            getState9ComboBox().setDisable(false);
+            getState9ComboBox().setPromptText("State");
+            getAddress9Field().setEditable(true);
+            getAddress9Field().setDisable(false);
+            getCity9Field().setEditable(true);
+            getCity9Field().setDisable(false);
+            getZip9Field().setEditable(true);
+            getZip9Field().setDisable(false);
+        }
+    }
 
 
 }

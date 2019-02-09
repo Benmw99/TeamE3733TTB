@@ -479,5 +479,4 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
     @Override
     protected void onLoad(){}
 
-
 }

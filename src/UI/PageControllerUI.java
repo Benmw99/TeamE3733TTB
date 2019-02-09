@@ -1,11 +1,10 @@
 package UI;
 
-
 import javafx.stage.Stage;
 import sample.AttributeContainer;
 import sample.PageSwitcher;
-
 import java.io.IOException;
+
 
 abstract public class PageControllerUI {
 
@@ -58,7 +57,7 @@ abstract public class PageControllerUI {
     void goToPage(String filenameFXML) {
 
         try {
-            pageSwitcher.pageSwitch(null, filenameFXML, this.stage_DontTouch, this.onLeave());
+            pageSwitcher.pageSwitch(null, filenameFXML, this.stage_DontTouch);
         }
         catch (IOException e){
             System.out.println(e);
