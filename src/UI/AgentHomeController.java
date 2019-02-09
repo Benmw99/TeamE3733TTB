@@ -10,7 +10,7 @@ import javafx.scene.control.TableView;
 import java.awt.*;
 import java.sql.Timestamp;
 
-public class ManufacturerHomeController extends PageControllerUI implements IFormDisplay, IExport, ITableView, ILogOut{
+public class AgentHomeController extends PageControllerUI implements IFormDisplay, IExport, ITableView, ILogOut{
 
    //From IFormDisplay
     @FXML

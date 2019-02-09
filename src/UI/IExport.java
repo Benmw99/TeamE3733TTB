@@ -4,11 +4,11 @@ import java.awt.*;
 
 public interface IExport {
 
-    Button getprintButton();
+    Button getPrintButton();
 
-    Button getsaveToCSVButton();
+    Button getSaveToCSVButton();
 
-    Button getasciiDelimitedFileButton();
+    Button getAsciiDelimitedFileButton();
 
 
 }

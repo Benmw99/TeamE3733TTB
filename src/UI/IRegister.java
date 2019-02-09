@@ -18,5 +18,7 @@ public interface IRegister {
     TextField getRegisterUserPasswordCheckTextField();
 
     Button getSubmitRegistrationButton();
-
 }
+
+
+
