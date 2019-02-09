@@ -13,7 +13,7 @@ public interface ITableView {
     TableView<Form> getFormTable();
     TableColumn<Form, Integer> getTTBIDColumn();
     TableColumn<Form, Timestamp> getDateSubmittedColumn();
-    TableColumn<Form, String> getbrandNameColumn();
+    TableColumn<Form, String> getBrandNameColumn();
     TableColumn<Form, AlcoholType> getTypeColumn();
     TableColumn<Form, String> getBrandColumn();
     TableColumn<Form, String> getSerialColumn();
