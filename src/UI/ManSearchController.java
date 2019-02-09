@@ -50,6 +50,30 @@ public class ManSearchController extends PageControllerUI implements ISearch {
     @FXML
     TextField SearchNumResults;
 
+    @FXML
+    Button SearchSubmitSearch;
+
+    @FXML
+    TableView<Form> FormTable;
+
+    @FXML
+    TableColumn<Form, Integer> TTBIDColumn;
+
+    @FXML
+    TableColumn<Form, Timestamp> DateSubmittedColumn;
+
+    @FXML
+    TableColumn<Form, String> BrandNameColumn;
+
+    @FXML
+    TableColumn<Form, AlcoholType> TypeColumn;
+
+    @FXML
+    TableColumn<Form, String> BrandColumn;
+
+    @FXML
+    TableColumn<Form, String> SerialColumn;
+
     @Override
     public TextField getSearchSource() {
         return SearchSource;
@@ -115,9 +139,6 @@ public class ManSearchController extends PageControllerUI implements ISearch {
         return SearchSubmitSearch;
     }
 
-    @FXML
-    Button SearchSubmitSearch;
-
     @Override
     protected void onLeave(){}
 
@@ -128,28 +149,9 @@ public class ManSearchController extends PageControllerUI implements ISearch {
     public void setTableViewHelper(TableViewHelper helper){}
 
     @Override
-    public void getFormTable(){}
-
-    @FXML
-    TableView<Form> FormTable;
-
-    @FXML
-    TableColumn<Form, Integer> TTBIDColumn;
-
-    @FXML
-    TableColumn<Form, Timestamp> DateSubmittedColumn;
-
-    @FXML
-    TableColumn<Form, String> BrandNameColumn;
-
-    @FXML
-    TableColumn<Form, AlcoholType> TypeColumn;
-
-    @FXML
-    TableColumn<Form, String> BrandColumn;
-
-    @FXML
-    TableColumn<Form, String> SerialColumn;
+    public TableView<Form> getFormTable() {
+        return FormTable;
+    }
 
     @Override
     public TableColumn<Form, Integer> getTTBIDColumn() {
