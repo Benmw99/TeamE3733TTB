@@ -41,7 +41,7 @@ import static Entities.AlcoholType.*;
 import static javafx.collections.FXCollections.observableArrayList;
 
 
-public class ManufacturerController{
+public class ManController {
     Entities.Form currentForm;
     private int currentFormPage;
 

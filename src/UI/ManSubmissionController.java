@@ -7,7 +7,7 @@ import Entities.*;
 
 import java.io.IOException;
 
-public class ManufacturerSubmissionController extends PageControllerUI implements iSubmit {
+public class ManSubmissionController extends PageControllerUI implements iSubmit {
 
     @FXML
     TextField RepIDField;
