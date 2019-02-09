@@ -38,6 +38,8 @@ import DB.*;
 import javax.print.attribute.standard.Media;
 
 public class AgentController implements IFormDisplay {
+
+    FormDisplayHelper helper;
     //AgentSearch
     @FXML
     Button menuASButton;
@@ -674,6 +676,10 @@ public class AgentController implements IFormDisplay {
         return Display20Label;
     }
 
+    public void setHelper(FormDisplayHelper helper){
+        this.helper = helper;
+    }
+
     @FXML
     Label Display17Label;
     @FXML
@@ -701,7 +707,7 @@ public class AgentController implements IFormDisplay {
     @FXML
     protected void initialize(){
         if(currentForm != null) {
-            displayForm(currentForm);
+            helper.displayForm(currentForm);
         }
         File rej = new File("assets/reject.mp3");
         reject = new AudioClip(rej.toURI().toString());
@@ -817,8 +823,7 @@ public class AgentController implements IFormDisplay {
                     int ID = tTBIDColumn.getCellData(row);
                     System.out.println(ID);
                     currentForm = Database.getInstance().dbSelect.getFormByTTB_ID(ID);
-                    displayForm(currentForm);
-
+                    helper.displayForm(currentForm);
                 }
             }
         });
@@ -826,97 +831,7 @@ public class AgentController implements IFormDisplay {
 
     }
 
-    protected void displayForm(Form form){
-        Agent1Label.setText("N/A");
-        Agent2Label.setText("N/A");
-        Agent3Label.setText("N/A");
-        AgentReview4Label1.setText("N/A");
-        Agent4Label2.setText("N/A");
-        Agent5Label1.setText("N/A");
-        Agent5Label2.setText("N/A");
-        Agent5Label3.setText("N/A");
-        Agent6Label.setText("N/A");
-        Agent7Label.setText("N/A");
-        Agent8Label.setText("N/A");
-        Agent9Label.setText("N/A");
-        Agent10Label.setText("N/A");
-        Agent11Label.setText("N/A");
-        Agent12Label.setText("N/A");
-        Agent13Label.setText("N/A");
-        Agent14Label.setText("N/A");
-        Agent15Label1.setText("N/A");
-        Agent15Label2.setText("N/A");
-        Agent16Label1.setText("N/A");
-        Agent16Label2.setText("N/A");
-        Agent17Label.setText("N/A");
-        Agent20Label.setText("N/A");
-        Agent1Label.setText(form.getRepID());
-        System.out.println(form.getBrandName());
-        System.out.println(form.getEmail());
-        if(!form.getBrewersPermit().isEmpty()){
-            Agent2Label.setText(form.getBrewersPermit().get(0));
-        }
-        String dom;
-        if(form.getSource()){
-            dom = "IMPORTED";
-        } else {
-            dom = "DOMESTIC";
-        }
-        Agent3Label.setText(dom);
-        if(form.getSerialNumber() != null) {
-            AgentReview4Label1.setText(form.getSerialNumber().substring(0, 2)); //First 2
-            Agent4Label2.setText(form.getSerialNumber().substring(2)); //Rest
-        }
-        if(form.getAlcoholType() != null) {
-            Agent5Label1.setText(form.getAlcoholType().toString()); //Type of Product
-        }
-        if(form.getWineFormItems() != null) {
-            Agent5Label2.setText("" + form.getWineFormItems().getVintageYear()); //Vintage year
-            Agent5Label3.setText(String.valueOf(form.getWineFormItems().getpH()));
-            if(form.getWineFormItems().getGrapeVarietal() != null){
-                Agent11Label.setText(form.getWineFormItems().getGrapeVarietal());
-            }
-            if(form.getWineFormItems().getAppellation() != null){
-                Agent12Label.setText(form.getWineFormItems().getAppellation());
-            }
-        }
-        if(form.getBrandName() != null) {
-            Agent6Label.setText(form.getBrandName());
-        } else {
-            Agent6Label.setText("N/A");
-        }
-        if(form.getFancifulName() != null) {
-            Agent7Label.setText(form.getFancifulName());
-        }
-        if(form.getMailingAddress() != null) {
-            Agent8Label.setText(form.getMailingAddress().getName());
-            Address add = form.getMailingAddress();
-            String addy = add.getName() + "\n" + add.getStreet() + "\n" + add.getCity() +
-                    "\n" + add.getState() + "\n" + add.getZip();
-            Agent9Label.setText(addy);
-        }
-        if(form.getFormula() != null) {
-            Agent10Label.setText(form.getFormula());
-        }
 
-        if(form.getPhoneNumber() != null) {
-            Agent13Label.setText(form.getPhoneNumber());
-        }
-        if(form.getEmail() != null) {
-            Agent14Label.setText(form.getEmail());
-        }
-//        Man15Label1.setText(); //TODO TYPE OF APPLICATION
-//        Man15Label2.setText();
-//        Man15Label3.setText(); //END TODO
-        if(form.getBlownBrandedEmbossedInfo() != null) {
-            Agent16Label1.setText(form.getBlownBrandedEmbossedInfo());
-        }
-//        Man16Label2.setText(); //TODO TRANSLATION
-        if(form.getDateSubmitted() != null) {
-            Agent17Label.setText(form.getDateSubmitted().toString());
-        }
-        Agent20Label.setText(String.valueOf(form.getAlcoholContent()));
-    }
 
 
     /* not needed for it. 1
