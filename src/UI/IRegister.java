@@ -17,5 +17,7 @@ public interface IRegister {
     javafx.scene.control.TextField getRegisterUserPasswordCheckTextField();
 
     Button getSubmitRegistrationButton();
-
 }
+
+
+
