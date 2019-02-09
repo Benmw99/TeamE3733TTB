@@ -1,21 +1,21 @@
 package UI;
 
-import java.awt.*;
+import javafx.scene.control.Button;
 
 public interface IRegister {
 
-    TextField getRegisterUserFirstNameTextField();
+    javafx.scene.control.TextField getRegisterUserFirstNameTextField();
 
-    TextField getRegisterUserLastNameTextField();
+    javafx.scene.control.TextField getRegisterUserLastNameTextField();
 
-    TextField getRegisterUserUsernameTextField();
+    javafx.scene.control.TextField getRegisterUserUsernameTextField();
 
-    TextField getRegisterUserEmailTextField();
+    javafx.scene.control.TextField getRegisterUserEmailTextField();
 
-    TextField getRegisterUserPasswordTextField();
+    javafx.scene.control.TextField getRegisterUserPasswordTextField();
 
-    TextField getRegisterUserPasswordCheckTextField();
+    javafx.scene.control.TextField getRegisterUserPasswordCheckTextField();
 
-    Button getsubmitRegistrationButton();
+    Button getSubmitRegistrationButton();
 
 }
