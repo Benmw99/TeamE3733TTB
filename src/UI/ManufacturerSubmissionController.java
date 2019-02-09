@@ -2,9 +2,16 @@ package UI;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import sample.PageController;
 
-public class ManufacturerSubmissionController extends PageControllerUI implements iSubmit {
+public class ManufacturerSubmissionController extends PageControllerUI implements ISubmit {
+
+
+    SubmitHelper submitHelper;
+
+    @Override
+    public void setSubmitHelper(SubmitHelper submitHelper) {
+        this.submitHelper = submitHelper;
+    }
 
     @FXML
     TextField RepIDField;

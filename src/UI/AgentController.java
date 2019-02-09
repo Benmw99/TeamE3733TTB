@@ -39,7 +39,12 @@ import javax.print.attribute.standard.Media;
 
 public class AgentController implements IFormDisplay {
 
-    FormDisplayHelper helper;
+    FormDisplayHelper FormDisplayHelper;
+
+    public void setFormDisplayHelper(FormDisplayHelper help){
+        this.FormDisplayHelper = help;
+    }
+
     //AgentSearch
     @FXML
     Button menuASButton;
@@ -677,7 +682,7 @@ public class AgentController implements IFormDisplay {
     }
 
     public void setHelper(FormDisplayHelper helper){
-        this.helper = helper;
+        this.FormDisplayHelper = helper;
     }
 
     @FXML
@@ -707,7 +712,7 @@ public class AgentController implements IFormDisplay {
     @FXML
     protected void initialize(){
         if(currentForm != null) {
-            helper.displayForm(currentForm);
+            FormDisplayHelper.displayForm(currentForm);
         }
         File rej = new File("assets/reject.mp3");
         reject = new AudioClip(rej.toURI().toString());
@@ -824,7 +829,7 @@ public class AgentController implements IFormDisplay {
                     int ID = tTBIDColumn.getCellData(row);
                     System.out.println(ID);
                     currentForm = Database.getInstance().dbSelect.getFormByTTB_ID(ID);
-                    helper.displayForm(currentForm);
+                    FormDisplayHelper.displayForm(currentForm);
                 }
             }
         });

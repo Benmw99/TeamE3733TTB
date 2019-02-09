@@ -5,6 +5,13 @@ import javafx.scene.control.*;
 
 public class SubmissionController implements ISubmit {
 
+    SubmitHelper submitHelper;
+
+    @Override
+    public void setSubmitHelper(SubmitHelper submitHelper) {
+        this.submitHelper = submitHelper;
+    }
+
     @FXML
     TextField RepIDField;
 

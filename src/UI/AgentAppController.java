@@ -5,6 +5,12 @@ import javafx.scene.control.*;
 
 public class AgentAppController extends PageControllerUI implements ISubmit {
 
+    SubmitHelper submitHelper;
+
+    public void setSubmitHelper(SubmitHelper submitHelper){
+        this.submitHelper = submitHelper;
+    }
+
     @FXML
     TextField RepIDField;
 
