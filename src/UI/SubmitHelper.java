@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class SubmitHelper {
 
-    iSubmit controller;
-    public SubmitHelper(iSubmit controller){
+    ISubmit controller;
+    public SubmitHelper(ISubmit controller){
         controller.setSubmitHelper(this);
         this.controller = controller;
     }
