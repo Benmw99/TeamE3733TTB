@@ -20,6 +20,12 @@ public class SubmitHelper {
         this.controller = controller;
     }
 
+    /**
+     * This is the method which gets a form from the associated controller and persists
+     * it to the database. Pass it the manufacturer who is inserting the form. Later there might
+     * be another option using no Manufacturer at all.
+     * @param man The manufacturer performing the insert... We need to think about this?
+     */
     void getForm(Manufacturer man){
         Form working = new Form();
         working.setBrandName(controller.getBrandField().getText());
@@ -34,14 +40,14 @@ public class SubmitHelper {
         los.add(controller.getProducerNumField().getText());
         working.setRepID(controller.getRepIDField().getText());
         working.setFormula(controller.getFormulaField().getText());
-        if(controller.getSourceComboBox().getValue() == "Domestic") {
+        if(controller.getSourceComboBox().getValue().equals("Domestic")) {
             working.setSource(false);
         } else {
             working.setSource(true);
         }
-        if(controller.getTypeComboBox().getValue() == "Malt Beverage"){
+        if(controller.getTypeComboBox().getValue().equals("Malt Beverage")){
             working.setAlcoholType(AlcoholType.MaltBeverage);
-        } else if(controller.getTypeComboBox().getValue() == "Wine"){
+        } else if(controller.getTypeComboBox().getValue().equals("Wine")){
             working.setAlcoholType(AlcoholType.Wine);
             /* This part takes care of the Wine */
             WineFormItems wine = new  WineFormItems();
