@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 
 public interface IFormDisplay {
 
-    void setHelper(FormDisplayHelper helper);
+    void setFormDisplayHelper(FormDisplayHelper helper);
 
     Label getDisplay1Label();
 

@@ -11,6 +11,8 @@ import java.util.OptionalInt;
 
 public interface iSubmit {
 
+        void setSubmitHelper(SubmitHelper helper);
+
         TextField getRepIDField();
 
         TextField getProducerNumField();
