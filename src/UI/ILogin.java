@@ -1,12 +1,12 @@
 package UI;
 
-import java.awt.*;
+import javafx.scene.control.Button;
 
 public interface ILogin {
 
-    TextField getLoginUserUsernameTextField();
+    javafx.scene.control.TextField getLoginUserUsernameTextField();
 
-    Label getLoginUserPassword();
+    javafx.scene.control.TextField getLoginUserPasswordTextField();
 
     Button getLoginUserLoginButton();
 }

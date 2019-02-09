@@ -3,7 +3,7 @@ package UI;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class SubmissionController implements ISubmit {
+public class AgentAppController extends PageControllerUI implements ISubmit {
 
     @FXML
     TextField RepIDField;
@@ -127,17 +127,9 @@ public class SubmissionController implements ISubmit {
         return RepIDField;
     }
 
-    public void setRepIDField(TextField repIDField) {
-        RepIDField = repIDField;
-    }
-
     @Override
     public TextField getProducerNumField() {
         return ProducerNumField;
-    }
-
-    public void setProducerNumField(TextField producerNumField) {
-        ProducerNumField = producerNumField;
     }
 
     @Override
@@ -145,17 +137,9 @@ public class SubmissionController implements ISubmit {
         return SourceComboBox;
     }
 
-    public void setSourceComboBox(ComboBox<String> sourceComboBox) {
-        SourceComboBox = sourceComboBox;
-    }
-
     @Override
     public TextField getSerialYearField() {
         return SerialYearField;
-    }
-
-    public void setSerialYearField(TextField serialYearField) {
-        SerialYearField = serialYearField;
     }
 
     @Override
@@ -163,17 +147,9 @@ public class SubmissionController implements ISubmit {
         return SerialDigitsField;
     }
 
-    public void setSerialDigitsField(TextField serialDigitsField) {
-        SerialDigitsField = serialDigitsField;
-    }
-
     @Override
     public ComboBox<String> getTypeComboBox() {
         return TypeComboBox;
-    }
-
-    public void setTypeComboBox(ComboBox<String> typeComboBox) {
-        TypeComboBox = typeComboBox;
     }
 
     @Override
@@ -181,17 +157,9 @@ public class SubmissionController implements ISubmit {
         return VintageYearField;
     }
 
-    public void setVintageYearField(TextField vintageYearField) {
-        VintageYearField = vintageYearField;
-    }
-
     @Override
     public TextField getPhField() {
         return PhField;
-    }
-
-    public void setPhField(TextField phField) {
-        PhField = phField;
     }
 
     @Override
@@ -199,17 +167,9 @@ public class SubmissionController implements ISubmit {
         return AlcoholContentTextField;
     }
 
-    public void setAlcoholContentTextField(TextField alcoholContentTextField) {
-        AlcoholContentTextField = alcoholContentTextField;
-    }
-
     @Override
     public TextField getBrandNameTextField() {
         return BrandNameTextField;
-    }
-
-    public void setBrandNameTextField(TextField brandNameTextField) {
-        BrandNameTextField = brandNameTextField;
     }
 
     @Override
@@ -217,17 +177,9 @@ public class SubmissionController implements ISubmit {
         return BrandField;
     }
 
-    public void setBrandField(TextField brandField) {
-        BrandField = brandField;
-    }
-
     @Override
     public TextField getFancifulField() {
         return FancifulField;
-    }
-
-    public void setFancifulField(TextField fancifulField) {
-        FancifulField = fancifulField;
     }
 
     @Override
@@ -235,17 +187,9 @@ public class SubmissionController implements ISubmit {
         return Name8Field;
     }
 
-    public void setName8Field(TextField name8Field) {
-        Name8Field = name8Field;
-    }
-
     @Override
     public ComboBox<String> getState8ComboBox() {
         return State8ComboBox;
-    }
-
-    public void setState8ComboBox(ComboBox<String> state8ComboBox) {
-        State8ComboBox = state8ComboBox;
     }
 
     @Override
@@ -253,17 +197,9 @@ public class SubmissionController implements ISubmit {
         return Address8Field;
     }
 
-    public void setAddress8Field(TextField address8Field) {
-        Address8Field = address8Field;
-    }
-
     @Override
     public TextField getCity8Field() {
         return City8Field;
-    }
-
-    public void setCity8Field(TextField city8Field) {
-        City8Field = city8Field;
     }
 
     @Override
@@ -271,17 +207,9 @@ public class SubmissionController implements ISubmit {
         return Zip8Field;
     }
 
-    public void setZip8Field(TextField zip8Field) {
-        Zip8Field = zip8Field;
-    }
-
     @Override
     public RadioButton getSameAddressRadioButton() {
         return SameAddressRadioButton;
-    }
-
-    public void setSameAddressRadioButton(RadioButton sameAddressRadioButton) {
-        SameAddressRadioButton = sameAddressRadioButton;
     }
 
     @Override
@@ -289,17 +217,9 @@ public class SubmissionController implements ISubmit {
         return Name9Field;
     }
 
-    public void setName9Field(TextField name9Field) {
-        Name9Field = name9Field;
-    }
-
     @Override
     public ComboBox<String> getState9ComboBox() {
         return State9ComboBox;
-    }
-
-    public void setState9ComboBox(ComboBox<String> state9ComboBox) {
-        State9ComboBox = state9ComboBox;
     }
 
     @Override
@@ -307,17 +227,9 @@ public class SubmissionController implements ISubmit {
         return Address9Field;
     }
 
-    public void setAddress9Field(TextField address9Field) {
-        Address9Field = address9Field;
-    }
-
     @Override
     public TextField getCity9Field() {
         return City9Field;
-    }
-
-    public void setCity9Field(TextField city9Field) {
-        City9Field = city9Field;
     }
 
     @Override
@@ -325,17 +237,9 @@ public class SubmissionController implements ISubmit {
         return Zip9Field;
     }
 
-    public void setZip9Field(TextField zip9Field) {
-        Zip9Field = zip9Field;
-    }
-
     @Override
     public TextField getFormulaField() {
         return FormulaField;
-    }
-
-    public void setFormulaField(TextField formulaField) {
-        FormulaField = formulaField;
     }
 
     @Override
@@ -343,17 +247,9 @@ public class SubmissionController implements ISubmit {
         return GrapeVarField;
     }
 
-    public void setGrapeVarField(TextField grapeVarField) {
-        GrapeVarField = grapeVarField;
-    }
-
     @Override
     public TextField getWineAppField() {
         return WineAppField;
-    }
-
-    public void setWineAppField(TextField wineAppField) {
-        WineAppField = wineAppField;
     }
 
     @Override
@@ -361,17 +257,9 @@ public class SubmissionController implements ISubmit {
         return PhoneNumField;
     }
 
-    public void setPhoneNumField(TextField phoneNumField) {
-        PhoneNumField = phoneNumField;
-    }
-
     @Override
     public TextField getEmailField() {
         return EmailField;
-    }
-
-    public void setEmailField(TextField emailField) {
-        EmailField = emailField;
     }
 
     @Override
@@ -379,17 +267,9 @@ public class SubmissionController implements ISubmit {
         return CertCheckbox;
     }
 
-    public void setCertCheckbox(CheckBox certCheckbox) {
-        CertCheckbox = certCheckbox;
-    }
-
     @Override
     public TextField getState15Field() {
         return State15Field;
-    }
-
-    public void setState15Field(TextField state15Field) {
-        State15Field = state15Field;
     }
 
     @Override
@@ -397,17 +277,9 @@ public class SubmissionController implements ISubmit {
         return LiquorCheckbox;
     }
 
-    public void setLiquorCheckbox(CheckBox liquorCheckbox) {
-        LiquorCheckbox = liquorCheckbox;
-    }
-
     @Override
     public TextField getAmountField() {
         return AmountField;
-    }
-
-    public void setAmountField(TextField amountField) {
-        AmountField = amountField;
     }
 
     @Override
@@ -415,17 +287,9 @@ public class SubmissionController implements ISubmit {
         return ResubmitCheckbox;
     }
 
-    public void setResubmitCheckbox(CheckBox resubmitCheckbox) {
-        ResubmitCheckbox = resubmitCheckbox;
-    }
-
     @Override
     public TextField getTTBIDField() {
         return TTBIDField;
-    }
-
-    public void setTTBIDField(TextField TTBIDField) {
-        this.TTBIDField = TTBIDField;
     }
 
     @Override
@@ -433,17 +297,9 @@ public class SubmissionController implements ISubmit {
         return AdditionalInfoField;
     }
 
-    public void setAdditionalInfoField(TextField additionalInfoField) {
-        AdditionalInfoField = additionalInfoField;
-    }
-
     @Override
     public TextField getTranslationField() {
         return TranslationField;
-    }
-
-    public void setTranslationField(TextField translationField) {
-        TranslationField = translationField;
     }
 
     @Override
@@ -451,17 +307,9 @@ public class SubmissionController implements ISubmit {
         return AppDate;
     }
 
-    public void setAppDate(DatePicker appDate) {
-        AppDate = appDate;
-    }
-
     @Override
     public TextField getSignatureField() {
         return SignatureField;
-    }
-
-    public void setSignatureField(TextField signatureField) {
-        SignatureField = signatureField;
     }
 
     @Override
@@ -469,7 +317,9 @@ public class SubmissionController implements ISubmit {
         return SubmitButton;
     }
 
-    public void setSubmitButton(Button submitButton) {
-        SubmitButton = submitButton;
-    }
+    void onLoad(){}
+
+    protected void onLeave(){}
+
+
 }
