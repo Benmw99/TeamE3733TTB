@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.PageController;
 
-public class ManufacturerSubmissionController extends PageControllerUI implements iSubmit {
+public class ManSubmissionController extends PageControllerUI implements iSubmit {
 
     @FXML
     TextField RepIDField;

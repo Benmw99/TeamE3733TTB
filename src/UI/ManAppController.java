@@ -321,5 +321,6 @@ public class ManAppController extends PageControllerUI implements ISubmit {
 
     protected void onLeave(){}
 
+    public void setSubmitHelper(SubmitHelper helper){}
 
 }

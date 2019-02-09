@@ -1,152 +1,63 @@
 package UI;
 
-import Entities.AlcoholType;
-import Entities.Form;
-import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
-import java.awt.*;
-import java.sql.Timestamp;
+public class AgentViewFormController extends PageControllerUI implements IFormDisplay {
 
-public class ManufacturerHomeController extends PageControllerUI implements IFormDisplay, IExport, ITableView, ILogOut{
+    @Override
+    public void setFormDisplayHelper(FormDisplayHelper helper){}
 
-   //From IFormDisplay
-    @FXML
     Label Display1Label;
 
-    @FXML
     Label Display2Label;
 
-    @FXML
     Label Display3Label;
 
-    @FXML
     Label DisplayReview4Label1;
 
-    @FXML
     Label Display4Label2;
 
-    @FXML
     Label Display5Label1;
 
-    @FXML
     Label Display5Label2;
 
-    @FXML
     Label Display5Label3;
 
-    @FXML
     Label Display6Label;
 
-    @FXML
     Label Display7Label;
 
-    @FXML
     Label Display8Label;
 
-    @FXML
     Label Display9Label;
 
-    @FXML
     Label Display10Label;
 
-    @FXML
     Label Display11Label;
 
-    @FXML
     Label Display12Label;
 
-    @FXML
     Label Display13Label;
 
-    @FXML
     Label Display14Label;
 
-    @FXML
     Label Display15Label1;
 
-    @FXML
     Label Display15Label2;
 
-    @FXML
     Label Display15Label3;
 
-    @FXML
     Label Display16Label1;
 
-    @FXML
     Label Display16Label2;
 
-    @FXML
     Label Display17Label;
 
-    @FXML
     Label Display18Label;
 
-    @FXML
     Label Display20Label;
 
-
-    //From IExport
-    @FXML
-    Button PrintButton;
-
-    @FXML
-    Button SaveToCSVButton;
-
-    @FXML
-    Button AsciiDelimitedFileButton;
-
-    //From ITableView
-    @FXML
-    TableView<Form> FormTable;
-
-    @FXML
-    TableColumn<Form, Integer> TTBIDColumn;
-
-    @FXML
-    TableColumn<Form, Timestamp> DateSubmittedColumn;
-
-    @FXML
-    TableColumn<Form, String> BrandNameColumn;
-
-    @FXML
-    TableColumn<Form, AlcoholType> TypeColumn;
-
-    @FXML
-    TableColumn<Form, String> BrandColumn;
-
-    @FXML
-    TableColumn<Form, String> SerialColumn;
-
-    //From ILogOut
-    @FXML
-    Button LogOutButton;
-
-
     @Override
-    public Button getPrintButton() {
-        return PrintButton;
-    }
-
-    @Override
-    public Button getSaveToCSVButton() {
-        return SaveToCSVButton;
-    }
-
-    @Override
-    public Button getAsciiDelimitedFileButton() {
-        return AsciiDelimitedFileButton;
-    }
-
- @Override
- public void setFormDisplayHelper(FormDisplayHelper helper) {
-
- }
-
- @Override
     public Label getDisplay1Label() {
         return Display1Label;
     }
@@ -271,58 +182,8 @@ public class ManufacturerHomeController extends PageControllerUI implements IFor
         return Display20Label;
     }
 
-    @Override
-    public void setTableViewHelper(TableViewHelper helper) {
+    void onLoad(){}
 
-    }
+    protected void onLeave(){}
 
-    @Override
-    public TableView<Form> getFormTable() {
-        return FormTable;
-    }
-
-    @Override
-    public TableColumn<Form, Integer> getTTBIDColumn() {
-        return TTBIDColumn;
-    }
-
-    @Override
-    public TableColumn<Form, Timestamp> getDateSubmittedColumn() {
-        return DateSubmittedColumn;
-    }
-
-    @Override
-    public TableColumn<Form, String> getBrandNameColumn() {
-        return BrandNameColumn;
-    }
-
-    @Override
-    public TableColumn<Form, AlcoholType> getTypeColumn() {
-        return TypeColumn;
-    }
-
-    @Override
-    public TableColumn<Form, String> getBrandColumn() {
-        return BrandColumn;
-    }
-
-    @Override
-    public TableColumn<Form, String> getSerialColumn() {
-        return SerialColumn;
-    }
-
-    @Override
-    protected void onLeave() {
-
-    }
-
-    @Override
-    void onLoad() {
-
-    }
-
-    @Override
-    public Button getLogOutButton() {
-        return LogOutButton;
-    }
 }
