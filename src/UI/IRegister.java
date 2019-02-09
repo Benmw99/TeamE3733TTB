@@ -2,17 +2,17 @@ package UI;
 
 public interface IRegister {
 
-    Label getRegisterUserFirstName();
+    TextField getRegisterUserFirstName();
 
-    Label getRegisterUserLastName();
+    TextField getRegisterUserLastName();
 
-    Label getRegisterUserUsername();
+    TextField getRegisterUserUsername();
 
-    Label getRegisterUserEmail();
+    TextField getRegisterUserEmail();
 
-    Label getRegisterUserPassword();
+    TextField getRegisterUserPassword();
 
-    Label getRegisterUserPasswordCheck();
+    TextField getRegisterUserPasswordCheck();
 
     Button getsubmitRegistrationButton();
 
