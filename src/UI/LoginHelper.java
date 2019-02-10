@@ -1,5 +1,7 @@
 package UI;
 
+import Entities.Agent;
+
 public class LoginHelper {
 
     public ILogin controller;
@@ -10,7 +12,9 @@ public class LoginHelper {
     }
 
     public boolean authenticate(){
-        String user = controller.getLoginUserUsernameTextField().getText();
+//        String user = controller.getLoginUserUsernameTextField().getText(); //TODO: fix this, getLoginUserUsernameTextField() returns null
+        AttributeContainer attributeContainer = AttributeContainer.getInstance();
+        attributeContainer.currentUser = new Agent();
         return true; //TODO MAKE THIS REAL
     }
 }
