@@ -23,18 +23,18 @@
 
 <AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManHomeController">
    <children>
-      <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: #F2F1F1;">
+      <Pane prefHeight="759.0" prefWidth="1360.0" style="-fx-background-color: WHITE;">
          <children>
-            <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="89.0" prefWidth="1367.0" style="-fx-background-color: #B5072C#B5072C;">
+            <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="89.0" prefWidth="1367.0" style="-fx-background-color: #9ea7aa;">
                <children>
                   <Text fill="WHITE" layoutX="547.0" layoutY="53.0" strokeWidth="0.0" text="My Applications">
                      <font>
-                        <Font name="Palatino" size="36.0" />
+                        <Font name="Apple SD Gothic Neo Regular" size="36.0" />
                      </font>
                   </Text>
-                  <JFXButton fx:id="logOutButton" buttonType="RAISED" layoutX="191.0" layoutY="27.0" onAction="#logOut" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: WHITE;" text="Log Out">
+                  <JFXButton fx:id="logOutButton" buttonType="RAISED" layoutX="191.0" layoutY="27.0" onAction="#logOut" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #c4001d;" text="Log Out">
                      <font>
-                        <Font name="Georgia" size="13.0" />
+                        <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                      </font>
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
@@ -49,12 +49,12 @@
             </Pane>
             <Pane layoutX="-1.0" layoutY="87.0" prefHeight="676.0" prefWidth="559.0" style="-fx-background-color: #3C3B3B#3C3B3B;">
                <children>
-                  <JFXTextField fx:id="searchMHField" layoutX="14.0" layoutY="18.0" prefHeight="27.0" prefWidth="377.0" style="-fx-background-color: WHITE;" text="Search Applications">
+                  <JFXTextField fx:id="searchMHField" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="377.0" style="-fx-background-color: WHITE;" text="Search Applications">
                      <font>
-                        <Font name="Georgia Bold" size="13.0" />
+                        <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                      </font></JFXTextField>
-                  <JFXButton fx:id="addAppButton" layoutX="411.0" layoutY="18.0" onAction="#manApp" style="-fx-background-radius: 15; -fx-background-color: WHITE;" text="+" />
-                  <JFXButton fx:id="refresh" buttonType="RAISED" layoutX="464.0" layoutY="18.0" onAction="#tableView" style="-fx-background-color: WHITE;" text="Refresh">
+                  <JFXButton fx:id="addAppButton" layoutX="411.0" layoutY="18.0" onAction="#manApp" style="-fx-background-radius: 15; -fx-background-color: #c4001d;" text="+" />
+                  <JFXButton fx:id="refresh" buttonType="RAISED" layoutX="463.0" layoutY="14.0" onAction="#tableView" style="-fx-background-color: #c4001d;" text="Refresh">
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                            <stops>
@@ -64,7 +64,7 @@
                         </RadialGradient>
                      </ripplerFill>
                      <font>
-                        <Font name="Georgia" size="13.0" />
+                        <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                      </font>
                   </JFXButton>
                   <JFXTreeTableView fx:id="tableViewMan" layoutY="61.0" prefHeight="585.0" prefWidth="559.0">
@@ -79,9 +79,9 @@
                   </JFXTreeTableView>
                </children>
             </Pane>
-            <Pane layoutX="558.0" layoutY="88.0" prefHeight="64.0" prefWidth="803.0" style="-fx-background-color: #C4C4C4#C4C4C4;">
+            <Pane layoutX="558.0" layoutY="88.0" prefHeight="64.0" prefWidth="803.0" style="-fx-background-color: #cfd8dc;">
                <children>
-                  <JFXButton fx:id="commentsButton" buttonType="RAISED" layoutX="323.0" layoutY="19.0" style="-fx-background-color: WHITE;" text="View Agent Comments">
+                  <JFXButton fx:id="commentsButton" buttonType="RAISED" layoutX="326.0" layoutY="15.0" style="-fx-background-color: #c4001d;" text="View Agent Comments">
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                            <stops>
@@ -91,17 +91,17 @@
                         </RadialGradient>
                      </ripplerFill>
                      <font>
-                        <Font name="Georgia" size="13.0" />
+                        <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                      </font>
                   </JFXButton>
                   <JFXToggleButton fx:id="editToggle" layoutX="133.0" layoutY="2.0" text="Edit">
                      <font>
-                        <Font name="Georgia" size="13.0" />
+                        <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                      </font>
                   </JFXToggleButton>
-                  <JFXButton fx:id="downloadButton" buttonType="RAISED" layoutX="521.0" layoutY="19.0" style="-fx-background-color: WHITE;" text="Download">
+                  <JFXButton fx:id="downloadButton" buttonType="RAISED" layoutX="551.0" layoutY="15.0" style="-fx-background-color: #c4001d;" text="Download">
                      <font>
-                        <Font name="Georgia" size="13.0" />
+                        <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                      </font>
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
@@ -112,7 +112,7 @@
                         </RadialGradient>
                      </ripplerFill>
                   </JFXButton>
-                  <JFXButton fx:id="printButton" buttonType="RAISED" layoutX="742.0" layoutY="19.0" style="-fx-background-color: WHITE;" text="Print">
+                  <JFXButton fx:id="printButton" buttonType="RAISED" layoutX="680.0" layoutY="15.0" style="-fx-background-color: #c4001d;" text="Print">
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                            <stops>
@@ -122,7 +122,7 @@
                         </RadialGradient>
                      </ripplerFill>
                      <font>
-                        <Font name="Georgia" size="13.0" />
+                        <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                      </font>
                   </JFXButton>
                </children>
