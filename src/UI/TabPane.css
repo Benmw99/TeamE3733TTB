@@ -42,7 +42,7 @@
 
     -fx-font: Apple SD Gothic Neo;
     -fx-font-color: white;
-    -fx-background-color: #546e7a;
+    -fx-background-color: #cfd8dc;
     -fx-background-insets: 0.0;
     -fx-background-radius: 0.0;
     -fx-padding: 0 10 0 10;
@@ -52,11 +52,11 @@
 {
     -fx-font: Apple SD Gothic Neo;
     -fx-font-color: white;
-    -fx-background-color: #819ca9;
+    -fx-background-color: #cfd8dc;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
     -fx-border-width: 0 0 4 0;
-    -fx-border-color: #6effff;
+    -fx-border-color: #0095a8;
 
 }
 
@@ -112,5 +112,5 @@
 */
 
 .hamburger > StackPane {
-    -fx-background-color: #6effff;
+    -fx-background-color: black;
 }
