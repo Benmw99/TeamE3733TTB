@@ -18,6 +18,8 @@ abstract public class PageControllerUI {
      * @return AttributeContainer
      */
 
+    AttributeContainer attributeContainer = AttributeContainer.getInstance();
+
     protected abstract void onLeave();
 
     /** onLoad() runs when a page is first loaded, and gets an AttributeContainer

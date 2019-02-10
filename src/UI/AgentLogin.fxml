@@ -21,17 +21,17 @@
             </Button>
             <Pane layoutX="736.0" layoutY="71.0" prefHeight="622.0" prefWidth="494.0" style="-fx-background-color: #007bb0; -fx-background-radius: 20;">
                <children>
-                  <TextField fx:id="nameField" layoutX="57.0" layoutY="200.0" prefHeight="49.0" prefWidth="377.0" promptText="Government Email" style="-fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #007bb0;">
+                  <TextField fx:id="LoginUserUsernameTextField" layoutX="57.0" layoutY="200.0" prefHeight="49.0" prefWidth="377.0" promptText="Government Email" style="-fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #007bb0;">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="passField" layoutX="56.0" layoutY="279.0" prefHeight="49.0" prefWidth="375.0" promptText="Password" style="-fx-border-radius: 5; -fx-border-color: white; -fx-background-color: #007bb0;">
+                  <PasswordField fx:id="LoginUserPasswordTextField" layoutX="56.0" layoutY="279.0" prefHeight="49.0" prefWidth="375.0" promptText="Password" style="-fx-border-radius: 5; -fx-border-color: white; -fx-background-color: #007bb0;">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="loginButton" defaultButton="true" layoutX="48.0" layoutY="431.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #012B3D#012B3D; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
+                  <Button fx:id="loginButton" defaultButton="true" layoutX="48.0" layoutY="431.0" mnemonicParsing="false" onAction="#login" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #012B3D#012B3D; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>

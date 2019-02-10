@@ -14,7 +14,7 @@ public class AttributeContainer {
         return ourInstance;
     }
 
-    List<Form> formList;
+    List<Form> formQueue;
     Form currentForm;
     IUser currentUser;
     SearchResult currentResults;
@@ -22,7 +22,7 @@ public class AttributeContainer {
     int searchPage;
 
     private AttributeContainer() {
-        formList = null;
+        formQueue = null;
         currentForm = null;
         currentUser = null;
         currentResults = null;

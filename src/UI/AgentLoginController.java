@@ -1,17 +1,23 @@
 package UI;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class AgentLoginController extends PageControllerUI implements ILogin{
+import java.io.IOException;
 
+public class AgentLoginController extends PageControllerUI implements ILogin{
+    @FXML
     TextField LoginUserUsernameTextField;
 
-    TextField LoginUserPasswordTextField;
+    @FXML
+    PasswordField LoginUserPasswordTextField;
 
     Button LoginUserLoginButton;
 
-    LoginHelper loginHelper;
+    LoginHelper loginHelper = new LoginHelper(this);
 
     @Override
     public void setLoginHelper(LoginHelper loginHelper) {
@@ -24,7 +30,7 @@ public class AgentLoginController extends PageControllerUI implements ILogin{
     }
 
     @Override
-    public TextField getLoginUserPasswordTextField() {
+    public PasswordField getLoginUserPasswordTextField() {
         return LoginUserPasswordTextField;
     }
 
@@ -33,8 +39,21 @@ public class AgentLoginController extends PageControllerUI implements ILogin{
         return LoginUserLoginButton;
     }
 
+    @Override
     protected void onLeave(){}
+    @Override
+    void onLoad(){
+        attributeContainer.currentUser = null;
+    }
 
-    void onLoad(){}
-
+    @FXML
+    public void login(ActionEvent event) throws IOException {
+        if(loginHelper.authenticate()){
+            goToPage("AgentHome.fxml");
+        }
+        else {
+            System.out.println("lol get wrecked scrub");
+            //TODO: make popup warning
+        }
+    }
 }
