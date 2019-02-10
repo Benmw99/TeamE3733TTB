@@ -16,9 +16,9 @@
 
 <AnchorPane maxHeight="760.0" maxWidth="1360.0" prefHeight="760.0" prefWidth="1360.0" style="-fx-background-color: #ffffff;" stylesheets="@TabPane.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AgentViewFormController">
    <children>
-      <Rectangle fill="#cfd8dc" height="141.0" layoutX="-2.0" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1376.0" />
-      <Rectangle fill="#9ea7aa" height="62.0" layoutX="-2.0" layoutY="75.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1376.0" />
-      <Text fill="WHITE" layoutX="58.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark Section as:" wrappingWidth="124.02001190185547">
+      <Rectangle fill="#9ea7aa" height="141.0" layoutX="-2.0" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1376.0" />
+      <Rectangle fill="#cfd8dc" height="62.0" layoutX="-2.0" layoutY="75.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1376.0" />
+      <Text layoutX="58.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark Section as:" wrappingWidth="124.02001190185547">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="18.0" />
          </font>
@@ -32,17 +32,17 @@
               </FXCollections>
           </items>
       </ComboBox>
-      <Button fx:id="approveAVFButton" layoutX="545.0" layoutY="79.0" mnemonicParsing="false" onAction="#approveForm" prefHeight="53.0" prefWidth="135.0" style="-fx-background-color: #0095a8#0095a8; -fx-border-color: #00b2cc#00b2cc #00b2cc#00b2cc #00b2cc#00b#00b2cc; -fx-border-width: 1.5;" text="Approve Form" textFill="WHITE">
+      <Button fx:id="approveAVFButton" layoutX="545.0" layoutY="79.0" mnemonicParsing="false" onAction="#approveForm" prefHeight="53.0" prefWidth="135.0" style="-fx-background-color: #26c6da#26c6da; -fx-border-color: #00b2cc#00b2cc #00b2cc#00b2cc #00b2cc#00b#00b2cc; -fx-border-width: 1.5;" text="Approve Form">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="rejectAVFButton" layoutX="684.0" layoutY="79.0" mnemonicParsing="false" onAction="#rejectForm" prefHeight="53.0" prefWidth="131.0" style="-fx-background-color: #0095a8#0095a8; -fx-border-width: 1.5;" text="Reject Form" textFill="WHITE">
+      <Button fx:id="rejectAVFButton" layoutX="684.0" layoutY="79.0" mnemonicParsing="false" onAction="#rejectForm" prefHeight="53.0" prefWidth="131.0" style="-fx-background-color: #26c6da#26c6da; -fx-border-width: 1.5;" text="Reject Form">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="printAVFButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="1306.0" layoutY="81.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="62.0" style="-fx-background-color: #0095a8#0095a8;" text="Print" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="printAVFButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="1306.0" layoutY="81.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="62.0" style="-fx-background-color: #26c6da#26c6da;" text="Print" textAlignment="CENTER">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="18.0" />
          </font>
@@ -52,7 +52,7 @@
             <Font name="Apple SD Gothic Neo Regular" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="517.0" layoutY="11.0" text="Form Reviewing Tools">
+      <Label layoutX="517.0" layoutY="11.0" text="Form Reviewing Tools" textFill="WHITE">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="38.0" />
          </font>

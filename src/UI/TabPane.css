@@ -56,7 +56,7 @@
     -fx-background-radius: 0;
     -fx-background-insets: 0;
     -fx-border-width: 0 0 4 0;
-    -fx-border-color: #0095a8;
+    -fx-border-color: #26c6da;
 
 }
 
@@ -112,5 +112,5 @@
 */
 
 .hamburger > StackPane {
-    -fx-background-color: black;
+    -fx-background-color: white;
 }
