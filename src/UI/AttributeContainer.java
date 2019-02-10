@@ -29,4 +29,13 @@ public class AttributeContainer {
         sounds = null;
         searchPage = 0;
     }
+
+    public void wipeSession() {
+        formQueue = null;
+        currentForm = null;
+        currentUser = null;
+        currentResults = null;
+        sounds = null;
+        searchPage = 0;
+    }
 }

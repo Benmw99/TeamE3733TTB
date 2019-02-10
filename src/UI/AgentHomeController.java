@@ -381,9 +381,7 @@ public class AgentHomeController extends PageControllerUI implements IFormDispla
     }
     @FXML
     public void reviewingTools(ActionEvent event) throws IOException {
-        if (!(attributeContainer.currentForm == null)) {
-            goToPage("AgentReviewingTools.fxml");
-        }
+        goToPage("AgentViewForm.fxml");
     }
     @FXML
     public void print(ActionEvent event) throws IOException {

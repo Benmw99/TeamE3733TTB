@@ -1284,12 +1284,12 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Button fx:id="approveAVFButton" mnemonicParsing="false" onAction="#approveForm" style="-fx-background-color: #1F2020;" text="Approve Form" textFill="WHITE">
+            <Button fx:id="approveButton" mnemonicParsing="false" onAction="#approveForm" style="-fx-background-color: #1F2020;" text="Approve Form" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="rejectAVFButton" mnemonicParsing="false" onAction="#rejectForm" style="-fx-background-color: #1F2020;" text="Reject Form" textFill="WHITE">
+            <Button fx:id="rejectButton" mnemonicParsing="false" onAction="#rejectForm" style="-fx-background-color: #1F2020;" text="Reject Form" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
@@ -1299,7 +1299,7 @@
             </Button>
          </children>
       </HBox>
-      <Button fx:id="printAVFButton" layoutX="1213.0" layoutY="122.0" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Print" textFill="WHITE">
+      <Button fx:id="printButton" layoutX="1213.0" layoutY="122.0" mnemonicParsing="false" onAction="#print" style="-fx-background-color: #1F2020;" text="Print" textFill="WHITE">
          <font>
             <Font name="Georgia" size="18.0" />
          </font>
@@ -1308,7 +1308,7 @@
          <font>
             <Font name="Georgia" size="18.0" />
          </font></Text>
-      <Button fx:id="agentBackToHomeButton" layoutX="61.0" layoutY="34.0" mnemonicParsing="false" onAction="#goBackToAgentHome" style="-fx-background-color: #1F2020;" text="Back to Home" textFill="WHITE">
+      <Button fx:id="homeButton" layoutX="61.0" layoutY="34.0" mnemonicParsing="false" onAction="#returnHome" style="-fx-background-color: #1F2020;" text="Back to Home" textFill="WHITE">
          <font>
             <Font name="Georgia" size="18.0" />
          </font></Button>
