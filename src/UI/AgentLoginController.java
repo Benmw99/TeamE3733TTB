@@ -11,6 +11,13 @@ public class AgentLoginController extends PageControllerUI implements ILogin{
 
     Button LoginUserLoginButton;
 
+    LoginHelper loginHelper;
+
+    @Override
+    public void setLoginHelper(LoginHelper loginHelper) {
+        this.loginHelper = loginHelper;
+    }
+
     @Override
     public TextField getLoginUserUsernameTextField() {
         return LoginUserUsernameTextField;

@@ -11,6 +11,12 @@ public class ManLoginController extends PageControllerUI implements ILogin{
 
     Button LoginUserLoginButton;
 
+    LoginHelper loginHelper;
+
+    public void setLoginHelper(LoginHelper loginHelper){
+        this.loginHelper = loginHelper;
+    }
+
     @Override
     public TextField getLoginUserUsernameTextField() {
         return LoginUserUsernameTextField;

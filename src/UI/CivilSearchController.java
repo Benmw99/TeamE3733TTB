@@ -12,6 +12,12 @@ import java.sql.Timestamp;
 
 public class CivilSearchController extends PageControllerUI implements ISearch, ILogin, IRegister{
 
+    LoginHelper loginHelper;
+
+    public void setLoginHelper(LoginHelper loginHelper){
+        this.loginHelper = loginHelper;
+    }
+
     @FXML
     TextField SearchSource;
 
