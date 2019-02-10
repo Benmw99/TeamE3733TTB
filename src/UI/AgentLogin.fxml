@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="762.0" prefWidth="1361.0" style="-fx-background-color: #1F2020;">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#welcomePage" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #1F2020;" text="&lt;" textFill="WHITE">
+            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #1F2020;" text="&lt;" textFill="WHITE">
                <font>
                   <Font name="Palatino" size="18.0" />
                </font>
@@ -31,7 +31,7 @@
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="loginButton" defaultButton="true" layoutX="48.0" layoutY="431.0" mnemonicParsing="false" onAction="#login" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #012B3D#012B3D; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
+                  <Button fx:id="loginButton" defaultButton="true" layoutX="48.0" layoutY="431.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #012B3D#012B3D; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>

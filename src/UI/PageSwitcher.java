@@ -8,7 +8,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public  class PageSwitcher {
+public class PageSwitcher {
+    static Stage stage;
+
+    public static void setStage(Stage stage) {
+        PageSwitcher.stage = stage;
+    }
+
+    public void pageSwitch(String filename) throws IOException {
+        pageSwitch(null, filename, stage);
+    }
+    public void pageSwitch(ActionEvent event, String filename) throws IOException {
+        pageSwitch(event, filename, stage);
+    }
+
     public void pageSwitch(ActionEvent event, String filename, Stage stage) throws IOException {
 
         //////////////////////////////////////////////////////
@@ -27,7 +40,7 @@ public  class PageSwitcher {
         //  DATA SHARING & CONTROLLER INITIALIZATION
         //////////////////////////////////////////////////////
         PageControllerUI controller = loader.getController();
-        controller.setStage_DontTouch(stage);
+//        controller.setStage_DontTouch(stage);
         controller.onLoad();
 
 
