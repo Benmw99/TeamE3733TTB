@@ -1,23 +1,50 @@
 package UI;
 
 
+import com.sun.jndi.toolkit.url.Uri;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import sun.management.resources.agent;
 
+import java.io.File;
+import java.net.URI;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 import Entities.*;
 
-public class AgentController {
+import DB.*;
+
+import javax.print.attribute.standard.Media;
+
+public class AgentController implements IFormDisplay {
+
+    FormDisplayHelper FormDisplayHelper;
+
+    public void setFormDisplayHelper(FormDisplayHelper help){
+        this.FormDisplayHelper = help;
+    }
+
     //AgentSearch
     @FXML
     Button menuASButton;
@@ -334,6 +361,9 @@ public class AgentController {
     SplitMenuButton alcoholTypeSplitMenu;
 
     @FXML
+    Button getnewQueueButton;
+
+    @FXML
     TextField searchAHField;
 
     @FXML
@@ -373,6 +403,13 @@ public class AgentController {
     Button printAHButton;
 
     //AgentViewForm
+
+    @FXML
+    Button reviewToolButton;
+
+    @FXML
+    ComboBox sectionMarkComboBox;
+
     @FXML
     MenuButton menuAVFMenuButton;
 
@@ -381,6 +418,9 @@ public class AgentController {
 
     @FXML
     Button section1AVFButton;
+
+    @FXML
+    Button agentBackToHomeButton;
 
     @FXML
     Button section2AVFButton;
@@ -433,27 +473,296 @@ public class AgentController {
 
     @FXML
     Button printAVLButton;
-    private Form currentForm;
-    private Agent currentAgent;
 
+    @FXML
+    Label appNum1;
+
+    @FXML
+    Label  appStat1;
+
+    @FXML
+    Label expirDate1;
+
+    @FXML
+    Label appDate1;
+
+    @FXML
+    Label appNum2;
+
+    @FXML
+    Label appStat2;
+
+    @FXML
+    Label expirDate2;
+
+    @FXML
+    Label appDate2;
+
+    @FXML
+    Label appNum3;
+
+    @FXML
+    Label appStat3;
+
+    @FXML
+    Label expirDate3;
+
+    @FXML
+    Label appDate3;
+
+    //Form Labels
+    @FXML
+    Label Display1Label;
+    @FXML
+    Label Display2Label;
+    @FXML
+    Label Display3Label;
+    @FXML
+    Label DisplayReview4Label1;
+    @FXML
+    Label Display4Label2;
+    @FXML
+    Label Display5Label1;
+    @FXML
+    Label Display5Label2;
+    @FXML
+    Label Display5Label3;
+    @FXML
+    Label Display6Label;
+    @FXML
+    Label Display7Label;
+    @FXML
+    Label Display8Label;
+    @FXML
+    Label Display9Label;
+    @FXML
+    Label Display10Label;
+    @FXML
+    Label Display11Label;
+    @FXML
+    Label Display12Label;
+    @FXML
+    Label Display13Label;
+    @FXML
+    Label Display14Label;
+    @FXML
+    Label Display15Label1;
+    @FXML
+    Label Display15Label2;
+    @FXML
+    Label Display15Label3;
+    @FXML
+    Label Display16Label1;
+    @FXML
+    Label Display16Label2;
+
+    @Override
+    public Label getDisplay1Label() {
+        return Display1Label;
+    }
+
+    @Override
+    public Label getDisplay2Label() {
+        return Display2Label;
+    }
+
+    @Override
+    public Label getDisplay3Label() {
+        return Display3Label;
+    }
+
+    @Override
+    public Label getDisplayReview4Label1() {
+        return DisplayReview4Label1;
+    }
+
+    @Override
+    public Label getDisplay4Label2() {
+        return Display4Label2;
+    }
+
+    @Override
+    public Label getDisplay5Label1() {
+        return Display5Label1;
+    }
+
+    @Override
+    public Label getDisplay5Label2() {
+        return Display5Label2;
+    }
+
+    @Override
+    public Label getDisplay5Label3() {
+        return Display5Label3;
+    }
+
+    @Override
+    public Label getDisplay6Label() {
+        return Display6Label;
+    }
+
+    @Override
+    public Label getDisplay7Label() {
+        return Display7Label;
+    }
+
+    @Override
+    public Label getDisplay8Label() {
+        return Display8Label;
+    }
+
+    @Override
+    public Label getDisplay9Label() {
+        return Display9Label;
+    }
+
+    @Override
+    public Label getDisplay10Label() {
+        return Display10Label;
+    }
+
+    @Override
+    public Label getDisplay11Label() {
+        return Display11Label;
+    }
+
+    @Override
+    public Label getDisplay12Label() {
+        return Display12Label;
+    }
+
+    @Override
+    public Label getDisplay13Label() {
+        return Display13Label;
+    }
+
+    @Override
+    public Label getDisplay14Label() {
+        return Display14Label;
+    }
+
+    @Override
+    public Label getDisplay15Label1() {
+        return Display15Label1;
+    }
+
+    @Override
+    public Label getDisplay15Label2() {
+        return Display15Label2;
+    }
+
+    @Override
+    public Label getDisplay15Label3() {
+        return Display15Label3;
+    }
+
+    @Override
+    public Label getDisplay16Label1() {
+        return Display16Label1;
+    }
+
+    @Override
+    public Label getDisplay16Label2() {
+        return Display16Label2;
+    }
+
+    @Override
+    public Label getDisplay17Label() {
+        return Display17Label;
+    }
+
+    @Override
+    public Label getDisplay18Label() {
+        return Display18Label;
+    }
+
+    @Override
+    public Label getDisplay20Label() {
+        return Display20Label;
+    }
+
+    public void setHelper(FormDisplayHelper helper){
+        this.FormDisplayHelper = helper;
+    }
+
+    @FXML
+    Label Display17Label;
+    @FXML
+    Label Display18Label;
+    @FXML
+    Label Display20Label;
+
+    @FXML
+    TableView<Form> formTable;
+    @FXML
+    TableColumn<Form, Integer> tTBIDColumn;
+    @FXML
+    TableColumn<Form, Timestamp> dateSubmittedColumn;
+    @FXML
+    TableColumn<Form, String> brandNameColumn;
+
+
+
+    static private Form currentForm;
+    private static Agent currentAgent;
+    static private List<Form> queue;
+    static AudioClip reject;
+    static AudioClip accept;
+
+    @FXML
+    protected void initialize(){
+        if(currentForm != null) {
+            FormDisplayHelper.displayForm(currentForm);
+        }
+        File rej = new File("assets/reject.mp3");
+        reject = new AudioClip(rej.toURI().toString());
+        File acc = new File("assets/accept.mp3");
+        accept = new AudioClip(acc.toURI().toString());
+        this.setHelper(new FormDisplayHelper(this));
+    }
 
     @FXML
     public void login(ActionEvent event) throws IOException {
-        this.currentAgent = new Agent(nameField.getText(),passField.getText());
-        if(this.currentAgent.authenticate()) {
+        currentAgent = new Agent(nameField.getText(),passField.getText());
+        if(currentAgent.authenticate()) {
+            currentAgent.loadUser();
             pageSwitch(event, "AgentHome.fxml", loginButton);
+
+            queue = currentAgent.getThreeForms();
+
+            System.out.println(queue.size());
+         //   currentForm = queue.get(0);
+
         }
         else {
-            Alert ohNo = new Alert(Alert.AlertType.WARNING);
-            ohNo.setContentText("Invalid Password or Username my dude");
-            ohNo.showAndWait();
+            Alert loginFailure = new Alert(Alert.AlertType.WARNING);
+            loginFailure.setContentText("Invalid Password or Username");
+            loginFailure.showAndWait();
         }
+    }
+
+    @FXML
+    public void selectForm(ActionEvent event) throws IOException {
+        pageSwitch(event, "AgentHome.fxml", backButton);
     }
 
     @FXML
     public void welcomePage(ActionEvent event) throws IOException {
         pageSwitch(event, "WelcomePage.fxml", backButton);
+
     }
+
+    @FXML
+    public void goBackToAgentHome(ActionEvent event) throws IOException {
+        pageSwitch(event, "AgentHome.fxml", agentBackToHomeButton);
+    }
+
+
+    @FXML
+    public void reviewTool(ActionEvent event) throws IOException {
+        pageSwitch(event, "AgentViewForm.fxml", reviewToolButton);
+    }
+
     @FXML
     public void agentViewForm(ActionEvent event) throws IOException {
         //TODO:have to load selected form somehow
@@ -461,14 +770,76 @@ public class AgentController {
     }
     @FXML
     public void rejectForm(ActionEvent event) throws IOException {
-//        this.currentForm.reject(this.currentAgent.getName());
-        pageSwitch(event, "AgentHome.fxml", backButton);
+        currentAgent.rejectForm(currentForm);
+        queue.remove(currentForm);
+  //      pageSwitch(event, "AgentHome.fxml", backButton);
+        tTBIDColumn.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        dateSubmittedColumn.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        brandNameColumn.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+
+        tableView();
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        for (int i = 0; i < queue.size(); i++) {
+            tableValues.add(queue.get(i));
+        }
+        formTable.setItems(tableValues);
+        printAHButton.setDisable(false);
+        Mailer mail = new Mailer();
+        mail.sendMail(currentForm);
+
+        reject.play();
     }
     @FXML
     public void approveForm(ActionEvent event) throws IOException {
-//        this.currentForm.approve(this.currentAgent.getName());
-        pageSwitch(event, "AgentHome.fxml", backButton);
+
+        currentAgent.approveForm(currentForm, " ");
+        queue.remove(currentForm);
+    //    pageSwitch(event, "AgentHome.fxml", backButton);
+        tTBIDColumn.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        dateSubmittedColumn.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        brandNameColumn.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+
+        tableView();
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        tableValues.remove(currentForm);
+        for (int i = 0; i < queue.size(); i++) {
+            tableValues.add(queue.get(i));
+        }
+        formTable.setItems(tableValues);
+        printAHButton.setDisable(false);
+        Mailer mail = new Mailer();
+        mail.sendMail(currentForm);
+        accept.play();
     }
+
+    public void tableView()  {
+        formTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            /**
+             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
+             */
+            public void handle(MouseEvent click) {
+                if (click.getClickCount() == 2) {
+                    @SuppressWarnings("rawtypes")
+                    TablePosition pos = formTable.getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    int col = pos.getColumn();
+                    int ID = tTBIDColumn.getCellData(row);
+                    System.out.println(ID);
+                    currentForm = Database.getInstance().dbSelect.getFormByTTB_ID(ID);
+                    FormDisplayHelper.displayForm(currentForm);
+                }
+            }
+        });
+    //    ObservableList<Form> tableValues = FXCollections.observableArrayList();
+
+    }
+
+
+
+
     /* not needed for it. 1
     @FXML
     public void approveFormConditions(ActionEvent event) throws IOException {
@@ -482,9 +853,6 @@ public class AgentController {
     }
     */
 
-
-
-
     public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
         Parent root;
         Stage stage;
@@ -493,6 +861,64 @@ public class AgentController {
         Scene scene = new Scene(root, 1360, 760);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void getNewQueue(ActionEvent event) throws IOException{
+        DB.Database db = DB.Database.getInstance();
+
+        queue = currentAgent.getThreeForms();
+        tTBIDColumn.setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        dateSubmittedColumn.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        brandNameColumn.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+
+        tableView();
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        for (int i = 0; i < queue.size(); i++) {
+            tableValues.add(queue.get(i));
+        }
+        formTable.setItems(tableValues);
+        printAHButton.setDisable(false);
+    }
+
+
+
+
+
+
+
+    @FXML
+    public void setPage1(){
+/*
+        Agent1Label.setText(currentForm.getRepID());
+        ArrayList<String> arr = currentForm.getBrewersPermit();
+        arr.add(producerNumField.getText());
+        Agent2Label.setText(arr.toString());
+        Agent3Label.setText("Is Domestic? " + currentForm.getSource());
+        AgentReview4Label1.setText(currentForm.getSerialNumber());
+        Agent5Label1.setText(currentForm.getAlcoholType().toString());
+        Agent6Label.setText(currentForm.getBrandName());
+   */ }
+
+    public void setPage2(){
+/*        Agent7Label.setText(currentForm.getFancifulName());
+        Agent8Label.setText(currentForm.getAddress().toString());
+        Agent9Label.setText(currentForm.getMailingAddress().toString());
+        Agent10Label.setText(currentForm.getFormula());
+        Agent11Label.setText(currentForm.getWineFormItems().getGrapeVarietal());
+        Agent12Label.setText(currentForm.getWineFormItems().getAppellation());
+  */  }
+
+    public void setPage3(){
+    /*    Agent13Label.setText(currentForm.getPhoneNumber());
+        Agent14Label.setText(currentForm.getEmail());
+        Agent16Label1.setText(currentForm.getBlownBrandedEmbossedInfo());
+        Agent16Label2.setText(currentForm.getDateSubmitted().toString());
+*/    }
+
+    public void setPage4(){
+  //      Agent18Label.setText("" + currentForm.getAlcoholContent());
     }
 
 }

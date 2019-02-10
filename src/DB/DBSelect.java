@@ -24,6 +24,11 @@ public class DBSelect extends DatabaseAbstract {
         super(path);
     }
 
+    /**
+     * Gets the one instance of the class making it a singleton
+     * @author Jordan
+     * @return The current instance of DBSelect
+     */
     static DBSelect getInstance() {
         if (dbSelect_instance == null) {
             dbSelect_instance = new DBSelect("./ttb.db");
@@ -31,6 +36,11 @@ public class DBSelect extends DatabaseAbstract {
         return dbSelect_instance;
     }
 
+    /**
+     * Sends a query to the database and returns its results
+     * @param queryString The exact query that you want sent to the database
+     * @return The results from that query in a ResultSet
+     */
     private ResultSet sendQuery(String queryString){
         ResultSet rs = null;
         try{
@@ -38,36 +48,67 @@ public class DBSelect extends DatabaseAbstract {
             rs = ps.executeQuery();
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return rs;
     }
 
+    /**
+     * Gets all the reps in the db
+     * @return A ResultSet filled with the results of the query
+     */
     public ResultSet selectAllReps(){
         String selectString = "SELECT * FROM REPS";
         return sendQuery(selectString);
     }
+
+    /**
+     * Gets all the info about a rep
+     * @param Rep_ID The id of the rep that you want the info of
+     * @return A resultset containing all the information about that rep
+     */
     public ResultSet selectRepByID(String Rep_ID){
         String selectString = "SELECT * FROM REPS WHERE Rep_ID='";
         selectString += Rep_ID += "'";
         return sendQuery(selectString);
     }
+
+    /**
+     * Gets all the companies in the database
+     * @return A resultset containing all the information about all the companies
+     */
     public ResultSet selectAllCompany(){
         String selectString = "SELECT * FROM COMPANY";
         return sendQuery(selectString);
     }
+
+    /**
+     * Gets all the agents in the database
+     * @return A resultset containing all the information about all the agents
+     */
     public ResultSet selectAllAgents(){
         String selectString = "SELECT * FROM AGENTS";
         return sendQuery(selectString);
     }
+
+    /**
+     * Gets all the forms in the database
+     * @return A resultset containing all the information about all the forms
+     */
     public ResultSet selectAllForms() {
         String selectString = "SELECT * FROM FORM";
         return sendQuery(selectString);
-        //TODO GET THE REST OF THE SHIT
     }
+
+    /**
+     * Gets the ID and Street from of all items in the Address table
+     * @return A resultset containing the id and street of all addresses
+     */
     public ResultSet selectAllAddress() {
         String selectString = "SELECT ID, Street FROM ADDRESS";
         return sendQuery(selectString);
     }
+
     //Will return something else later
     //To be used for displaying a companies submitted forms
     public ResultSet selectByCompany(int companyID) {
@@ -80,13 +121,9 @@ public class DBSelect extends DatabaseAbstract {
             rset = statement.executeQuery();
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return rset;
-    }
-
-    public Boolean AuthenticateCompany(String login, String pass) {
-        String selectString = "SELECT COUNT(*) FROM COMPANY WHERE Login_Name =? AND Password =? ";
-        return doAuthenticate(login, pass, selectString);
     }
 
     public Manufacturer getManufacturer(String login){
@@ -102,6 +139,7 @@ public class DBSelect extends DatabaseAbstract {
             man.setLogin(login);
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return man;
     }
@@ -119,6 +157,7 @@ public class DBSelect extends DatabaseAbstract {
             agent.setRepID(String.valueOf(rs.getInt("Agent_ID")));
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return agent;
     }
@@ -135,15 +174,42 @@ public class DBSelect extends DatabaseAbstract {
             rep.setRepID(String.valueOf(rs.getInt("Agent_ID")));
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return rep;
     }
 
+    /**
+     * Authenticates the company login
+     * @author Michael
+     * @param login The inputted login name
+     * @param pass The inputted password
+     * @return True if the login is valid, false if not
+     */
+    public Boolean AuthenticateCompany(String login, String pass) {
+        String selectString = "SELECT COUNT(*) FROM COMPANY WHERE Login_Name =? AND Password =? ";
+        return doAuthenticate(login, pass, selectString);
+    }
+
+    /**
+     * Authenticates the agent login
+     * @author Michael
+     * @param login The inputted login name
+     * @param pass The inputted password
+     * @return True if the login is valid, false if not
+     */
     public Boolean AuthenticateAgent(String login, String pass) {
         String selectString = "SELECT COUNT(*) FROM AGENTS WHERE Login_Name =? AND Password =? ";
         return doAuthenticate(login, pass, selectString);
     }
 
+    /**
+     * Authenticates the rep login
+     * @author Jordan
+     * @param login The inputted login name
+     * @param pass The inputted password
+     * @return True if the login is valid, false if not
+     */
     public Boolean AuthenticateRep(String login, String pass) {
         String selectString = "SELECT COUNT(*) FROM REPS WHERE Login_Name =? AND Password =? ";
         return doAuthenticate(login, pass, selectString);
@@ -151,6 +217,7 @@ public class DBSelect extends DatabaseAbstract {
 
     /**
      * A Helper function for authentication
+     * @author Michael
      * @param login The login name
      * @param pass The password
      * @param selectString The select string for the table to authenticate against
@@ -174,19 +241,22 @@ public class DBSelect extends DatabaseAbstract {
             return false;
         }
     }
-    //DONE AUTHENTICATE
 
     /**
      * Downloads the selected results in a file without limit to the number of results
-     * @param query The query to be downloaded without a fetch first in it
+     * @author Jordan
+     * @param query The query to be downloaded without a fetch first or sort in it, preferably gotten from the SearchResult
+     * @param search The AdvancedSearch used to generate that query, preferably gotten from the SearchResult
+     * @return True if successful, false if it failed
      */
     public boolean downloadResults(String query, AdvancedSearch search) { //TODO GET RID OF DUPLICATE CODE
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY ("+ query +",?,?,?,?)";
+        String download = "CALL SYSCS_UTIL.SYSCS_EXPORT_QUERY (?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(download);
-            int set = 1;
+            ps.setString(1, query.replaceFirst("TTB_ID", "TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Alcohol_Type, APV"));
+            int set = 2;
             if (search.source != null) {
                 ps.setBoolean(set, search.source);
                 set += 1;
@@ -232,6 +302,7 @@ public class DBSelect extends DatabaseAbstract {
             return true;
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
             return false;
         }
     }
@@ -239,7 +310,13 @@ public class DBSelect extends DatabaseAbstract {
     //TODO Implement Sorting
     //public Timestamp timestamp; NOT IMPLEMENTED YET
     //THIS IS THE CIVILIAN SEARCH
-    public SearchResult searchBy(AdvancedSearch as) { //TODO GET RID OF DUPLICATE CODE
+    /**
+     * Retrieves the forms that a user searched for by criteria from the database
+     * @author Jordan
+     * @param as The AdvancedSearch that was generated from the users inputs in the advanced search fields
+     * @return A SearchResult containing all the forms that were gotten as a result of that search
+     */
+    public SearchResult searchBy(AdvancedSearch as) {
         SearchResult result = new SearchResult();
         result.setSearch(as);
         //The base search string
@@ -287,7 +364,6 @@ public class DBSelect extends DatabaseAbstract {
         try {
             PreparedStatement statement = connection.prepareStatement(baseString);
 
-            //Manually sets those question marks
             int set = 1;
             if (as.source != null) {
                 statement.setBoolean(set, as.source);
@@ -333,16 +409,18 @@ public class DBSelect extends DatabaseAbstract {
             rs.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return result;
     }
 
     /**
      * Get a List of TTB_ID's associated with the manufactuer
+     * @author Michael
      * @param man The manufacturer who has logged in to look at their forms
      * @return A list of Ints representing their TTB_ID's
      */
-    public List<Integer> getTUB_IDblManufacturer(Manufacturer man){
+    public List<Integer> getTTB_IDbyManufacturer(Manufacturer man){
         String selString = "SELECT TTB_ID FROM FORM WHERE Company_ID=? ";
         int comp_id = man.manID;
         List<Integer> list_of_ids= new ArrayList<Integer>();
@@ -356,14 +434,18 @@ public class DBSelect extends DatabaseAbstract {
             }
         }catch (SQLException e){
                 System.out.println(e.toString());
+                e.printStackTrace();
             }
         return list_of_ids;
         }
 
+
+        //Outdated and probably unnecessary
     /**
      * Retrieves the form according to the minimal Application
+     * @author Michael
      * @param TTB_ID The TTB_ID of the form to retrieve
-     * @return
+     * @return A form filled with the minimal info
      */
     public Form getFormMinimal(int TTB_ID){
         String selString = "SELECT * FROM FORM WHERE TTB_ID=?";
@@ -394,17 +476,18 @@ public class DBSelect extends DatabaseAbstract {
             }
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return form;
     }
 
-
     /**
-     *  We will get back to this later... it's very important, but not very important right now.
-     * @param TTB_ID
-     * @return
+     * Gets all the information about a form including information in related tables
+     * @author Michael
+     * @param TTB_ID The ttb id of the form you want to get
+     * @return A Form that contains all of the information that was in the database for that form
      */
-    public Form getFormByTTB_ID(int TTB_ID){
+    public Form getFormByTTB_ID( int TTB_ID){
         String selString = "SELECT * FROM FORM WHERE TTB_ID=?";
         String otherInfString = "SELECT * FROM OTHERINFO WHERE TTB_ID=?";
         String brewersPermit = "SELECT * FROM BREWERSPERMIT WHERE TTB_ID=?";
@@ -419,20 +502,24 @@ public class DBSelect extends DatabaseAbstract {
             PreparedStatement ps = connection.prepareStatement(selString);
             ps.setInt(1, TTB_ID);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+                 rs.next();
                 form.setFancifulName(rs.getString("Fanciful_Name"));
                 form.setBrandName(rs.getString("Brand_Name"));
                 form.setSource(rs.getBoolean("Source"));
+                form.setSerialNumber(rs.getString("Serial_Number"));
+                form.setCompanyID(rs.getInt("Company_ID"));
                 form.setRepID(rs.getString("Rep_ID"));
                 form.setTtbID(TTB_ID);
+                form.setFormula(rs.getString("Formula"));
+                form.setAlcoholContent(rs.getFloat("APV"));
                 form.setEmail(rs.getString("Email"));
                 form.setDateSubmitted(rs.getTimestamp("Date_Submitted")); //TODO HANDLE CONVERSION
                 form.setApplicantName(rs.getString("Applicant_Name"));
                 form.setPhoneNumber(rs.getString("Phone"));
-                if (rs.getInt("Alcohol_Type") == 1) {
+                if (rs.getInt("Alcohol_Type") == AlcoholType.Wine.toInt()) {
                     type = AlcoholType.Wine;
                     form.setWineFormItems(this.getWineBlock(TTB_ID));
-                } else if (rs.getInt("Alcohol_Type") == 2) {
+                } else if (rs.getInt("Alcohol_Type") == AlcoholType.MaltBeverage.toInt()) {
                     type = AlcoholType.MaltBeverage;
                 } else {
                     type = AlcoholType.DistilledLiquor;
@@ -449,7 +536,6 @@ public class DBSelect extends DatabaseAbstract {
                     form.setApproval(this.getApproval_By_TTB_ID(TTB_ID));
                 }
                 form.setApprovalStatus(stat);
-            }
             ps.close();
             /* OTHER INFO BLOCK */
             ps = connection.prepareStatement(otherInfString);
@@ -476,6 +562,7 @@ public class DBSelect extends DatabaseAbstract {
                 if(rs.getBoolean("isMailing")){
                    Address mailing = new Address(rs.getString("City"), rs.getString("State"),
                            rs.getString("Zip_Code"), rs.getString("Street"), "NAME");
+                   form.setMailingAddress(mailing);
                    //TODO RESOLVE PROBLEMS WITH NAME
                 } else {
                     addresses.add(new Address(rs.getString("City"), rs.getString("State"),
@@ -487,21 +574,23 @@ public class DBSelect extends DatabaseAbstract {
 
         }catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return form;
     }
 
-    /**Get first three not-yet-approved forms for an agent to look over
+    /**
      *
+     * @author Michael
+     * @return
      */
-
     public List<Form> getThreeForms(){
         String selStr = "SELECT * FROM FORM WHERE APPROVE=?";
         List<Integer> list_ID = new ArrayList<Integer>();
         List<Form> list_form = new ArrayList<Form>();
         try{
             PreparedStatement ps = connection.prepareStatement(selStr);
-            ps.setInt(1, 2);
+            ps.setInt(1, ApprovalStatus.Incomplete.toInt());
             ResultSet rs = ps.executeQuery();
             int i = 0;
             while(rs.next() && i < 3){
@@ -511,9 +600,11 @@ public class DBSelect extends DatabaseAbstract {
             ps.close();
     } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         while(!list_ID.isEmpty()){
             list_form.add(this.getFormByTTB_ID(list_ID.get(0)));
+            System.out.println(list_ID.get(0));
             list_ID.remove(0);
         }
         return list_form;
@@ -522,34 +613,34 @@ public class DBSelect extends DatabaseAbstract {
     //TODO MAKE AN UPDATE CLASS
 
     /**
-     *  Approves a formn, in the loose sense of the term. You should put a form with the correct approval type here
-     *
+     *  Approves a form, in the loose sense of the term. You should put a form with the correct approval type here
+     * @author Michael
      * @param form the form to approve
      * @param approval the approval for the form
      */
     public void approveForm(Form form, Approval approval){
-        String selStr = "UPDATE FORM SET APPROVAL=? WHERE ID=? ";
+        String selStr = "UPDATE FORM SET APPROVE = ? WHERE TTB_ID = ?";
+        System.out.println(form.getTtbID());
+        System.out.println(ApprovalStatus.Complete.toInt());
         try{
             PreparedStatement ps = connection.prepareStatement(selStr);
             ps.setInt(2, form.getTtbID());
-            if(!approval.isApproved()){
-                ps.setInt(1, 1);
-            } else if(approval.isApproved()){
-                ps.setInt(1,3);
-            }
-            ps.setInt(1, 1);
-            ps.execute();
+   //         if(!approval.isApproved()){
+     //           ps.setInt(1, ApprovalStatus.Complete.toInt());
+       //     } else if(approval.isApproved()){
+         //       ps.setInt(1,ApprovalStatus.Incorrect.toInt());
+           // }
+            ps.setInt(1, form.getApprovalStatus().toInt());
+            System.out.println(ps.executeUpdate());
             ps.close();
             Database.getInstance().dbInsert.insertApproval(approval, form.getTtbID());
     } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
-    /**
-     *
-     * @param form
-     */
     public void approveOrReject(Form form) throws Exception{
         if(form.getApproval() == null){
             Exception e = new Exception("No approval Object for Form. Form not ready.");
@@ -561,6 +652,7 @@ public class DBSelect extends DatabaseAbstract {
 
     /**
      * Gets all the TTBID's of forms that a company has submitted for viewing on their dashboard
+     * @author Jordan
      * @param companyID The company that you want all the forms for
      * @return A list of all the TTBID's of forms that the company has submitted
      */
@@ -577,12 +669,14 @@ public class DBSelect extends DatabaseAbstract {
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return results;
     }
 
     /**
      * Gets all the TTBID's of forms that a rep has submitted for viewing on their dashboard
+     * @author Jordan
      * @param repID The rep that you want all the forms for
      * @return A list of all the TTBID's of forms that the rep has submitted
      */
@@ -599,6 +693,7 @@ public class DBSelect extends DatabaseAbstract {
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return results;
     }
@@ -619,6 +714,7 @@ public class DBSelect extends DatabaseAbstract {
             rs.close();
     } catch(SQLException e ){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return wine;
     }
@@ -630,23 +726,32 @@ public class DBSelect extends DatabaseAbstract {
             PreparedStatement ps = connection.prepareStatement(selStr);
             ps.setInt(1, TTB_ID);
             ResultSet rs = ps.executeQuery();
-            rs.next();
-            app.setAgentApprovalName(rs.getString("APPROVING_AGENT"));
-            app.setExpDate(rs.getTimestamp("Expiration"));
-            app.setTimestamp(rs.getTimestamp("Timestamp"));
-            app.setPage1(ApprovalStatus.fromInt(rs.getInt("Page_1")));
-            app.setPage2(ApprovalStatus.fromInt(rs.getInt("Page_2")));
-            app.setPage3(ApprovalStatus.fromInt(rs.getInt("Page_3")));
-            app.setPage4(ApprovalStatus.fromInt(rs.getInt("Page_4")));
+            if(rs.next()) {
+                app.setAgentApprovalName(rs.getString("Approving_Agent"));
+                app.setExpDate(rs.getTimestamp("Expiration"));
+                app.setTimestamp(rs.getTimestamp("Date"));
+                app.setPage1(ApprovalStatus.fromInt(rs.getInt("Page_1")));
+                app.setPage2(ApprovalStatus.fromInt(rs.getInt("Page_2")));
+                app.setPage3(ApprovalStatus.fromInt(rs.getInt("Page_3")));
+                app.setPage4(ApprovalStatus.fromInt(rs.getInt("Page_4")));
+            }
             rs.close();
 
         } catch (SQLException e){
             System.out.println(e.toString());
+            e.printStackTrace();
             System.out.println(e.getStackTrace());
         }
         return app;
     }
 
+    /**
+     * Gets all the images associated with a ttb id for a form
+     * @author Jordan
+     * @param ttbID The TTB_ID that you want to get all the forms of
+     * @return An arrayList of LabelImages where each label image is can be loaded as an image
+     */
+    //THIS FUNCTION MAY NOT WORK AT ALL. IT IS POSSIBLE MEMORY CLOSURES INVALIDATES THIS
     public ArrayList<LabelImage> selectImagesbyTTBID(int ttbID) {
         ArrayList<LabelImage> results = new ArrayList<>();
         try {
@@ -672,10 +777,13 @@ public class DBSelect extends DatabaseAbstract {
             }
             connection.setAutoCommit(true);
             //Might not be necessary but also might be preventing memory leaks. I don't really know
-            image.free();
+            try{
+                image.free();
+            } catch (NullPointerException ignored) { }
             rs.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
         return results;
     }

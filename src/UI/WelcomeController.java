@@ -46,7 +46,7 @@ ManLabelCompare
 
  */
 
-public class WelcomeController {
+public class WelcomeController extends PageControllerUI{
 
     @FXML
     Button manButton;
@@ -60,31 +60,40 @@ public class WelcomeController {
 
     @FXML
     public void agentLogin(ActionEvent event) throws IOException{
-        pageSwitch(event, "AgentLogin.fxml", agentButton);
+//        pageSwitch(event, "AgentLogin.fxml", agentButton);
+        pageSwitcher.pageSwitch("AgentLogin.fxml");
     }
-
 
     @FXML
     public void civilSearch(ActionEvent event) throws IOException{
-        pageSwitch(event, "CivilSearch.fxml", civilButton);
+//        pageSwitch(event, "CivilAdvSearch.fxml", civilButton);
+        pageSwitcher.pageSwitch("CivilAdvSearch.fxml");
     }
-
 
     @FXML
     public void manufacturerLogin(ActionEvent event) throws IOException {
-        pageSwitch(event, "ManLogin.fxml", manButton);
+//        pageSwitch(event, "ManLogin.fxml", manButton);
+        pageSwitcher.pageSwitch("ManLogin.fxml");
     }
 
+//    public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
+//        Parent root;
+//        Stage stage;
+//        stage=(Stage) b.getScene().getWindow();
+//        root = FXMLLoader.load(getClass().getResource(filename));
+//        Scene scene = new Scene(root, 1360, 760);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
 
+    @Override
+    protected void onLeave() {
 
-    public void pageSwitch(ActionEvent event, String filename, Button b) throws IOException{
-        Parent root;
-        Stage stage;
-        stage=(Stage) b.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource(filename));
-        Scene scene = new Scene(root, 1360, 760);
-        stage.setScene(scene);
-        stage.show();
+    }
+
+    @Override
+    void onLoad() {
+
     }
 
     /*

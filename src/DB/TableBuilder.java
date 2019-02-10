@@ -11,6 +11,11 @@ public class TableBuilder extends DatabaseAbstract {
        super(path);
     }
 
+    /**
+     * Gets the one instance of the class making it a singleton
+     * @author Jordan
+     * @return The current instance of DBSelect
+     */
     static TableBuilder getInstance() {
         if (tableBuilder_instance == null) {
             tableBuilder_instance = new TableBuilder("./ttb.db");
@@ -110,7 +115,6 @@ public class TableBuilder extends DatabaseAbstract {
                 "Zip_Code VARCHAR(8), " +
                 "isMailing BOOLEAN, " +
                 "City VARCHAR(32), " +
-                "APV REAL," +
                 "TTB_ID BIGINT, " +
                 "State VARCHAR(2), " +
                 "Street VARCHAR(32), " +
@@ -145,7 +149,7 @@ public class TableBuilder extends DatabaseAbstract {
 
     private void buildBrewersPermit(){
         String buildString = "CREATE TABLE BREWERSPERMIT (" +
-                "Brewers_No BIGINT," +
+                "Brewers_No VARCHAR(32)," +
                 "TTB_ID BIGINT," +
                 "isPrimary BOOLEAN, " +
                 "Constraint BrewersPermit_PK Primary Key (TTB_ID, Brewers_No), " +
@@ -193,14 +197,14 @@ public class TableBuilder extends DatabaseAbstract {
                 "Email VARCHAR(256)," +
                 "Date_Submitted TIMESTAMP," +
                 "Applicant_Name VARCHAR(32)," +
-                "Phone VARCHAR(12)," +
+                "Phone VARCHAR(16)," +
                 "Alcohol_Type SMALLINT," +
                 "APV REAL, " +
-                "Formula BIGINT DEFAULT NULL," +
+                "Formula VARCHAR(16) DEFAULT NULL," +
                 "Rep_ID VARCHAR(16) DEFAULT NULL," +
                 "Company_ID BIGINT," +
                 "Constraint Form_PK Primary Key (TTB_ID), " +
-                "Constraint Form_FK_Rep Foreign Key (Rep_ID) References Reps(Rep_ID), " +
+    //TODO IMPLEMENT REPS            "Constraint Form_FK_Rep Foreign Key (Rep_ID) References Reps(Rep_ID), " +
                 "Constraint Form_FK_Company Foreign Key (Company_ID) References Company(Company_ID))";
         sendStatement(buildString);
         String createSeq = "create sequence Form_ID as BIGINT start with 1";

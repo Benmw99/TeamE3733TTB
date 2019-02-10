@@ -15,6 +15,11 @@ public class DBInsert extends DatabaseAbstract {
         super(path);
     }
 
+    /**
+     * Gets the one instance of the class making it a singleton
+     * @author Jordan
+     * @return The current instance of DBSelect
+     */
     static DBInsert getInstance() {
         if (dbInsert_instance == null) {
             dbInsert_instance = new DBInsert("./ttb.db");
@@ -66,13 +71,14 @@ public class DBInsert extends DatabaseAbstract {
      * @param Wine_Appellation The wine appellation field for the entry
      * @throws SQLException
      */
-    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH) throws SQLException{
-        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH) VALUES (?,?, ?, ?)";
+    public void insertWine(int TTB_ID, String Grape_Varietals, String Wine_Appellation, float pH, int Vintage) throws SQLException{
+        String insertString = "INSERT INTO WINE (TTB_ID, Grape_Varietals, Wine_Appellation, pH, Vintage) VALUES (?,?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setInt(1, TTB_ID);
         statement.setString(2, Grape_Varietals);
         statement.setString(3, Wine_Appellation);
         statement.setFloat(4, pH);
+        statement.setInt(5, Vintage);
         statement.execute();
     }
 
@@ -83,10 +89,10 @@ public class DBInsert extends DatabaseAbstract {
      * @param isPrimary True if and only if this is the primary permit entry for the associated form
      * @throws SQLException
      */
-    public void insertBrewersPermit(int Permit_No, int TTB_ID, Boolean isPrimary) throws SQLException{
+    public void insertBrewersPermit(String Permit_No, int TTB_ID, Boolean isPrimary) throws SQLException{
         String insertString = "INSERT INTO BREWERSPERMIT (Brewers_No, TTB_ID, isPrimary) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
-        statement.setInt(1, Permit_No);
+        statement.setString(1, Permit_No);
         statement.setInt(2, TTB_ID);
         statement.setBoolean(3, isPrimary);
         statement.execute();
@@ -172,7 +178,33 @@ public class DBInsert extends DatabaseAbstract {
     }
 
 
-
+    public void insertForm(String Serial_Number, String Fanciful_Name, String Brand_Name, Boolean Source,
+                           Boolean Approve, String Rep_ID, String email, int Company_ID, Timestamp submitted, String name,
+                           String phone, int Alcohol_Type, double APV, String formula) throws SQLException {
+        String insertString = "INSERT INTO FORM (TTB_ID, Serial_Number, Fanciful_Name, Brand_Name, Source, Approve," +
+                " Rep_ID, Email, Company_ID, Date_Submitted, Applicant_Name, Phone, Alcohol_Type, APV, Formula) " +
+                "VALUES (NEXT VALUE FOR Form_ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //TODO MAKE REP ID AND FORMULA OPTIONAL
+        PreparedStatement statement = connection.prepareStatement(insertString);
+        statement.setString(1, Serial_Number);
+        statement.setString(2, Fanciful_Name);
+        statement.setString(3, Brand_Name);
+        statement.setBoolean(4, Source);
+        if(Approve == true){
+            statement.setInt(5,1);
+        } else {
+            statement.setInt(5, 2);
+        }
+        statement.setString(6, Rep_ID);
+        statement.setString(7, email);
+        statement.setInt(8, Company_ID);
+        statement.setTimestamp(9, submitted);
+        statement.setString(10, name);
+        statement.setString(11, phone);
+        statement.setInt(12, Alcohol_Type);
+        statement.setFloat(13, (float)APV);
+        statement.setString(14, formula);
+        statement.execute();
+    }
 
 
     /**
@@ -218,6 +250,7 @@ public class DBInsert extends DatabaseAbstract {
      * @param qualification Any special qualification the agent writes in
      * @throws SQLException
      */
+    @Deprecated
     public void insertApproval(String appovingAgent, int TTB_ID, Timestamp date, Timestamp expiration, String qualification) throws SQLException {
         String insertString = "INSERT INTO APPROVAL VALUES (?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
@@ -231,17 +264,18 @@ public class DBInsert extends DatabaseAbstract {
     }
 
     public void insertApproval(String approvingAgent, int TTB_ID, Timestamp date, Timestamp expiration, String qualification, ApprovalStatus page1, ApprovalStatus page2, ApprovalStatus page3, ApprovalStatus page4) throws SQLException {
-        String insertString = "INSERT INTO APPROVAL VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertString = "INSERT INTO APPROVAL (Approving_Agent, TTB_ID, Date, Expiration, Page_1, Page_2, Page_3, Page_4, Qualification) VALUES" +
+                " (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(insertString);
         statement.setString(1, approvingAgent);
         statement.setInt(2, TTB_ID);
         statement.setTimestamp(3, date);
         statement.setTimestamp(4, expiration);
-        statement.setString(5, qualification);
-        statement.setInt(6, page1.toInt());
-        statement.setInt(7, page2.toInt());
-        statement.setInt(8, page3.toInt());
-        statement.setInt(9, page4.toInt());
+        statement.setInt(5, page1.toInt());
+        statement.setInt(6, page2.toInt());
+        statement.setInt(7, page3.toInt());
+        statement.setInt(8, page4.toInt());
+        statement.setString(9, qualification);
         statement.execute();
         statement.close();
     }
@@ -254,15 +288,15 @@ public class DBInsert extends DatabaseAbstract {
 
     //TODO APPROVE FORM --> Make UPDATE
 
-    public void insertForm(Form to_insert, Manufacturer inserting) { //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
-        int type_num = 0;
-        int TTB_ID;
+    public int insertForm(Form to_insert, Manufacturer inserting) { //TODO FINISH THIS FUNCTION OR PASS IT TO ENTITIES
+        int TTB_ID = -1;
         try{
-            String selstr = "SELECT (NEXT VALUE FOR Form_ID) FROM FORM";
+            String selstr =  "VALUES (NEXT VALUE FOR FORM_ID)";
             PreparedStatement ps = connection.prepareStatement(selstr);
             ResultSet rs = ps.executeQuery();
             rs.next();
             TTB_ID = rs.getInt(1);
+            TTB_ID ++;
             ps.close();
         insertForm(to_insert.getSerialNumber(),
                 to_insert.getFancifulName(),
@@ -275,20 +309,37 @@ public class DBInsert extends DatabaseAbstract {
                 Timestamp.from(Instant.now()),
                 to_insert.getApplicantName(),
                 to_insert.getPhoneNumber(),
-                type_num, to_insert.getAlcoholContent());
+                to_insert.getAlcoholType().toInt(),
+                to_insert.getAlcoholContent(),
+                to_insert.getFormula());
+        if(to_insert.getAlcoholType() == AlcoholType.Wine && to_insert.getWineFormItems() != null) {
             insertWine(TTB_ID, to_insert.getWineFormItems());
-            insertOtherInfo(TTB_ID, to_insert.getBlownBrandedEmbossedInfo());
-            insertMailingAddress( TTB_ID, to_insert.getMailingAddress());
-            for( Address a : to_insert.getAddress()){
+        }
+        insertOtherInfo(TTB_ID, to_insert.getBlownBrandedEmbossedInfo());
+        if(to_insert.getMailingAddress() != null) {
+            insertMailingAddress(TTB_ID, to_insert.getMailingAddress());
+        }
+        if(to_insert.getAddress() != null) {
+            for (Address a : to_insert.getAddress()) {
                 insertOtherAddress(TTB_ID, a);
             }
+        }
+        if(to_insert.getBrewersPermit() != null) {
+            for (int i = 0; i < to_insert.getBrewersPermit().size(); i++) {
+                insertBrewersPermit(to_insert.getBrewersPermit().get(i), TTB_ID, false);
+            }
+
+        }
         } catch (SQLException e ){
             System.out.println(e.toString());
+            e.printStackTrace();
         }
+        to_insert.setTtbID(TTB_ID);
+        return TTB_ID;
     }
 
     public void insertWine(int TTB_ID, WineFormItems wine) throws SQLException{
-        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH());
+        insertWine(TTB_ID, wine.getGrapeVarietal(), wine.getAppellation(), wine.getpH(), wine.getVintageYear());
     }
 
     public void insertMailingAddress(int TTB_ID, Address to_insert) throws SQLException {

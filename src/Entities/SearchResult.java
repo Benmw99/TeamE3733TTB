@@ -84,10 +84,26 @@ public class SearchResult {
         this.search = search;
     }
 
-        boolean equals(SearchResult aSearchRes){
-            return ( this.results.containsAll(aSearchRes.results) &&
-                this.query.equals(aSearchRes.query) &&
-                this.search.equals(aSearchRes.search));
+    boolean equals(SearchResult aSearchRes){
+        return ( resultsEquals(aSearchRes.results) &&
+            this.query.equals(aSearchRes.query) &&
+            this.search.equals(aSearchRes.search));
     }
 
+    boolean resultsEquals(ArrayList<Form> aList) {
+        ArrayList<Form> resultList = new ArrayList<Form>();
+        for (Form f : aList) {
+            for (Form s : this.results) {
+                if (f.equals(s)) {
+                    resultList.add(f);
+                }
+            }
+        }
+        return (this.results.size() == resultList.size());
+    }
+
+    public void getThreeForms(){
+        DB.Database db = DB.Database.getInstance();
+        db.dbSelect.getThreeForms();
+    }
 }

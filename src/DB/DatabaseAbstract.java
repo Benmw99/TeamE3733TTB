@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+//Abstract class for the constructors of all the lower classes
 public abstract class DatabaseAbstract {
     Connection connection;
 

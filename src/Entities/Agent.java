@@ -2,6 +2,9 @@ package Entities;
 
 import DB.Database;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -80,7 +83,9 @@ public class Agent implements IUser{
         return db.dbSelect.searchBy(advancedSearch);
     }
 
-    void approveForm(Form form, String qualifications) {
+    public void approveForm(Form form, String qualifications) {
+        Approval app = new Approval();
+        form.setApproval(app);
         form.getApproval().approve(name, qualifications);
         form.setApprovalStatus(Complete);
         DB.Database db = DB.Database.getInstance();
@@ -88,9 +93,16 @@ public class Agent implements IUser{
 
     }
 
-    void rejectForm(Form form) {
-        form.setApprovalStatus(Incomplete);
+    public void rejectForm(Form form) {
+        form.setApprovalStatus(Incorrect);
         DB.Database db = DB.Database.getInstance();
+        Approval app = new Approval();
+        app.setPage1(Incorrect);
+        app.setPage2(Incorrect);
+        app.setPage3(Incorrect);
+        app.setPage4(Incorrect);
+        app.setAgentApprovalName(this.getName());
+        form.setApproval(app);
         db.dbSelect.approveForm(form, form.getApproval());
 
     }
@@ -120,5 +132,6 @@ public class Agent implements IUser{
         this.password.equals(anAgent.password) &&
         this.name.equals(anAgent.name));
     }
+
 
 }

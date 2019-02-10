@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.control.TextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CivilSearchController">
 <children>
     <Rectangle fill="#4BA77A" height="136.0" layoutX="-14.0" layoutY="21.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-    <Text fill="WHITE" layoutX="626.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="147.62400909650722">
+    <Text fill="WHITE" layoutX="473.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced Search" wrappingWidth="429.9218606590072">
         <font>
             <Font name="Georgia" size="48.0" />
         </font></Text>
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3b3b" height="563.0" layoutX="1.0" layoutY="136.0" stroke="TRANSPARENT" strokeType="INSIDE" width="332.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="1.0" />
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="62.0" layoutX="72.0" layoutY="141.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1364.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="136.0" />
-    <Rectangle fill="#e7e7e7" height="544.0" layoutX="358.0" layoutY="212.0" stroke="TRANSPARENT" strokeType="INSIDE" width="718.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="205.0" />
-    <Button fx:id="menuASButton" layoutX="58.0" layoutY="52.0" mnemonicParsing="false" text="Return to Menu" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" />
-    <TextField fx:id="searchASField" alignment="CENTER" layoutX="349.0" layoutY="151.0" prefHeight="26.0" prefWidth="708.0" promptText="Brand Name/Fanciful Name/TTB ID Number" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="316.0" />
-    <Text layoutX="512.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search the TTB Database">
-        <font>
-            <Font name="Georgia" size="36.0" />
-        </font>
-    </Text>
+      <Pane layoutX="338.0" layoutY="201.0" prefHeight="548.0" prefWidth="1024.0">
+         <children>
+            <TableView fx:id="resultTable" layoutX="150.0" layoutY="-3.0"  prefHeight="550.0" prefWidth="449.0">
+              <columns>
+                <TableColumn fx:id="col1" prefWidth="100.0" text="TTB ID#" />
+                <TableColumn fx:id="col2" prefWidth="100.0" text="Type" />
+                <TableColumn fx:id="col3" prefWidth="100.0" text="Brand Name" />
+                <TableColumn fx:id="col4" prefWidth="100.0" text="Serial Number" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <JFXButton fx:id="menuASButton" layoutX="50.0" layoutY="52.0" ripplerFill="#f5f5f5" style="-fx-background-color: WHITE;" text="Return to Menu" AnchorPane.leftAnchor="50.0" />
+    <JFXTextField fx:id="searchASField" alignment="CENTER" disable="true" layoutX="349.0" layoutY="151.0" prefHeight="26.0" prefWidth="708.0" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="316.0" />
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="506.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="506.0" />
     <Text layoutX="22.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Manufactured">
         <font>
@@ -39,21 +47,18 @@
             <Font name="Georgia" size="36.0" />
         </font>
     </Text>
-    <Button fx:id="printASButton" layoutX="1166.0" layoutY="156.0" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Print Results" textFill="WHITE">
-        <font>
-            <Font name="Georgia" size="12.0" />
-        </font>
-    </Button>
-      <DatePicker fx:id="manufactureDate" layoutX="153.0" layoutY="514.0" prefHeight="25.0" prefWidth="149.0" promptText="date" />
+      <JFXButton layoutX="1168.0" layoutY="155.0" style="-fx-background-color: #1F2020;" text="Print Results" textFill="WHITE" />
+      <JFXDatePicker fx:id="manufactureDate" layoutX="153.0" layoutY="514.0" prefHeight="25.0" prefWidth="149.0" promptText="date" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="7.0" layoutY="208.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="356.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="406.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="456.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="8.0" layoutY="556.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
-      <TextField fx:id="manField" layoutX="153.0" layoutY="363.0" promptText="name" />
-      <TextField fx:id="stateField" layoutX="153.0" layoutY="413.0" promptText="state" />
-      <TextField fx:id="cityField" layoutX="153.0" layoutY="463.0" promptText="city" />
-      <TextField fx:id="idField" layoutX="153.0" layoutY="563.0" promptText="number" />
+      <JFXComboBox layoutX="153.0" layoutY="216.0" prefWidth="150.0" />
+      <JFXTextField fx:id="manField" layoutX="153.0" layoutY="363.0" promptText="name" />
+      <JFXTextField fx:id="stateField" layoutX="153.0" layoutY="413.0" promptText="state" />
+      <JFXTextField fx:id="cityField" layoutX="153.0" layoutY="463.0" promptText="city" />
+      <JFXTextField fx:id="idField" layoutX="153.0" layoutY="563.0" promptText="number" />
       <Text layoutX="33.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alcohol Type">
          <font>
             <Font name="Georgia" size="13.0" />
@@ -79,15 +84,8 @@
             <Font name="Georgia" size="13.0" />
          </font>
       </Text>
-      <SplitMenuButton fx:id="alcoholTypeSplitMenu" layoutX="150.0" layoutY="215.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" text="Type">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Beer" />
-            <MenuItem mnemonicParsing="false" text="Wine" />
-            <MenuItem mnemonicParsing="false" text="Spirit" />
-         </items>
-      </SplitMenuButton>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="41.0" layoutX="7.0" layoutY="258.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
-      <TextField fx:id="alcoholContentTextField" layoutX="153.0" layoutY="265.0" promptText="percentage" />
+      <JFXTextField fx:id="alcoholContentTextField" layoutX="153.0" layoutY="265.0" promptText="percentage" />
       <Text layoutX="32.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alcohol Content">
          <font>
             <Font name="Georgia" size="13.0" />
@@ -99,14 +97,10 @@
             <Font name="Georgia" size="13.0" />
          </font>
       </Text>
-      <TextField fx:id="brandNameTextField" layoutX="153.0" layoutY="315.0" promptText="name" />
+      <JFXTextField fx:id="brandNameTextField" layoutX="153.0" layoutY="315.0" promptText="name" />
       <Pane layoutX="-1.0" layoutY="702.0" prefHeight="49.0" prefWidth="340.0" style="-fx-background-color: #c4c4c4#c4c4c4;">
          <children>
-            <Button fx:id="search1Button" layoutX="128.0" layoutY="6.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" text="Search">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
+            <JFXButton layoutX="129.0" layoutY="7.0" prefHeight="39.0" prefWidth="84.0" style="-fx-background-color: WHITE;" text="Search" />
          </children>
       </Pane>
 </children>

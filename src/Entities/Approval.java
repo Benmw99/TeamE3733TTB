@@ -56,10 +56,10 @@ public class Approval {
         this.agentApprovalName = null;
         this.expDate = null;
         this.qualifications = null;
-        this.page1 = null;
-        this.page2 = null;
-        this.page3 = null;
-        this.page4 = null;
+        this.page1 = ApprovalStatus.Incomplete;
+        this.page2 = ApprovalStatus.Incomplete;;
+        this.page3 = ApprovalStatus.Incomplete;;
+        this.page4 = ApprovalStatus.Incomplete;;
     }
 
     public ApprovalStatus getPage1() {
@@ -144,6 +144,7 @@ public class Approval {
         this.expDate = expirationDate;
 
     }
+
     boolean equals(Approval appr){
         return ((this.approved == appr.approved) &&
             this.timestamp.equals(appr.timestamp) &&

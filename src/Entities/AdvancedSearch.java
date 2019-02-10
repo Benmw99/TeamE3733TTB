@@ -59,16 +59,8 @@ public class AdvancedSearch {
     }
 
     public void setAlcoholType(AlcoholType alcoholType) {
-        int type = 0;
-        if (alcoholType == AlcoholType.Wine) {
-            type = 1;
-        } else if (alcoholType == AlcoholType.MaltBeverage) {
-            type = 2;
-        } else if (alcoholType == AlcoholType.DistilledLiquor) {
-            type = 3;
-        }
         this.alcoholType = alcoholType;
-        this.type = type;
+        this.type = alcoholType.toInt();
     }
 
     public String getBrandName() {

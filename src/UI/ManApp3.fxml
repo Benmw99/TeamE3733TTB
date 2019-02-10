@@ -5,8 +5,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -17,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManAppController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -76,7 +74,7 @@
                         <Insets left="30.0" right="15.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="section1MA3Button" mnemonicParsing="false" onAction="#manApp4c" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -84,7 +82,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section2MA3Button" mnemonicParsing="false" onAction="#manApp4b" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -92,7 +90,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="section3MA3Button" mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="3" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="3" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -100,7 +98,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section4MA3Button" mnemonicParsing="false" onAction="#manApp4a" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="4" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -150,15 +148,6 @@
             </VBox>
          </children>
       </VBox>
-      <MenuButton fx:id="menuMA3MenuButton" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Submit Form" />
-          <MenuItem mnemonicParsing="false" text="Go Home" />
-        </items>
-         <font>
-            <Font size="26.0" />
-         </font>
-      </MenuButton>
       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="173.0">
          <children>
             <VBox alignment="TOP_CENTER">
@@ -428,15 +417,15 @@
       </HBox>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button fx:id="prevSectionMA3Button" mnemonicParsing="false" onAction="#manApp4e" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
-               <font>
-                  <Font name="System Bold" size="33.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="30.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="nextSectionMA3Button" mnemonicParsing="false" onAction="#checkBlanksPage3" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
+            <!--<Button fx:id="prevSectionMA3Button" mnemonicParsing="false" onAction="#manApp4e" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">-->
+               <!--<font>-->
+                  <!--<Font name="System Bold" size="33.0" />-->
+               <!--</font>-->
+               <!--<HBox.margin>-->
+                  <!--<Insets right="30.0" />-->
+               <!--</HBox.margin>-->
+            <!--</Button>-->
+            <Button fx:id="nextSectionMA3Button" defaultButton="true" mnemonicParsing="false" onAction="#checkBlanksPage3" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&gt;" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -446,5 +435,10 @@
             </Button>
          </children>
       </HBox>
+      <Button fx:id="backButton" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" onAction="#manHome" prefHeight="27.0" prefWidth="49.0" style="-fx-background-color: #B5072C#B5072C #B5072C#B5072C;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="Palatino" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManufacturerController">
+<AnchorPane prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManAppController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -58,7 +56,7 @@
                         <Insets left="30.0" right="15.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="section1MA4Button" mnemonicParsing="false" onAction="#manApp5c" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="1" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -66,7 +64,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="section2MA4Button" mnemonicParsing="false" onAction="#manApp5b" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="2" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -74,7 +72,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="section3MA4Button" mnemonicParsing="false" onAction="#manApp5a" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-border-color: #BF0A30; -fx-background-color: c4c4c4;" text="3" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -82,7 +80,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="section4MA4Button" mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="4" textFill="WHITE">
+                  <Button mnemonicParsing="false" style="-fx-background-color: BF0A30; -fx-border-color: BF0A30;" text="4" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -125,15 +123,6 @@
             </VBox>
          </children>
       </VBox>
-      <MenuButton fx:id="menuMA4MenuButton" mnemonicParsing="false" prefHeight="70.0" style="-fx-border-color: #000000;" text="Menu">
-        <items>
-          <MenuItem disable="true" mnemonicParsing="false" text="Submit Form" />
-          <MenuItem mnemonicParsing="false" text="Go Home" />
-        </items>
-         <font>
-            <Font size="26.0" />
-         </font>
-      </MenuButton>
       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="173.0">
          <children>
             <VBox alignment="TOP_CENTER">
@@ -154,7 +143,7 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="19" textFill="WHITE">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="100.0" text="20" textFill="WHITE">
                      <font>
                         <Font size="28.0" />
                      </font>
@@ -229,7 +218,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField prefHeight="41.0" promptText="Enter a Percentage">
+                        <TextField fx:id="alcoholContentTextField" prefHeight="41.0" promptText="Enter a Percentage">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -250,19 +239,19 @@
       </HBox>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button fx:id="prevSectionMA4Button" mnemonicParsing="false" onAction="#manApp5d" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">
-               <font>
-                  <Font name="System Bold" size="33.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="30.0" />
-               </HBox.margin>
-            </Button>
+            <!--<Button fx:id="prevSectionMA4Button" mnemonicParsing="false" onAction="#manApp5d" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #bf0a30;" text="&lt;" textFill="#fcfcfc">-->
+               <!--<font>-->
+                  <!--<Font name="System Bold" size="33.0" />-->
+               <!--</font>-->
+               <!--<HBox.margin>-->
+                  <!--<Insets right="30.0" />-->
+               <!--</HBox.margin>-->
+            <!--</Button>-->
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="671.0">
          <children>
-            <Button fx:id="submitButton" mnemonicParsing="false" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #71071D;" text="Submit" textFill="WHITE">
+            <Button fx:id="submitButton" defaultButton="true" mnemonicParsing="false" onAction="#checkAndSubmitForm" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #71071D;" text="Submit" textFill="WHITE">
                <HBox.margin>
                   <Insets right="80.0" />
                </HBox.margin>
@@ -272,5 +261,10 @@
             </Button>
          </children>
       </HBox>
+      <Button fx:id="backButton" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" onAction="#manHome" prefHeight="27.0" prefWidth="49.0" style="-fx-background-color: #B5072C#B5072C #B5072C#B5072C;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="Palatino" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
