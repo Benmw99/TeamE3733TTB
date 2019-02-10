@@ -3,7 +3,7 @@ package UI;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class ManufacturerSubmissionController extends PageControllerUI implements ISubmit {
+public class ManSubmissionController extends PageControllerUI implements ISubmit {
 
 
     SubmitHelper submitHelper;
