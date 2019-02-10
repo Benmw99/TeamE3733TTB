@@ -41,7 +41,7 @@
 .tab{
 
     -fx-font: Apple SD Gothic Neo;
-    -fx-font-color: #546e7a;
+    -fx-font-color: white;
     -fx-background-color: #546e7a;
     -fx-background-insets: 0.0;
     -fx-background-radius: 0.0;
@@ -51,12 +51,12 @@
 .tab:selected
 {
     -fx-font: Apple SD Gothic Neo;
-    -fx-font-color: #819ca9;
+    -fx-font-color: white;
     -fx-background-color: #819ca9;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
     -fx-border-width: 0 0 4 0;
-    -fx-border-color: #00e5ff;
+    -fx-border-color: #6effff;
 
 }
 
@@ -110,3 +110,7 @@
 }
 
 */
+
+.hamburger > StackPane {
+    -fx-background-color: #6effff;
+}
