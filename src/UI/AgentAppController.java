@@ -1,331 +1,404 @@
 package UI;
 
+import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 public class AgentAppController extends PageControllerUI implements ISubmit {
 
     SubmitHelper submitHelper;
 
-    public void setSubmitHelper(SubmitHelper submitHelper){
-        this.submitHelper = submitHelper;
+    @FXML
+    private JFXButton page1;
+
+    @FXML
+    private JFXButton page2;
+
+    @FXML
+    private JFXButton page3;
+
+    @FXML
+    private JFXButton page4;
+
+    @FXML
+    private Pane pane1;
+
+    @FXML
+    private HBox GrapeVarHBox;
+
+    @FXML
+    private HBox WineAppHBox;
+
+    @FXML
+    private Pane pane2;
+
+    @FXML
+    private Pane pane3;
+
+    @FXML
+    private Pane pane4;
+
+    // Below are OG fx:id's
+
+    @FXML
+    private JFXTextField RepIDField;
+
+    @FXML
+    private JFXTextField ProducerNumField;
+
+    @FXML
+    private JFXComboBox<String> SourceComboBox;
+
+    @FXML
+    private JFXTextField SerialYearField;
+
+    @FXML
+    private JFXTextField SerialDigitsField;
+
+    @FXML
+    private JFXComboBox<String> TypeComboBox;
+
+    @FXML
+    private JFXTextField VintageYearField;
+
+    @FXML
+    private JFXTextField PhField;
+
+    @FXML
+    private JFXTextField BrandField;
+
+    @FXML
+    private JFXTextField FancifulField;
+
+    @FXML
+    private JFXTextField Name8Field;
+
+    @FXML
+    private JFXComboBox<String> State8ComboBox;
+
+    @FXML
+    private JFXTextField Address8Field;
+
+    @FXML
+    private JFXTextField City8Field;
+
+    @FXML
+    private JFXTextField Zip8Field;
+
+    @FXML
+    private JFXRadioButton SameAddressRadioButton;
+
+    @FXML
+    private JFXTextField Name9Field;
+
+    @FXML
+    private JFXComboBox<String> State9ComboBox;
+
+    @FXML
+    private JFXTextField Address9Field;
+
+    @FXML
+    private JFXTextField City9Field;
+
+    @FXML
+    private JFXTextField Zip9Field;
+
+    @FXML
+    private JFXTextField FormulaField;
+
+    @FXML
+    private JFXTextField GrapeVarField;
+
+    @FXML
+    private JFXTextField WineAppField;
+
+    @FXML
+    private JFXTextField PhoneNumField;
+
+    @FXML
+    private JFXTextField EmailField;
+
+    @FXML
+    private JFXRadioButton LiquorRadioButton;
+
+    @FXML
+    private JFXRadioButton CertRadioButton;
+
+    @FXML
+    private JFXTextField AmountField;
+
+    @FXML
+    private JFXRadioButton ExemptionRadioButton;
+
+    @FXML
+    private JFXComboBox<String> State15ComboBox;
+
+    @FXML
+    private JFXRadioButton ResubmitRadioButton;
+
+    @FXML
+    private JFXTextField TTBIDField;
+
+    @FXML
+    private JFXTextField AdditionalInfoField;
+
+    @FXML
+    private JFXTextField TranslationField;
+
+    @FXML
+    private JFXDatePicker AppDate;
+
+    @FXML
+    private JFXTextField SignatureField;
+
+    @FXML
+    private JFXButton SubmitButton;
+
+    @FXML
+    private JFXTextField AlcoholContentTextField;
+
+    void onLoad() {
     }
 
-    @FXML
-    TextField RepIDField;
+    protected void onLeave() {
+    }
 
-    @FXML
-    TextField ProducerNumField;
+    public void setSubmitHelper(SubmitHelper helper) {
+    }
 
-    @FXML
-    ComboBox<String> SourceComboBox;
+    public JFXButton getPage1() {
+        return page1;
+    }
 
-    @FXML
-    TextField SerialYearField;
+    public JFXButton getPage2() {
+        return page2;
+    }
 
-    @FXML
-    TextField SerialDigitsField;
+    public JFXButton getPage3() {
+        return page3;
+    }
 
-    @FXML
-    ComboBox<String> TypeComboBox;
+    public JFXButton getPage4() {
+        return page4;
+    }
 
-    @FXML
-    TextField VintageYearField;
-
-    @FXML
-    TextField PhField;
-
-    @FXML
-    TextField AlcoholContentTextField;
-
-    @FXML
-    TextField BrandNameTextField;
-
-    @FXML
-    TextField BrandField;
-
-    @FXML
-    TextField FancifulField;
-
-    @FXML
-    TextField Name8Field;
-
-    @FXML
-    ComboBox<String> State8ComboBox;
-
-    @FXML
-    TextField Address8Field;
-
-    @FXML
-    TextField City8Field;
-
-    @FXML
-    TextField Zip8Field;
-
-    @FXML
-    RadioButton SameAddressRadioButton;
-
-    @FXML
-    TextField Name9Field;
-
-    @FXML
-    ComboBox<String> State9ComboBox;
-
-    @FXML
-    TextField Address9Field;
-
-    @FXML
-    TextField City9Field;
-
-    @FXML
-    TextField Zip9Field;
-
-    @FXML
-    TextField FormulaField;
-
-    @FXML
-    TextField GrapeVarField;
-
-    @FXML
-    TextField WineAppField;
-
-    @FXML
-    TextField PhoneNumField;
-
-    @FXML
-    TextField EmailField;
-
-    @FXML
-    CheckBox CertCheckbox;
-
-    @FXML
-    TextField State15Field;
-
-    @FXML
-    CheckBox LiquorCheckbox;
-
-    @FXML
-    TextField AmountField;
-
-    @FXML
-    CheckBox ResubmitCheckbox;
-
-    @FXML
-    TextField TTBIDField;
-
-    @FXML
-    TextField AdditionalInfoField;
-
-    @FXML
-    TextField TranslationField;
-
-    @FXML
-    DatePicker AppDate;
-
-    @FXML
-    TextField SignatureField;
-
-    @FXML
-    Button SubmitButton;
+    public Pane getPane1() {
+        return pane1;
+    }
 
     @Override
-    public TextField getRepIDField() {
+    public JFXTextField getRepIDField() {
         return RepIDField;
     }
 
     @Override
-    public TextField getProducerNumField() {
+    public JFXTextField getProducerNumField() {
         return ProducerNumField;
     }
 
     @Override
-    public ComboBox<String> getSourceComboBox() {
+    public JFXComboBox<String> getSourceComboBox() {
         return SourceComboBox;
     }
 
     @Override
-    public TextField getSerialYearField() {
+    public JFXTextField getSerialYearField() {
         return SerialYearField;
     }
 
     @Override
-    public TextField getSerialDigitsField() {
+    public JFXTextField getSerialDigitsField() {
         return SerialDigitsField;
     }
 
     @Override
-    public ComboBox<String> getTypeComboBox() {
+    public JFXComboBox<String> getTypeComboBox() {
         return TypeComboBox;
     }
 
     @Override
-    public TextField getVintageYearField() {
+    public JFXTextField getVintageYearField() {
         return VintageYearField;
     }
 
     @Override
-    public TextField getPhField() {
+    public JFXTextField getPhField() {
         return PhField;
     }
 
     @Override
-    public TextField getAlcoholContentTextField() {
-        return AlcoholContentTextField;
-    }
-
-    @Override
-    public TextField getBrandNameTextField() {
-        return BrandNameTextField;
-    }
-
-    @Override
-    public TextField getBrandField() {
+    public JFXTextField getBrandField() {
         return BrandField;
     }
 
+    public Pane getPane2() {
+        return pane2;
+    }
+
     @Override
-    public TextField getFancifulField() {
+    public JFXTextField getFancifulField() {
         return FancifulField;
     }
 
     @Override
-    public TextField getName8Field() {
+    public JFXTextField getName8Field() {
         return Name8Field;
     }
 
     @Override
-    public ComboBox<String> getState8ComboBox() {
+    public JFXComboBox<String> getState8ComboBox() {
         return State8ComboBox;
     }
 
     @Override
-    public TextField getAddress8Field() {
+    public JFXTextField getAddress8Field() {
         return Address8Field;
     }
 
     @Override
-    public TextField getCity8Field() {
+    public JFXTextField getCity8Field() {
         return City8Field;
     }
 
     @Override
-    public TextField getZip8Field() {
+    public JFXTextField getZip8Field() {
         return Zip8Field;
     }
 
     @Override
-    public RadioButton getSameAddressRadioButton() {
+    public JFXRadioButton getSameAddressRadioButton() {
         return SameAddressRadioButton;
     }
 
     @Override
-    public TextField getName9Field() {
+    public JFXTextField getName9Field() {
         return Name9Field;
     }
 
     @Override
-    public ComboBox<String> getState9ComboBox() {
+    public JFXComboBox<String> getState9ComboBox() {
         return State9ComboBox;
     }
 
     @Override
-    public TextField getAddress9Field() {
+    public JFXTextField getAddress9Field() {
         return Address9Field;
     }
 
     @Override
-    public TextField getCity9Field() {
+    public JFXTextField getCity9Field() {
         return City9Field;
     }
 
     @Override
-    public TextField getZip9Field() {
+    public JFXTextField getZip9Field() {
         return Zip9Field;
     }
 
     @Override
-    public TextField getFormulaField() {
+    public JFXTextField getFormulaField() {
         return FormulaField;
     }
 
     @Override
-    public TextField getGrapeVarField() {
+    public JFXTextField getGrapeVarField() {
         return GrapeVarField;
     }
 
     @Override
-    public TextField getWineAppField() {
+    public JFXTextField getWineAppField() {
         return WineAppField;
     }
 
+    public Pane getPane3() {
+        return pane3;
+    }
+
     @Override
-    public TextField getPhoneNumField() {
+    public JFXTextField getPhoneNumField() {
         return PhoneNumField;
     }
 
     @Override
-    public TextField getEmailField() {
+    public JFXTextField getEmailField() {
         return EmailField;
     }
 
     @Override
-    public CheckBox getCertCheckbox() {
-        return CertCheckbox;
+    public JFXRadioButton getLiquorRadioButton() {
+        return LiquorRadioButton;
     }
 
     @Override
-    public TextField getState15Field() {
-        return State15Field;
+    public JFXRadioButton getCertRadioButton() {
+        return CertRadioButton;
     }
 
     @Override
-    public CheckBox getLiquorCheckbox() {
-        return LiquorCheckbox;
-    }
-
-    @Override
-    public TextField getAmountField() {
+    public JFXTextField getAmountField() {
         return AmountField;
     }
 
     @Override
-    public CheckBox getResubmitCheckbox() {
-        return ResubmitCheckbox;
+    public JFXRadioButton getExemptionRadioButton() {
+        return ExemptionRadioButton;
     }
 
     @Override
-    public TextField getTTBIDField() {
+    public JFXComboBox<String> getState15ComboBox() {
+        return State15ComboBox;
+    }
+
+    @Override
+    public JFXRadioButton getResubmitRadioButton() {
+        return ResubmitRadioButton;
+    }
+
+    @Override
+    public JFXTextField getTTBIDField() {
         return TTBIDField;
     }
 
     @Override
-    public TextField getAdditionalInfoField() {
+    public JFXTextField getAdditionalInfoField() {
         return AdditionalInfoField;
     }
 
     @Override
-    public TextField getTranslationField() {
+    public JFXTextField getTranslationField() {
         return TranslationField;
     }
 
     @Override
-    public DatePicker getAppDate() {
+    public JFXDatePicker getAppDate() {
         return AppDate;
     }
 
+    public Pane getPane4() {
+        return pane4;
+    }
+
     @Override
-    public TextField getSignatureField() {
+    public JFXTextField getSignatureField() {
         return SignatureField;
     }
 
     @Override
-    public Button getSubmitButton() {
+    public JFXButton getSubmitButton() {
         return SubmitButton;
     }
 
-    void onLoad(){}
+    @Override
+    public void setSubmitHelper() {
+    }
 
-    protected void onLeave(){}
+    @Override
+    public JFXTextField getAlcoholContentTextField() {
+        return AlcoholContentTextField;
+    }
 
+    public static boolean errorInForm = false;
 
 }
