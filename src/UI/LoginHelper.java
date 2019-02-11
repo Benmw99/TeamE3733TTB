@@ -19,6 +19,8 @@ public class LoginHelper {
             @Override
             public void handle(ActionEvent event) {
                 authenticate();
+                event.getTarget();
+                controller.goToPage("AgentHome.fxml");
             }
         });
     }
@@ -28,7 +30,7 @@ public class LoginHelper {
      * @return
      */
     public boolean authenticate(){
-//        String user = controller.getLoginUserUsernameTextField().getText(); //TODO: fix this, getLoginUserUsernameTextField() returns null
+        String user = controller.getLoginUserUsernameTextField().getText();
         AttributeContainer attributeContainer = AttributeContainer.getInstance();
         attributeContainer.currentUser = new Agent();
         return true; //TODO MAKE THIS REAL

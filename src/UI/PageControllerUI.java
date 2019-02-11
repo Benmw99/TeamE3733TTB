@@ -47,7 +47,7 @@ abstract public class PageControllerUI {
      *
      * @param filenameFXML FXML File of the scene you want loaded
      */
-    void goToPage(String filenameFXML) {
+    public void goToPage(String filenameFXML) {
 
         try {
             pageSwitcher.pageSwitch(filenameFXML);

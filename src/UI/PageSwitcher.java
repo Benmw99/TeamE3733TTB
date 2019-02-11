@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.w3c.dom.Attr;
 
 import java.io.IOException;
 
@@ -41,6 +42,7 @@ public class PageSwitcher {
         //////////////////////////////////////////////////////
         PageControllerUI controller = loader.getController();
 //        controller.setStage_DontTouch(stage);
+        AttributeContainer.getInstance().backlog.push("");
         controller.onLoad();
 
 

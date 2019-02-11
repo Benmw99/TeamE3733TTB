@@ -2,7 +2,7 @@ package UI;
 
 public interface IPage {
 
-    public void pageSwitch(String filename);
+    public void goToPage(String filename);
 
 
 }

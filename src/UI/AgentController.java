@@ -37,13 +37,20 @@ import DB.*;
 
 import javax.print.attribute.standard.Media;
 
-public class AgentController implements IFormDisplay {
+public class AgentController extends PageControllerUI implements IFormDisplay {
 
     FormDisplayHelper FormDisplayHelper;
 
     public void setFormDisplayHelper(FormDisplayHelper help){
         this.FormDisplayHelper = help;
     }
+    @Override
+   public void onLeave(){
+
+   }
+   @Override
+   public void onLoad(){
+   }
 
     //AgentSearch
     @FXML
