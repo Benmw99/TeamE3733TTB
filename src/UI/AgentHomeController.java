@@ -1,13 +1,21 @@
 package UI;
 
+import DB.Database;
+import Entities.Agent;
 import Entities.AlcoholType;
 import Entities.Form;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
-import java.awt.*;
+import java.awt.Button;
+import java.io.IOException;
 import java.sql.Timestamp;
 
 public class AgentHomeController extends PageControllerUI implements IFormDisplay, IExport, ITableView, ILogOut{
@@ -141,12 +149,14 @@ public class AgentHomeController extends PageControllerUI implements IFormDispla
         return AsciiDelimitedFileButton;
     }
 
- @Override
- public void setFormDisplayHelper(FormDisplayHelper helper) {
+    FormDisplayHelper formDisplayHelper;
 
- }
+     @Override
+     public void setFormDisplayHelper(FormDisplayHelper helper) {
+         formDisplayHelper = helper;
+     }
 
- @Override
+     @Override
     public Label getDisplay1Label() {
         return Display1Label;
     }
@@ -271,9 +281,14 @@ public class AgentHomeController extends PageControllerUI implements IFormDispla
         return Display20Label;
     }
 
+    TableViewHelper tableViewHelper;
     @Override
     public void setTableViewHelper(TableViewHelper helper) {
-
+        tableViewHelper = helper;
+    }
+    @Override
+    public Button getLogOutButton() {
+        return LogOutButton;
     }
 
     @Override
@@ -311,6 +326,10 @@ public class AgentHomeController extends PageControllerUI implements IFormDispla
         return SerialColumn;
     }
 
+    ///////////////////////////////////////////////////
+    ///////////       The Actual Code      ////////////
+    ///////////////////////////////////////////////////
+
     @Override
     protected void onLeave() {
 
@@ -318,11 +337,105 @@ public class AgentHomeController extends PageControllerUI implements IFormDispla
 
     @Override
     void onLoad() {
-
+        try {
+            this.refreshQueue(null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    @Override
-    public Button getLogOutButton() {
-        return LogOutButton;
+    @FXML
+    public void logOut(ActionEvent event) throws IOException {
+        attributeContainer.currentUser = null;
+        goToPage("AgentLogin.fxml");
+    }
+
+    @FXML
+    public void refreshQueue(ActionEvent event) throws IOException {
+        attributeContainer.formQueue = ((Agent)attributeContainer.currentUser).getThreeForms();
+        getNewQueue();//TODO: replace this with tableViewHelper
+//        tableViewHelper.updateTable(); //TODO: make tableViewHelper
+        formDisplayHelper.displayForm(attributeContainer.currentForm);
+    }
+    @FXML
+    public void approveForm(ActionEvent event) throws IOException {
+        if (!(attributeContainer.currentForm == null)) {
+
+            //TODO: get qualifications from text field
+            ((Agent) attributeContainer.currentUser).approveForm(attributeContainer.currentForm, "");
+            attributeContainer.currentForm = null;
+            getNewQueue();//TODO: replace this with tableViewHelper
+//        tableViewHelper.updateTable(); //TODO: make tableViewHelper
+            formDisplayHelper.displayForm(attributeContainer.currentForm);
+        }
+    }
+    @FXML
+    public void rejectForm(ActionEvent event) throws IOException {
+        if (!(attributeContainer.currentForm == null)) {
+            ((Agent) attributeContainer.currentUser).rejectForm(attributeContainer.currentForm);
+//            getNewQueue();//TODO: replace this with tableViewHelper
+            attributeContainer.currentForm = null;
+//        tableViewHelper.updateTable(); //TODO: make tableViewHelper
+            formDisplayHelper.displayForm(attributeContainer.currentForm);
+        }
+    }
+    @FXML
+    public void reviewingTools(ActionEvent event) throws IOException {
+        if (!(attributeContainer.currentForm == null)) {
+            goToPage("AgentReviewingTools.fxml");
+        }
+    }
+    @FXML
+    public void print(ActionEvent event) throws IOException {
+        if (!(attributeContainer.currentForm == null)) {
+            System.out.println("lol nah");
+        }
+    }
+
+
+    //////////////////////////////////////////////////
+    //////////     Move to Interfaces     ////////////          //TODO:...
+    //////////////////////////////////////////////////
+
+    public void getNewQueue() throws IOException{
+//        attributeContainer.formQueue = ((Agent)attributeContainer.currentUser).getThreeForms();
+        this.getTTBIDColumn().setCellValueFactory(new PropertyValueFactory<>("ttbID"));
+        this.getDateSubmittedColumn().setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
+        this.getBrandColumn().setCellValueFactory(new PropertyValueFactory<>("brandName"));
+
+        tableView();
+
+        ObservableList<Form> tableValues = FXCollections.observableArrayList();
+        for (int i = 0; i < attributeContainer.formQueue.size(); i++) {
+            tableValues.add(attributeContainer.formQueue.get(i));
+        }
+        this.getFormTable().setItems(tableValues);
+        this.getPrintButton().setEnabled(true);//setDisable(false);
+    }
+
+
+
+    public void tableView()  {
+        ITableView temp = this;
+        this.getFormTable().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            /**
+             * Makes it so that, if you click on a row of the Table, a form is loaded based on that TTB_ID
+             */
+            public void handle(MouseEvent click) {
+                if (click.getClickCount() == 2) {
+                    @SuppressWarnings("rawtypes")
+                    TablePosition pos = temp.getFormTable().getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    int col = pos.getColumn();
+                    int ID = temp.getTTBIDColumn().getCellData(row);
+                    System.out.println(ID);
+                    attributeContainer.currentForm = Database.getInstance().dbSelect.getFormByTTB_ID(ID);
+//                    ((AgentHomeController) temp).formDisplayHelper.displayForm(attributeContainer.currentForm);
+                }
+            }
+        });
+        //    ObservableList<Form> tableValues = FXCollections.observableArrayList();
+
     }
 }

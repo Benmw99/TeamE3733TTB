@@ -1,16 +1,13 @@
 package UI;
 
-import javafx.stage.Stage;
-import sample.AttributeContainer;
-import sample.PageSwitcher;
-import java.io.IOException;
 
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 abstract public class PageControllerUI {
 
     PageSwitcher pageSwitcher = new PageSwitcher(); // this has the page switching logic
-
-    Stage stage_DontTouch; // this is the stage
 
     /** onLeave() runs when a page is about to be navigated away from,
      * and should return an AttributeContainer holding any data from this page
@@ -21,6 +18,8 @@ abstract public class PageControllerUI {
      * @return AttributeContainer
      */
 
+    AttributeContainer attributeContainer = AttributeContainer.getInstance();
+
     protected abstract void onLeave();
 
     /** onLoad() runs when a page is first loaded, and gets an AttributeContainer
@@ -28,17 +27,11 @@ abstract public class PageControllerUI {
      *
      * You should @Override this in your controller
      *
-     * @param attributeContainer
+     * @param
      */
     abstract void onLoad();
 
-    /**
-     * This is a helper function. basically it helps store the stage so goToPage doesnt need to take a button
-     * @param stage the stage, duh
-     */
-    public void setStage_DontTouch(Stage stage) {
-        this.stage_DontTouch = stage;
-    }
+
 
     /** goToPage(String filenameFXML) is a function used navigate to a different page
      *
@@ -57,7 +50,7 @@ abstract public class PageControllerUI {
     void goToPage(String filenameFXML) {
 
         try {
-            pageSwitcher.pageSwitch(null, filenameFXML, this.stage_DontTouch);
+            pageSwitcher.pageSwitch(filenameFXML);
         }
         catch (IOException e){
             System.out.println(e);

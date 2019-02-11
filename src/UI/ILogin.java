@@ -5,6 +5,8 @@ import javafx.scene.control.TextField;
 
 public interface ILogin {
 
+    void setLoginHelper(LoginHelper helper);
+
     TextField getLoginUserUsernameTextField();
 
     TextField getLoginUserPasswordTextField();

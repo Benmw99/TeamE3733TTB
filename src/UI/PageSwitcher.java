@@ -1,4 +1,4 @@
-package sample;
+package UI;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +8,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public  class PageSwitcher {
-    public void pageSwitch(ActionEvent event, String filename, Stage stage, AttributeContainer attributeContainer) throws IOException {
+public class PageSwitcher {
+    static Stage stage;
+
+    public static void setStage(Stage stage) {
+        PageSwitcher.stage = stage;
+    }
+
+    public void pageSwitch(String filename) throws IOException {
+        pageSwitch(null, filename, stage);
+    }
+    public void pageSwitch(ActionEvent event, String filename) throws IOException {
+        pageSwitch(event, filename, stage);
+    }
+
+    public void pageSwitch(ActionEvent event, String filename, Stage stage) throws IOException {
 
         //////////////////////////////////////////////////////
         //  PAGE SWITCHING
@@ -26,9 +39,10 @@ public  class PageSwitcher {
         //////////////////////////////////////////////////////
         //  DATA SHARING & CONTROLLER INITIALIZATION
         //////////////////////////////////////////////////////
-        PageController controller = loader.getController();
-        controller.setStage_DontTouch(stage);
-        controller.onLoad(attributeContainer);
+        PageControllerUI controller = loader.getController();
+//        controller.setStage_DontTouch(stage);
+        controller.onLoad();
+
 
 
     }

@@ -3,8 +3,14 @@ package UI;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class AgentSubmissionController extends PageControllerUI implements iSubmit {
+public class AgentSubmissionController extends PageControllerUI implements ISubmit {
 
+
+    SubmitHelper submitHelper;
+
+    public void setSubmitHelper(SubmitHelper submitHelper){
+        this.submitHelper = submitHelper;
+    }
     @FXML
     TextField RepIDField;
 
@@ -122,7 +128,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
     @FXML
     Button SubmitButton;
 
-    @Override
     public TextField getRepIDField() {
         return RepIDField;
     }
@@ -131,7 +136,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         RepIDField = repIDField;
     }
 
-    @Override
     public TextField getProducerNumField() {
         return ProducerNumField;
     }
@@ -140,7 +144,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         ProducerNumField = producerNumField;
     }
 
-    @Override
     public ComboBox<String> getSourceComboBox() {
         return SourceComboBox;
     }
@@ -149,7 +152,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         SourceComboBox = sourceComboBox;
     }
 
-    @Override
     public TextField getSerialYearField() {
         return SerialYearField;
     }
@@ -158,7 +160,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         SerialYearField = serialYearField;
     }
 
-    @Override
     public TextField getSerialDigitsField() {
         return SerialDigitsField;
     }
@@ -167,7 +168,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         SerialDigitsField = serialDigitsField;
     }
 
-    @Override
     public ComboBox<String> getTypeComboBox() {
         return TypeComboBox;
     }
@@ -176,7 +176,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         TypeComboBox = typeComboBox;
     }
 
-    @Override
     public TextField getVintageYearField() {
         return VintageYearField;
     }
@@ -185,7 +184,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         VintageYearField = vintageYearField;
     }
 
-    @Override
     public TextField getPhField() {
         return PhField;
     }
@@ -194,7 +192,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         PhField = phField;
     }
 
-    @Override
     public TextField getAlcoholContentTextField() {
         return AlcoholContentTextField;
     }
@@ -203,7 +200,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         AlcoholContentTextField = alcoholContentTextField;
     }
 
-    @Override
     public TextField getBrandNameTextField() {
         return BrandNameTextField;
     }
@@ -212,7 +208,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         BrandNameTextField = brandNameTextField;
     }
 
-    @Override
     public TextField getBrandField() {
         return BrandField;
     }
@@ -221,7 +216,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         BrandField = brandField;
     }
 
-    @Override
     public TextField getFancifulField() {
         return FancifulField;
     }
@@ -230,7 +224,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         FancifulField = fancifulField;
     }
 
-    @Override
     public TextField getName8Field() {
         return Name8Field;
     }
@@ -239,7 +232,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         Name8Field = name8Field;
     }
 
-    @Override
     public ComboBox<String> getState8ComboBox() {
         return State8ComboBox;
     }
@@ -248,7 +240,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         State8ComboBox = state8ComboBox;
     }
 
-    @Override
     public TextField getAddress8Field() {
         return Address8Field;
     }
@@ -257,7 +248,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         Address8Field = address8Field;
     }
 
-    @Override
     public TextField getCity8Field() {
         return City8Field;
     }
@@ -266,7 +256,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         City8Field = city8Field;
     }
 
-    @Override
     public TextField getZip8Field() {
         return Zip8Field;
     }
@@ -275,7 +264,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         Zip8Field = zip8Field;
     }
 
-    @Override
     public RadioButton getSameAddressRadioButton() {
         return SameAddressRadioButton;
     }
@@ -284,7 +272,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         SameAddressRadioButton = sameAddressRadioButton;
     }
 
-    @Override
     public TextField getName9Field() {
         return Name9Field;
     }
@@ -293,7 +280,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         Name9Field = name9Field;
     }
 
-    @Override
     public ComboBox<String> getState9ComboBox() {
         return State9ComboBox;
     }
@@ -302,7 +288,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         State9ComboBox = state9ComboBox;
     }
 
-    @Override
     public TextField getAddress9Field() {
         return Address9Field;
     }
@@ -311,7 +296,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         Address9Field = address9Field;
     }
 
-    @Override
     public TextField getCity9Field() {
         return City9Field;
     }
@@ -320,7 +304,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         City9Field = city9Field;
     }
 
-    @Override
     public TextField getZip9Field() {
         return Zip9Field;
     }
@@ -329,7 +312,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         Zip9Field = zip9Field;
     }
 
-    @Override
     public TextField getFormulaField() {
         return FormulaField;
     }
@@ -338,7 +320,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         FormulaField = formulaField;
     }
 
-    @Override
     public TextField getGrapeVarField() {
         return GrapeVarField;
     }
@@ -347,7 +328,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         GrapeVarField = grapeVarField;
     }
 
-    @Override
     public TextField getWineAppField() {
         return WineAppField;
     }
@@ -356,7 +336,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         WineAppField = wineAppField;
     }
 
-    @Override
     public TextField getPhoneNumField() {
         return PhoneNumField;
     }
@@ -365,7 +344,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         PhoneNumField = phoneNumField;
     }
 
-    @Override
     public TextField getEmailField() {
         return EmailField;
     }
@@ -374,7 +352,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         EmailField = emailField;
     }
 
-    @Override
     public CheckBox getCertCheckbox() {
         return CertCheckbox;
     }
@@ -383,7 +360,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         CertCheckbox = certCheckbox;
     }
 
-    @Override
     public TextField getState15Field() {
         return State15Field;
     }
@@ -392,7 +368,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         State15Field = state15Field;
     }
 
-    @Override
     public CheckBox getLiquorCheckbox() {
         return LiquorCheckbox;
     }
@@ -401,7 +376,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         LiquorCheckbox = liquorCheckbox;
     }
 
-    @Override
     public TextField getAmountField() {
         return AmountField;
     }
@@ -410,7 +384,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         AmountField = amountField;
     }
 
-    @Override
     public CheckBox getResubmitCheckbox() {
         return ResubmitCheckbox;
     }
@@ -419,7 +392,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         ResubmitCheckbox = resubmitCheckbox;
     }
 
-    @Override
     public TextField getTTBIDField() {
         return TTBIDField;
     }
@@ -428,7 +400,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         this.TTBIDField = TTBIDField;
     }
 
-    @Override
     public TextField getAdditionalInfoField() {
         return AdditionalInfoField;
     }
@@ -437,7 +408,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         AdditionalInfoField = additionalInfoField;
     }
 
-    @Override
     public TextField getTranslationField() {
         return TranslationField;
     }
@@ -446,7 +416,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         TranslationField = translationField;
     }
 
-    @Override
     public DatePicker getAppDate() {
         return AppDate;
     }
@@ -455,7 +424,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         AppDate = appDate;
     }
 
-    @Override
     public TextField getSignatureField() {
         return SignatureField;
     }
@@ -464,7 +432,6 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         SignatureField = signatureField;
     }
 
-    @Override
     public Button getSubmitButton() {
         return SubmitButton;
     }
@@ -473,10 +440,8 @@ public class AgentSubmissionController extends PageControllerUI implements iSubm
         SubmitButton = submitButton;
     }
 
-    @Override
     protected void onLeave(){}
 
-    @Override
     protected void onLoad(){}
 
 }

@@ -14,19 +14,19 @@
    <children>
       <Pane prefHeight="762.0" prefWidth="1361.0" style="-fx-background-color: #1F2020;">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#welcomePage" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #1F2020;" text="&lt;" textFill="WHITE">
+            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #1F2020;" text="&lt;" textFill="WHITE">
                <font>
                   <Font name="Palatino" size="18.0" />
                </font>
             </Button>
             <Pane layoutX="736.0" layoutY="71.0" prefHeight="622.0" prefWidth="494.0" style="-fx-background-color: #007bb0; -fx-background-radius: 20;">
                <children>
-                  <TextField fx:id="nameField" layoutX="57.0" layoutY="200.0" prefHeight="49.0" prefWidth="377.0" promptText="Government Email" style="-fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #007bb0;">
+                  <TextField fx:id="LoginUserUsernameTextField" layoutX="57.0" layoutY="200.0" prefHeight="49.0" prefWidth="377.0" promptText="Government Email" style="-fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #007bb0;">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="passField" layoutX="56.0" layoutY="279.0" prefHeight="49.0" prefWidth="375.0" promptText="Password" style="-fx-border-radius: 5; -fx-border-color: white; -fx-background-color: #007bb0;">
+                  <PasswordField fx:id="LoginUserPasswordTextField" layoutX="56.0" layoutY="279.0" prefHeight="49.0" prefWidth="375.0" promptText="Password" style="-fx-border-radius: 5; -fx-border-color: white; -fx-background-color: #007bb0;">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
