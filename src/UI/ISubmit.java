@@ -1,94 +1,90 @@
 package UI;
 
-import com.sun.org.apache.bcel.internal.generic.LADD;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.TextField;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
-import java.util.OptionalInt;
+import com.jfoenix.controls.*;
 
 
 public interface ISubmit {
 
         void setSubmitHelper(SubmitHelper helper);
 
-        TextField getRepIDField();
+        JFXTextField getRepIDField();
 
-        TextField getProducerNumField();
+        JFXTextField getProducerNumField();
 
-        ComboBox<String> getSourceComboBox();
+        JFXComboBox<String> getSourceComboBox();
 
-        TextField getSerialYearField();
+        JFXTextField getSerialYearField();
 
-        TextField getSerialDigitsField();
+        JFXTextField getSerialDigitsField();
 
-        ComboBox<String> getTypeComboBox();
+        JFXComboBox<String> getTypeComboBox();
 
-        TextField getVintageYearField();
+        JFXTextField getVintageYearField();
 
-        TextField getPhField();
+        JFXTextField getPhField();
 
-        TextField getAlcoholContentTextField();
+        JFXTextField getAlcoholContentTextField();
 
-        TextField getBrandNameTextField();
+        JFXTextField getBrandField();
 
-        TextField getBrandField();
+        JFXTextField getFancifulField();
 
-        TextField getFancifulField();
+        JFXTextField getName8Field();
 
-        TextField getName8Field();
+        JFXComboBox<String> getState8ComboBox();
 
-        ComboBox<String> getState8ComboBox();
+        JFXTextField getAddress8Field();
 
-        TextField getAddress8Field();
+        JFXTextField getCity8Field();
 
-        TextField getCity8Field();
+        JFXTextField getZip8Field();
 
-        TextField getZip8Field();
+        JFXRadioButton getSameAddressRadioButton();
 
-        RadioButton getSameAddressRadioButton();
+        JFXTextField getName9Field();
 
-        TextField getName9Field();
+        JFXComboBox<String> getState9ComboBox();
 
-        ComboBox<String> getState9ComboBox();
+        JFXTextField getAddress9Field();
 
-        TextField getAddress9Field();
+        JFXTextField getCity9Field();
 
-        TextField getCity9Field();
+        JFXTextField getZip9Field();
 
-        TextField getZip9Field();
+        JFXTextField getFormulaField();
 
-        TextField getFormulaField();
+        JFXTextField getGrapeVarField();
 
-        TextField getGrapeVarField();
+        JFXTextField getWineAppField();
 
-        TextField getWineAppField();
+        JFXTextField getPhoneNumField();
 
-        TextField getPhoneNumField();
+        JFXTextField getEmailField();
 
-        TextField getEmailField();
+        JFXRadioButton getCertRadioButton();
 
-        CheckBox getCertCheckbox();
+        JFXRadioButton getExemptionRadioButton();
 
-        TextField getState15Field();
+        JFXComboBox<String> getState15ComboBox();
 
-        CheckBox getLiquorCheckbox();
+        JFXRadioButton getLiquorRadioButton();
 
-        TextField getAmountField();
+        JFXTextField getAmountField();
 
-        CheckBox getResubmitCheckbox();
+        JFXRadioButton getResubmitRadioButton();
 
-        TextField getTTBIDField();
+        JFXTextField getTTBIDField();
 
-        TextField getAdditionalInfoField();
+        JFXTextField getAdditionalInfoField();
 
-        TextField getTranslationField();
+        JFXTextField getTranslationField();
 
-        DatePicker getAppDate();
+        JFXDatePicker getAppDate();
 
-        TextField getSignatureField();
+        JFXTextField getSignatureField();
 
-        Button getSubmitButton();
+        JFXButton getSubmitButton();
+
+    void setSubmitHelper();
 
 }
