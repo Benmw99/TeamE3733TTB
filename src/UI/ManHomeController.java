@@ -2,12 +2,15 @@ package UI;
 
 import Entities.AlcoholType;
 import Entities.Form;
+import Entities.Manufacturer;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.awt.*;
+import java.io.IOException;
 import java.sql.Timestamp;
 
 public class ManHomeController extends PageControllerUI implements IFormDisplay, IExport, ITableView, ILogOut{
@@ -141,12 +144,14 @@ public class ManHomeController extends PageControllerUI implements IFormDisplay,
         return AsciiDelimitedFileButton;
     }
 
- @Override
- public void setFormDisplayHelper(FormDisplayHelper helper) {
+    FormDisplayHelper formDisplayHelper;
 
- }
+    @Override
+    public void setFormDisplayHelper(FormDisplayHelper helper) {
+        this.formDisplayHelper = helper;
+    }
 
- @Override
+    @Override
     public Label getDisplay1Label() {
         return Display1Label;
     }
@@ -271,9 +276,11 @@ public class ManHomeController extends PageControllerUI implements IFormDisplay,
         return Display20Label;
     }
 
+    TableViewHelper tableViewHelper;
+
     @Override
     public void setTableViewHelper(TableViewHelper helper) {
-
+        this.tableViewHelper = helper;
     }
 
     @Override
@@ -325,4 +332,43 @@ public class ManHomeController extends PageControllerUI implements IFormDisplay,
     public Button getLogOutButton() {
         return LogOutButton;
     }
+
+
+    ////////////////////////////////////
+    ////////Controller Functions////////
+    ////////////////////////////////////
+
+    @FXML
+    public void logOut(ActionEvent event) throws IOException {
+        attributeContainer.currentUser = null;
+        goToPage("ManLogin.fxml");
+    }
+
+    @FXML
+    public void addForm(ActionEvent event) throws IOException {
+        goToPage("ManApp1.fxml");
+    }
+
+    @FXML
+    public void refreshForms(ActionEvent event) throws IOException {
+        ((Manufacturer)attributeContainer.currentUser).loadForms();
+        //TODO Integrate tableViewHelper to make work
+        formDisplayHelper.displayForm(attributeContainer.currentForm);
+    }
+
+    @FXML
+    public void viewAgentComments(ActionEvent event) throws IOException {
+        //TODO Make comments a thing
+    }
+
+    @FXML
+    public void download(ActionEvent event) throws IOException {
+        //TODO Make download
+    }
+
+    @FXML
+    public void print(ActionEvent event) throws IOException {
+        //TODO Make print
+    }
+
 }

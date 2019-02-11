@@ -7,6 +7,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 public class AgentAppController extends PageControllerUI implements ISubmit {
+    //TODO: copy from manAppController
+    //TODO: add AgentApp.fxml
 
     SubmitHelper submitHelper;
 

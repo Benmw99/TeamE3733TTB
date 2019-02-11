@@ -33,4 +33,13 @@ public class AttributeContainer {
         searchPage = 0;
         backlog = new Stack<String>();
     }
+
+    public void wipeSession() {
+        formQueue = null;
+        currentForm = null;
+        currentUser = null;
+        currentResults = null;
+        sounds = null;
+        searchPage = 0;
+    }
 }
