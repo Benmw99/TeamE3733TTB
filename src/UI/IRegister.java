@@ -3,7 +3,7 @@ package UI;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public interface IRegister {
+public interface IRegister extends IPage{
 
     TextField getRegisterUserFirstNameTextField();
 

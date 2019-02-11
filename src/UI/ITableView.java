@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 
 import java.sql.Timestamp;
 
-public interface ITableView {
+public interface ITableView extends IPage{
     void setTableViewHelper(TableViewHelper helper);
     TableView<Form> getFormTable();
     TableColumn<Form, Integer> getTTBIDColumn();

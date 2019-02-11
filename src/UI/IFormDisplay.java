@@ -3,7 +3,7 @@ package UI;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public interface IFormDisplay {
+public interface IFormDisplay extends IPage{
 
     void setFormDisplayHelper(FormDisplayHelper helper);
 

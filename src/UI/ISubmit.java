@@ -3,7 +3,7 @@ package UI;
 import com.jfoenix.controls.*;
 
 
-public interface ISubmit {
+public interface ISubmit extends IPage{
 
         void setSubmitHelper(SubmitHelper helper);
 
