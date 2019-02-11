@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -13,6 +14,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -20,68 +23,78 @@
    <children>
       <Pane prefHeight="100.0" prefWidth="1360.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b53c4a" height="100.0" stroke="BLACK" strokeType="INSIDE" width="1360.0" />
+            <Rectangle fill="#9ea7aa" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="1360.0" />
             <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="100.0" prefWidth="1360.0" text="TTB Application Form" textFill="WHITE">
                <font>
-                  <Font size="48.0" />
+                  <Font name="Apple SD Gothic Neo Regular" size="48.0" />
                </font>
             </Label>
+            <JFXHamburger layoutX="62.0" layoutY="40.0" />
          </children>
       </Pane>
       <VBox prefHeight="660.0" prefWidth="60.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <JFXButton fx:id="page1" buttonType="RAISED" onAction="#handlePage" prefHeight="165.0" prefWidth="60.0" ripplerFill="#b3aabc" style="-fx-background-color: #b53c4a; -fx-border-color: #355C7D;" text="1" textFill="WHITE">
+            <JFXButton fx:id="page1" buttonType="RAISED" onAction="#handlePage" prefHeight="165.0" prefWidth="60.0" ripplerFill="#b3aabc" style="-fx-background-color: c4001d;" text="1" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue" size="26.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="1.5" />
+               </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="page2" buttonType="RAISED" onAction="#handlePage" prefHeight="165.0" prefWidth="60.0" ripplerFill="#b3aabc" style="-fx-background-color: #b53c4a; -fx-border-color: #355C7D;" text="2" textFill="WHITE">
+            <JFXButton fx:id="page2" buttonType="RAISED" onAction="#handlePage" prefHeight="165.0" prefWidth="60.0" ripplerFill="#b3aabc" style="-fx-background-color: c4001d;" text="2" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue" size="26.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="1.5" />
+               </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="page3" buttonType="RAISED" onAction="#handlePage" prefHeight="165.0" prefWidth="60.0" ripplerFill="#b3aabc" style="-fx-background-color: #b53c4a; -fx-border-color: #355C7D;" text="3" textFill="WHITE">
+            <JFXButton fx:id="page3" buttonType="RAISED" onAction="#handlePage" prefHeight="165.0" prefWidth="60.0" ripplerFill="#b3aabc" style="-fx-background-color: c4001d;" text="3" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue" size="26.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="1.5" />
+               </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="page4" buttonType="RAISED" onAction="#handlePage" prefHeight="165.0" prefWidth="60.0" ripplerFill="#b3aabc" style="-fx-background-color: #b53c4a; -fx-border-color: #355C7D;" text="4" textFill="WHITE">
+            <JFXButton fx:id="page4" buttonType="RAISED" onAction="#handlePage" prefHeight="165.0" prefWidth="60.0" ripplerFill="#b3aabc" style="-fx-background-color: c4001d;" text="4" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue" size="26.0" />
                </font>
             </JFXButton>
          </children>
       </VBox>
-      <Pane fx:id="pane1" prefHeight="660.0" prefWidth="1300.0" style="-fx-background-color: #355C7D;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <Pane fx:id="pane1" prefHeight="660.0" prefWidth="1300.0" style="-fx-background-color: #cfd8dc;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <VBox prefHeight="660.0" prefWidth="200.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
@@ -335,7 +348,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="pane2" prefHeight="660.0" prefWidth="1300.0" style="-fx-background-color: #355C7D;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <Pane fx:id="pane2" prefHeight="660.0" prefWidth="1300.0" style="-fx-background-color: #cfd8dc;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <VBox prefHeight="660.0" prefWidth="200.0">
                <children>
@@ -667,31 +680,31 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="pane3" prefHeight="660.0" prefWidth="1300.0" style="-fx-background-color: #355C7D;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <Pane fx:id="pane3" prefHeight="660.0" prefWidth="1300.0" style="-fx-background-color: #cfd8dc;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <VBox alignment="CENTER_LEFT" prefHeight="660.0" prefWidth="200.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="30.0" left="30.0" top="30.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
@@ -957,30 +970,38 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="pane4" prefHeight="660.0" prefWidth="1300.0" style="-fx-background-color: #355C7D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <Pane fx:id="pane4" prefHeight="660.0" prefWidth="1300.0" style="-fx-background-color: #cfd8dc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="660.0" prefWidth="1300.0">
                <children>
-                  <JFXButton prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #6C5B7B;" text="Submit Application">
+                  <JFXButton buttonType="RAISED" prefHeight="72.0" prefWidth="300.0" style="-fx-background-color: c4001d;" text="Submit Application">
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <ripplerFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </ripplerFill>
                   </JFXButton>
                </children>
             </HBox>
             <VBox prefHeight="660.0" prefWidth="200.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6c5b7b" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1744" height="80.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="30.0" top="15.0" />
                      </VBox.margin>
@@ -1022,7 +1043,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label prefHeight="80.0" text="Signature of Applicant or Authorized Agent" textFill="#f8b195">
+                        <Label prefHeight="80.0" text="Signature of Applicant or Authorized Agent">
                            <font>
                               <Font size="32.0" />
                            </font>
@@ -1050,12 +1071,12 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label prefHeight="80.0" text="Label Submission" textFill="#f8b195">
+                        <Label prefHeight="80.0" text="Label Submission">
                            <font>
                               <Font size="32.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="SubmitButton" buttonType="RAISED" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #f67280;" text="Submit" textFill="WHITE">
+                        <JFXButton fx:id="SubmitButton" buttonType="RAISED" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #ff616f;" text="Submit" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -1078,7 +1099,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label prefHeight="80.0" text="Alcohol Content" textFill="#f8b195">
+                        <Label prefHeight="80.0" text="Alcohol Content">
                            <font>
                               <Font size="32.0" />
                            </font>
