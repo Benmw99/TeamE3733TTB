@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -39,7 +40,7 @@
          <children>
             <Label text="Submitted Label">
                <font>
-                  <Font name="System Bold" size="48.0" />
+                  <Font name="Apple SD Gothic Neo Bold" size="48.0" />
                </font>
             </Label>
          </children>
@@ -48,89 +49,102 @@
          <children>
             <Label text="Rules &amp; Regulations">
                <font>
-                  <Font name="System Bold" size="48.0" />
+                  <Font name="Apple SD Gothic Neo Bold" size="48.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <VBox alignment="CENTER" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" prefHeight="100.0" style="-fx-background-color: #9ea7aa;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="View Label" textFill="WHITE">
                <font>
-                  <Font size="38.0" />
+                  <Font name="Apple SD Gothic Neo Regular" size="38.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <HBox alignment="CENTER" prefHeight="75.0" style="-fx-background-color: #cfd8dc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Button fx:id="approveAVLButton" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Approve" textFill="WHITE">
+            <JFXButton fx:id="approveAVLButton" buttonType="RAISED" style="-fx-background-color: #26c6da;" text="Approve">
+               <ripplerFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </ripplerFill>
                <font>
-                  <Font name="Georgia" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="rejectAVLButton" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Reject" textFill="WHITE">
-               <font>
-                  <Font name="Georgia" size="18.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="15.0" right="15.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="sendToAgentAVLButton" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Send To Agent" textFill="WHITE">
-               <font>
-                  <Font name="Georgia" size="18.0" />
+                  <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                </font>
                <HBox.margin>
-                  <Insets right="15.0" />
+                  <Insets right="5.0" />
                </HBox.margin>
-            </Button>
-            <Button fx:id="feedbackAVLButton" mnemonicParsing="false" style="-fx-background-color: black;" text="Send Feedback" textFill="WHITE">
+            </JFXButton>
+            <JFXButton fx:id="rejectAVLButton" buttonType="RAISED" style="-fx-background-color: #26c6da;" text="Reject">
+               <ripplerFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </ripplerFill>
                <font>
-                  <Font name="Georgia" size="18.0" />
+                  <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                </font>
-            </Button>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="sendToAgentAVLButton" buttonType="RAISED" style="-fx-background-color: #26c6da;" text="Send To Agent">
+               <ripplerFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Apple SD Gothic Neo Regular" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="feedbackAVLButton" buttonType="RAISED" style="-fx-background-color: #26c6da;" text="Send Feedback">
+               <ripplerFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Apple SD Gothic Neo Regular" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </JFXButton>
          </children>
       </HBox>
-      <MenuButton fx:id="menuAVLMenuButton" mnemonicParsing="false" prefHeight="70.0" text="Menu">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
+      <JFXHamburger fx:id="menuAVLMenuButton" layoutX="65.0" layoutY="40.0" />
+      <JFXCheckBox layoutX="39.0" layoutY="110.0" text="Make Comments" />
+      <JFXButton fx:id="printAVLButton" buttonType="RAISED" layoutX="1213.0" layoutY="122.0" style="-fx-background-color: #26c6da;" text="Print">
+         <ripplerFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </ripplerFill>
          <font>
-            <Font size="26.0" />
+            <Font name="Apple SD Gothic Neo Regular" size="18.0" />
          </font>
-      </MenuButton>
-      <Label layoutX="39.0" layoutY="110.0" text="Make Comments">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="39.0" layoutY="145.0" text="Section">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <CheckBox fx:id="commentAVLCheckbox" layoutX="155.0" layoutY="110.0" mnemonicParsing="false" />
-      <Button fx:id="section1AVLButton" layoutX="100.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="1" textAlignment="CENTER">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="section2AVLButton" layoutX="138.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="2" textAlignment="CENTER">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="section3AVLButton" layoutX="177.0" layoutY="140.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="28.0" style="-fx-border-color: #019ADD;" text="3" textAlignment="CENTER">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="printAVLButton" layoutX="1213.0" layoutY="122.0" mnemonicParsing="false" style="-fx-background-color: #1F2020;" text="Print" textFill="WHITE">
-         <font>
-            <Font name="Georgia" size="18.0" />
-         </font>
-      </Button>
+      </JFXButton>
    </children>
 </AnchorPane>
